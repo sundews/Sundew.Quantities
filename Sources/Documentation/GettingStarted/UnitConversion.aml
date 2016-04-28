@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<topic id="15bb3155-be0e-443b-ac1a-4736ec95877f" revisionNumber="1">
+  <developerHowToDocument xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <introduction>
+      <para>Sundew.Quantiies support conversion between different units of the same quantity.</para>
+      <para>This works because when units are regiested a base unit is specified.</para>
+      <para>Base units are taken from the SI base units.</para>
+    </introduction>
+    <procedure>
+      <title>Conversion procedure (kilometers to miles):</title>
+      <steps class="ordered">
+        <step>
+          <content>
+            <para>Convert kilometers to meters.</para>
+          </content>
+        </step>
+        <step>
+          <content>
+            <para>Convert meters to miles.</para>
+          </content>
+        </step>
+      </steps>
+    </procedure>
+    <example>
+      <section>
+        <title>Distance</title>
+        <content>
+          <code lang="cs" source="..\Sources\Sundew.Quantities.Samples\UnitConversion.cs" region="UsageDistance" title="Usage" />
+        </content>
+        <para></para>
+        <title>Volume</title>
+        <content>
+          <code lang="cs" source="..\Sources\Sundew.Quantities.Samples\UnitConversion.cs" region="UsageVolume" title="Usage" />
+        </content>
+      </section>
+    </example>
+  </developerHowToDocument>
+</topic>

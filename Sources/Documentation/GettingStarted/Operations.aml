@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<topic id="be5bdde5-b86d-43b7-9773-c4ab011aed2d" revisionNumber="1">
+  <developerSampleDocument xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <introduction>
+      <para>The term operation in this context covers any action on a quantity or between two quantities.</para>
+      <para>For operations between two quantities such as multiplication, addtion, etc., it is important to note that the left hand side has precendence for the result.</para>
+      <para>This means that if two quantities of different units are added, the resulting quantity will have the same unit as the left hand side.</para>
+    </introduction>
+    <section>
+      <title>Spacetime</title>
+      <content>
+        <code lang="cs" source="..\Sources\Sundew.Quantities.Samples\Operations.cs" region="UsageSpacetime" title="Usage" />
+      </content>
+      <para></para>
+      <title>Electromagnetism</title>
+      <content>
+        <code lang="cs" source="..\Sources\Sundew.Quantities.Samples\Operations.cs" region="UsageElectromagnetism" title="Usage" />
+      </content>
+    </section>
+  </developerSampleDocument>
+</topic>

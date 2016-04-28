@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<topic id="afc9d1b8-21ca-4218-9bfc-08faf49eab8d" revisionNumber="1">
+  <developerSampleDocument xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <introduction>
+      <para>There are a number of different ways to create quantities. Each of these are intended for different levels of convenience and flexibility.</para>
+      <para>Note that similar ways of creating quantities, as demonstrated in the examples below, exists for all quantity types - See <link xlink:href="1468b83a-f66b-4284-9480-7d56d2c8193d">Quantities</link>.</para>
+      <para>For more convenience to create the desired units, users can add their own extension methods.</para>
+    </introduction>
+    <section>
+      <title>Distance</title>
+      <content>
+        <code lang="cs" source="..\Sources\Sundew.Quantities.Samples\CreatingQuantities.cs" region="UsageDistance" title="Usage" />
+      </content>
+      <para></para>
+      <title>Acceleration</title>
+      <content>
+        <code lang="cs" source="..\Sources\Sundew.Quantities.Samples\CreatingQuantities.cs" region="UsageAcceleration" title="Usage" />
+      </content>
+    </section>
+  </developerSampleDocument>
+</topic>

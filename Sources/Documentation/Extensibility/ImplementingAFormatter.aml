@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<topic id="04b7df16-7033-479c-8a52-36a1217c095f" revisionNumber="1">
+  <developerHowToDocument xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <introduction>
+      <para>In Sundew.Quantities there is no such term as a formatter. However, implementing a formatter relies on the way units are represented through <codeEntityReference qualifyHint="false">T:Sundew.Quantities.Engine.Representations.Hierarchical.Expressions.Expression</codeEntityReference> trees.</para>
+      <para>An expression visitor can be created by implementing one of the following interfaces, depending on the number of required parameters:</para>
+	  <list class="bullet">
+	    <listItem><para><codeEntityReference qualifyHint="false">T:Sundew.Quantities.Engine.Representations.Hierarchical.Visitors.IExpressionVisitor`1</codeEntityReference></para></listItem>
+	    <listItem><para><codeEntityReference qualifyHint="false">T:Sundew.Quantities.Engine.Representations.Hierarchical.Visitors.IExpressionVisitor`2</codeEntityReference></para></listItem>
+	    <listItem><para><codeEntityReference qualifyHint="false">T:Sundew.Quantities.Engine.Representations.Hierarchical.Visitors.IExpressionVisitor`3</codeEntityReference></para></listItem>
+	    <listItem><para><codeEntityReference qualifyHint="false">T:Sundew.Quantities.Engine.Representations.Hierarchical.Visitors.IExpressionVisitor`4</codeEntityReference></para></listItem>
+	    <listItem><para><codeEntityReference qualifyHint="false">T:Sundew.Quantities.Engine.Representations.Hierarchical.Visitors.IExpressionVisitor`5</codeEntityReference></para></listItem>
+	  </list>
+      <para>The example below demonstrates the implementation of a an expression visitor to output expressions as MathML.</para>
+    </introduction>
+    <section>
+      <title>Expression to MathML Formatter</title>
+      <content>
+        <code lang="cs" source="..\Sources\Sundew.Quantities.Formatters.MathML\ExpressionToMathMLVisitor.cs" region="UsageMathML" title="Usage" />
+      </content>
+    </section>
+  </developerHowToDocument>
+</topic>

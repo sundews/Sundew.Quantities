@@ -1,0 +1,135 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\xunit.runner.visualstudio.2.1.0\build\net20\xunit.runner.visualstudio.props" Condition="Exists('..\packages\xunit.runner.visualstudio.2.1.0\build\net20\xunit.runner.visualstudio.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{9BB38159-0F4B-4B17-8C5A-C6988336F4D7}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Sundew.Quantities.UnitTests</RootNamespace>
+    <AssemblyName>Sundew.Quantities.UnitTests</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="FakeItEasy, Version=2.0.0.0, Culture=neutral, PublicKeyToken=eff28e2146d5fd2c, processorArchitecture=MSIL">
+      <HintPath>..\packages\FakeItEasy.2.0.0-beta010\lib\net40\FakeItEasy.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="FluentAssertions, Version=4.3.0.0, Culture=neutral, PublicKeyToken=33f2691a05b67b6a, processorArchitecture=MSIL">
+      <HintPath>..\packages\FluentAssertions.4.3.0\lib\net45\FluentAssertions.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="FluentAssertions.Core, Version=4.3.0.0, Culture=neutral, PublicKeyToken=33f2691a05b67b6a, processorArchitecture=MSIL">
+      <HintPath>..\packages\FluentAssertions.4.3.0\lib\net45\FluentAssertions.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Sundew.Base, Version=2.0.26.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Sundew.Base.2.0.26\lib\portable-net45+netcore45+wpa81+wp8\Sundew.Base.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+    <Reference Include="xunit.abstractions, Version=2.0.0.0, Culture=neutral, PublicKeyToken=8d05b1bb7a6fdb6c, processorArchitecture=MSIL">
+      <HintPath>..\packages\xunit.abstractions.2.0.0\lib\net35\xunit.abstractions.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="xunit.assert, Version=2.1.0.3179, Culture=neutral, PublicKeyToken=8d05b1bb7a6fdb6c, processorArchitecture=MSIL">
+      <HintPath>..\packages\xunit.assert.2.1.0\lib\dotnet\xunit.assert.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="xunit.core, Version=2.1.0.3179, Culture=neutral, PublicKeyToken=8d05b1bb7a6fdb6c, processorArchitecture=MSIL">
+      <HintPath>..\packages\xunit.extensibility.core.2.1.0\lib\dotnet\xunit.core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="xunit.execution.desktop, Version=2.1.0.3179, Culture=neutral, PublicKeyToken=8d05b1bb7a6fdb6c, processorArchitecture=MSIL">
+      <HintPath>..\packages\xunit.extensibility.execution.2.1.0\lib\net45\xunit.execution.desktop.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Engine\ExpressionTestHelper.cs" />
+    <Compile Include="Engine\Operations\QuantityOperationsTests.cs" />
+    <Compile Include="Engine\Quantities\QuantityHelperTests.cs" />
+    <Compile Include="Engine\Representations\Conversion\FlatRepresentationBuilderTests.cs" />
+    <Compile Include="Engine\Representations\Conversion\FlatRepresentationBuilderWithReductionsTests.cs" />
+    <Compile Include="Engine\Representations\Conversion\FlatRepresentationConsumerTests.cs" />
+    <Compile Include="Engine\Representations\Conversion\FlatUnitIdentifierRepresentationTests.cs" />
+    <Compile Include="Engine\Representations\Flat\FlatConstant.cs" />
+    <Compile Include="Engine\Representations\Flat\FlatRepresentationTests.cs" />
+    <Compile Include="Engine\Representations\Flat\FlatUnit.cs" />
+    <Compile Include="Engine\Representations\Flat\FlatVariable.cs" />
+    <Compile Include="Engine\Representations\Flat\IFlatIdentifier.cs" />
+    <Compile Include="Engine\Representations\Hierarchical\Expressions\ExpressionFromStringBuilder.cs" />
+    <Compile Include="Engine\Representations\Hierarchical\Expressions\MultiplicationExpressionTests.cs" />
+    <Compile Include="Engine\Representations\Hierarchical\Parsing\ExpressionParserTests.cs" />
+    <Compile Include="Engine\Representations\Hierarchical\Parsing\LexicalAnalysis\LexicalAnalyzerTests.cs" />
+    <Compile Include="Engine\Representations\Hierarchical\Parsing\LexicalAnalysis\TokenMatcherBuilderTests.cs" />
+    <Compile Include="Engine\Representations\Hierarchical\Parsing\UnitExpressionParserTests.cs" />
+    <Compile Include="Engine\Representations\Hierarchical\Units\UnitHelperTests.cs" />
+    <Compile Include="Engine\Units\DerivedUnitTests.cs" />
+    <Compile Include="Engine\Units\FactoredUnitTests.cs" />
+    <Compile Include="Engine\Units\NotationBaseUnitTests.cs" />
+    <Compile Include="Engine\Units\PrefixedBaseUnitTests.cs" />
+    <Compile Include="Engine\Units\RadianUnitTests.cs" />
+    <Compile Include="Engine\Units\UnitTests.cs" />
+    <Compile Include="Mechanics\UnitSelection\MassUnitSelectorTests.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TestHelper.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+    <None Include="Settings.StyleCop" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\Sundew.Quantities\Sundew.Quantities.csproj">
+      <Project>{e4e2e3b0-ae2d-495c-ba8e-c14896ee2b05}</Project>
+      <Name>Sundew.Quantities</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\xunit.runner.visualstudio.2.1.0\build\net20\xunit.runner.visualstudio.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\xunit.runner.visualstudio.2.1.0\build\net20\xunit.runner.visualstudio.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

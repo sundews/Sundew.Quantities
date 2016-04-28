@@ -1,0 +1,38 @@
+﻿namespace Sundew.Quantities.Serialization.Poco.Electromagnetism
+{
+    using Sundew.Quantities.Engine;
+    using Sundew.Quantities.Engine.Quantities;
+
+    /// <summary>
+    /// Represents <see cref="Sundew.Quantities.Electromagnetism.Resistance"/> as a serializable type.
+    /// </summary>
+    public class Resistance : SerializableQuantity<Quantities.Electromagnetism.Resistance>
+    {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Resistance"/> class.
+        /// </summary>
+        public Resistance()
+        {
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Resistance" /> class.
+        /// </summary>
+        /// <param name="quantity">The quantity.</param>
+        public Resistance(IQuantity quantity)
+            : base(quantity)
+        {
+        }
+
+        /// <summary>
+        /// Converts this instances to a quantity.
+        /// </summary>
+        /// <returns>
+        /// A <see cref="Sundew.Quantities.Electromagnetism.Resistance" />.
+        /// </returns>
+        public override Quantities.Electromagnetism.Resistance ToQuantity()
+        {
+            return new Quantities.Electromagnetism.Resistance(this.Value, this.GetUnit());
+        }
+    }
+}

@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<topic id="55c5a2d5-9524-4a52-87ae-1c9cf1512e46" revisionNumber="1">
+  <developerSampleDocument xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <introduction>
+      <para>
+      	Sundew.Quantities is a portable class library, which introduces types for various quanties.
+      </para>
+      <para>
+      	The goal of this is to increase safety of working with physical units and make it easier by providing functionality for common operations, such as unit conversion.
+      </para>
+    </introduction>
+    <section address="Features">
+      <title>Features:</title>
+      <content>
+        <list class="bullet">
+          <listItem>Cross platform - Compatible with Portable Class Library Profile 259 - See <link xlink:href="03a22091-4c4a-442d-8ab5-1ef428c812bc">Getting started</link>.</listItem>
+	      <listItem>Type safety - Quantities have their own type: <codeEntityReference qualifyHint="false">T:Sundew.Quantities.Spacetime.Acceleration</codeEntityReference>, <codeEntityReference qualifyHint="false">T:Sundew.Quantities.Spatial.Volume</codeEntityReference>, etc. - See <link xlink:href="1468b83a-f66b-4284-9480-7d56d2c8193d">Type satefy</link>.</listItem>
+	      <listItem>Operator overloading - Support mathematical formulas rather than calling methods - See <link xlink:href="be5bdde5-b86d-43b7-9773-c4ab011aed2d">Operations</link>.</listItem>
+	      <listItem>Unit conversion - Provide conversion between different units of the same quantity - See <link xlink:href="15bb3155-be0e-443b-ac1a-4736ec95877f">Unit conversion</link>.</listItem>
+	      <listItem>Comparable - Values of the same quantities can be compared to each other, even if the unit differs - See <link xlink:href="fc7966b9-53b1-4519-ad67-c0d68647a100">Comparison</link>.</listItem>
+	      <listItem>Equatable - Values of the same quantities can be checked for equality, even if the unit differs - See <link xlink:href="e9530030-8f81-4198-9b3b-6f2b3bd33740">Equality</link>.</listItem>
+	      <listItem>Immutable - Each operation creates a new quantity.</listItem>
+	      <listItem>Extensible - Add additional units - See <link xlink:href="df0f2600-7ca8-4c9d-89b7-0ebeb5917af0">Extensibility</link>.</listItem>
+	      <listItem>Unit reduction - During operations units are automatically reduced.</listItem>
+	      <listItem>Formattable - Allows implementation of custom unit formatters - See <link xlink:href="04b7df16-7033-479c-8a52-36a1217c095f">Implementing a formatter</link>.</listItem>
+	      <listItem>Parsing units from strings - Support for various notations: km/h/s, m³ (m^3), °C, Ω, etc.</listItem>
+	      <listItem>Serialization - Serialize to JSON and other formats - See <link xlink:href="0ddef589-5c17-462a-8fc4-b45dd14c90d8">Serialzation</link>.</listItem>
+        </list>
+      </content>
+    </section>
+  </developerSampleDocument>
+</topic>

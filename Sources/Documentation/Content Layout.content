@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Topics>
+  <Topic id="55c5a2d5-9524-4a52-87ae-1c9cf1512e46" visible="True" title="Welcome" tocTitle="Welcome" linkText="Welcome" />
+  <Topic id="03a22091-4c4a-442d-8ab5-1ef428c812bc" visible="True" isExpanded="true" title="Getting Started">
+    <Topic id="afc9d1b8-21ca-4218-9bfc-08faf49eab8d" visible="True" title="Creating Quantities" />
+    <Topic id="1468b83a-f66b-4284-9480-7d56d2c8193d" visible="True" title="Type Satefy" />
+    <Topic id="15bb3155-be0e-443b-ac1a-4736ec95877f" visible="True" title="Unit Conversion" />
+    <Topic id="be5bdde5-b86d-43b7-9773-c4ab011aed2d" visible="True" title="Operations" />
+    <Topic id="fc7966b9-53b1-4519-ad67-c0d68647a100" visible="True" title="Comparison" />
+    <Topic id="e9530030-8f81-4198-9b3b-6f2b3bd33740" visible="True" title="Equality" />
+  </Topic>
+  <Topic id="df0f2600-7ca8-4c9d-89b7-0ebeb5917af0" visible="True" isExpanded="true" title="Extensibility">
+    <Topic id="04b7df16-7033-479c-8a52-36a1217c095f" visible="True" isSelected="true" title="Implementing a formatter" />
+  </Topic>
+  <Topic id="0ddef589-5c17-462a-8fc4-b45dd14c90d8" visible="True" title="Serialization" />
+</Topics>

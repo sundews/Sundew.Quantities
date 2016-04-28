@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<topic id="03a22091-4c4a-442d-8ab5-1ef428c812bc" revisionNumber="1">
+  <developerHowToDocument xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <introduction>
+      <para>
+      	The target project be compatible with the Portable Class Library (PCL) profile 259, which supports the following frameworks:
+      </para>
+	  <list class="bullet">
+	    <listItem><para>.NET Framework 4.5</para></listItem>
+	    <listItem><para>Windows 8.0</para></listItem>
+	    <listItem><para>Windows Phone 8.1</para></listItem>
+	    <listItem><para>Windows Phone Silverlight 8.0</para></listItem>
+	    <listItem><para>ASP.NET Core 5.0</para></listItem>
+	    <listItem><para>Xamarin Android</para></listItem>
+	    <listItem><para>Xamarin iOS</para></listItem>
+	    <listItem><para>Xamarin iOS (Classic)</para></listItem>
+	  </list>
+    </introduction>
+    <procedure>
+      <title>Add Sundew.Quantities to a project with Nuget in Visual Studio 2015.
+ 	  </title>
+      <steps class="ordered">
+        <step>
+          <content>
+            <para>Right click the solution in Solution Explorer and choose Manage Nuget Packages for Solution.</para>
+          </content>
+        </step>
+		 <step>
+          <content>
+            <para>Search for Sundew.Quantities and select it in the section to the left.</para>
+          </content>
+        </step>
+        <step>
+          <content>
+            <para>In the section to the right, select the projects that should use Sundew.Quantities.</para>
+          </content>
+        </step>
+		<step>
+          <content>
+            <para>Click Install.</para>
+          </content>
+        </step>
+        <step>
+          <content>
+            <para>Sundew.Quantities is now installed and ready for use - See <link xlink:href="afc9d1b8-21ca-4218-9bfc-08faf49eab8d">Creating Quantities</link>.</para>
+          </content>
+        </step>
+      </steps>
+    </procedure>
+  </developerHowToDocument>
+</topic>

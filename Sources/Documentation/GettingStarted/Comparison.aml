@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<topic id="fc7966b9-53b1-4519-ad67-c0d68647a100" revisionNumber="1">
+  <developerHowToDocument xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <introduction>
+      <para>All quantities implement <codeEntityReference qualifyHint="false">T:System.IComparable`1</codeEntityReference> which means that quantities may be compared.</para>
+      <para>As with all operations comparison is based on the unit of the left hand side.</para>
+    </introduction>
+    <section>
+      <title>Time</title>
+      <content>
+        <code lang="cs" source="..\Sources\Sundew.Quantities.Samples\Comparison.cs" region="UsageTimeComparison" title="Usage" />
+      </content>
+    </section>
+  </developerHowToDocument>
+</topic>

@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<topic id="e9530030-8f81-4198-9b3b-6f2b3bd33740" revisionNumber="1">
+  <developerHowToDocument xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <introduction>
+      <para>All quantities implement <codeEntityReference qualifyHint="false">T:System.IEquatable`1</codeEntityReference> which means that quantities may be checked for equality.</para>
+      <para>As with all operations equality check is based on the unit of the left hand side.</para>
+    </introduction>
+    <section>
+      <title>Temperature</title>
+      <content>
+        <code lang="cs" source="..\Sources\Sundew.Quantities.Samples\Equality.cs" region="UsageTemperatureEquality" title="Usage" />
+      </content>
+    </section>
+  </developerHowToDocument>
+</topic>

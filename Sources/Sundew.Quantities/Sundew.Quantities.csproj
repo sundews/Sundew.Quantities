@@ -1,0 +1,385 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <MinimumVisualStudioVersion>10.0</MinimumVisualStudioVersion>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{E4E2E3B0-AE2D-495C-BA8E-C14896EE2B05}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Sundew.Quantities</RootNamespace>
+    <AssemblyName>Sundew.Quantities</AssemblyName>
+    <DefaultLanguage>en-US</DefaultLanguage>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <TargetFrameworkProfile>Profile259</TargetFrameworkProfile>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <CodeContractsAssemblyMode>1</CodeContractsAssemblyMode>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <NoWarn>
+    </NoWarn>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <CodeContractsEnableRuntimeChecking>True</CodeContractsEnableRuntimeChecking>
+    <CodeContractsRuntimeOnlyPublicSurface>False</CodeContractsRuntimeOnlyPublicSurface>
+    <CodeContractsRuntimeThrowOnFailure>True</CodeContractsRuntimeThrowOnFailure>
+    <CodeContractsRuntimeCallSiteRequires>False</CodeContractsRuntimeCallSiteRequires>
+    <CodeContractsRuntimeSkipQuantifiers>False</CodeContractsRuntimeSkipQuantifiers>
+    <CodeContractsRunCodeAnalysis>True</CodeContractsRunCodeAnalysis>
+    <CodeContractsNonNullObligations>True</CodeContractsNonNullObligations>
+    <CodeContractsBoundsObligations>True</CodeContractsBoundsObligations>
+    <CodeContractsArithmeticObligations>True</CodeContractsArithmeticObligations>
+    <CodeContractsEnumObligations>True</CodeContractsEnumObligations>
+    <CodeContractsRedundantAssumptions>True</CodeContractsRedundantAssumptions>
+    <CodeContractsAssertsToContractsCheckBox>True</CodeContractsAssertsToContractsCheckBox>
+    <CodeContractsRedundantTests>True</CodeContractsRedundantTests>
+    <CodeContractsMissingPublicRequiresAsWarnings>True</CodeContractsMissingPublicRequiresAsWarnings>
+    <CodeContractsMissingPublicEnsuresAsWarnings>False</CodeContractsMissingPublicEnsuresAsWarnings>
+    <CodeContractsInferRequires>True</CodeContractsInferRequires>
+    <CodeContractsInferEnsures>False</CodeContractsInferEnsures>
+    <CodeContractsInferEnsuresAutoProperties>True</CodeContractsInferEnsuresAutoProperties>
+    <CodeContractsInferObjectInvariants>False</CodeContractsInferObjectInvariants>
+    <CodeContractsSuggestAssumptions>False</CodeContractsSuggestAssumptions>
+    <CodeContractsSuggestAssumptionsForCallees>False</CodeContractsSuggestAssumptionsForCallees>
+    <CodeContractsSuggestRequires>False</CodeContractsSuggestRequires>
+    <CodeContractsNecessaryEnsures>True</CodeContractsNecessaryEnsures>
+    <CodeContractsSuggestObjectInvariants>False</CodeContractsSuggestObjectInvariants>
+    <CodeContractsSuggestReadonly>True</CodeContractsSuggestReadonly>
+    <CodeContractsRunInBackground>True</CodeContractsRunInBackground>
+    <CodeContractsShowSquigglies>True</CodeContractsShowSquigglies>
+    <CodeContractsUseBaseLine>False</CodeContractsUseBaseLine>
+    <CodeContractsEmitXMLDocs>False</CodeContractsEmitXMLDocs>
+    <CodeContractsCustomRewriterAssembly />
+    <CodeContractsCustomRewriterClass />
+    <CodeContractsLibPaths />
+    <CodeContractsExtraRewriteOptions />
+    <CodeContractsExtraAnalysisOptions />
+    <CodeContractsSQLServerOption />
+    <CodeContractsBaseLineFile />
+    <CodeContractsCacheAnalysisResults>True</CodeContractsCacheAnalysisResults>
+    <CodeContractsSkipAnalysisIfCannotConnectToCache>False</CodeContractsSkipAnalysisIfCannotConnectToCache>
+    <CodeContractsFailBuildOnWarnings>False</CodeContractsFailBuildOnWarnings>
+    <CodeContractsBeingOptimisticOnExternal>True</CodeContractsBeingOptimisticOnExternal>
+    <CodeContractsRuntimeCheckingLevel>Full</CodeContractsRuntimeCheckingLevel>
+    <CodeContractsReferenceAssembly>%28none%29</CodeContractsReferenceAssembly>
+    <CodeContractsAnalysisWarningLevel>0</CodeContractsAnalysisWarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Release\Sundew.Quantities.xml</DocumentationFile>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <NoWarn>CS1723</NoWarn>
+  </PropertyGroup>
+  <ItemGroup>
+    <!-- A reference to the entire .NET Framework is automatically included -->
+    <None Include="packages.config" />
+    <None Include="Settings.StyleCop" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\SolutionItems\SharedAssemblyInfo.cs">
+      <Link>Properties\SharedAssemblyInfo.cs</Link>
+    </Compile>
+    <Compile Include="Electromagnetism\Capacitance.cs" />
+    <Compile Include="Electromagnetism\Capacitance.Specific.cs" />
+    <Compile Include="Electromagnetism\Charge.cs" />
+    <Compile Include="Electromagnetism\Charge.Specific.cs" />
+    <Compile Include="Electromagnetism\Conductance.cs" />
+    <Compile Include="Electromagnetism\Conductance.Specific.cs" />
+    <Compile Include="Electromagnetism\ElectricCurrent.cs" />
+    <Compile Include="Electromagnetism\ElectricCurrent.Specific.cs" />
+    <Compile Include="Electromagnetism\ElectromagnetismExtensions.cs" />
+    <Compile Include="Electromagnetism\Inductance.cs" />
+    <Compile Include="Electromagnetism\Inductance.Specific.cs" />
+    <Compile Include="Electromagnetism\MagneticFlux.cs" />
+    <Compile Include="Electromagnetism\MagneticFlux.Specific.cs" />
+    <Compile Include="Electromagnetism\MagneticFluxDensity.cs" />
+    <Compile Include="Electromagnetism\MagneticFluxDensity.Specific.cs" />
+    <Compile Include="Electromagnetism\Potential.cs" />
+    <Compile Include="Electromagnetism\Potential.Specific.cs" />
+    <Compile Include="Electromagnetism\Resistance.cs" />
+    <Compile Include="Electromagnetism\Resistance.Specific.cs" />
+    <Compile Include="Electromagnetism\UnitSelection\CapacitanceUnitSelector.cs" />
+    <Compile Include="Electromagnetism\UnitSelection\ChargeUnitSelector.cs" />
+    <Compile Include="Electromagnetism\UnitSelection\ConductanceUnitSelector.cs" />
+    <Compile Include="Electromagnetism\UnitSelection\ElectricCurrentUnitSelector.cs" />
+    <Compile Include="Electromagnetism\UnitSelection\ICapacitanceUnitSelector.cs" />
+    <Compile Include="Electromagnetism\UnitSelection\IChargeUnitSelector.cs" />
+    <Compile Include="Electromagnetism\UnitSelection\IConductanceUnitSelector.cs" />
+    <Compile Include="Electromagnetism\UnitSelection\IElectricCurrentUnitSelector.cs" />
+    <Compile Include="Electromagnetism\UnitSelection\IInductanceUnitSelector.cs" />
+    <Compile Include="Electromagnetism\UnitSelection\IMagneticFluxDensityUnitSelector.cs" />
+    <Compile Include="Electromagnetism\UnitSelection\IMagneticFluxUnitSelector.cs" />
+    <Compile Include="Electromagnetism\UnitSelection\InductanceUnitSelector.cs" />
+    <Compile Include="Electromagnetism\UnitSelection\IPotentialUnitSelector.cs" />
+    <Compile Include="Electromagnetism\UnitSelection\IResistanceUnitSelector.cs" />
+    <Compile Include="Electromagnetism\UnitSelection\MagneticFluxDensityUnitSelector.cs" />
+    <Compile Include="Electromagnetism\UnitSelection\MagneticFluxUnitSelector.cs" />
+    <Compile Include="Electromagnetism\UnitSelection\PotentialUnitSelector.cs" />
+    <Compile Include="Electromagnetism\UnitSelection\ResistanceUnitSelector.cs" />
+    <Compile Include="Engine\Exceptions\OperationType.cs" />
+    <Compile Include="Engine\Exceptions\UnitMismatchException.cs" />
+    <Compile Include="Engine\IUnitFactory.cs" />
+    <Compile Include="Engine\IUnitSystem.cs" />
+    <Compile Include="Engine\IUnitSystemDependencyFactory.cs" />
+    <Compile Include="Engine\Operations\AdditionOperation.cs" />
+    <Compile Include="Engine\Operations\ConvertToUnitOperation.cs" />
+    <Compile Include="Engine\Operations\ExponentialNotationToDerivedUnitOperation.cs" />
+    <Compile Include="Engine\Operations\ExponentiationOperation.cs" />
+    <Compile Include="Engine\Operations\IDoubleOperation.cs" />
+    <Compile Include="Engine\Operations\IQuantityAndUnitOperation.cs" />
+    <Compile Include="Engine\Operations\IQuantityOperation.cs" />
+    <Compile Include="Engine\Operations\IQuantityOperations.cs" />
+    <Compile Include="Engine\Operations\IUnitOperation.cs" />
+    <Compile Include="Engine\Operations\DivisionOperation.cs" />
+    <Compile Include="Engine\Operations\MultiplicationOperation.cs" />
+    <Compile Include="Engine\Operations\NthRootOperation.cs" />
+    <Compile Include="Engine\Operations\QuantityOperations.cs" />
+    <Compile Include="Engine\Operations\ReducingOperation.cs" />
+    <Compile Include="Engine\Operations\SubtractionOperation.cs" />
+    <Compile Include="Engine\Operations\UnitDivisionOperation.cs" />
+    <Compile Include="Engine\Operations\UnitMultiplicationOperation.cs" />
+    <Compile Include="Engine\Parsing\QuantityError.cs" />
+    <Compile Include="Engine\Parsing\QuantityParseException.cs" />
+    <Compile Include="Engine\Parsing\IQuantityParser.cs" />
+    <Compile Include="Engine\Parsing\QuantityParser.cs" />
+    <Compile Include="Engine\Quantities\Cubed.cs" />
+    <Compile Include="Engine\Quantities\IDeferredQuantity.cs" />
+    <Compile Include="Engine\Quantities\IFormattableQuantity.cs" />
+    <Compile Include="Engine\Quantities\IQuantity.cs" />
+    <Compile Include="Engine\Quantities\IQuantity{TQuantity}.cs" />
+    <Compile Include="Engine\Quantities\IUnitConvertible.cs" />
+    <Compile Include="Engine\Quantities\IUnitConvertible{TQuantity,TUnitSelector}.cs" />
+    <Compile Include="Engine\Quantities\IUnitConvertible{TQuantity}.cs" />
+    <Compile Include="Engine\Quantities\Product.cs" />
+    <Compile Include="Engine\Quantities\QuantityHelper.cs" />
+    <Compile Include="Engine\Quantities\QuantityOperations.cs" />
+    <Compile Include="Engine\Quantities\Quantity{TQuantity}.cs" />
+    <Compile Include="Engine\Quantities\Quantity{TQuantity,TSerializable}.cs" />
+    <Compile Include="Engine\Quantities\Quotient.cs" />
+    <Compile Include="Engine\Quantities\Squared.cs" />
+    <Compile Include="Engine\Registration\IDerivedUnitRegistry.cs" />
+    <Compile Include="Engine\Registration\IUnitRegistrar.cs" />
+    <Compile Include="Engine\Registration\UnitRegistry.cs" />
+    <Compile Include="Engine\Representations\Conversion\ConstantFlatIdentifierRepresentation.cs" />
+    <Compile Include="Engine\Representations\Conversion\ExpressionToFlatRepresentationConverter.cs" />
+    <Compile Include="Engine\Representations\Conversion\FlatPresentationHelper.cs" />
+    <Compile Include="Engine\Representations\Conversion\FlatRepresentationBuilder.cs" />
+    <Compile Include="Engine\Representations\Conversion\FlatRepresentationBuilderWithReductions.cs" />
+    <Compile Include="Engine\Representations\Conversion\FlatRepresentationConsumer.cs" />
+    <Compile Include="Engine\Representations\Conversion\IExpressionToFlatRepresentationConverter.cs" />
+    <Compile Include="Engine\Representations\Conversion\UnitFlatIdentifierRepresentation.cs" />
+    <Compile Include="Engine\Representations\Conversion\VariableFlatIdentifierRepresentation.cs" />
+    <Compile Include="Engine\Representations\Evaluation\ExpressionReducer.cs" />
+    <Compile Include="Engine\Representations\Evaluation\ExpressionRewriter.cs" />
+    <Compile Include="Engine\Representations\Evaluation\ExpressionRewriter.OperandChange.cs" />
+    <Compile Include="Engine\Representations\Evaluation\IExpressionReducer.cs" />
+    <Compile Include="Engine\Representations\Evaluation\IExpressionRewriter.cs" />
+    <Compile Include="Engine\Representations\Evaluation\IReductionResult.cs" />
+    <Compile Include="Engine\Representations\Evaluation\Reduction.cs" />
+    <Compile Include="Engine\Representations\Evaluation\ReductionResult.cs" />
+    <Compile Include="Engine\Representations\Evaluation\UnitReductionResult.cs" />
+    <Compile Include="Engine\Representations\Hierarchical\Expressions\ConstantExpression.cs" />
+    <Compile Include="Engine\Representations\Hierarchical\Expressions\DivisionExpression.cs" />
+    <Compile Include="Engine\Representations\Hierarchical\Expressions\Expression.cs" />
+    <Compile Include="Engine\Representations\Hierarchical\Expressions\IHaveLhsAndRhs.cs" />
+    <Compile Include="Engine\Representations\Hierarchical\Expressions\MagnitudeExpression.cs" />
+    <Compile Include="Engine\Representations\Hierarchical\Expressions\MultiplicationExpression.cs" />
+    <Compile Include="Engine\Representations\Hierarchical\Expressions\ParenthesisExpression.cs" />
+    <Compile Include="Engine\Representations\Hierarchical\Expressions\UnitExpression.cs" />
+    <Compile Include="Engine\Representations\Hierarchical\Expressions\VariableExpression.cs" />
+    <Compile Include="Engine\Representations\Hierarchical\Internals\CharacterConverter.cs" />
+    <Compile Include="Engine\Representations\Hierarchical\Internals\Constants.cs" />
+    <Compile Include="Engine\Representations\Hierarchical\Parsing\Errors\Error.cs" />
+    <Compile Include="Engine\Representations\Hierarchical\Parsing\Errors\Error{TErrorInfo}.cs" />
+    <Compile Include="Engine\Representations\Hierarchical\Parsing\Errors\ExpressionError.cs" />
+    <Compile Include="Engine\Representations\Hierarchical\Parsing\Errors\IError.cs" />
+    <Compile Include="Engine\Representations\Hierarchical\Parsing\Errors\UnitExpressionError.cs" />
+    <Compile Include="Engine\Representations\Hierarchical\Parsing\Exceptions\ExpressionParseException.cs" />
+    <Compile Include="Engine\Representations\Hierarchical\Parsing\Exceptions\ParseException.cs" />
+    <Compile Include="Engine\Representations\Hierarchical\Parsing\Exceptions\UnitExpressionParseException.cs" />
+    <Compile Include="Engine\Representations\Hierarchical\Parsing\ExpressionParser.cs" />
+    <Compile Include="Engine\Representations\Hierarchical\Parsing\IExpressionParser.cs" />
+    <Compile Include="Engine\Representations\Hierarchical\Parsing\IUnitExpressionParser.cs" />
+    <Compile Include="Engine\Representations\Hierarchical\Parsing\IUnitRegistry.cs" />
+    <Compile Include="Engine\Representations\Hierarchical\Parsing\LexicalAnalysis\AnalysisSettings.cs" />
+    <Compile Include="Engine\Representations\Hierarchical\Parsing\LexicalAnalysis\ILexemeRegistry.cs" />
+    <Compile Include="Engine\Representations\Hierarchical\Parsing\LexicalAnalysis\ILexicalAnalyzer.cs" />
+    <Compile Include="Engine\Representations\Hierarchical\Parsing\LexicalAnalysis\ITokenMatcherBuilder.cs" />
+    <Compile Include="Engine\Representations\Hierarchical\Parsing\LexicalAnalysis\Lexeme.cs" />
+    <Compile Include="Engine\Representations\Hierarchical\Parsing\LexicalAnalysis\Lexemes.cs" />
+    <Compile Include="Engine\Representations\Hierarchical\Parsing\LexicalAnalysis\LexicalAnalyzer.cs" />
+    <Compile Include="Engine\Representations\Hierarchical\Parsing\LexicalAnalysis\LexicalError.cs" />
+    <Compile Include="Engine\Representations\Hierarchical\Parsing\LexicalAnalysis\LexicalException.cs" />
+    <Compile Include="Engine\Representations\Hierarchical\Parsing\LexicalAnalysis\TokenMatcher.cs" />
+    <Compile Include="Engine\Representations\Hierarchical\Parsing\LexicalAnalysis\TokenMatcherBuilder.cs" />
+    <Compile Include="Engine\Representations\Hierarchical\Parsing\LexicalAnalysis\TokenType.cs" />
+    <Compile Include="Engine\Representations\Hierarchical\Parsing\ParseSettings.cs" />
+    <Compile Include="Engine\Representations\Hierarchical\Parsing\TokenMatching.cs" />
+    <Compile Include="Engine\Representations\Hierarchical\Parsing\UnitExpressionParser.cs" />
+    <Compile Include="Engine\Representations\Hierarchical\Units\IConvertToAndFromBase.cs" />
+    <Compile Include="Engine\Representations\Hierarchical\Units\IUnit.cs" />
+    <Compile Include="Engine\Representations\Hierarchical\Units\Prefix.cs" />
+    <Compile Include="Engine\Representations\Hierarchical\Units\UnitFormat.cs" />
+    <Compile Include="Engine\Representations\Hierarchical\Units\UnitHelper.cs" />
+    <Compile Include="Engine\Representations\Hierarchical\Visitors\BaseExpressionVisitor.cs" />
+    <Compile Include="Engine\Representations\Hierarchical\Visitors\DefaultVisitors.cs" />
+    <Compile Include="Engine\Representations\Hierarchical\Visitors\ValueFromBaseVisitor.cs" />
+    <Compile Include="Engine\Representations\Hierarchical\Visitors\IExpressionVisitor{TParameter,TResult}.cs" />
+    <Compile Include="Engine\Representations\Hierarchical\Visitors\IExpressionVisitor{TParameter1,TParameter2,TParameter3,TParameter4,TResult}.cs" />
+    <Compile Include="Engine\Representations\Hierarchical\Visitors\IExpressionVisitor{TParameter1,TParameter2,TParameter3,TResult}.cs" />
+    <Compile Include="Engine\Representations\Hierarchical\Visitors\IExpressionVisitor{TParameter1,TParameter2,TResult}.cs" />
+    <Compile Include="Engine\Representations\Hierarchical\Visitors\IExpressionVisitor{TResult}.cs" />
+    <Compile Include="Engine\Representations\Hierarchical\Visitors\MagnitudeFormat.cs" />
+    <Compile Include="Engine\Representations\Hierarchical\Visitors\NotationOptions.cs" />
+    <Compile Include="Engine\Representations\Hierarchical\Visitors\NotationVisitor.cs" />
+    <Compile Include="Engine\Representations\Hierarchical\Visitors\OperationOrderFormat.cs" />
+    <Compile Include="Engine\Representations\Hierarchical\Visitors\PrefixVisitor.cs" />
+    <Compile Include="Engine\Representations\Hierarchical\Visitors\ValueToBaseVisitor.cs" />
+    <Compile Include="Engine\Representations\Flat\FlatRepresentation.cs" />
+    <Compile Include="Engine\Representations\Flat\IFlatIdentifierRepresentation.cs" />
+    <Compile Include="Engine\UnitFactory.cs" />
+    <Compile Include="Engine\UnitSelection\ExponentSelector.cs" />
+    <Compile Include="Engine\UnitSelection\IExponentSelector.cs" />
+    <Compile Include="Engine\UnitSelection\IPrefixSelector{TUnits}.cs" />
+    <Compile Include="Engine\UnitSelection\IUnitSelector.cs" />
+    <Compile Include="Engine\UnitSelection\PrefixSelector{TUnits,TPrefixedUnits}.cs" />
+    <Compile Include="Engine\UnitSelection\SelectUnit.cs" />
+    <Compile Include="Engine\UnitSelection\UnitBuilder.cs" />
+    <Compile Include="Engine\UnitSystem.cs" />
+    <Compile Include="Engine\UnitSystem.Singleton.cs" />
+    <Compile Include="Engine\UnitSystemDependencies.cs" />
+    <Compile Include="Engine\UnitSystemDependencyFactory.cs" />
+    <Compile Include="Engine\Units\DerivedBaseUnit.cs" />
+    <Compile Include="Engine\Units\DerivedUnit.cs" />
+    <Compile Include="Engine\Units\FactoredPrefix.cs" />
+    <Compile Include="Engine\Units\FactoredUnit.cs" />
+    <Compile Include="Engine\Units\MethodUnit.cs" />
+    <Compile Include="Engine\Units\NotationBaseUnit.cs" />
+    <Compile Include="Engine\Units\PrefixedBaseUnit.cs" />
+    <Compile Include="Engine\Units\Prefixes.cs" />
+    <Compile Include="Engine\Units\RadianUnit.cs" />
+    <Compile Include="Engine\Units\Unit.cs" />
+    <Compile Include="Engine\Units\UnitDefinitions.cs" />
+    <Compile Include="Engine\Units\UnitExtensions.cs" />
+    <Compile Include="Mechanics\Energy.cs" />
+    <Compile Include="Mechanics\Energy.Specific.cs" />
+    <Compile Include="Mechanics\Force.cs" />
+    <Compile Include="Mechanics\Force.Specific.cs" />
+    <Compile Include="Mechanics\Mass.cs" />
+    <Compile Include="Mechanics\Mass.Specific.cs" />
+    <Compile Include="Mechanics\MechanicsExtensions.cs" />
+    <Compile Include="Mechanics\Momentum.cs" />
+    <Compile Include="Mechanics\Momentum.Specific.cs" />
+    <Compile Include="Mechanics\Power.cs" />
+    <Compile Include="Mechanics\Power.Specific.cs" />
+    <Compile Include="Mechanics\Pressure.cs" />
+    <Compile Include="Mechanics\Pressure.Specific.cs" />
+    <Compile Include="Mechanics\UnitSelection\EnergyUnitSelector.cs" />
+    <Compile Include="Mechanics\UnitSelection\ForceUnitSelector.cs" />
+    <Compile Include="Mechanics\UnitSelection\IEnergyUnitSelector.cs" />
+    <Compile Include="Mechanics\UnitSelection\IForceUnitSelector.cs" />
+    <Compile Include="Mechanics\UnitSelection\IMassUnitSelector.cs" />
+    <Compile Include="Mechanics\UnitSelection\IMomentumUnitSelector.cs" />
+    <Compile Include="Mechanics\UnitSelection\IPowerUnitSelector.cs" />
+    <Compile Include="Mechanics\UnitSelection\IPressureUnitSelector.cs" />
+    <Compile Include="Mechanics\UnitSelection\MassUnits.cs" />
+    <Compile Include="Mechanics\UnitSelection\MassUnitSelector.cs" />
+    <Compile Include="Mechanics\UnitSelection\MomentumUnitSelector.cs" />
+    <Compile Include="Mechanics\UnitSelection\PowerUnitSelector.cs" />
+    <Compile Include="Mechanics\UnitSelection\PressureUnitSelector.cs" />
+    <Compile Include="Periodics\Frequency.cs" />
+    <Compile Include="Periodics\Frequency.Specific.cs" />
+    <Compile Include="Periodics\PeriodicExtensions.cs" />
+    <Compile Include="Periodics\Time.cs" />
+    <Compile Include="Periodics\Time.Specific.cs" />
+    <Compile Include="Periodics\TimeSpanExtensions.cs" />
+    <Compile Include="Periodics\UnitSelection\FrequencyUnitSelector.cs" />
+    <Compile Include="Periodics\UnitSelection\IFrequencyUnitSelector.cs" />
+    <Compile Include="Periodics\UnitSelection\IPrefixedTimeUnitSelector.cs" />
+    <Compile Include="Periodics\UnitSelection\ITimeUnitSelector.cs" />
+    <Compile Include="Periodics\UnitSelection\TimeUnits.cs" />
+    <Compile Include="Periodics\UnitSelection\TimeUnitSelector.cs" />
+    <Compile Include="Photometry\Illuminance.cs" />
+    <Compile Include="Photometry\Illuminance.Specific.cs" />
+    <Compile Include="Photometry\LuminousFlux.cs" />
+    <Compile Include="Photometry\LuminousFlux.Specific.cs" />
+    <Compile Include="Photometry\LuminousIntensity.cs" />
+    <Compile Include="Photometry\LuminousIntensity.Specific.cs" />
+    <Compile Include="Photometry\PhotometryExtensions.cs" />
+    <Compile Include="Photometry\UnitSelection\IIlluminanceFluxUnitSelector.cs" />
+    <Compile Include="Photometry\UnitSelection\IlluminanceUnitSelector.cs" />
+    <Compile Include="Photometry\UnitSelection\ILuminousFluxUnitSelector.cs" />
+    <Compile Include="Photometry\UnitSelection\ILuminousIntensityUnitSelector.cs" />
+    <Compile Include="Photometry\UnitSelection\LuminousFluxUnitSelector.cs" />
+    <Compile Include="Photometry\UnitSelection\LuminousIntensityUnitSelector.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Quantity.cs" />
+    <Compile Include="QuantityExtensions.cs" />
+    <Compile Include="Interval{TQuantity}.cs" />
+    <Compile Include="Spacetime\Acceleration.cs" />
+    <Compile Include="Spacetime\Acceleration.Specific.cs" />
+    <Compile Include="Spacetime\SpacetimeExtensions.cs" />
+    <Compile Include="Spacetime\UnitSelection\AccelerationUnitSelector.cs" />
+    <Compile Include="Spacetime\UnitSelection\IAccelerationUnitSelector.cs" />
+    <Compile Include="Spacetime\UnitSelection\IPrefixedAccelerationUnitSelector.cs" />
+    <Compile Include="Spacetime\UnitSelection\IPrefixedVelocityUnitSelector.cs" />
+    <Compile Include="Spacetime\UnitSelection\IVelocityUnitSelector.cs" />
+    <Compile Include="Spacetime\UnitSelection\SpacetimeUnits.cs" />
+    <Compile Include="Spacetime\UnitSelection\SpacetimeUnitSelector.cs" />
+    <Compile Include="Spacetime\UnitSelection\VelocityUnitSelector.cs" />
+    <Compile Include="Spacetime\Velocity.cs" />
+    <Compile Include="Spacetime\Velocity.Specific.cs" />
+    <Compile Include="Spatial\Angle.cs" />
+    <Compile Include="Spatial\Area.cs" />
+    <Compile Include="Spatial\Area.Specific.cs" />
+    <Compile Include="Spatial\Distance.cs" />
+    <Compile Include="Spatial\Distance.Specific.cs" />
+    <Compile Include="Spatial\SolidAngle.cs" />
+    <Compile Include="Spatial\SpatialExtensions.cs" />
+    <Compile Include="Spatial\UnitSelection\AngleUnitSelector.cs" />
+    <Compile Include="Spatial\UnitSelection\DistanceUnits.cs" />
+    <Compile Include="Spatial\UnitSelection\DistanceUnitSelector.cs" />
+    <Compile Include="Spatial\UnitSelection\IAngleUnitSelector.cs" />
+    <Compile Include="Spatial\UnitSelection\IDistanceUnitSelector.cs" />
+    <Compile Include="Spatial\UnitSelection\IPrefixedDistanceUnitSelector.cs" />
+    <Compile Include="Spatial\UnitSelection\IPrefixedVolumeSelector.cs" />
+    <Compile Include="Spatial\UnitSelection\ISolidAngleUnitSelector.cs" />
+    <Compile Include="Spatial\UnitSelection\IVolumeUnitSelector.cs" />
+    <Compile Include="Spatial\UnitSelection\SolidAngleUnitSelector.cs" />
+    <Compile Include="Spatial\UnitSelection\VolumeUnitSelector.cs" />
+    <Compile Include="Spatial\Volume.cs" />
+    <Compile Include="Spatial\Volume.Specific.cs" />
+    <Compile Include="Thermodynamics\Temperature.cs" />
+    <Compile Include="Thermodynamics\Temperature.Specific.cs" />
+    <Compile Include="Thermodynamics\ThermodynamicsExtensions.cs" />
+    <Compile Include="Thermodynamics\UnitSelection\ITemperatureUnitSelector.cs" />
+    <Compile Include="Thermodynamics\UnitSelection\TemperatureUnitSelector.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Sundew.Base, Version=2.0.26.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Sundew.Base.2.0.26\lib\portable-net45+netcore45+wpa81+wp8\Sundew.Base.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

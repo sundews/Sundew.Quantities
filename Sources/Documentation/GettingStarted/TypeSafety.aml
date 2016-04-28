@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<topic id="1468b83a-f66b-4284-9480-7d56d2c8193d" revisionNumber="1">
+  <developerConceptualDocument xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <introduction>
+      <para>
+      	Type safety means that Sundew.Quantities provides explicit types for the different quantities.
+      </para>
+    </introduction>
+    <section address="Section1">
+      <title>Supported types:</title>
+      <content>
+          <table>
+	        <tableHeader>
+	    	  <row>
+	        	<entry><codeEntityReference qualifyHint="false">N:Sundew.Quantities.Electromagnetism</codeEntityReference></entry>
+	        	<entry><codeEntityReference qualifyHint="false">N:Sundew.Quantities.Mechanics</codeEntityReference></entry>
+	        	<entry><codeEntityReference qualifyHint="false">N:Sundew.Quantities.Periodics</codeEntityReference></entry>
+	        	<entry><codeEntityReference qualifyHint="false">N:Sundew.Quantities.Photometry</codeEntityReference></entry>
+	        	<entry><codeEntityReference qualifyHint="false">N:Sundew.Quantities.Spacetime</codeEntityReference></entry>
+	        	<entry><codeEntityReference qualifyHint="false">N:Sundew.Quantities.Spatial</codeEntityReference></entry>
+	        	<entry><codeEntityReference qualifyHint="false">N:Sundew.Quantities.Thermodynamics</codeEntityReference></entry>
+	      	  </row>
+	    	</tableHeader>
+	    	<row>
+   	      	<entry>
+		      <para>- <codeEntityReference qualifyHint="false">T:Sundew.Quantities.Electromagnetism.Capacitance</codeEntityReference></para>
+		      <para>- <codeEntityReference qualifyHint="false">T:Sundew.Quantities.Electromagnetism.Charge</codeEntityReference></para>
+		      <para>- <codeEntityReference qualifyHint="false">T:Sundew.Quantities.Electromagnetism.Conductance</codeEntityReference></para>
+		      <para>- <codeEntityReference qualifyHint="false">T:Sundew.Quantities.Electromagnetism.ElectricCurrent</codeEntityReference></para>
+		      <para>- <codeEntityReference qualifyHint="false">T:Sundew.Quantities.Electromagnetism.Inductance</codeEntityReference></para>
+		      <para>- <codeEntityReference qualifyHint="false">T:Sundew.Quantities.Electromagnetism.MagneticFlux</codeEntityReference></para>
+		      <para>- <codeEntityReference qualifyHint="false">T:Sundew.Quantities.Electromagnetism.MagneticFluxDensity</codeEntityReference></para>
+		      <para>- <codeEntityReference qualifyHint="false">T:Sundew.Quantities.Electromagnetism.Potential</codeEntityReference></para>
+		      <para>- <codeEntityReference qualifyHint="false">T:Sundew.Quantities.Electromagnetism.Resistance</codeEntityReference></para>
+	      	</entry>
+	      	<entry>
+		      <para>- <codeEntityReference qualifyHint="false">T:Sundew.Quantities.Mechanics.Energy</codeEntityReference></para>
+		      <para>- <codeEntityReference qualifyHint="false">T:Sundew.Quantities.Mechanics.Force</codeEntityReference></para>
+		      <para>- <codeEntityReference qualifyHint="false">T:Sundew.Quantities.Mechanics.Mass</codeEntityReference></para>
+		      <para>- <codeEntityReference qualifyHint="false">T:Sundew.Quantities.Mechanics.Momentum</codeEntityReference></para>
+		      <para>- <codeEntityReference qualifyHint="false">T:Sundew.Quantities.Mechanics.Power</codeEntityReference></para>
+		      <para>- <codeEntityReference qualifyHint="false">T:Sundew.Quantities.Mechanics.Pressure</codeEntityReference></para>
+	      	</entry>
+	      	<entry>
+		      <para>- <codeEntityReference qualifyHint="false">T:Sundew.Quantities.Periodics.Frequency</codeEntityReference></para>
+		      <para>- <codeEntityReference qualifyHint="false">T:Sundew.Quantities.Periodics.Time</codeEntityReference></para>
+	      	</entry>
+	      	<entry>
+		      <para>- <codeEntityReference qualifyHint="false">T:Sundew.Quantities.Photometry.Illuminance</codeEntityReference></para>
+		      <para>- <codeEntityReference qualifyHint="false">T:Sundew.Quantities.Photometry.LuminousFlux</codeEntityReference></para>
+		      <para>- <codeEntityReference qualifyHint="false">T:Sundew.Quantities.Photometry.LuminousIntensity</codeEntityReference></para>
+	      	</entry>
+	      	<entry>
+		      <para>- <codeEntityReference qualifyHint="false">T:Sundew.Quantities.Spacetime.Acceleration</codeEntityReference></para>
+		      <para>- <codeEntityReference qualifyHint="false">T:Sundew.Quantities.Spacetime.Velocity</codeEntityReference></para>
+	      	</entry>
+	      	<entry>
+		      <para>- <codeEntityReference qualifyHint="false">T:Sundew.Quantities.Spatial.Angle</codeEntityReference></para>
+		      <para>- <codeEntityReference qualifyHint="false">T:Sundew.Quantities.Spatial.Area</codeEntityReference></para>
+		      <para>- <codeEntityReference qualifyHint="false">T:Sundew.Quantities.Spatial.Distance</codeEntityReference></para>
+		      <para>- <codeEntityReference qualifyHint="false">T:Sundew.Quantities.Spatial.SolidAngle</codeEntityReference></para>
+		      <para>- <codeEntityReference qualifyHint="false">T:Sundew.Quantities.Spatial.Volume</codeEntityReference></para>
+	      	</entry>	      
+	      	<entry>
+		      <para>- <codeEntityReference qualifyHint="false">T:Sundew.Quantities.Thermodynamics.Temperature</codeEntityReference></para>
+	      	</entry>	 
+	      </row>
+	  	</table>
+      </content>
+      <para>
+      	Additionally, a generic <codeEntityReference qualifyHint="false">T:Sundew.Quantities.Quantity</codeEntityReference> also exists and all quantities implement the <codeEntityReference qualifyHint="false">T:Sundew.Quantities.Engine.Quantities.IQuantity</codeEntityReference> interface.
+      </para>
+      <section address="SubSection1">
+              <title>Programming interfaces</title>
+              <content>
+                  <para>Sub-section content.</para>
+              </content>
+      </section>
+    </section>
+  </developerConceptualDocument>
+</topic>
