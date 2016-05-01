@@ -1,4 +1,10 @@
-﻿namespace Sundew.Quantities.Engine.Quantities
+﻿// // --------------------------------------------------------------------------------------------------------------------
+// // <copyright file="Quotient.cs" company="Hukano">
+// //   2016 (c) Hukano. All Rights Reserved. Licensed under the MIT License. See License.txt in the project root for license information.
+// // </copyright>
+// // --------------------------------------------------------------------------------------------------------------------
+
+namespace Sundew.Quantities.Engine.Quantities
 {
     /// <summary>
     /// Represents the product of two serializable <see cref="IDeferredQuantity"/>s.
@@ -6,8 +12,7 @@
     /// <typeparam name="TNominator">The type of the multiplier quantity.</typeparam>
     /// <typeparam name="TDenominator">The type of the multiplicand quantity.</typeparam>
     public class Quotient<TNominator, TDenominator> : IDeferredQuantity
-        where TNominator : IDeferredQuantity
-        where TDenominator : IDeferredQuantity
+        where TNominator : IDeferredQuantity where TDenominator : IDeferredQuantity
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="Quotient{TNominator, TDenominator}" /> class.

@@ -1,4 +1,10 @@
-﻿namespace Sundew.Quantities.Engine.Representations.Hierarchical.Parsing
+﻿// // --------------------------------------------------------------------------------------------------------------------
+// // <copyright file="ParseSettings.cs" company="Hukano">
+// //   2016 (c) Hukano. All Rights Reserved. Licensed under the MIT License. See License.txt in the project root for license information.
+// // </copyright>
+// // --------------------------------------------------------------------------------------------------------------------
+
+namespace Sundew.Quantities.Engine.Representations.Hierarchical.Parsing
 {
     using System.Globalization;
 
@@ -26,7 +32,10 @@
         /// <value>
         /// The default.
         /// </value>
-        public static ParseSettings DefaultInvariantCulture { get; } = new ParseSettings(CultureInfo.InvariantCulture, true, true);
+        public static ParseSettings DefaultInvariantCulture { get; } = new ParseSettings(
+            CultureInfo.InvariantCulture,
+            true,
+            true);
 
         /// <summary>
         /// Gets the default current culture.
@@ -34,7 +43,10 @@
         /// <value>
         /// The default current culture.
         /// </value>
-        public static ParseSettings DefaultCurrentCulture { get; } = new ParseSettings(CultureInfo.CurrentCulture, true, true);
+        public static ParseSettings DefaultCurrentCulture { get; } = new ParseSettings(
+            CultureInfo.CurrentCulture,
+            true,
+            true);
 
         /// <summary>
         /// Gets the culture information.

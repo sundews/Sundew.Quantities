@@ -1,4 +1,10 @@
-﻿namespace Sundew.Quantities.AcceptanceTests.Spatial
+﻿// // --------------------------------------------------------------------------------------------------------------------
+// // <copyright file="AreaAdditionTests.cs" company="Hukano">
+// //   2016 (c) Hukano. All Rights Reserved. Licensed under the MIT License. See License.txt in the project root for license information.
+// // </copyright>
+// // --------------------------------------------------------------------------------------------------------------------
+
+namespace Sundew.Quantities.AcceptanceTests.Spatial
 {
     using FluentAssertions;
 
@@ -22,17 +28,6 @@
             var result = testee1 + testee2;
 
             result.Value.Should().Be(expected);
-        }
-
-        [Fact]
-        public void Area_Addition_Then_ResultUnitShouldBe_km2()
-        {
-            var testee1 = new Area(0, x => x.Kilo.Meters * x.Kilo.Meters);
-            var testee2 = new Area(0, x => x.Kilo.Meters * x.Kilo.Meters);
-
-            var result = testee1 + testee2;
-
-            result.Unit.ToString().Should().Be("km²");
         }
 
         [Theory]
@@ -83,6 +78,17 @@
             var result = testee1 + testee2;
 
             result.Should().BeApproximately(expected, "mi²", TestHelper.DefaultAssertPrecision);
+        }
+
+        [Fact]
+        public void Area_Addition_Then_ResultUnitShouldBe_km2()
+        {
+            var testee1 = new Area(0, x => x.Kilo.Meters * x.Kilo.Meters);
+            var testee2 = new Area(0, x => x.Kilo.Meters * x.Kilo.Meters);
+
+            var result = testee1 + testee2;
+
+            result.Unit.ToString().Should().Be("km²");
         }
     }
 }

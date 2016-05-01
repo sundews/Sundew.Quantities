@@ -1,9 +1,15 @@
-﻿namespace Sundew.Quantities.Engine.Operations
+﻿// // --------------------------------------------------------------------------------------------------------------------
+// // <copyright file="IQuantityOperations.cs" company="Hukano">
+// //   2016 (c) Hukano. All Rights Reserved. Licensed under the MIT License. See License.txt in the project root for license information.
+// // </copyright>
+// // --------------------------------------------------------------------------------------------------------------------
+
+namespace Sundew.Quantities.Engine.Operations
 {
     using Sundew.Quantities.Engine.Quantities;
 
     /// <summary>
-    /// Interface containing <see cref="IQuantity{IQuantity}"/> operations.
+    /// Interface containing <see cref="IQuantity{TQuantity}"/> operations.
     /// </summary>
     public interface IQuantityOperations
     {

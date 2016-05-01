@@ -1,4 +1,10 @@
-﻿namespace Sundew.Quantities.AcceptanceTests.Composition
+﻿// // --------------------------------------------------------------------------------------------------------------------
+// // <copyright file="ProductTests.cs" company="Hukano">
+// //   2016 (c) Hukano. All Rights Reserved. Licensed under the MIT License. See License.txt in the project root for license information.
+// // </copyright>
+// // --------------------------------------------------------------------------------------------------------------------
+
+namespace Sundew.Quantities.AcceptanceTests.Composition
 {
     using FluentAssertions;
 
@@ -11,14 +17,14 @@
     public class ProductTests
     {
         [Fact]
-        public void Multiplier_Then_ResultShouldBeExpected()
+        public void GetResult_Then_ResultShouldBeExpected()
         {
-            const double Expected = 5;
+            const double Expected = 20;
             var luminousExposure = 5.Lux() * 4D.Seconds();
 
-            var result = luminousExposure.Multiplier;
+            var result = luminousExposure.GetResult();
 
-            result.Should().Be(Expected, "lx");
+            result.Should().Be(Expected, "lx*s");
         }
 
         [Fact]
@@ -33,14 +39,14 @@
         }
 
         [Fact]
-        public void GetResult_Then_ResultShouldBeExpected()
+        public void Multiplier_Then_ResultShouldBeExpected()
         {
-            const double Expected = 20;
+            const double Expected = 5;
             var luminousExposure = 5.Lux() * 4D.Seconds();
 
-            var result = luminousExposure.GetResult();
+            var result = luminousExposure.Multiplier;
 
-            result.Should().Be(Expected, "lx*s");
+            result.Should().Be(Expected, "lx");
         }
     }
 }

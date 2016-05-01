@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<topic id="01adfd60-aef8-4e05-8d0a-3c6e209e06ac" revisionNumber="1">
+  <developerConceptualDocument xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <introduction>
+      <para>The unit system may extended by providing different implementations of the following interfaces:</para>
+      <list class="bullet">
+	    <listItem><para><codeEntityReference qualifyHint="false">T:Sundew.Quantities.Engine.Representations.Conversion.IExpressionToFlatRepresentationConverter</codeEntityReference></para></listItem>
+	    <listItem><para><codeEntityReference qualifyHint="false">T:Sundew.Quantities.Engine.Representations.Hierarchical.Parsing.LexicalAnalysis.ILexicalAnalyzer</codeEntityReference></para></listItem>
+	    <listItem><para><codeEntityReference qualifyHint="false">T:Sundew.Quantities.Engine.Registration.UnitRegistry</codeEntityReference></para></listItem>
+	    <listItem><para><codeEntityReference qualifyHint="false">T:Sundew.Quantities.Engine.Representations.Hierarchical.Parsing.IExpressionParser</codeEntityReference></para></listItem>
+	    <listItem><para><codeEntityReference qualifyHint="false">T:Sundew.Quantities.Engine.IUnitFactory</codeEntityReference></para></listItem>
+	    <listItem><para><codeEntityReference qualifyHint="false">T:Sundew.Quantities.Engine.Parsing.IQuantityParser</codeEntityReference></para></listItem>
+	    <listItem><para><codeEntityReference qualifyHint="false">T:Sundew.Quantities.Engine.Operations.IQuantityOperations</codeEntityReference></para></listItem>
+	  </list>
+    </introduction>
+    <procedure>
+      <title>To extend/replace the unit system dependencies may be changed during initialization.</title>
+      <steps class="ordered">
+        <step>
+          <content>
+		    <section>
+		      <title>Initialize Unit System</title>
+		      <content>
+		        <code lang="cs" source="..\Sources\Sundew.Quantities.Samples\ReplacingTheUnitSystem.cs" region="UsageInitializeUnitSystem" title="Usage" />
+		      </content>
+		    </section>
+          </content>
+        </step>
+        <step>
+          <content>
+		    <section>
+		      <title>Implement custom IUnitSystemDependencyFactory</title>
+		      <content>
+		        <code lang="cs" source="..\Sources\Sundew.Quantities.Samples\ReplacingTheUnitSystem.cs" region="UsageCustomDependencyFactory" title="Usage" />
+		      </content>
+		    </section>
+          </content>
+        </step>
+      </steps>
+    </procedure>
+  </developerConceptualDocument>
+</topic>

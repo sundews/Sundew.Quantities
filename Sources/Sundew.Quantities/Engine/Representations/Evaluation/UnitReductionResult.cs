@@ -1,4 +1,10 @@
-﻿namespace Sundew.Quantities.Engine.Representations.Evaluation
+﻿// // --------------------------------------------------------------------------------------------------------------------
+// // <copyright file="UnitReductionResult.cs" company="Hukano">
+// //   2016 (c) Hukano. All Rights Reserved. Licensed under the MIT License. See License.txt in the project root for license information.
+// // </copyright>
+// // --------------------------------------------------------------------------------------------------------------------
+
+namespace Sundew.Quantities.Engine.Representations.Evaluation
 {
     using System.Collections.Generic;
 
@@ -18,7 +24,12 @@
         /// <param name="reduceByBaseUnit">If set to <c>true</c> reducing was performed using the base unit.</param>
         /// <param name="reductions">The reductions.</param>
         /// <param name="hasReductions">If set to <c>true</c> the result has reductions.</param>
-        public UnitReductionResult(FlatRepresentation flatRepresentation, Expression expression, bool reduceByBaseUnit, IEnumerable<Reduction> reductions, bool hasReductions)
+        public UnitReductionResult(
+            FlatRepresentation flatRepresentation,
+            Expression expression,
+            bool reduceByBaseUnit,
+            IEnumerable<Reduction> reductions,
+            bool hasReductions)
             : base(flatRepresentation, expression, reduceByBaseUnit)
         {
             this.Reductions = reductions;

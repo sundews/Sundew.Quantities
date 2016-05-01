@@ -1,3 +1,9 @@
+// // --------------------------------------------------------------------------------------------------------------------
+// // <copyright file="Temperature.cs" company="Hukano">
+// //   2016 (c) Hukano. All Rights Reserved. Licensed under the MIT License. See License.txt in the project root for license information.
+// // </copyright>
+// // --------------------------------------------------------------------------------------------------------------------
+
 namespace Sundew.Quantities.Thermodynamics
 {
     using Sundew.Quantities.Engine.Quantities;
@@ -56,7 +62,7 @@ namespace Sundew.Quantities.Thermodynamics
         /// The temperature.
         /// </param>
         public Temperature(double temperature)
-                : this(temperature, x => x.BaseUnit)
+            : this(temperature, x => x.BaseUnit)
         {
         }
 
@@ -107,7 +113,7 @@ namespace Sundew.Quantities.Thermodynamics
         {
             return new TemperatureUnitSelector();
         }
-        
+
         /// <summary>
         /// Creates a interval based on the specified min, max and unit.
         /// </summary>
@@ -115,7 +121,10 @@ namespace Sundew.Quantities.Thermodynamics
         /// <param name="max">The maximum.</param>
         /// <param name="unitSelector">The unit selector.</param>
         /// <returns>The new interval.</returns>
-        public static Interval<Temperature> Interval(double min, double max, SelectUnit<TemperatureUnitSelector> unitSelector)
+        public static Interval<Temperature> Interval(
+            double min,
+            double max,
+            SelectUnit<TemperatureUnitSelector> unitSelector)
         {
             return new Interval<Temperature>(min, max, unitSelector(new TemperatureUnitSelector()));
         }

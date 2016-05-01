@@ -1,4 +1,10 @@
-﻿namespace Sundew.Quantities.Serialization.Poco.Spacetime
+﻿// // --------------------------------------------------------------------------------------------------------------------
+// // <copyright file="SpacetimeExtensions.cs" company="Hukano">
+// //   2016 (c) Hukano. All Rights Reserved. Licensed under the MIT License. See License.txt in the project root for license information.
+// // </copyright>
+// // --------------------------------------------------------------------------------------------------------------------
+
+namespace Sundew.Quantities.Serialization.Poco.Spacetime
 {
     /// <summary>
     /// Serialization extension methods for spacetime quantities.

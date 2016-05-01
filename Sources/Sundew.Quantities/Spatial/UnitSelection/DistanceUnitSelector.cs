@@ -1,3 +1,9 @@
+// // --------------------------------------------------------------------------------------------------------------------
+// // <copyright file="DistanceUnitSelector.cs" company="Hukano">
+// //   2016 (c) Hukano. All Rights Reserved. Licensed under the MIT License. See License.txt in the project root for license information.
+// // </copyright>
+// // --------------------------------------------------------------------------------------------------------------------
+
 namespace Sundew.Quantities.Spatial.UnitSelection
 {
     using System.Collections.Generic;
@@ -10,7 +16,8 @@ namespace Sundew.Quantities.Spatial.UnitSelection
     /// <summary>
     /// Unit selector for <see cref="Distance"/>.
     /// </summary>
-    public class DistanceUnitSelector : PrefixSelector<IDistanceUnitSelector, IPrefixedDistanceUnitSelector>, IPrefixedDistanceUnitSelector
+    public class DistanceUnitSelector : PrefixSelector<IDistanceUnitSelector, IPrefixedDistanceUnitSelector>,
+                                        IPrefixedDistanceUnitSelector
     {
         private readonly DistanceUnits distanceUnits = new DistanceUnits();
 

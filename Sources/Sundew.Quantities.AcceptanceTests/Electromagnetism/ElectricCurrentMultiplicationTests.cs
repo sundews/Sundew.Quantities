@@ -1,4 +1,10 @@
-﻿namespace Sundew.Quantities.AcceptanceTests.Electromagnetism
+﻿// // --------------------------------------------------------------------------------------------------------------------
+// // <copyright file="ElectricCurrentMultiplicationTests.cs" company="Hukano">
+// //   2016 (c) Hukano. All Rights Reserved. Licensed under the MIT License. See License.txt in the project root for license information.
+// // </copyright>
+// // --------------------------------------------------------------------------------------------------------------------
+
+namespace Sundew.Quantities.AcceptanceTests.Electromagnetism
 {
     using FluentAssertions;
 
@@ -14,7 +20,12 @@
         [Theory]
         [InlineData(2, 3, 6, UnitFormat.Default, "C")]
         [InlineData(2, 3, 6, UnitFormat.SurroundInBrackets, "[C]")]
-        public void ElectricCurrent_Multiplication_When_RhsIsTime_Then_ResultShouldBeExpected(double lhs, double rhs, double expected, UnitFormat unitFormat, string expectedUnit)
+        public void ElectricCurrent_Multiplication_When_RhsIsTime_Then_ResultShouldBeExpected(
+            double lhs,
+            double rhs,
+            double expected,
+            UnitFormat unitFormat,
+            string expectedUnit)
         {
             var testee = new ElectricCurrent(lhs, x => x.Amperes);
             var time = new Time(rhs, x => x.Seconds);
@@ -27,7 +38,11 @@
         [Theory]
         [InlineData(5, 12, 60, "μW")]
         [InlineData(0, 11, 0, "μW")]
-        public void ElectricCurrent_Multiplication_When_RhsIsIsPotential_Then_ResultShouldBeExpected(double lhs, double rhs, double expectedValue, string expectedUnit)
+        public void ElectricCurrent_Multiplication_When_RhsIsIsPotential_Then_ResultShouldBeExpected(
+            double lhs,
+            double rhs,
+            double expectedValue,
+            string expectedUnit)
         {
             var testee = new ElectricCurrent(lhs, x => x.Milli.Amperes);
             var potential = new Potential(rhs, x => x.Milli.Volts);

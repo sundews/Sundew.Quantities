@@ -1,4 +1,10 @@
-﻿namespace Sundew.Quantities.Engine.Representations.Conversion
+﻿// // --------------------------------------------------------------------------------------------------------------------
+// // <copyright file="UnitFlatIdentifierRepresentation.cs" company="Hukano">
+// //   2016 (c) Hukano. All Rights Reserved. Licensed under the MIT License. See License.txt in the project root for license information.
+// // </copyright>
+// // --------------------------------------------------------------------------------------------------------------------
+
+namespace Sundew.Quantities.Engine.Representations.Conversion
 {
     using System;
     using System.Globalization;
@@ -11,7 +17,8 @@
     /// <summary>
     /// Flat identifier representation for <see cref="UnitExpression"/>.
     /// </summary>
-    public sealed class UnitFlatIdentifierRepresentation : IFlatIdentifierRepresentation, IEquatable<UnitFlatIdentifierRepresentation>
+    public sealed class UnitFlatIdentifierRepresentation : IFlatIdentifierRepresentation,
+                                                           IEquatable<UnitFlatIdentifierRepresentation>
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="UnitFlatIdentifierRepresentation"/> class.
@@ -41,12 +48,35 @@
         public double Exponent { get; }
 
         /// <summary>
+        /// A value indicating whether the specified instance is equal to this instance.
+        /// </summary>
+        /// <param name="other">The other.</param>
+        /// <returns><c>true</c> if the instances are equal.</returns>
+        public bool Equals(UnitFlatIdentifierRepresentation other)
+        {
+            return EqualityHelper.Equals(
+                this,
+                other,
+                () => this.UnitExpression.Equals(other.UnitExpression) && this.Exponent.Equals(other.Exponent));
+        }
+
+        /// <summary>
         /// To the resulting expression.
         /// </summary>
         /// <returns>The resulting <see cref="Expression"/>.</returns>
         public Expression ToResultingExpression()
         {
             return FlatPresentationHelper.CreateResultingExpression(this.UnitExpression, this.Exponent);
+        }
+
+        /// <summary>
+        /// A value indicating whether the specified instance is equal to this instance.
+        /// </summary>
+        /// <param name="other">The other.</param>
+        /// <returns><c>true</c> if the instances are equal.</returns>
+        public bool Equals(IFlatIdentifierRepresentation other)
+        {
+            return EqualityHelper.Equals(this, other);
         }
 
         /// <summary>
@@ -57,7 +87,10 @@
         /// </returns>
         public override int GetHashCode()
         {
-            return EqualityHelper.GetHashCode(this.UnitExpression.Unit, FlatPresentationHelper.HatHashCode, this.Exponent);
+            return EqualityHelper.GetHashCode(
+                this.UnitExpression.Unit,
+                FlatPresentationHelper.HatHashCode,
+                this.Exponent);
         }
 
         /// <summary>
@@ -73,29 +106,6 @@
         }
 
         /// <summary>
-        /// A value indicating whether the specified instance is equal to this instance.
-        /// </summary>
-        /// <param name="other">The other.</param>
-        /// <returns><c>true</c> if the instances are equal.</returns>
-        public bool Equals(IFlatIdentifierRepresentation other)
-        {
-            return EqualityHelper.Equals(this, other);
-        }
-
-        /// <summary>
-        /// A value indicating whether the specified instance is equal to this instance.
-        /// </summary>
-        /// <param name="other">The other.</param>
-        /// <returns><c>true</c> if the instances are equal.</returns>
-        public bool Equals(UnitFlatIdentifierRepresentation other)
-        {
-            return EqualityHelper.Equals(
-                this,
-                other,
-                () => this.UnitExpression.Equals(other.UnitExpression) && this.Exponent.Equals(other.Exponent));
-        }
-
-        /// <summary>
         /// Returns a <see cref="System.String" /> that represents this instance.
         /// </summary>
         /// <returns>
@@ -103,7 +113,8 @@
         /// </returns>
         public override string ToString()
         {
-            return this.UnitExpression + CharacterConverter.ToExponentNotation(this.Exponent.ToString(CultureInfo.CurrentCulture));
+            return this.UnitExpression
+                   + CharacterConverter.ToExponentNotation(this.Exponent.ToString(CultureInfo.CurrentCulture));
         }
     }
 }

@@ -1,4 +1,10 @@
-﻿namespace Sundew.Quantities.AcceptanceTests.Mechanics
+﻿// // --------------------------------------------------------------------------------------------------------------------
+// // <copyright file="MassComparisonTests.cs" company="Hukano">
+// //   2016 (c) Hukano. All Rights Reserved. Licensed under the MIT License. See License.txt in the project root for license information.
+// // </copyright>
+// // --------------------------------------------------------------------------------------------------------------------
+
+namespace Sundew.Quantities.AcceptanceTests.Mechanics
 {
     using FluentAssertions;
 
@@ -12,7 +18,10 @@
         [InlineData(4, 4000, 0)]
         [InlineData(5, 3000, 1)]
         [InlineData(2, 3000, -1)]
-        public void Mass_CompareTo_When_ComparingKiloGramsAndGrams_Then_ResultShouldBeExpected(double lhsValue, double rhsValue, int expected)
+        public void Mass_CompareTo_When_ComparingKiloGramsAndGrams_Then_ResultShouldBeExpected(
+            double lhsValue,
+            double rhsValue,
+            int expected)
         {
             var lhs = lhsValue.KiloGrams();
             var rhs = rhsValue.Grams();
@@ -26,7 +35,10 @@
         [InlineData(4000000, 5000, true)]
         [InlineData(4000000, 3000, false)]
         [InlineData(4000000, 4000, false)]
-        public void Mass_LessThan_When_ComparingGramsAndTonnes_Then_ResultShouldBeExpected(double lhsValue, double rhsValue, bool expected)
+        public void Mass_LessThan_When_ComparingGramsAndTonnes_Then_ResultShouldBeExpected(
+            double lhsValue,
+            double rhsValue,
+            bool expected)
         {
             var lhs = lhsValue.Grams();
             var rhs = rhsValue.KiloGrams().ToUnit(x => x.Tonnes);
@@ -35,12 +47,15 @@
 
             result.Should().Be(expected);
         }
-        
+
         [Theory]
         [InlineData(4000000, 5000, false)]
         [InlineData(4000000, 3000, true)]
         [InlineData(4000000, 4000, false)]
-        public void Mass_GreaterThan_When_ComparingGramsAndTonnes_Then_ResultShouldBeExpected(double lhsValue, double rhsValue, bool expected)
+        public void Mass_GreaterThan_When_ComparingGramsAndTonnes_Then_ResultShouldBeExpected(
+            double lhsValue,
+            double rhsValue,
+            bool expected)
         {
             var lhs = lhsValue.Grams();
             var rhs = rhsValue.KiloGrams().ToUnit(x => x.Tonnes);

@@ -1,4 +1,10 @@
-﻿namespace Sundew.Quantities.Mechanics.UnitSelection
+﻿// // --------------------------------------------------------------------------------------------------------------------
+// // <copyright file="EnergyUnitSelector.cs" company="Hukano">
+// //   2016 (c) Hukano. All Rights Reserved. Licensed under the MIT License. See License.txt in the project root for license information.
+// // </copyright>
+// // --------------------------------------------------------------------------------------------------------------------
+
+namespace Sundew.Quantities.Mechanics.UnitSelection
 {
     using System.Collections.Generic;
 
@@ -10,7 +16,8 @@
     /// <summary>
     /// Unit selector for <see cref="Energy"/>.
     /// </summary>
-    public class EnergyUnitSelector : PrefixSelector<IEnergyUnitSelector, IPrefixSelector<IEnergyUnitSelector>>, IEnergyUnitSelector
+    public class EnergyUnitSelector : PrefixSelector<IEnergyUnitSelector, IPrefixSelector<IEnergyUnitSelector>>,
+                                      IEnergyUnitSelector
     {
         /// <summary>
         /// Gets the base unit.

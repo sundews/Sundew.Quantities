@@ -17,8 +17,7 @@
 	  </list>
     </introduction>
     <procedure>
-      <title>Add Sundew.Quantities to a project with Nuget in Visual Studio 2015.
- 	  </title>
+      <title>Add Sundew.Quantities to a project with Nuget in Visual Studio 2015.</title>
       <steps class="ordered">
         <step>
           <content>

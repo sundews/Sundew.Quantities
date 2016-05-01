@@ -1,4 +1,10 @@
-﻿namespace Sundew.Quantities.AcceptanceTests.Testing
+﻿// // --------------------------------------------------------------------------------------------------------------------
+// // <copyright file="QuantityAssertionExtension.cs" company="Hukano">
+// //   2016 (c) Hukano. All Rights Reserved. Licensed under the MIT License. See License.txt in the project root for license information.
+// // </copyright>
+// // --------------------------------------------------------------------------------------------------------------------
+
+namespace Sundew.Quantities.AcceptanceTests.Testing
 {
     using System;
 
@@ -32,12 +38,20 @@
         /// <returns>
         /// The <see cref="AndConstraint{T}"/>.
         /// </returns>
-        public static AndConstraint<ComparableTypeAssertions<IQuantity>> Be(this ComparableTypeAssertions<IQuantity> quantityAssertions, double expectedValue, string expectedUnit, UnitFormat unitFormat)
+        public static AndConstraint<ComparableTypeAssertions<IQuantity>> Be(
+            this ComparableTypeAssertions<IQuantity> quantityAssertions,
+            double expectedValue,
+            string expectedUnit,
+            UnitFormat unitFormat)
         {
             var quantity = (IQuantity)quantityAssertions.Subject;
             var quantityValue = quantity.Value;
             var quantityUnit = UnitHelper.GetNotation(quantity.Unit, unitFormat);
-            Execute.Assertion.ForCondition(quantityValue.Equals(expectedValue)).FailWith("The value: {0}, but found: {1}", expectedValue.ToString("N20"), quantityValue.ToString("N20"));
+            Execute.Assertion.ForCondition(quantityValue.Equals(expectedValue))
+                .FailWith(
+                    "The value: {0}, but found: {1}",
+                    expectedValue.ToString("N20"),
+                    quantityValue.ToString("N20"));
             AssertUnit(quantityUnit, expectedUnit);
 
             return new AndConstraint<ComparableTypeAssertions<IQuantity>>(quantityAssertions);
@@ -58,7 +72,10 @@
         /// <returns>
         /// The <see cref="AndConstraint{T}"/>.
         /// </returns>
-        public static AndConstraint<ComparableTypeAssertions<IQuantity>> Be(this ComparableTypeAssertions<IQuantity> quantityAssertions, double expectedValue, string expectedUnit)
+        public static AndConstraint<ComparableTypeAssertions<IQuantity>> Be(
+            this ComparableTypeAssertions<IQuantity> quantityAssertions,
+            double expectedValue,
+            string expectedUnit)
         {
             return Be(quantityAssertions, expectedValue, expectedUnit, UnitFormat.Default);
         }
@@ -82,9 +99,9 @@
         /// The <see cref="AndConstraint{T}"/>.
         /// </returns>
         public static AndConstraint<ComparableTypeAssertions<IQuantity>> BeApproximately(
-            this ComparableTypeAssertions<IQuantity> quantityAssertions, 
-            double expectedValue, 
-            string expectedUnit, 
+            this ComparableTypeAssertions<IQuantity> quantityAssertions,
+            double expectedValue,
+            string expectedUnit,
             double precision)
         {
             return BeApproximately(quantityAssertions, expectedValue, expectedUnit, UnitFormat.Default, precision);
@@ -111,12 +128,18 @@
         /// <returns>
         /// The <see cref="AndConstraint{T}"/>.
         /// </returns>
-        public static AndConstraint<ComparableTypeAssertions<IQuantity>> BeApproximately(this ComparableTypeAssertions<IQuantity> quantityAssertions, double expectedValue, string expectedUnit, UnitFormat unitFormat, double precision)
+        public static AndConstraint<ComparableTypeAssertions<IQuantity>> BeApproximately(
+            this ComparableTypeAssertions<IQuantity> quantityAssertions,
+            double expectedValue,
+            string expectedUnit,
+            UnitFormat unitFormat,
+            double precision)
         {
             var quantity = (IQuantity)quantityAssertions.Subject;
             var quantityValue = quantity.Value;
             var quantityUnit = UnitHelper.GetNotation(quantity.Unit, unitFormat);
-            Execute.Assertion.ForCondition(Math.Abs(quantityValue - expectedValue) < precision).FailWith("The value: {0}, but found: {1}", expectedValue, quantityValue);
+            Execute.Assertion.ForCondition(Math.Abs(quantityValue - expectedValue) < precision)
+                .FailWith("The value: {0}, but found: {1}", expectedValue, quantityValue);
             AssertUnit(quantityUnit, expectedUnit);
 
             return new AndConstraint<ComparableTypeAssertions<IQuantity>>(quantityAssertions);

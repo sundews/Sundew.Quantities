@@ -1,4 +1,10 @@
-﻿namespace Sundew.Quantities.Periodics.UnitSelection
+﻿// // --------------------------------------------------------------------------------------------------------------------
+// // <copyright file="FrequencyUnitSelector.cs" company="Hukano">
+// //   2016 (c) Hukano. All Rights Reserved. Licensed under the MIT License. See License.txt in the project root for license information.
+// // </copyright>
+// // --------------------------------------------------------------------------------------------------------------------
+
+namespace Sundew.Quantities.Periodics.UnitSelection
 {
     using System.Collections.Generic;
 
@@ -10,7 +16,8 @@
     /// <summary>
     /// Interface for <see cref="Frequency"/> unit selector.
     /// </summary>
-    public class FrequencyUnitSelector : PrefixSelector<IFrequencyUnitSelector, IPrefixSelector<IFrequencyUnitSelector>>, IFrequencyUnitSelector
+    public class FrequencyUnitSelector : PrefixSelector<IFrequencyUnitSelector, IPrefixSelector<IFrequencyUnitSelector>>,
+                                         IFrequencyUnitSelector
     {
         private readonly TimeUnits timeUnits = new TimeUnits();
 

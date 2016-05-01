@@ -1,4 +1,10 @@
-﻿namespace Sundew.Quantities.Engine.Quantities
+﻿// // --------------------------------------------------------------------------------------------------------------------
+// // <copyright file="Quantity{TQuantity,TSerializable}.cs" company="Hukano">
+// //   2016 (c) Hukano. All Rights Reserved. Licensed under the MIT License. See License.txt in the project root for license information.
+// // </copyright>
+// // --------------------------------------------------------------------------------------------------------------------
+
+namespace Sundew.Quantities.Engine.Quantities
 {
     using System;
     using System.Globalization;
@@ -11,9 +17,7 @@
     /// Abstract base class for implementing <see cref="IQuantity{TQuantity}" />.
     /// </summary>
     /// <typeparam name="TQuantity">The type of the quantity.</typeparam>
-    public abstract class Quantity<TQuantity> :
-        IQuantity<TQuantity>,
-        IUnitConvertible<TQuantity>
+    public abstract class Quantity<TQuantity> : IQuantity<TQuantity>, IUnitConvertible<TQuantity>
         where TQuantity : IQuantity<TQuantity>, IDeferredQuantity
     {
         /// <summary>
@@ -26,6 +30,14 @@
             this.Value = value;
             this.Unit = unit;
         }
+
+        /// <summary>
+        /// Gets this instance as <see cref="TQuantity"/>.
+        /// </summary>
+        /// <value>
+        /// This instance.
+        /// </value>
+        protected abstract TQuantity Self { get; }
 
         /// <summary>
         /// Gets the value.
@@ -44,12 +56,172 @@
         public IUnit Unit { get; }
 
         /// <summary>
-        /// Gets this instance as <see cref="TQuantity"/>.
+        /// Gets the result.
         /// </summary>
-        /// <value>
-        /// This instance.
-        /// </value>
-        protected abstract TQuantity Self { get; }
+        /// <returns>
+        /// A <see cref="IQuantity{TQuantity}" />.
+        /// </returns>
+        public IQuantity GetResult()
+        {
+            return this;
+        }
+
+        /// <summary>
+        /// Returns a <see cref="System.String" /> that represents this instance.
+        /// </summary>
+        /// <param name="format">The format.</param>
+        /// <returns>
+        /// A <see cref="System.String" /> that represents this instance.
+        /// </returns>
+        public string ToString(string format)
+        {
+            return this.ToString(format, CultureInfo.CurrentCulture);
+        }
+
+        /// <summary>
+        /// Returns a <see cref="System.String" /> that represents this instance.
+        /// </summary>
+        /// <param name="formatProvider">The format provider.</param>
+        /// <returns>
+        /// A <see cref="System.String" /> that represents this instance.
+        /// </returns>
+        public string ToString(IFormatProvider formatProvider)
+        {
+            return this.ToString(null, formatProvider);
+        }
+
+        /// <summary>
+        /// Returns a <see cref="System.String" /> that represents this instance.
+        /// </summary>
+        /// <param name="unitFormat">The unit mode.</param>
+        /// <param name="format">The format.</param>
+        /// <returns>
+        /// A <see cref="System.String" /> that represents this instance.
+        /// </returns>
+        public string ToString(UnitFormat unitFormat, string format)
+        {
+            return this.ToString(unitFormat, format, CultureInfo.CurrentCulture);
+        }
+
+        /// <summary>
+        /// Returns a <see cref="System.String" /> that represents this instance.
+        /// </summary>
+        /// <param name="unitFormat">The unit mode.</param>
+        /// <param name="formatProvider">The format provider.</param>
+        /// <returns>
+        /// A <see cref="System.String" /> that represents this instance.
+        /// </returns>
+        public string ToString(UnitFormat unitFormat, IFormatProvider formatProvider)
+        {
+            return this.ToString(unitFormat, null, formatProvider);
+        }
+
+        /// <summary>
+        /// Returns a <see cref="System.String" /> that represents this instance.
+        /// </summary>
+        /// <param name="format">The format.</param>
+        /// <param name="formatProvider">The format provider.</param>
+        /// <returns>
+        /// A <see cref="System.String" /> that represents this instance.
+        /// </returns>
+        public string ToString(string format, IFormatProvider formatProvider)
+        {
+            return this.ToString(UnitFormat.Default, format, formatProvider);
+        }
+
+        /// <summary>
+        /// Returns a <see cref="System.String" /> that represents this instance.
+        /// </summary>
+        /// <param name="unitFormat">The unit mode.</param>
+        /// <param name="format">The format.</param>
+        /// <param name="formatProvider">The format provider.</param>
+        /// <returns>
+        /// A <see cref="System.String" /> that represents this instance.
+        /// </returns>
+        public string ToString(UnitFormat unitFormat, string format, IFormatProvider formatProvider)
+        {
+            return QuantityHelper.ToString(
+                this.Unit.FormatValue(this.Value, format, formatProvider),
+                UnitHelper.GetNotation(this.Unit, unitFormat));
+        }
+
+        /// <summary>
+        /// Determines whether the specified quantity is equal to this instance.
+        /// </summary>
+        /// <param name="quantity">The quantity.</param>
+        /// <returns>
+        ///   <c>true</c> if the specified <see cref="System.Object" /> is equal to this instance; otherwise, <c>false</c>.
+        /// </returns>
+        public bool Equals(IQuantity quantity)
+        {
+            return QuantityHelper.AreEqual(this, quantity);
+        }
+
+        /// <summary>
+        /// Compares the current instance with another object of the same type and returns an integer that indicates whether the current instance precedes, follows, or occurs in the same position in the sort order as the other object.
+        /// </summary>
+        /// <param name="obj">An object to compare with this instance.</param>
+        /// <returns>
+        /// A value that indicates the relative order of the objects being compared. The return value has these meanings: Exponent Meaning Less than zero This instance precedes <paramref name="obj" /> in the sort order. Zero This instance occurs in the same position in the sort order as <paramref name="obj" />. Greater than zero This instance follows <paramref name="obj" /> in the sort order.
+        /// </returns>
+        public int CompareTo(object obj)
+        {
+            return QuantityHelper.CompareTo<IQuantity>(this, obj);
+        }
+
+        /// <summary>
+        /// Compares the quantity to this instance.
+        /// </summary>
+        /// <param name="quantity">The quantity.</param>
+        /// <returns>
+        /// The result of <see cref="double" /> Compare based the rhs converted to the same unit as lhs.
+        /// </returns>
+        public int CompareTo(IQuantity quantity)
+        {
+            return QuantityHelper.CompareTo(this, quantity);
+        }
+
+        /// <summary>
+        /// Converts this object to a <see cref="double"/> using the specified unit.
+        /// </summary>
+        /// <param name="unit">The new unit.</param>
+        /// <returns>The converted <see cref="double"/>.</returns>
+        public double ToDouble(IUnit unit)
+        {
+            return QuantityOperations.ConvertToUnit(this, unit);
+        }
+
+        /// <summary>
+        /// Converts this object to a <see cref="IQuantity" /> using the unit specified by the <see cref="IUnit" />.
+        /// </summary>
+        /// <param name="unit">The target unit.</param>
+        /// <returns>
+        /// The resulting <see cref="IQuantity" />.
+        /// </returns>
+        IQuantity IUnitConvertible.ToQuantity(IUnit unit)
+        {
+            return this.ToUnit(unit);
+        }
+
+        /// <summary>
+        /// Creates a new quantity.
+        /// </summary>
+        /// <param name="value">The quantity value.</param>
+        /// <param name="unit">The quantity unit.</param>
+        /// <returns>
+        /// A new <see cref="TQuantity" />.
+        /// </returns>
+        public abstract TQuantity CreateQuantity(double value, IUnit unit);
+
+        /// <summary>
+        /// Converts this object to a <see cref="TQuantity"/> using the specified unit.
+        /// </summary>
+        /// <param name="unit">The new unit.</param>
+        /// <returns>The converted <see cref="TQuantity"/>.</returns>
+        public TQuantity ToUnit(IUnit unit)
+        {
+            return this.CreateQuantity(this.ToDouble(unit), unit);
+        }
 
         /// <summary>
         /// Checks if the specified LHS is equal to the RHS.
@@ -116,7 +288,7 @@
         {
             return QuantityHelper.CompareTo(lhs, rhs) < 0;
         }
-        
+
         /// <summary>
         /// Returns the specified temperature.
         /// </summary>
@@ -259,41 +431,6 @@
         }
 
         /// <summary>
-        /// Gets the result.
-        /// </summary>
-        /// <returns>
-        /// A <see cref="IQuantity{TQuantity}" />.
-        /// </returns>
-        public IQuantity GetResult()
-        {
-            return this;
-        }
-
-        /// <summary>
-        /// Returns a <see cref="System.String" /> that represents this instance.
-        /// </summary>
-        /// <param name="format">The format.</param>
-        /// <returns>
-        /// A <see cref="System.String" /> that represents this instance.
-        /// </returns>
-        public string ToString(string format)
-        {
-            return this.ToString(format, CultureInfo.CurrentCulture);
-        }
-
-        /// <summary>
-        /// Returns a <see cref="System.String" /> that represents this instance.
-        /// </summary>
-        /// <param name="formatProvider">The format provider.</param>
-        /// <returns>
-        /// A <see cref="System.String" /> that represents this instance.
-        /// </returns>
-        public string ToString(IFormatProvider formatProvider)
-        {
-            return this.ToString(null, formatProvider);
-        }
-
-        /// <summary>
         /// Returns a <see cref="System.String" /> that represents this instance.
         /// </summary>
         /// <param name="unitFormat">The unit mode.</param>
@@ -303,59 +440,6 @@
         public string ToString(UnitFormat unitFormat)
         {
             return this.ToString(unitFormat, null, CultureInfo.CurrentCulture);
-        }
-
-        /// <summary>
-        /// Returns a <see cref="System.String" /> that represents this instance.
-        /// </summary>
-        /// <param name="unitFormat">The unit mode.</param>
-        /// <param name="format">The format.</param>
-        /// <returns>
-        /// A <see cref="System.String" /> that represents this instance.
-        /// </returns>
-        public string ToString(UnitFormat unitFormat, string format)
-        {
-            return this.ToString(unitFormat, format, CultureInfo.CurrentCulture);
-        }
-
-        /// <summary>
-        /// Returns a <see cref="System.String" /> that represents this instance.
-        /// </summary>
-        /// <param name="unitFormat">The unit mode.</param>
-        /// <param name="formatProvider">The format provider.</param>
-        /// <returns>
-        /// A <see cref="System.String" /> that represents this instance.
-        /// </returns>
-        public string ToString(UnitFormat unitFormat, IFormatProvider formatProvider)
-        {
-            return this.ToString(unitFormat, null, formatProvider);
-        }
-
-        /// <summary>
-        /// Returns a <see cref="System.String" /> that represents this instance.
-        /// </summary>
-        /// <param name="format">The format.</param>
-        /// <param name="formatProvider">The format provider.</param>
-        /// <returns>
-        /// A <see cref="System.String" /> that represents this instance.
-        /// </returns>
-        public string ToString(string format, IFormatProvider formatProvider)
-        {
-            return this.ToString(UnitFormat.Default, format, formatProvider);
-        }
-
-        /// <summary>
-        /// Returns a <see cref="System.String" /> that represents this instance.
-        /// </summary>
-        /// <param name="unitFormat">The unit mode.</param>
-        /// <param name="format">The format.</param>
-        /// <param name="formatProvider">The format provider.</param>
-        /// <returns>
-        /// A <see cref="System.String" /> that represents this instance.
-        /// </returns>
-        public string ToString(UnitFormat unitFormat, string format, IFormatProvider formatProvider)
-        {
-            return QuantityHelper.ToString(this.Unit.FormatValue(this.Value, format, formatProvider), UnitHelper.GetNotation(this.Unit, unitFormat));
         }
 
         /// <summary>
@@ -383,47 +467,11 @@
         }
 
         /// <summary>
-        /// Determines whether the specified quantity is equal to this instance.
-        /// </summary>
-        /// <param name="quantity">The quantity.</param>
-        /// <returns>
-        ///   <c>true</c> if the specified <see cref="System.Object" /> is equal to this instance; otherwise, <c>false</c>.
-        /// </returns>
-        public bool Equals(IQuantity quantity)
-        {
-            return QuantityHelper.AreEqual(this, quantity);
-        }
-
-        /// <summary>
-        /// Compares the current instance with another object of the same type and returns an integer that indicates whether the current instance precedes, follows, or occurs in the same position in the sort order as the other object.
-        /// </summary>
-        /// <param name="obj">An object to compare with this instance.</param>
-        /// <returns>
-        /// A value that indicates the relative order of the objects being compared. The return value has these meanings: Exponent Meaning Less than zero This instance precedes <paramref name="obj" /> in the sort order. Zero This instance occurs in the same position in the sort order as <paramref name="obj" />. Greater than zero This instance follows <paramref name="obj" /> in the sort order.
-        /// </returns>
-        public int CompareTo(object obj)
-        {
-            return QuantityHelper.CompareTo<IQuantity>(this, obj);
-        }
-
-        /// <summary>
         /// Compares this instance the specified quantity.
         /// </summary>
         /// <param name="quantity">The quantity.</param>
         /// <returns>The result of <see cref="int"/> Compare based the rhs converted to the same unit as lhs.</returns>
         public int CompareTo(TQuantity quantity)
-        {
-            return QuantityHelper.CompareTo(this, quantity);
-        }
-
-        /// <summary>
-        /// Compares the quantity to this instance.
-        /// </summary>
-        /// <param name="quantity">The quantity.</param>
-        /// <returns>
-        /// The result of <see cref="double" /> Compare based the rhs converted to the same unit as lhs.
-        /// </returns>
-        public int CompareTo(IQuantity quantity)
         {
             return QuantityHelper.CompareTo(this, quantity);
         }
@@ -438,48 +486,6 @@
         {
             return QuantityHelper.GetHashCode(this);
         }
-
-        /// <summary>
-        /// Converts this object to a <see cref="double"/> using the specified unit.
-        /// </summary>
-        /// <param name="unit">The new unit.</param>
-        /// <returns>The converted <see cref="double"/>.</returns>
-        public double ToDouble(IUnit unit)
-        {
-            return QuantityOperations.ConvertToUnit(this, unit);
-        }
-
-        /// <summary>
-        /// Converts this object to a <see cref="IQuantity" /> using the unit specified by the <see cref="IUnit" />.
-        /// </summary>
-        /// <param name="unit">The target unit.</param>
-        /// <returns>
-        /// The resulting <see cref="IQuantity" />.
-        /// </returns>
-        IQuantity IUnitConvertible.ToQuantity(IUnit unit)
-        {
-            return this.ToUnit(unit);
-        }
-
-        /// <summary>
-        /// Converts this object to a <see cref="TQuantity"/> using the specified unit.
-        /// </summary>
-        /// <param name="unit">The new unit.</param>
-        /// <returns>The converted <see cref="TQuantity"/>.</returns>
-        public TQuantity ToUnit(IUnit unit)
-        {
-            return this.CreateQuantity(this.ToDouble(unit), unit);
-        }
-
-        /// <summary>
-        /// Creates a new quantity.
-        /// </summary>
-        /// <param name="value">The quantity value.</param>
-        /// <param name="unit">The quantity unit.</param>
-        /// <returns>
-        /// A new <see cref="TQuantity" />.
-        /// </returns>
-        public abstract TQuantity CreateQuantity(double value, IUnit unit);
 
         /// <summary>
         /// Converts this object to a <see cref="TQuantity" /> using the specified unit.

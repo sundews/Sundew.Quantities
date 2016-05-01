@@ -1,4 +1,10 @@
-﻿namespace Sundew.Quantities.Mechanics.UnitSelection
+﻿// // --------------------------------------------------------------------------------------------------------------------
+// // <copyright file="ForceUnitSelector.cs" company="Hukano">
+// //   2016 (c) Hukano. All Rights Reserved. Licensed under the MIT License. See License.txt in the project root for license information.
+// // </copyright>
+// // --------------------------------------------------------------------------------------------------------------------
+
+namespace Sundew.Quantities.Mechanics.UnitSelection
 {
     using System.Collections.Generic;
 
@@ -10,7 +16,8 @@
     /// <summary>
     /// Unit selector for <see cref="Force"/>.
     /// </summary>
-    public class ForceUnitSelector : PrefixSelector<IForceUnitSelector, IPrefixSelector<IForceUnitSelector>>, IForceUnitSelector
+    public class ForceUnitSelector : PrefixSelector<IForceUnitSelector, IPrefixSelector<IForceUnitSelector>>,
+                                     IForceUnitSelector
     {
         /// <summary>
         /// Gets the base unit.

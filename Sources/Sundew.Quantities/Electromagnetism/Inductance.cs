@@ -1,4 +1,10 @@
-﻿namespace Sundew.Quantities.Electromagnetism
+﻿// // --------------------------------------------------------------------------------------------------------------------
+// // <copyright file="Inductance.cs" company="Hukano">
+// //   2016 (c) Hukano. All Rights Reserved. Licensed under the MIT License. See License.txt in the project root for license information.
+// // </copyright>
+// // --------------------------------------------------------------------------------------------------------------------
+
+namespace Sundew.Quantities.Electromagnetism
 {
     using Sundew.Quantities.Electromagnetism.UnitSelection;
     using Sundew.Quantities.Engine.Quantities;
@@ -44,7 +50,7 @@
         /// </summary>
         /// <param name="inductance">The inductance.</param>
         public Inductance(double inductance)
-                : this(inductance, x => x.BaseUnit)
+            : this(inductance, x => x.BaseUnit)
         {
         }
 
@@ -55,7 +61,7 @@
         /// This instance.
         /// </value>
         protected override Inductance Self => this;
-        
+
         /// <summary>
         /// Increments the specified LHS with 1.
         /// </summary>
@@ -103,7 +109,10 @@
         /// <param name="max">The maximum.</param>
         /// <param name="unitSelector">The unit selector.</param>
         /// <returns>The new interval.</returns>
-        public static Interval<Inductance> Interval(double min, double max, SelectUnit<InductanceUnitSelector> unitSelector)
+        public static Interval<Inductance> Interval(
+            double min,
+            double max,
+            SelectUnit<InductanceUnitSelector> unitSelector)
         {
             return new Interval<Inductance>(min, max, unitSelector(new InductanceUnitSelector()));
         }

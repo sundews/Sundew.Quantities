@@ -1,3 +1,9 @@
+// // --------------------------------------------------------------------------------------------------------------------
+// // <copyright file="MassUnitSelector.cs" company="Hukano">
+// //   2016 (c) Hukano. All Rights Reserved. Licensed under the MIT License. See License.txt in the project root for license information.
+// // </copyright>
+// // --------------------------------------------------------------------------------------------------------------------
+
 namespace Sundew.Quantities.Mechanics.UnitSelection
 {
     using System.Collections.Generic;
@@ -9,7 +15,8 @@ namespace Sundew.Quantities.Mechanics.UnitSelection
 
     /// <summary>
     /// </summary>
-    public class MassUnitSelector : PrefixSelector<IMassUnitSelector, IPrefixSelector<IMassUnitSelector>>, IMassUnitSelector
+    public class MassUnitSelector : PrefixSelector<IMassUnitSelector, IPrefixSelector<IMassUnitSelector>>,
+                                    IMassUnitSelector
     {
         private readonly MassUnits massUnits = new MassUnits();
 
@@ -67,7 +74,8 @@ namespace Sundew.Quantities.Mechanics.UnitSelection
         /// <value>
         /// The international avoirdupois ounce.
         /// </value>
-        public Expression InternationalAvoirdupoisOunces => this.SpecifyUnit(this.massUnits.InternationalAvoirdupoisOunces);
+        public Expression InternationalAvoirdupoisOunces
+            => this.SpecifyUnit(this.massUnits.InternationalAvoirdupoisOunces);
 
         /// <summary>
         /// Gets the international troy ounce.

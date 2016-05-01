@@ -1,4 +1,10 @@
-﻿namespace Sundew.Quantities.Formatters.MathML
+﻿// // --------------------------------------------------------------------------------------------------------------------
+// // <copyright file="MathML.cs" company="Hukano">
+// //   2016 (c) Hukano. All Rights Reserved. Licensed under the MIT License. See License.txt in the project root for license information.
+// // </copyright>
+// // --------------------------------------------------------------------------------------------------------------------
+
+namespace Sundew.Quantities.Formatters.MathML
 {
     using System.Xml.Linq;
 
@@ -7,6 +13,26 @@
     /// </summary>
     public static class MathML
     {
+        /// <summary>
+        /// The multiplication cross
+        /// </summary>
+        public const string MultiplicationCross = "×";
+
+        /// <summary>
+        /// The multiplication invisible
+        /// </summary>
+        public const string MultiplicationInvisible = "\x2062";
+
+        /// <summary>
+        /// The multiplication dot
+        /// </summary>
+        public const string MultiplicationDot = "·";
+
+        /// <summary>
+        /// The multiplication star
+        /// </summary>
+        public const string MultiplicationStar = "*";
+
         /// <summary>
         /// The MathML namespace
         /// </summary>
@@ -70,26 +96,6 @@
         public static readonly XAttribute OpenLeftBracket = new XAttribute("open", "[");
 
         public static readonly XAttribute CloseRightBrack = new XAttribute("close", "]");
-
-        /// <summary>
-        /// The multiplication cross
-        /// </summary>
-        public const string MultiplicationCross = "×";
-
-        /// <summary>
-        /// The multiplication invisible
-        /// </summary>
-        public const string MultiplicationInvisible = "\x2062";
-
-        /// <summary>
-        /// The multiplication dot
-        /// </summary>
-        public const string MultiplicationDot = "·";
-
-        /// <summary>
-        /// The multiplication star
-        /// </summary>
-        public const string MultiplicationStar = "*";
 
         /// <summary>
         /// Gets the multiplication sign as a string.

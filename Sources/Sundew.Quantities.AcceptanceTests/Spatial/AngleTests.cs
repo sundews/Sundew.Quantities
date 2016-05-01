@@ -1,4 +1,10 @@
-﻿namespace Sundew.Quantities.AcceptanceTests.Spatial
+﻿// // --------------------------------------------------------------------------------------------------------------------
+// // <copyright file="AngleTests.cs" company="Hukano">
+// //   2016 (c) Hukano. All Rights Reserved. Licensed under the MIT License. See License.txt in the project root for license information.
+// // </copyright>
+// // --------------------------------------------------------------------------------------------------------------------
+
+namespace Sundew.Quantities.AcceptanceTests.Spatial
 {
     using System;
 
@@ -14,7 +20,9 @@
     {
         [Theory]
         [InlineData(2, 114.59155902616465)]
-        public void Angle_ToUnit_WhenConvertingFromRadiansToDegrees_ThenResultShouldBeExpected(double radians, double expected)
+        public void Angle_ToUnit_WhenConvertingFromRadiansToDegrees_ThenResultShouldBeExpected(
+            double radians,
+            double expected)
         {
             var angle = radians.Radians();
 
@@ -25,7 +33,9 @@
 
         [Theory]
         [InlineData(180, Math.PI)]
-        public void Angle_ToUnit_WhenConvertingFromDegreesToRadians_ThenResultShouldBeExpected(double degrees, double expected)
+        public void Angle_ToUnit_WhenConvertingFromDegreesToRadians_ThenResultShouldBeExpected(
+            double degrees,
+            double expected)
         {
             var angle = degrees.ToAngle(units => units.Degrees);
 

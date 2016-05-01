@@ -1,4 +1,10 @@
-﻿namespace Sundew.Quantities.Engine
+﻿// // --------------------------------------------------------------------------------------------------------------------
+// // <copyright file="UnitSystem.cs" company="Hukano">
+// //   2016 (c) Hukano. All Rights Reserved. Licensed under the MIT License. See License.txt in the project root for license information.
+// // </copyright>
+// // --------------------------------------------------------------------------------------------------------------------
+
+namespace Sundew.Quantities.Engine
 {
     using System;
     using System.Collections.Generic;
@@ -24,19 +30,19 @@
     {
         private readonly object unitSystemLock = new object();
 
-        private UnitRegistry unitRegistry;
+        private IExpressionParser expressionParser;
+
+        private bool isInitialized;
 
         private ILexicalAnalyzer lexicalAnalyzer;
 
-        private IExpressionParser expressionParser;
+        private IQuantityOperations quantityOperations;
 
         private IQuantityParser quantityParser;
 
         private IUnitFactory unitFactory;
 
-        private IQuantityOperations quantityOperations;
-
-        private bool isInitialized;
+        private UnitRegistry unitRegistry;
 
         /// <summary>
         /// Gets the dependencies.
@@ -47,68 +53,6 @@
         public UnitSystemDependencies Dependencies { get; private set; }
 
         /// <summary>
-        /// Initializes the unit system.
-        /// </summary>
-        /// <param name="unitSystemDependencyFactory">The unit system dependency factory.</param>
-        /// <param name="registerUnitAction">The register unit action.</param>
-        public UnitSystemDependencies InitializeUnitSystem(IUnitSystemDependencyFactory unitSystemDependencyFactory, Action<IUnitRegistrar> registerUnitAction)
-        {
-            this.LockedAction(
-                () =>
-                    {
-                        if (!this.isInitialized)
-                        {
-                            unitSystemDependencyFactory = unitSystemDependencyFactory ?? new UnitSystemDependencyFactory(new ExpressionToFlatRepresentationConverter());
-                            this.unitRegistry = unitSystemDependencyFactory.CreateUnitRegistry();
-                            registerUnitAction?.Invoke(this.unitRegistry);
-                            this.expressionParser = unitSystemDependencyFactory.CreateParser(this.unitRegistry);
-                            this.lexicalAnalyzer = unitSystemDependencyFactory.CreateLexicalAnalyzer(TokenMatching.CompositeUnit);
-                            this.unitFactory = unitSystemDependencyFactory.CreateUnitFactory(this.unitRegistry);
-                            this.quantityParser = unitSystemDependencyFactory.CreateParser(this.expressionParser, this.unitFactory);
-                            this.quantityOperations = unitSystemDependencyFactory.CreateQuantityOperations(this.unitFactory);
-                            this.Dependencies = new UnitSystemDependencies(
-                                this.unitRegistry,
-                                this.lexicalAnalyzer,
-                                this.expressionParser,
-                                this.quantityParser,
-                                this.unitFactory,
-                                this.quantityOperations);
-                            this.isInitialized = true;
-                        }
-                    });
-
-            return this.Dependencies;
-        }
-
-        /// <summary>
-        /// Initializes the unit system with defaults.
-        /// </summary>
-        public UnitSystemDependencies InitializeUnitSystemWithDefaults(IUnitSystemDependencyFactory unitSystemDependencyFactory = null, Action<IUnitRegistrar> registerUnitAction = null)
-        {
-            return this.InitializeUnitSystem(
-                unitSystemDependencyFactory,
-                unitRegistrar =>
-                    {
-                        foreach (var unit in UnitDefinitions.GetDefaultPrefixes())
-                        {
-                            unitRegistrar.Register(unit);
-                        }
-
-                        foreach (var unit in UnitDefinitions.GetDefaultUnits())
-                        {
-                            unitRegistrar.Register(unit);
-                        }
-
-                        foreach (var derivedUnit in UnitDefinitions.GetDefaultDerivedUnit())
-                        {
-                            unitRegistrar.Register(derivedUnit);
-                        }
-
-                        registerUnitAction?.Invoke(unitRegistrar);
-                    });
-        }
-
-        /// <summary>
         /// Gets the quantity.
         /// </summary>
         /// <param name="quantity">The quantity.</param>
@@ -116,7 +60,10 @@
         /// <returns>A new <see cref="Quantity"/>.</returns>
         public Quantity GetQuantity(string quantity, CultureInfo cultureInfo)
         {
-            return this.quantityParser.Parse(this.lexicalAnalyzer.Analyze(quantity, true).Value, new ParseSettings(cultureInfo, true, true)).Value;
+            return
+                this.quantityParser.Parse(
+                    this.lexicalAnalyzer.Analyze(quantity, true).Value,
+                    new ParseSettings(cultureInfo, true, true)).Value;
         }
 
         /// <summary>
@@ -167,6 +114,78 @@
         public IEnumerable<IUnit> GetUnits()
         {
             return this.unitRegistry.GetUnits();
+        }
+
+        /// <summary>
+        /// Initializes the unit system.
+        /// </summary>
+        /// <param name="unitSystemDependencyFactory">The unit system dependency factory.</param>
+        /// <param name="registerUnitAction">The register unit action.</param>
+        public UnitSystemDependencies InitializeUnitSystem(
+            IUnitSystemDependencyFactory unitSystemDependencyFactory,
+            Action<IUnitRegistrar> registerUnitAction)
+        {
+            this.LockedAction(
+                () =>
+                    {
+                        if (!this.isInitialized)
+                        {
+                            unitSystemDependencyFactory = unitSystemDependencyFactory
+                                                          ?? new UnitSystemDependencyFactory(
+                                                                 new ExpressionToFlatRepresentationConverter());
+                            this.unitRegistry = unitSystemDependencyFactory.CreateUnitRegistry();
+                            registerUnitAction?.Invoke(this.unitRegistry);
+                            this.expressionParser = unitSystemDependencyFactory.CreateParser(this.unitRegistry);
+                            this.lexicalAnalyzer =
+                                unitSystemDependencyFactory.CreateLexicalAnalyzer(TokenMatching.CompositeUnit);
+                            this.unitFactory = unitSystemDependencyFactory.CreateUnitFactory(this.unitRegistry);
+                            this.quantityParser = unitSystemDependencyFactory.CreateParser(
+                                this.expressionParser,
+                                this.unitFactory);
+                            this.quantityOperations =
+                                unitSystemDependencyFactory.CreateQuantityOperations(this.unitFactory);
+                            this.Dependencies = new UnitSystemDependencies(
+                                this.unitRegistry,
+                                this.lexicalAnalyzer,
+                                this.expressionParser,
+                                this.quantityParser,
+                                this.unitFactory,
+                                this.quantityOperations);
+                            this.isInitialized = true;
+                        }
+                    });
+
+            return this.Dependencies;
+        }
+
+        /// <summary>
+        /// Initializes the unit system with defaults.
+        /// </summary>
+        public UnitSystemDependencies InitializeUnitSystemWithDefaults(
+            IUnitSystemDependencyFactory unitSystemDependencyFactory = null,
+            Action<IUnitRegistrar> registerUnitAction = null)
+        {
+            return this.InitializeUnitSystem(
+                unitSystemDependencyFactory,
+                unitRegistrar =>
+                    {
+                        foreach (var unit in UnitDefinitions.GetDefaultPrefixes())
+                        {
+                            unitRegistrar.Register(unit);
+                        }
+
+                        foreach (var unit in UnitDefinitions.GetDefaultUnits())
+                        {
+                            unitRegistrar.Register(unit);
+                        }
+
+                        foreach (var derivedUnit in UnitDefinitions.GetDefaultDerivedUnit())
+                        {
+                            unitRegistrar.Register(derivedUnit);
+                        }
+
+                        registerUnitAction?.Invoke(unitRegistrar);
+                    });
         }
 
         /// <summary>

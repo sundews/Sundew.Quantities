@@ -1,4 +1,10 @@
-﻿namespace Sundew.Quantities.Formatters.MathML.UnitTests
+﻿// // --------------------------------------------------------------------------------------------------------------------
+// // <copyright file="ExpressionToMathMLVisitorTests.cs" company="Hukano">
+// //   2016 (c) Hukano. All Rights Reserved. Licensed under the MIT License. See License.txt in the project root for license information.
+// // </copyright>
+// // --------------------------------------------------------------------------------------------------------------------
+
+namespace Sundew.Quantities.Formatters.MathML.UnitTests
 {
     using FluentAssertions;
 
@@ -9,18 +15,17 @@
 
     public class ExpressionToMathMLVisitorTests
     {
-        private readonly ExpressionToMathMLVisitor testee;
-
         public ExpressionToMathMLVisitorTests()
         {
             this.testee = new ExpressionToMathMLVisitor();
         }
 
+        private readonly ExpressionToMathMLVisitor testee;
+
         [Fact]
         public void Visit_When_QuantityIsAcceleration_Then_ResultTextShouldBeExpectedResult()
         {
-            const string ExpectedResult =
-@"<mml:math xmlns:mml=""http://www.w3.org/1998/Math/MathML"">
+            const string ExpectedResult = @"<mml:math xmlns:mml=""http://www.w3.org/1998/Math/MathML"">
   <mml:mfrac>
     <mml:mrow>
       <mml:mi mathvariant=""normal"" class=""MathML-Unit"">m</mml:mi>
@@ -44,8 +49,7 @@
         [Fact]
         public void Visit_When_QuantityIsVoltBaseUnit_Then_ResultTextShouldBeExpectedResult()
         {
-            const string ExpectedResult =
-@"<mml:math xmlns:mml=""http://www.w3.org/1998/Math/MathML"">
+            const string ExpectedResult = @"<mml:math xmlns:mml=""http://www.w3.org/1998/Math/MathML"">
   <mml:mfrac>
     <mml:mrow>
       <mml:mi mathvariant=""normal"" class=""MathML-Unit"">kg</mml:mi>

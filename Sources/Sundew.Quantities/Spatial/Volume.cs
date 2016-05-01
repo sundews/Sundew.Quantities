@@ -1,3 +1,9 @@
+// // --------------------------------------------------------------------------------------------------------------------
+// // <copyright file="Volume.cs" company="Hukano">
+// //   2016 (c) Hukano. All Rights Reserved. Licensed under the MIT License. See License.txt in the project root for license information.
+// // </copyright>
+// // --------------------------------------------------------------------------------------------------------------------
+
 namespace Sundew.Quantities.Spatial
 {
     using Sundew.Quantities.Engine.Quantities;
@@ -55,7 +61,7 @@ namespace Sundew.Quantities.Spatial
         /// This instance.
         /// </value>
         protected override Volume Self => this;
-        
+
         /// <summary>
         /// Increments the specified LHS with 1.
         /// </summary>

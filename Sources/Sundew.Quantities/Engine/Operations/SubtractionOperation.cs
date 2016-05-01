@@ -1,4 +1,10 @@
-﻿namespace Sundew.Quantities.Engine.Operations
+﻿// // --------------------------------------------------------------------------------------------------------------------
+// // <copyright file="SubtractionOperation.cs" company="Hukano">
+// //   2016 (c) Hukano. All Rights Reserved. Licensed under the MIT License. See License.txt in the project root for license information.
+// // </copyright>
+// // --------------------------------------------------------------------------------------------------------------------
+
+namespace Sundew.Quantities.Engine.Operations
 {
     using Sundew.Quantities.Engine.Exceptions;
     using Sundew.Quantities.Engine.Quantities;
@@ -47,7 +53,9 @@
                 return
                     new Quantity(
                         lhsValue
-                        - this.valueFromBaseVisitor.Visit(lhsUnit.GetExpression(), this.valueToBaseVisitor.Visit(rhsUnit.GetExpression(), rhsValue)),
+                        - this.valueFromBaseVisitor.Visit(
+                            lhsUnit.GetExpression(),
+                            this.valueToBaseVisitor.Visit(rhsUnit.GetExpression(), rhsValue)),
                         lhsUnit);
             }
 

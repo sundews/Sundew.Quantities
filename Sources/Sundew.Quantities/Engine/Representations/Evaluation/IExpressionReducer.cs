@@ -1,3 +1,9 @@
+// // --------------------------------------------------------------------------------------------------------------------
+// // <copyright file="IExpressionReducer.cs" company="Hukano">
+// //   2016 (c) Hukano. All Rights Reserved. Licensed under the MIT License. See License.txt in the project root for license information.
+// // </copyright>
+// // --------------------------------------------------------------------------------------------------------------------
+
 namespace Sundew.Quantities.Engine.Representations.Evaluation
 {
     using Sundew.Quantities.Engine.Representations.Hierarchical.Expressions;
@@ -13,6 +19,6 @@ namespace Sundew.Quantities.Engine.Representations.Evaluation
         /// <param name="expression">The expression.</param>
         /// <param name="reduceByBaseUnits">If set to <c>true</c> reduction will be done with base units.</param>
         /// <returns>A <see cref="UnitReductionResult"/>.</returns>
-        UnitReductionResult Reduce(Expression expression, bool reduceByBaseUnits); 
+        UnitReductionResult Reduce(Expression expression, bool reduceByBaseUnits);
     }
 }

@@ -1,4 +1,10 @@
-﻿namespace Sundew.Quantities.Engine.UnitSelection
+﻿// // --------------------------------------------------------------------------------------------------------------------
+// // <copyright file="PrefixSelector{TUnits,TPrefixedUnits}.cs" company="Hukano">
+// //   2016 (c) Hukano. All Rights Reserved. Licensed under the MIT License. See License.txt in the project root for license information.
+// // </copyright>
+// // --------------------------------------------------------------------------------------------------------------------
+
+namespace Sundew.Quantities.Engine.UnitSelection
 {
     using Sundew.Quantities.Engine.Representations.Hierarchical.Units;
     using Sundew.Quantities.Engine.Units;
@@ -8,7 +14,8 @@
     /// </summary>
     /// <typeparam name="TUnits">The type of the unit selector.</typeparam>
     /// <typeparam name="TPrefixedUnits">The type of the prefixed units.</typeparam>
-    public abstract class PrefixSelector<TUnits, TPrefixedUnits> : ExponentSelector<TUnits, TPrefixedUnits>, IPrefixSelector<TUnits>
+    public abstract class PrefixSelector<TUnits, TPrefixedUnits> : ExponentSelector<TUnits, TPrefixedUnits>,
+                                                                   IPrefixSelector<TUnits>
         where TPrefixedUnits : IPrefixSelector<TUnits>
     {
         /// <summary>

@@ -1,3 +1,9 @@
+// // --------------------------------------------------------------------------------------------------------------------
+// // <copyright file="AccelerationUnitSelector.cs" company="Hukano">
+// //   2016 (c) Hukano. All Rights Reserved. Licensed under the MIT License. See License.txt in the project root for license information.
+// // </copyright>
+// // --------------------------------------------------------------------------------------------------------------------
+
 namespace Sundew.Quantities.Spacetime.UnitSelection
 {
     using System.Collections.Generic;
@@ -9,7 +15,9 @@ namespace Sundew.Quantities.Spacetime.UnitSelection
     /// <summary>
     /// Interface for <see cref="Acceleration"/> unit selector.
     /// </summary>
-    public class AccelerationUnitSelector : SpacetimeUnitSelector<IAccelerationUnitSelector, IPrefixedAccelerationUnitSelector>, IPrefixedAccelerationUnitSelector
+    public class AccelerationUnitSelector :
+        SpacetimeUnitSelector<IAccelerationUnitSelector, IPrefixedAccelerationUnitSelector>,
+        IPrefixedAccelerationUnitSelector
     {
         /// <summary>
         /// Gets the base unit.
@@ -46,4 +54,4 @@ namespace Sundew.Quantities.Spacetime.UnitSelection
             return this;
         }
     }
-} 
+}

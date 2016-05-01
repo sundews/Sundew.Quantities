@@ -1,3 +1,9 @@
+// // --------------------------------------------------------------------------------------------------------------------
+// // <copyright file="Time.cs" company="Hukano">
+// //   2016 (c) Hukano. All Rights Reserved. Licensed under the MIT License. See License.txt in the project root for license information.
+// // </copyright>
+// // --------------------------------------------------------------------------------------------------------------------
+
 namespace Sundew.Quantities.Periodics
 {
     using Sundew.Quantities.Engine.Quantities;
@@ -55,7 +61,7 @@ namespace Sundew.Quantities.Periodics
         /// This instance.
         /// </value>
         protected override Time Self => this;
-        
+
         /// <summary>
         /// Increments the specified LHS with 1.
         /// </summary>

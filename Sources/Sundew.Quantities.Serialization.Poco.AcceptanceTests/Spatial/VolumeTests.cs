@@ -1,4 +1,10 @@
-﻿namespace Sundew.Quantities.Serialization.Poco.AcceptanceTests.Spatial
+﻿// // --------------------------------------------------------------------------------------------------------------------
+// // <copyright file="VolumeTests.cs" company="Hukano">
+// //   2016 (c) Hukano. All Rights Reserved. Licensed under the MIT License. See License.txt in the project root for license information.
+// // </copyright>
+// // --------------------------------------------------------------------------------------------------------------------
+
+namespace Sundew.Quantities.Serialization.Poco.AcceptanceTests.Spatial
 {
     using FluentAssertions;
 
@@ -11,15 +17,9 @@
 
     public class VolumeTests
     {
-        [Fact]
-        public void SerializeObject_Then_ResultShouldShouldBeExpected()
+        public class ConfigurationContainer
         {
-            const string Expected = "{\"Value\":5.0,\"Unit\":\"L\"}";
-            var testee = 5.Liters().ToSerializable();
-
-            var result = JsonConvert.SerializeObject(testee);
-
-            result.Should().Be(Expected);
+            public Poco.Spatial.Volume Volume { get; set; }
         }
 
         [Fact]
@@ -34,17 +34,6 @@
         }
 
         [Fact]
-        public void SerializeObject_WhenUnitIsCubicMeters_Then_ResultShouldShouldBeExpected()
-        {
-            const string Expected = "{\"Value\":5.0,\"Unit\":\"m³\"}";
-            var testee = 5.ToVolume(units => units.Cubic.Meters).ToSerializable();
-
-            var result = JsonConvert.SerializeObject(testee);
-
-            result.Should().Be(Expected);
-        }
-
-        [Fact]
         public void DeserializeObject_When_UnitIsCubicMicroMetersAndQuantityIsNested_Then_ResultShouldShouldBeExpected()
         {
             const string Input = "{\"Volume\":{\"Value\":54.0,\"Unit\":\"μm³\"}}";
@@ -55,9 +44,26 @@
             result.Should().Be(expected);
         }
 
-        public class ConfigurationContainer
+        [Fact]
+        public void SerializeObject_Then_ResultShouldShouldBeExpected()
         {
-            public Poco.Spatial.Volume Volume { get; set; }
+            const string Expected = "{\"Value\":5.0,\"Unit\":\"L\"}";
+            var testee = 5.Liters().ToSerializable();
+
+            var result = JsonConvert.SerializeObject(testee);
+
+            result.Should().Be(Expected);
+        }
+
+        [Fact]
+        public void SerializeObject_WhenUnitIsCubicMeters_Then_ResultShouldShouldBeExpected()
+        {
+            const string Expected = "{\"Value\":5.0,\"Unit\":\"m³\"}";
+            var testee = 5.ToVolume(units => units.Cubic.Meters).ToSerializable();
+
+            var result = JsonConvert.SerializeObject(testee);
+
+            result.Should().Be(Expected);
         }
     }
 }

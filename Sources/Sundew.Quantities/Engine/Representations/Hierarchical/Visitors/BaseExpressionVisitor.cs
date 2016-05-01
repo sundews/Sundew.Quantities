@@ -1,4 +1,10 @@
-﻿namespace Sundew.Quantities.Engine.Representations.Hierarchical.Visitors
+﻿// // --------------------------------------------------------------------------------------------------------------------
+// // <copyright file="BaseExpressionVisitor.cs" company="Hukano">
+// //   2016 (c) Hukano. All Rights Reserved. Licensed under the MIT License. See License.txt in the project root for license information.
+// // </copyright>
+// // --------------------------------------------------------------------------------------------------------------------
+
+namespace Sundew.Quantities.Engine.Representations.Hierarchical.Visitors
 {
     using Sundew.Base.Visiting;
     using Sundew.Quantities.Engine.Representations.Hierarchical.Expressions;
@@ -27,9 +33,10 @@
         /// <param name="currentResult">The current result.</param>
         public void Multiply(MultiplicationExpression multiplicationExpression, Reference<Expression> currentResult)
         {
-            currentResult.Value = new MultiplicationExpression(
-                this.PrivateVisit(multiplicationExpression.Lhs, currentResult),
-                this.PrivateVisit(multiplicationExpression.Rhs, currentResult));
+            currentResult.Value =
+                new MultiplicationExpression(
+                    this.PrivateVisit(multiplicationExpression.Lhs, currentResult),
+                    this.PrivateVisit(multiplicationExpression.Rhs, currentResult));
         }
 
         /// <summary>
@@ -74,7 +81,7 @@
         /// <param name="currentResult">The current result.</param>
         public void Unit(UnitExpression unitExpression, Reference<Expression> currentResult)
         {
-           currentResult.Value = unitExpression.Unit.BaseUnit.GetExpression();
+            currentResult.Value = unitExpression.Unit.BaseUnit.GetExpression();
         }
 
         /// <summary>

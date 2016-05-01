@@ -1,14 +1,20 @@
-﻿namespace Sundew.Quantities.Formatters.MathML
+﻿// // --------------------------------------------------------------------------------------------------------------------
+// // <copyright file="ExpressionToMathMLVisitor.cs" company="Hukano">
+// //   2016 (c) Hukano. All Rights Reserved. Licensed under the MIT License. See License.txt in the project root for license information.
+// // </copyright>
+// // --------------------------------------------------------------------------------------------------------------------
+
+namespace Sundew.Quantities.Formatters.MathML
 {
     using System.Xml.Linq;
 
-    using Engine.Representations.Hierarchical.Expressions;
-
+    using Sundew.Quantities.Engine.Representations.Hierarchical.Expressions;
     using Sundew.Quantities.Engine.Representations.Hierarchical.Visitors;
 
     #region UsageMathML
+
     /// <summary>
-    /// Implements an <see cref="IExpressionVisitor{MultiplicationSign, XElement, XElement}"/> for converting <see cref="Expression"/>s to MathML.
+    /// Implements an <see cref="IExpressionVisitor{TParameter1,TParameter2,TResult}"/> for converting <see cref="Expression"/>s to MathML.
     /// </summary>
     public class ExpressionToMathMLVisitor : IExpressionVisitor<MultiplicationSign, XElement, XElement>
     {
@@ -28,7 +34,10 @@
         /// <param name="multiplicationSign">The multiplication sign.</param>
         /// <param name="xElement">The x element.</param>
         /// <returns>The root element.</returns>
-        public XElement Visit(Expression expression, MultiplicationSign multiplicationSign = MultiplicationSign.Dot, XElement xElement = null)
+        public XElement Visit(
+            Expression expression,
+            MultiplicationSign multiplicationSign = MultiplicationSign.Dot,
+            XElement xElement = null)
         {
             var root = xElement;
             if (root == null || xElement.Name.NamespaceName != MathML.Namespace.NamespaceName)
@@ -36,7 +45,7 @@
                 root = new XElement(MathML.Math, new XAttribute(MathML.NamespaceAlias, MathML.Namespace));
                 xElement?.Add(root);
             }
-            
+
             expression.Visit(this, multiplicationSign, root);
             return root;
         }
@@ -47,7 +56,10 @@
         /// <param name="multiplicationExpression">The multiplication expression.</param>
         /// <param name="multiplicationSign">The multiplication sign.</param>
         /// <param name="xElement">The x element.</param>
-        public void Multiply(MultiplicationExpression multiplicationExpression, MultiplicationSign multiplicationSign, XElement xElement)
+        public void Multiply(
+            MultiplicationExpression multiplicationExpression,
+            MultiplicationSign multiplicationSign,
+            XElement xElement)
         {
             multiplicationExpression.Lhs.Visit(this, multiplicationSign, xElement);
             xElement.Add(new XElement(MathML.Mo, MathML.GetMultiplicationSign(multiplicationSign)));
@@ -60,7 +72,10 @@
         /// <param name="divisionExpression">The division expression.</param>
         /// <param name="multiplicationSign">The multiplication sign.</param>
         /// <param name="xElement">The x element.</param>
-        public void Divide(DivisionExpression divisionExpression, MultiplicationSign multiplicationSign, XElement xElement)
+        public void Divide(
+            DivisionExpression divisionExpression,
+            MultiplicationSign multiplicationSign,
+            XElement xElement)
         {
             var nominator = new XElement(MathML.Mrow);
             var denominator = new XElement(MathML.Mrow);
@@ -76,7 +91,10 @@
         /// <param name="magnitudeExpression">The magnitude expression.</param>
         /// <param name="multiplicationSign">The multiplication sign.</param>
         /// <param name="xElement">The x element.</param>
-        public void Magnitude(MagnitudeExpression magnitudeExpression, MultiplicationSign multiplicationSign, XElement xElement)
+        public void Magnitude(
+            MagnitudeExpression magnitudeExpression,
+            MultiplicationSign multiplicationSign,
+            XElement xElement)
         {
             var magnitude = new XElement(MathML.Msup);
             xElement.Add(magnitude);
@@ -90,7 +108,10 @@
         /// <param name="parenthesisExpression">The parenthesis expression.</param>
         /// <param name="multiplicationSign">The multiplication sign.</param>
         /// <param name="xElement">The x element.</param>
-        public void Parenthesis(ParenthesisExpression parenthesisExpression, MultiplicationSign multiplicationSign, XElement xElement)
+        public void Parenthesis(
+            ParenthesisExpression parenthesisExpression,
+            MultiplicationSign multiplicationSign,
+            XElement xElement)
         {
             var mrow = new XElement(MathML.Mrow);
             xElement.Add(mrow);
@@ -116,7 +137,10 @@
         /// <param name="variableExpression">The variable expression.</param>
         /// <param name="multiplicationSign">The multiplication sign.</param>
         /// <param name="xElement">The x element.</param>
-        public void Variable(VariableExpression variableExpression, MultiplicationSign multiplicationSign, XElement xElement)
+        public void Variable(
+            VariableExpression variableExpression,
+            MultiplicationSign multiplicationSign,
+            XElement xElement)
         {
             xElement.Add(new XElement(MathML.Mi, variableExpression.VariableName));
         }
@@ -127,10 +151,14 @@
         /// <param name="constantExpression">The constant expression.</param>
         /// <param name="multiplicationSign">The multiplication sign.</param>
         /// <param name="xElement">The x element.</param>
-        public void Constant(ConstantExpression constantExpression, MultiplicationSign multiplicationSign, XElement xElement)
+        public void Constant(
+            ConstantExpression constantExpression,
+            MultiplicationSign multiplicationSign,
+            XElement xElement)
         {
             xElement.Add(new XElement(MathML.Mn, constantExpression.Constant));
         }
     }
+
     #endregion
 }

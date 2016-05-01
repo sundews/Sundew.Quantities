@@ -1,4 +1,10 @@
-﻿namespace Sundew.Quantities.Periodics
+﻿// // --------------------------------------------------------------------------------------------------------------------
+// // <copyright file="PeriodicExtensions.cs" company="Hukano">
+// //   2016 (c) Hukano. All Rights Reserved. Licensed under the MIT License. See License.txt in the project root for license information.
+// // </copyright>
+// // --------------------------------------------------------------------------------------------------------------------
+
+namespace Sundew.Quantities.Periodics
 {
     using System;
 
@@ -16,8 +22,7 @@
         /// <typeparam name="TValue">The type of the value.</typeparam>
         /// <param name="time">The time value.</param>
         /// <returns>A new <see cref="Time" />.</returns>
-        public static Time Seconds<TValue>(this TValue time)
-            where TValue : struct, IComparable, IFormattable
+        public static Time Seconds<TValue>(this TValue time) where TValue : struct, IComparable, IFormattable
         {
             return time.ToTime(x => x.Seconds);
         }
@@ -28,8 +33,7 @@
         /// <typeparam name="TValue">The type of the value.</typeparam>
         /// <param name="time">The time value.</param>
         /// <returns>A new <see cref="Time" />.</returns>
-        public static Time Minutes<TValue>(this TValue time)
-            where TValue : struct, IComparable, IFormattable
+        public static Time Minutes<TValue>(this TValue time) where TValue : struct, IComparable, IFormattable
         {
             return time.ToTime(x => x.Minutes);
         }
@@ -40,8 +44,7 @@
         /// <typeparam name="TValue">The type of the value.</typeparam>
         /// <param name="time">The time value.</param>
         /// <returns>A new <see cref="Time" />.</returns>
-        public static Time Hours<TValue>(this TValue time)
-            where TValue : struct, IComparable, IFormattable
+        public static Time Hours<TValue>(this TValue time) where TValue : struct, IComparable, IFormattable
         {
             return time.ToTime(x => x.Hours);
         }
@@ -52,8 +55,7 @@
         /// <typeparam name="TValue">The type of the value.</typeparam>
         /// <param name="time">The time value.</param>
         /// <returns>A new <see cref="Time" />.</returns>
-        public static Time Days<TValue>(this TValue time)
-            where TValue : struct, IComparable, IFormattable
+        public static Time Days<TValue>(this TValue time) where TValue : struct, IComparable, IFormattable
         {
             return time.ToTime(x => x.Days);
         }
@@ -64,8 +66,7 @@
         /// <typeparam name="TValue">The type of the value.</typeparam>
         /// <param name="time">The time value.</param>
         /// <returns>A new <see cref="Time" />.</returns>
-        public static Time Weeks<TValue>(this TValue time)
-            where TValue : struct, IComparable, IFormattable
+        public static Time Weeks<TValue>(this TValue time) where TValue : struct, IComparable, IFormattable
         {
             return time.ToTime(x => x.Weeks);
         }
@@ -76,8 +77,7 @@
         /// <typeparam name="TValue">The type of the value.</typeparam>
         /// <param name="time">The time value.</param>
         /// <returns>A new <see cref="Time" />.</returns>
-        public static Time Months<TValue>(this TValue time)
-            where TValue : struct, IComparable, IFormattable
+        public static Time Months<TValue>(this TValue time) where TValue : struct, IComparable, IFormattable
         {
             return time.ToTime(x => x.Months);
         }
@@ -88,8 +88,7 @@
         /// <typeparam name="TValue">The type of the value.</typeparam>
         /// <param name="time">The time value.</param>
         /// <returns>A new <see cref="Time" />.</returns>
-        public static Time Years<TValue>(this TValue time)
-            where TValue : struct, IComparable, IFormattable
+        public static Time Years<TValue>(this TValue time) where TValue : struct, IComparable, IFormattable
         {
             return time.ToTime(x => x.Years);
         }
@@ -113,8 +112,7 @@
         /// <typeparam name="TValue">The type of the value.</typeparam>
         /// <param name="value">The value.</param>
         /// <returns>A new <see cref="Frequency"/>.</returns>
-        public static Frequency Hertz<TValue>(this TValue value)
-            where TValue : struct, IComparable, IFormattable
+        public static Frequency Hertz<TValue>(this TValue value) where TValue : struct, IComparable, IFormattable
         {
             return value.ToFrequency(x => x.Hertz);
         }

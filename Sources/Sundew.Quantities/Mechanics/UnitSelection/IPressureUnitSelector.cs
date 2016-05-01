@@ -1,4 +1,10 @@
-﻿namespace Sundew.Quantities.Mechanics.UnitSelection
+﻿// // --------------------------------------------------------------------------------------------------------------------
+// // <copyright file="IPressureUnitSelector.cs" company="Hukano">
+// //   2016 (c) Hukano. All Rights Reserved. Licensed under the MIT License. See License.txt in the project root for license information.
+// // </copyright>
+// // --------------------------------------------------------------------------------------------------------------------
+
+namespace Sundew.Quantities.Mechanics.UnitSelection
 {
     using Sundew.Quantities.Engine.Representations.Hierarchical.Expressions;
     using Sundew.Quantities.Engine.UnitSelection;
@@ -47,7 +53,7 @@
         /// The Torr <see cref="Expression"/>.
         /// </value>
         Expression Torrs { get; }
-        
+
         /// <summary>
         /// Gets the pounds per square inch.
         /// </summary>

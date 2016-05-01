@@ -1,4 +1,10 @@
-﻿namespace Sundew.Quantities.Electromagnetism
+﻿// // --------------------------------------------------------------------------------------------------------------------
+// // <copyright file="ElectromagnetismExtensions.cs" company="Hukano">
+// //   2016 (c) Hukano. All Rights Reserved. Licensed under the MIT License. See License.txt in the project root for license information.
+// // </copyright>
+// // --------------------------------------------------------------------------------------------------------------------
+
+namespace Sundew.Quantities.Electromagnetism
 {
     using System;
 
@@ -16,8 +22,7 @@
         /// <typeparam name="TValue">The type of the value.</typeparam>
         /// <param name="value">The capacitance value.</param>
         /// <returns>A new <see cref="Capacitance"/>.</returns>
-        public static Capacitance Farads<TValue>(this TValue value)
-            where TValue : struct, IComparable, IFormattable
+        public static Capacitance Farads<TValue>(this TValue value) where TValue : struct, IComparable, IFormattable
         {
             return value.ToCapacitance(x => x.Farads);
         }
@@ -29,8 +34,9 @@
         /// <param name="value">The capacitance value.</param>
         /// <param name="unitSelector">The unit selector.</param>
         /// <returns>A new <see cref="Capacitance"/>.</returns>
-        public static Capacitance ToCapacitance<TValue>(this TValue value, SelectUnit<CapacitanceUnitSelector> unitSelector)
-            where TValue : struct, IComparable, IFormattable
+        public static Capacitance ToCapacitance<TValue>(
+            this TValue value,
+            SelectUnit<CapacitanceUnitSelector> unitSelector) where TValue : struct, IComparable, IFormattable
         {
             return new Capacitance(Convert.ToDouble(value), unitSelector);
         }
@@ -41,8 +47,7 @@
         /// <typeparam name="TValue">The type of the value.</typeparam>
         /// <param name="value">The charge value.</param>
         /// <returns>A new <see cref="Charge"/>.</returns>
-        public static Charge Coulombs<TValue>(this TValue value)
-            where TValue : struct, IComparable, IFormattable
+        public static Charge Coulombs<TValue>(this TValue value) where TValue : struct, IComparable, IFormattable
         {
             return value.ToCharge(x => x.Coulombs);
         }
@@ -66,8 +71,7 @@
         /// <typeparam name="TValue">The type of the value.</typeparam>
         /// <param name="value">The conductance value.</param>
         /// <returns>A new <see cref="Conductance"/>.</returns>
-        public static Conductance Siemens<TValue>(this TValue value)
-            where TValue : struct, IComparable, IFormattable
+        public static Conductance Siemens<TValue>(this TValue value) where TValue : struct, IComparable, IFormattable
         {
             return value.ToConductance(x => x.Siemens);
         }
@@ -79,8 +83,9 @@
         /// <param name="value">The conductance value.</param>
         /// <param name="unitSelector">The unit selector.</param>
         /// <returns>A new <see cref="Conductance"/>.</returns>
-        public static Conductance ToConductance<TValue>(this TValue value, SelectUnit<ConductanceUnitSelector> unitSelector)
-            where TValue : struct, IComparable, IFormattable
+        public static Conductance ToConductance<TValue>(
+            this TValue value,
+            SelectUnit<ConductanceUnitSelector> unitSelector) where TValue : struct, IComparable, IFormattable
         {
             return new Conductance(Convert.ToDouble(value), unitSelector);
         }
@@ -104,8 +109,9 @@
         /// <param name="value">The electric current value.</param>
         /// <param name="unitSelector">The unit selector.</param>
         /// <returns>A new <see cref="ElectricCurrent"/>.</returns>
-        public static ElectricCurrent ToElectricCurrent<TValue>(this TValue value, SelectUnit<ElectricCurrentUnitSelector> unitSelector)
-            where TValue : struct, IComparable, IFormattable
+        public static ElectricCurrent ToElectricCurrent<TValue>(
+            this TValue value,
+            SelectUnit<ElectricCurrentUnitSelector> unitSelector) where TValue : struct, IComparable, IFormattable
         {
             return new ElectricCurrent(Convert.ToDouble(value), unitSelector);
         }
@@ -116,8 +122,7 @@
         /// <typeparam name="TValue">The type of the value.</typeparam>
         /// <param name="value">The inductance value.</param>
         /// <returns>A new <see cref="Inductance"/>.</returns>
-        public static Inductance Henry<TValue>(this TValue value)
-            where TValue : struct, IComparable, IFormattable
+        public static Inductance Henry<TValue>(this TValue value) where TValue : struct, IComparable, IFormattable
         {
             return value.ToInductance(x => x.Henry);
         }
@@ -129,8 +134,9 @@
         /// <param name="value">The inductance value.</param>
         /// <param name="unitSelector">The unit selector.</param>
         /// <returns>A new <see cref="Inductance"/>.</returns>
-        public static Inductance ToInductance<TValue>(this TValue value, SelectUnit<InductanceUnitSelector> unitSelector)
-            where TValue : struct, IComparable, IFormattable
+        public static Inductance ToInductance<TValue>(
+            this TValue value,
+            SelectUnit<InductanceUnitSelector> unitSelector) where TValue : struct, IComparable, IFormattable
         {
             return new Inductance(Convert.ToDouble(value), unitSelector);
         }
@@ -141,8 +147,7 @@
         /// <typeparam name="TValue">The type of the value.</typeparam>
         /// <param name="value">The magnetic flux value.</param>
         /// <returns>A new <see cref="MagneticFlux"/>.</returns>
-        public static MagneticFlux Webers<TValue>(this TValue value)
-            where TValue : struct, IComparable, IFormattable
+        public static MagneticFlux Webers<TValue>(this TValue value) where TValue : struct, IComparable, IFormattable
         {
             return value.ToMagneticFlux(x => x.Webers);
         }
@@ -154,8 +159,9 @@
         /// <param name="value">The magnetic flux value.</param>
         /// <param name="unitSelector">The unit selector.</param>
         /// <returns>A new <see cref="MagneticFlux"/>.</returns>
-        public static MagneticFlux ToMagneticFlux<TValue>(this TValue value, SelectUnit<MagneticFluxUnitSelector> unitSelector)
-            where TValue : struct, IComparable, IFormattable
+        public static MagneticFlux ToMagneticFlux<TValue>(
+            this TValue value,
+            SelectUnit<MagneticFluxUnitSelector> unitSelector) where TValue : struct, IComparable, IFormattable
         {
             return new MagneticFlux(Convert.ToDouble(value), unitSelector);
         }
@@ -179,8 +185,9 @@
         /// <param name="value">The magnetic flux density value.</param>
         /// <param name="unitSelector">The unit selector.</param>
         /// <returns>A new <see cref="MagneticFluxDensity"/>.</returns>
-        public static MagneticFluxDensity ToMagneticFluxDensity<TValue>(this TValue value, SelectUnit<MagneticFluxDensityUnitSelector> unitSelector)
-            where TValue : struct, IComparable, IFormattable
+        public static MagneticFluxDensity ToMagneticFluxDensity<TValue>(
+            this TValue value,
+            SelectUnit<MagneticFluxDensityUnitSelector> unitSelector) where TValue : struct, IComparable, IFormattable
         {
             return new MagneticFluxDensity(Convert.ToDouble(value), unitSelector);
         }
@@ -191,8 +198,7 @@
         /// <typeparam name="TValue">The type of the value.</typeparam>
         /// <param name="value">The potential value.</param>
         /// <returns>A new <see cref="Potential"/>.</returns>
-        public static Potential Volts<TValue>(this TValue value)
-            where TValue : struct, IComparable, IFormattable
+        public static Potential Volts<TValue>(this TValue value) where TValue : struct, IComparable, IFormattable
         {
             return value.ToPotential(x => x.Volts);
         }
@@ -216,8 +222,7 @@
         /// <typeparam name="TValue">The type of the value.</typeparam>
         /// <param name="value">The resistance value.</param>
         /// <returns>A new <see cref="Resistance"/>.</returns>
-        public static Resistance Ohms<TValue>(this TValue value)
-            where TValue : struct, IComparable, IFormattable
+        public static Resistance Ohms<TValue>(this TValue value) where TValue : struct, IComparable, IFormattable
         {
             return value.ToResistance(x => x.Ohms);
         }
@@ -229,8 +234,9 @@
         /// <param name="value">The resistance value.</param>
         /// <param name="unitSelector">The unit selector.</param>
         /// <returns>A new <see cref="Resistance"/>.</returns>
-        public static Resistance ToResistance<TValue>(this TValue value, SelectUnit<ResistanceUnitSelector> unitSelector)
-            where TValue : struct, IComparable, IFormattable
+        public static Resistance ToResistance<TValue>(
+            this TValue value,
+            SelectUnit<ResistanceUnitSelector> unitSelector) where TValue : struct, IComparable, IFormattable
         {
             return new Resistance(Convert.ToDouble(value), unitSelector);
         }

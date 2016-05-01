@@ -1,3 +1,9 @@
+// // --------------------------------------------------------------------------------------------------------------------
+// // <copyright file="Acceleration.cs" company="Hukano">
+// //   2016 (c) Hukano. All Rights Reserved. Licensed under the MIT License. See License.txt in the project root for license information.
+// // </copyright>
+// // --------------------------------------------------------------------------------------------------------------------
+
 namespace Sundew.Quantities.Spacetime
 {
     using Sundew.Quantities.Engine.Quantities;
@@ -55,7 +61,7 @@ namespace Sundew.Quantities.Spacetime
         /// This instance.
         /// </value>
         protected override Acceleration Self => this;
-        
+
         /// <summary>
         /// Increments the specified LHS with 1.
         /// </summary>
@@ -103,7 +109,10 @@ namespace Sundew.Quantities.Spacetime
         /// <param name="max">The maximum.</param>
         /// <param name="unitSelector">The unit selector.</param>
         /// <returns>The new interval.</returns>
-        public static Interval<Acceleration> Interval(double min, double max, SelectUnit<AccelerationUnitSelector> unitSelector)
+        public static Interval<Acceleration> Interval(
+            double min,
+            double max,
+            SelectUnit<AccelerationUnitSelector> unitSelector)
         {
             return new Interval<Acceleration>(min, max, unitSelector(new AccelerationUnitSelector()));
         }

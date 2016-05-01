@@ -1,4 +1,10 @@
-﻿namespace Sundew.Quantities.Thermodynamics
+﻿// // --------------------------------------------------------------------------------------------------------------------
+// // <copyright file="ThermodynamicsExtensions.cs" company="Hukano">
+// //   2016 (c) Hukano. All Rights Reserved. Licensed under the MIT License. See License.txt in the project root for license information.
+// // </copyright>
+// // --------------------------------------------------------------------------------------------------------------------
+
+namespace Sundew.Quantities.Thermodynamics
 {
     using System;
 
@@ -16,8 +22,7 @@
         /// <typeparam name="TValue">The type of the value.</typeparam>
         /// <param name="value">The value.</param>
         /// <returns>A <see cref="Temperature"/>.</returns>
-        public static Temperature Celsius<TValue>(this TValue value)
-            where TValue : struct, IComparable, IFormattable
+        public static Temperature Celsius<TValue>(this TValue value) where TValue : struct, IComparable, IFormattable
         {
             return value.ToTemperature(x => x.Celsius);
         }
@@ -28,8 +33,7 @@
         /// <typeparam name="TValue">The type of the value.</typeparam>
         /// <param name="value">The value.</param>
         /// <returns>A <see cref="Temperature"/>.</returns>
-        public static Temperature Kelvin<TValue>(this TValue value)
-            where TValue : struct, IComparable, IFormattable
+        public static Temperature Kelvin<TValue>(this TValue value) where TValue : struct, IComparable, IFormattable
         {
             return value.ToTemperature(x => x.Kelvin);
         }
@@ -41,8 +45,9 @@
         /// <param name="value">The value.</param>
         /// <param name="unitSelector">The unit selector.</param>
         /// <returns>A <see cref="Temperature"/>.</returns>
-        public static Temperature ToTemperature<TValue>(this TValue value, SelectUnit<TemperatureUnitSelector> unitSelector)
-            where TValue : struct, IComparable, IFormattable
+        public static Temperature ToTemperature<TValue>(
+            this TValue value,
+            SelectUnit<TemperatureUnitSelector> unitSelector) where TValue : struct, IComparable, IFormattable
         {
             return new Temperature(Convert.ToDouble(value), unitSelector);
         }

@@ -1,4 +1,10 @@
-﻿namespace Sundew.Quantities.Engine.Units
+﻿// // --------------------------------------------------------------------------------------------------------------------
+// // <copyright file="DerivedUnit.cs" company="Hukano">
+// //   2016 (c) Hukano. All Rights Reserved. Licensed under the MIT License. See License.txt in the project root for license information.
+// // </copyright>
+// // --------------------------------------------------------------------------------------------------------------------
+
+namespace Sundew.Quantities.Engine.Units
 {
     using System;
     using System.Diagnostics.Contracts;
@@ -13,13 +19,13 @@
     /// </summary>
     public class DerivedUnit : IUnit
     {
-        private readonly Prefix prefix;
-
-        private readonly string notation;
+        private readonly DerivedBaseUnit derivedBaseUnit;
 
         private readonly Expression expression;
 
-        private readonly DerivedBaseUnit derivedBaseUnit;
+        private readonly string notation;
+
+        private readonly Prefix prefix;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="DerivedUnit" /> class.
@@ -55,20 +61,6 @@
         }
 
         /// <summary>
-        /// Gets the prefix factor.
-        /// </summary>
-        /// <value>The prefix.</value>
-        public double PrefixFactor => this.HasOwnNotation
-                                          ? this.prefix.Factor
-                                          : this.prefix.Factor * DefaultVisitors.PrefixVisitor.Visit(this.expression);
-
-        /// <summary>
-        /// Gets the notation.
-        /// </summary>
-        /// <value>The notation.</value>
-        public string Notation => this.GetNotation(CultureInfo.CurrentCulture);
-
-        /// <summary>
         /// Gets a value indicating whether the <see cref="DerivedUnit"/> has its own notation.
         /// </summary>
         /// <value>
@@ -77,21 +69,26 @@
         private bool HasOwnNotation => this.notation != null;
 
         /// <summary>
+        /// Gets the prefix factor.
+        /// </summary>
+        /// <value>The prefix.</value>
+        public double PrefixFactor
+            =>
+                this.HasOwnNotation
+                    ? this.prefix.Factor
+                    : this.prefix.Factor * DefaultVisitors.PrefixVisitor.Visit(this.expression);
+
+        /// <summary>
+        /// Gets the notation.
+        /// </summary>
+        /// <value>The notation.</value>
+        public string Notation => this.GetNotation(CultureInfo.CurrentCulture);
+
+        /// <summary>
         /// Gets the base unit.
         /// </summary>
         /// <value>The base unit.</value>
         public IUnit BaseUnit => this.derivedBaseUnit;
-
-        /// <summary>
-        /// Gets the expression for the specified unit.
-        /// </summary>
-        /// <param name="unit">The unit.</param>
-        /// <returns>An <see cref="Expression"/>.</returns>
-        public static implicit operator Expression(DerivedUnit unit)
-        {
-            Contract.Requires(unit != null);
-            return unit.GetExpression();
-        }
 
         /// <summary>
         /// Converts the specified value into the unit's base value.
@@ -120,15 +117,6 @@
         public Expression GetExpression()
         {
             return this.HasOwnNotation ? new UnitExpression(this) : this.expression;
-        }
-
-        /// <summary>
-        /// The base expression.
-        /// </summary>
-        /// <returns>The <see cref="Expression" />.</returns>
-        public Expression GetBaseExpression()
-        {
-            return this.derivedBaseUnit.GetExpression();
         }
 
         /// <summary>
@@ -162,16 +150,6 @@
         }
 
         /// <summary>
-        /// Gets the base notation.
-        /// </summary>
-        /// <param name="formatProvider">The format provider.</param>
-        /// <returns>The base notation.</returns>
-        public string GetBaseNotation(IFormatProvider formatProvider = null)
-        {
-            return DefaultVisitors.NotationVisitor.Visit(this.expression, formatProvider ?? CultureInfo.CurrentCulture);
-        }
-
-        /// <summary>
         /// Formats the value.
         /// </summary>
         /// <param name="value">The value.</param>
@@ -181,6 +159,50 @@
         public string FormatValue(double value, string format, IFormatProvider formatProvider)
         {
             return value.ToString(format, formatProvider);
+        }
+
+        /// <summary>
+        /// Indicates whether the current object is equal to another object of the same type.
+        /// </summary>
+        /// <param name="other">
+        /// An object to compare with this object.
+        /// </param>
+        /// <returns>
+        ///     <c>true</c> if the current object is equal to the <paramref name="other"/> parameter; otherwise, false.
+        /// </returns>
+        public bool Equals(IUnit other)
+        {
+            return UnitHelper.AreUnitsEqual(this, other);
+        }
+
+        /// <summary>
+        /// Gets the expression for the specified unit.
+        /// </summary>
+        /// <param name="unit">The unit.</param>
+        /// <returns>An <see cref="Expression"/>.</returns>
+        public static implicit operator Expression(DerivedUnit unit)
+        {
+            Contract.Requires(unit != null);
+            return unit.GetExpression();
+        }
+
+        /// <summary>
+        /// The base expression.
+        /// </summary>
+        /// <returns>The <see cref="Expression" />.</returns>
+        public Expression GetBaseExpression()
+        {
+            return this.derivedBaseUnit.GetExpression();
+        }
+
+        /// <summary>
+        /// Gets the base notation.
+        /// </summary>
+        /// <param name="formatProvider">The format provider.</param>
+        /// <returns>The base notation.</returns>
+        public string GetBaseNotation(IFormatProvider formatProvider = null)
+        {
+            return DefaultVisitors.NotationVisitor.Visit(this.expression, formatProvider ?? CultureInfo.CurrentCulture);
         }
 
         /// <summary>
@@ -204,20 +226,6 @@
         ///     <c>true</c> if the specified <see cref="System.Object"/> is equal to this instance; otherwise, <c>false</c>.
         /// </returns>
         public override bool Equals(object other)
-        {
-            return UnitHelper.AreUnitsEqual(this, other);
-        }
-
-        /// <summary>
-        /// Indicates whether the current object is equal to another object of the same type.
-        /// </summary>
-        /// <param name="other">
-        /// An object to compare with this object.
-        /// </param>
-        /// <returns>
-        ///     <c>true</c> if the current object is equal to the <paramref name="other"/> parameter; otherwise, false.
-        /// </returns>
-        public bool Equals(IUnit other)
         {
             return UnitHelper.AreUnitsEqual(this, other);
         }

@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<topic id="d44fc388-be7c-4779-b535-4032ed2b87d8" revisionNumber="1">
+  <developerConceptualDocument xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <introduction>
+      <para>Adding new units</para>
+    </introduction>
+    <section>
+      <title>Register units.</title>
+      <content>
+        <code lang="cs" source="..\Sources\Sundew.Quantities.Samples\AddingUnits.cs" region="UsageRegisterUnits" title="Usage" />
+      </content>
+    </section>
+    <para/>
+    <section>
+      <title>Default units.</title>
+      <content>
+        <code lang="cs" source="..\Sources\Sundew.Quantities\Engine\Units\UnitDefinitions.cs" title="Sample" />
+      </content>
+    </section>
+  </developerConceptualDocument>
+</topic>

@@ -1,4 +1,10 @@
-﻿namespace Sundew.Quantities.Engine.Units
+﻿// // --------------------------------------------------------------------------------------------------------------------
+// // <copyright file="Prefixes.cs" company="Hukano">
+// //   2016 (c) Hukano. All Rights Reserved. Licensed under the MIT License. See License.txt in the project root for license information.
+// // </copyright>
+// // --------------------------------------------------------------------------------------------------------------------
+
+namespace Sundew.Quantities.Engine.Units
 {
     using System;
 
@@ -11,7 +17,7 @@
     {
         /// <summary>The yotta prefix.</summary>
         public static readonly Prefix Yotta = new FactoredPrefix("Yotta", Math.Pow(10, 24), "Y");
-        
+
         /// <summary>The zetta prefix.</summary>
         public static readonly Prefix Zetta = new FactoredPrefix("Zetta", Math.Pow(10, 21), "Z");
 
@@ -20,7 +26,7 @@
 
         /// <summary>The peta prefix.</summary>
         public static readonly Prefix Peta = new FactoredPrefix("Peta", Math.Pow(10, 15), "P");
-        
+
         /// <summary>The tera prefix.</summary>
         public static readonly Prefix Tera = new FactoredPrefix("Tera", Math.Pow(10, 12), "T");
 
@@ -44,7 +50,7 @@
 
         /// <summary>The centi prefix.</summary>
         public static readonly Prefix Centi = new FactoredPrefix("Centi", Math.Pow(10, -2), "c");
-        
+
         /// <summary>The milli prefix.</summary>
         public static readonly Prefix Milli = new FactoredPrefix("Milli", Math.Pow(10, -3), "m");
 

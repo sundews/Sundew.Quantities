@@ -1,3 +1,9 @@
+// // --------------------------------------------------------------------------------------------------------------------
+// // <copyright file="UnitTests.cs" company="Hukano">
+// //   2016 (c) Hukano. All Rights Reserved. Licensed under the MIT License. See License.txt in the project root for license information.
+// // </copyright>
+// // --------------------------------------------------------------------------------------------------------------------
+
 namespace Sundew.Quantities.UnitTests.Engine.Units
 {
     using FluentAssertions;
@@ -8,27 +14,6 @@ namespace Sundew.Quantities.UnitTests.Engine.Units
 
     public class UnitTests
     {
-        [Fact]
-        public void Notation_Then_ResultShouldBeExpected()
-        {
-            const string ExpectedNotation = "g";
-            var testee = new Unit(ExpectedNotation);
-
-            var result = testee.Notation;
-
-            result.Should().Be(ExpectedNotation);
-        }
-
-        [Fact]
-        public void PrefixFactor_Then_ResultShouldBe1()
-        {
-            var testee = new Unit("m");
-
-            var result = testee.PrefixFactor;
-
-            result.Should().Be(1);
-        }
-
         [Theory]
         [InlineData("km")]
         public void GetPrefixedUnit_Then_ResultNotationShouldBeExpectedNotation(string expectedNotation)
@@ -52,6 +37,17 @@ namespace Sundew.Quantities.UnitTests.Engine.Units
         }
 
         [Fact]
+        public void BaseUnitGetNotation_ThenResultShouldBeExpectedNotation()
+        {
+            const string ExpectedNotation = "m";
+            var testee = new Unit(Prefixes.Kilo, ExpectedNotation);
+
+            var result = testee.BaseUnit.GetNotation();
+
+            result.Should().Be(ExpectedNotation);
+        }
+
+        [Fact]
         public void GetNotationWithoutPrefix_ThenResultShouldBeExpectedNotation()
         {
             const string ExpectedNotation = "m";
@@ -63,14 +59,24 @@ namespace Sundew.Quantities.UnitTests.Engine.Units
         }
 
         [Fact]
-        public void BaseUnitGetNotation_ThenResultShouldBeExpectedNotation()
+        public void Notation_Then_ResultShouldBeExpected()
         {
-            const string ExpectedNotation = "m";
-            var testee = new Unit(Prefixes.Kilo, ExpectedNotation);
+            const string ExpectedNotation = "g";
+            var testee = new Unit(ExpectedNotation);
 
-            var result = testee.BaseUnit.GetNotation();
+            var result = testee.Notation;
 
             result.Should().Be(ExpectedNotation);
+        }
+
+        [Fact]
+        public void PrefixFactor_Then_ResultShouldBe1()
+        {
+            var testee = new Unit("m");
+
+            var result = testee.PrefixFactor;
+
+            result.Should().Be(1);
         }
     }
 }

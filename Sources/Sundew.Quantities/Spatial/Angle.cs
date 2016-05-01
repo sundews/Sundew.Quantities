@@ -1,4 +1,10 @@
-﻿namespace Sundew.Quantities.Spatial
+﻿// // --------------------------------------------------------------------------------------------------------------------
+// // <copyright file="Angle.cs" company="Hukano">
+// //   2016 (c) Hukano. All Rights Reserved. Licensed under the MIT License. See License.txt in the project root for license information.
+// // </copyright>
+// // --------------------------------------------------------------------------------------------------------------------
+
+namespace Sundew.Quantities.Spatial
 {
     using Sundew.Quantities.Engine.Quantities;
     using Sundew.Quantities.Engine.Representations.Hierarchical.Units;
@@ -44,7 +50,7 @@
         /// </summary>
         /// <param name="angle">The angle.</param>
         public Angle(double angle)
-                : this(angle, x => x.BaseUnit)
+            : this(angle, x => x.BaseUnit)
         {
         }
 
@@ -55,7 +61,7 @@
         /// This instance.
         /// </value>
         protected override Angle Self => this;
-        
+
         /// <summary>
         /// Increments the specified LHS with 1.
         /// </summary>

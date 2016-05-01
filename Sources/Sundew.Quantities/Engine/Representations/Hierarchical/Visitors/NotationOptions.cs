@@ -1,4 +1,10 @@
-﻿namespace Sundew.Quantities.Engine.Representations.Hierarchical.Visitors
+﻿// // --------------------------------------------------------------------------------------------------------------------
+// // <copyright file="NotationOptions.cs" company="Hukano">
+// //   2016 (c) Hukano. All Rights Reserved. Licensed under the MIT License. See License.txt in the project root for license information.
+// // </copyright>
+// // --------------------------------------------------------------------------------------------------------------------
+
+namespace Sundew.Quantities.Engine.Representations.Hierarchical.Visitors
 {
     using System.Globalization;
 
@@ -53,8 +59,7 @@
         /// <returns>
         /// A <see cref="NotationOptions" />.
         /// </returns>
-        public static NotationOptions From(
-            MagnitudeFormat magnitudeFormat)
+        public static NotationOptions From(MagnitudeFormat magnitudeFormat)
         {
             return new NotationOptions(magnitudeFormat, DefaultOperationOrderFormat);
         }
@@ -66,8 +71,7 @@
         /// <returns>
         /// A <see cref="NotationOptions" />.
         /// </returns>
-        public static NotationOptions From(
-            OperationOrderFormat operationOrderFormat)
+        public static NotationOptions From(OperationOrderFormat operationOrderFormat)
         {
             return new NotationOptions(MagnitudeFormat.UseAboveLetter, operationOrderFormat);
         }
@@ -80,9 +84,7 @@
         /// <returns>
         /// A <see cref="NotationOptions" />.
         /// </returns>
-        public static NotationOptions From(
-            MagnitudeFormat magnitudeFormat,
-            OperationOrderFormat operationOrderFormat)
+        public static NotationOptions From(MagnitudeFormat magnitudeFormat, OperationOrderFormat operationOrderFormat)
         {
             return new NotationOptions(magnitudeFormat, operationOrderFormat);
         }

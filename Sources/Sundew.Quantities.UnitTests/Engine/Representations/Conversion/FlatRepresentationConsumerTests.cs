@@ -1,4 +1,10 @@
-﻿namespace Sundew.Quantities.UnitTests.Engine.Representations.Conversion
+﻿// // --------------------------------------------------------------------------------------------------------------------
+// // <copyright file="FlatRepresentationConsumerTests.cs" company="Hukano">
+// //   2016 (c) Hukano. All Rights Reserved. Licensed under the MIT License. See License.txt in the project root for license information.
+// // </copyright>
+// // --------------------------------------------------------------------------------------------------------------------
+
+namespace Sundew.Quantities.UnitTests.Engine.Representations.Conversion
 {
     using FluentAssertions;
 
@@ -13,7 +19,8 @@
         [Theory]
         [InlineData(2)]
         [InlineData(3)]
-        public void GetResultingExpression_When_ExponentIsLargerThanOne_Then_ResultShouldContainMagnitudeExpression(double exponent)
+        public void GetResultingExpression_When_ExponentIsLargerThanOne_Then_ResultShouldContainMagnitudeExpression(
+            double exponent)
         {
             var flatRepresentation = FlatUnit.CreateFlatRepresentation(new FlatUnit("s", exponent: exponent));
             var testee = flatRepresentation.GetConsumer();
@@ -26,13 +33,15 @@
         }
 
         [Fact]
-        public void GetResultingExpression_When_UnitIsRequestedTwice_Then_ResultShouldBeNull()
+        public void GetResultingExpression_When_BaseUnitIsAddedFirst_Then_ResultShouldBeNull()
         {
             var flatRepresentation = FlatUnit.CreateFlatRepresentation(new FlatUnit("s"));
             var testee = flatRepresentation.GetConsumer();
-            testee.GetResultingExpression(new UnitExpression(new Unit("s")), false);
 
-            var result = testee.GetResultingExpression(new UnitExpression(new Unit("s")), false);
+            var result =
+                testee.GetResultingExpression(
+                    new UnitExpression(new FactoredUnit(60, "min", new UnitExpression(new Unit("s")))),
+                    false);
 
             result.Should().BeNull();
         }
@@ -49,18 +58,37 @@
         }
 
         [Fact]
-        public void GetResultingExpression_When_UnitReducedByBaseUnitAndBaseUnitIsAddedFirst_Then_ResultShouldBeBaseUnitExpression()
+        public void GetResultingExpression_When_UnitIsRequestedTwice_Then_ResultShouldBeNull()
+        {
+            var flatRepresentation = FlatUnit.CreateFlatRepresentation(new FlatUnit("s"));
+            var testee = flatRepresentation.GetConsumer();
+            testee.GetResultingExpression(new UnitExpression(new Unit("s")), false);
+
+            var result = testee.GetResultingExpression(new UnitExpression(new Unit("s")), false);
+
+            result.Should().BeNull();
+        }
+
+        [Fact]
+        public void
+            GetResultingExpression_When_UnitReducedByBaseUnitAndBaseUnitIsAddedFirst_Then_ResultShouldBeBaseUnitExpression
+            ()
         {
             var flatRepresentation = FlatUnit.CreateFlatRepresentation(new FlatUnit("s"));
             var testee = flatRepresentation.GetConsumer();
 
-            var result = testee.GetResultingExpression(new UnitExpression(new FactoredUnit(60, "min", new UnitExpression(new Unit("s")))), true);
+            var result =
+                testee.GetResultingExpression(
+                    new UnitExpression(new FactoredUnit(60, "min", new UnitExpression(new Unit("s")))),
+                    true);
 
             result.Should().BeOfType<UnitExpression>().Which.Unit.Notation.Should().Be("s");
         }
 
         [Fact]
-        public void GetResultingExpression_When_UnitReducedByBaseUnitAndDerivedUnitIsAddedFirst_Then_ResultShouldBeBaseUnitExpression()
+        public void
+            GetResultingExpression_When_UnitReducedByBaseUnitAndDerivedUnitIsAddedFirst_Then_ResultShouldBeBaseUnitExpression
+            ()
         {
             var flatRepresentation = FlatUnit.CreateFlatRepresentation(new FlatUnit("min", "s"));
             var testee = flatRepresentation.GetConsumer();
@@ -68,17 +96,6 @@
             var result = testee.GetResultingExpression(new UnitExpression(new Unit("s")), true);
 
             result.Should().BeOfType<UnitExpression>().Which.Unit.Notation.Should().Be("min");
-        }
-
-        [Fact]
-        public void GetResultingExpression_When_BaseUnitIsAddedFirst_Then_ResultShouldBeNull()
-        {
-            var flatRepresentation = FlatUnit.CreateFlatRepresentation(new FlatUnit("s"));
-            var testee = flatRepresentation.GetConsumer();
-
-            var result = testee.GetResultingExpression(new UnitExpression(new FactoredUnit(60, "min", new UnitExpression(new Unit("s")))), false);
-
-            result.Should().BeNull();
         }
     }
 }

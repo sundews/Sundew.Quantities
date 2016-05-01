@@ -1,4 +1,10 @@
-﻿namespace Sundew.Quantities.Engine.Representations.Hierarchical.Parsing
+﻿// // --------------------------------------------------------------------------------------------------------------------
+// // <copyright file="ExpressionParser.cs" company="Hukano">
+// //   2016 (c) Hukano. All Rights Reserved. Licensed under the MIT License. See License.txt in the project root for license information.
+// // </copyright>
+// // --------------------------------------------------------------------------------------------------------------------
+
+namespace Sundew.Quantities.Engine.Representations.Hierarchical.Parsing
 {
     using System;
 
@@ -57,7 +63,10 @@
             }
         }
 
-        private static Exception CreateParseException(ExpressionError expressionError, Lexeme lexeme, IError innerError = null)
+        private static Exception CreateParseException(
+            ExpressionError expressionError,
+            Lexeme lexeme,
+            IError innerError = null)
         {
             throw new ExpressionParseException(Error.From(expressionError, lexeme, innerError));
         }
@@ -75,7 +84,8 @@
 
         private Expression MultiplicativeExpression(Lexemes lexemes, Expression lhs, ParseSettings parseSettings)
         {
-            if (lexemes.AcceptToken(Constants.Multiply) || lexemes.AcceptToken(Constants.MultiplyDot) || lexemes.AcceptToken(Constants.MultiplyCross))
+            if (lexemes.AcceptToken(Constants.Multiply) || lexemes.AcceptToken(Constants.MultiplyDot)
+                || lexemes.AcceptToken(Constants.MultiplyCross))
             {
                 var rhs = this.TryMagnitudeExpression(lexemes, parseSettings);
                 return this.MultiplicativeExpression(lexemes, new MultiplicationExpression(lhs, rhs), parseSettings);
@@ -101,14 +111,22 @@
             if (lexemes.AcceptToken(Constants.Power))
             {
                 var constantExpression = this.ConstantExpression(lexemes, parseSettings);
-                return this.MagnitudeExpression(lexemes, new MagnitudeExpression(lhs, constantExpression), parseSettings);
+                return this.MagnitudeExpression(
+                    lexemes,
+                    new MagnitudeExpression(lhs, constantExpression),
+                    parseSettings);
             }
 
             string exponent;
             if (lexemes.AcceptTokenType(TokenType.Exponent, out exponent))
             {
-                var constantExpression = new ConstantExpression(double.Parse(CharacterConverter.FromExponentNotation(exponent), parseSettings.CultureInfo));
-                return this.MagnitudeExpression(lexemes, new MagnitudeExpression(lhs, constantExpression), parseSettings);
+                var constantExpression =
+                    new ConstantExpression(
+                        double.Parse(CharacterConverter.FromExponentNotation(exponent), parseSettings.CultureInfo));
+                return this.MagnitudeExpression(
+                    lexemes,
+                    new MagnitudeExpression(lhs, constantExpression),
+                    parseSettings);
             }
 
             return lhs;

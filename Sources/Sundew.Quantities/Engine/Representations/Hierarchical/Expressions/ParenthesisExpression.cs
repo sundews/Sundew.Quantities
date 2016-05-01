@@ -1,3 +1,9 @@
+// // --------------------------------------------------------------------------------------------------------------------
+// // <copyright file="ParenthesisExpression.cs" company="Hukano">
+// //   2016 (c) Hukano. All Rights Reserved. Licensed under the MIT License. See License.txt in the project root for license information.
+// // </copyright>
+// // --------------------------------------------------------------------------------------------------------------------
+
 namespace Sundew.Quantities.Engine.Representations.Hierarchical.Expressions
 {
     using System;
@@ -27,13 +33,27 @@ namespace Sundew.Quantities.Engine.Representations.Hierarchical.Expressions
         public Expression Expression { get; }
 
         /// <summary>
+        /// Indicates whether the current object is equal to another object of the same type.
+        /// </summary>
+        /// <param name="other">An object to compare with this object.</param>
+        /// <returns>
+        ///     <c>true</c> if the current object is equal to the <paramref name="other" /> parameter; otherwise, false.
+        /// </returns>
+        public bool Equals(ParenthesisExpression other)
+        {
+            return this.Expression.Equals(other.Expression);
+        }
+
+        /// <summary>
         /// Visits the specified expression visitor.
         /// </summary>
         /// <typeparam name="TParameter">The type of the parameter.</typeparam>
         /// <typeparam name="TResult">The type of the result.</typeparam>
         /// <param name="expressionVisitor">The expression visitor.</param>
         /// <param name="parameter">The parameter.</param>
-        public override void Visit<TParameter, TResult>(IExpressionVisitor<TParameter, TResult> expressionVisitor, TParameter parameter)
+        public override void Visit<TParameter, TResult>(
+            IExpressionVisitor<TParameter, TResult> expressionVisitor,
+            TParameter parameter)
         {
             expressionVisitor.Parenthesis(this, parameter);
         }
@@ -96,18 +116,6 @@ namespace Sundew.Quantities.Engine.Representations.Hierarchical.Expressions
             TParameter4 parameter4)
         {
             expressionVisitor.Parenthesis(this, parameter1, parameter2, parameter3, parameter4);
-        }
-
-        /// <summary>
-        /// Indicates whether the current object is equal to another object of the same type.
-        /// </summary>
-        /// <param name="other">An object to compare with this object.</param>
-        /// <returns>
-        ///     <c>true</c> if the current object is equal to the <paramref name="other" /> parameter; otherwise, false.
-        /// </returns>
-        public bool Equals(ParenthesisExpression other)
-        {
-            return this.Expression.Equals(other.Expression);
         }
     }
 }

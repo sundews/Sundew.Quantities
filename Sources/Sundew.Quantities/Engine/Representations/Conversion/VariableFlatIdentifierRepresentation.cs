@@ -1,4 +1,10 @@
-﻿namespace Sundew.Quantities.Engine.Representations.Conversion
+﻿// // --------------------------------------------------------------------------------------------------------------------
+// // <copyright file="VariableFlatIdentifierRepresentation.cs" company="Hukano">
+// //   2016 (c) Hukano. All Rights Reserved. Licensed under the MIT License. See License.txt in the project root for license information.
+// // </copyright>
+// // --------------------------------------------------------------------------------------------------------------------
+
+namespace Sundew.Quantities.Engine.Representations.Conversion
 {
     using System;
     using System.Globalization;
@@ -11,7 +17,8 @@
     /// <summary>
     /// Flat identifier representation for <see cref="VariableExpression"/>.
     /// </summary>
-    public sealed class VariableFlatIdentifierRepresentation : IFlatIdentifierRepresentation, IEquatable<VariableFlatIdentifierRepresentation>
+    public sealed class VariableFlatIdentifierRepresentation : IFlatIdentifierRepresentation,
+                                                               IEquatable<VariableFlatIdentifierRepresentation>
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="VariableFlatIdentifierRepresentation"/> class.
@@ -41,12 +48,35 @@
         public double Exponent { get; }
 
         /// <summary>
+        /// A value indicating whether the specified instance is equal to this instance.
+        /// </summary>
+        /// <param name="other">The other.</param>
+        /// <returns><c>true</c> if the instances are equal.</returns>
+        public bool Equals(VariableFlatIdentifierRepresentation other)
+        {
+            return EqualityHelper.Equals(
+                this,
+                other,
+                () => this.VariableExpression.Equals(other.VariableExpression) && this.Exponent.Equals(other.Exponent));
+        }
+
+        /// <summary>
         /// To the resulting expression.
         /// </summary>
         /// <returns>The resulting <see cref="Expression"/>.</returns>
         public Expression ToResultingExpression()
         {
             return FlatPresentationHelper.CreateResultingExpression(this.VariableExpression, this.Exponent);
+        }
+
+        /// <summary>
+        /// A value indicating whether the specified instance is equal to this instance.
+        /// </summary>
+        /// <param name="other">The other.</param>
+        /// <returns><c>true</c> if the instances are equal.</returns>
+        public bool Equals(IFlatIdentifierRepresentation other)
+        {
+            return EqualityHelper.Equals(this, other);
         }
 
         /// <summary>
@@ -57,7 +87,10 @@
         /// </returns>
         public override int GetHashCode()
         {
-            return EqualityHelper.GetHashCode(this.VariableExpression.VariableName, FlatPresentationHelper.HatHashCode, this.Exponent);
+            return EqualityHelper.GetHashCode(
+                this.VariableExpression.VariableName,
+                FlatPresentationHelper.HatHashCode,
+                this.Exponent);
         }
 
         /// <summary>
@@ -73,29 +106,6 @@
         }
 
         /// <summary>
-        /// A value indicating whether the specified instance is equal to this instance.
-        /// </summary>
-        /// <param name="other">The other.</param>
-        /// <returns><c>true</c> if the instances are equal.</returns>
-        public bool Equals(IFlatIdentifierRepresentation other)
-        {
-            return EqualityHelper.Equals(this, other);
-        }
-
-        /// <summary>
-        /// A value indicating whether the specified instance is equal to this instance.
-        /// </summary>
-        /// <param name="other">The other.</param>
-        /// <returns><c>true</c> if the instances are equal.</returns>
-        public bool Equals(VariableFlatIdentifierRepresentation other)
-        {
-            return EqualityHelper.Equals(
-                this,
-                other,
-                () => this.VariableExpression.Equals(other.VariableExpression) && this.Exponent.Equals(other.Exponent));
-        }
-
-        /// <summary>
         /// Returns a <see cref="System.String" /> that represents this instance.
         /// </summary>
         /// <returns>
@@ -103,7 +113,8 @@
         /// </returns>
         public override string ToString()
         {
-            return this.VariableExpression + CharacterConverter.ToExponentNotation(this.Exponent.ToString(CultureInfo.CurrentCulture));
+            return this.VariableExpression
+                   + CharacterConverter.ToExponentNotation(this.Exponent.ToString(CultureInfo.CurrentCulture));
         }
     }
 }

@@ -1,4 +1,10 @@
-﻿namespace Sundew.Quantities.AcceptanceTests.Integrity
+﻿// // --------------------------------------------------------------------------------------------------------------------
+// // <copyright file="IntegrityHelper.cs" company="Hukano">
+// //   2016 (c) Hukano. All Rights Reserved. Licensed under the MIT License. See License.txt in the project root for license information.
+// // </copyright>
+// // --------------------------------------------------------------------------------------------------------------------
+
+namespace Sundew.Quantities.AcceptanceTests.Integrity
 {
     using System;
     using System.Collections.Generic;
@@ -9,10 +15,9 @@
     {
         public static IEnumerable<Type> GetDerivedTypes(Type baseType, IEnumerable<Type> excludedTypes)
         {
-            return baseType.Assembly.GetTypes()
-                                        .Where(
-                                            type =>
-                                            baseType.IsAssignableFrom(type) && type != baseType && !excludedTypes.Contains(type));
+            return
+                baseType.Assembly.GetTypes()
+                    .Where(type => baseType.IsAssignableFrom(type) && type != baseType && !excludedTypes.Contains(type));
         }
 
         public static string GetTypes(IList<Type> incompleteTypes)

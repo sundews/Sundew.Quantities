@@ -1,4 +1,10 @@
-﻿namespace Sundew.Quantities.Photometry
+﻿// // --------------------------------------------------------------------------------------------------------------------
+// // <copyright file="PhotometryExtensions.cs" company="Hukano">
+// //   2016 (c) Hukano. All Rights Reserved. Licensed under the MIT License. See License.txt in the project root for license information.
+// // </copyright>
+// // --------------------------------------------------------------------------------------------------------------------
+
+namespace Sundew.Quantities.Photometry
 {
     using System;
 
@@ -29,8 +35,9 @@
         /// <param name="value">The value.</param>
         /// <param name="unitSelector">The unit selector.</param>
         /// <returns>A <see cref="LuminousIntensity"/>.</returns>
-        public static LuminousIntensity ToLuminousIntensity<TValue>(this TValue value, SelectUnit<LuminousIntensityUnitSelector> unitSelector)
-            where TValue : struct, IComparable, IFormattable
+        public static LuminousIntensity ToLuminousIntensity<TValue>(
+            this TValue value,
+            SelectUnit<LuminousIntensityUnitSelector> unitSelector) where TValue : struct, IComparable, IFormattable
         {
             return new LuminousIntensity(Convert.ToDouble(value), unitSelector);
         }
@@ -41,8 +48,7 @@
         /// <typeparam name="TValue">The type of the value.</typeparam>
         /// <param name="value">The value.</param>
         /// <returns>A <see cref="LuminousFlux"/>.</returns>
-        public static LuminousFlux Lumens<TValue>(this TValue value)
-            where TValue : struct, IComparable, IFormattable
+        public static LuminousFlux Lumens<TValue>(this TValue value) where TValue : struct, IComparable, IFormattable
         {
             return value.ToLuminousFlux(x => x.Lumens);
         }
@@ -54,8 +60,9 @@
         /// <param name="value">The value.</param>
         /// <param name="unitSelector">The unit selector.</param>
         /// <returns>A <see cref="LuminousFlux"/>.</returns>
-        public static LuminousFlux ToLuminousFlux<TValue>(this TValue value, SelectUnit<LuminousFluxUnitSelector> unitSelector)
-            where TValue : struct, IComparable, IFormattable
+        public static LuminousFlux ToLuminousFlux<TValue>(
+            this TValue value,
+            SelectUnit<LuminousFluxUnitSelector> unitSelector) where TValue : struct, IComparable, IFormattable
         {
             return new LuminousFlux(Convert.ToDouble(value), unitSelector);
         }
@@ -66,8 +73,7 @@
         /// <typeparam name="TValue">The type of the value.</typeparam>
         /// <param name="value">The value.</param>
         /// <returns>A <see cref="Illuminance"/>.</returns>
-        public static Illuminance Lux<TValue>(this TValue value)
-            where TValue : struct, IComparable, IFormattable
+        public static Illuminance Lux<TValue>(this TValue value) where TValue : struct, IComparable, IFormattable
         {
             return value.ToIlluminance(x => x.Lux);
         }
@@ -79,8 +85,9 @@
         /// <param name="value">The value.</param>
         /// <param name="unitSelector">The unit selector.</param>
         /// <returns>A <see cref="Illuminance"/>.</returns>
-        public static Illuminance ToIlluminance<TValue>(this TValue value, SelectUnit<IlluminanceUnitSelector> unitSelector)
-            where TValue : struct, IComparable, IFormattable
+        public static Illuminance ToIlluminance<TValue>(
+            this TValue value,
+            SelectUnit<IlluminanceUnitSelector> unitSelector) where TValue : struct, IComparable, IFormattable
         {
             return new Illuminance(Convert.ToDouble(value), unitSelector);
         }

@@ -1,4 +1,10 @@
-﻿namespace Sundew.Quantities.Engine.Representations.Evaluation
+﻿// // --------------------------------------------------------------------------------------------------------------------
+// // <copyright file="ExpressionRewriter.cs" company="Hukano">
+// //   2016 (c) Hukano. All Rights Reserved. Licensed under the MIT License. See License.txt in the project root for license information.
+// // </copyright>
+// // --------------------------------------------------------------------------------------------------------------------
+
+namespace Sundew.Quantities.Engine.Representations.Evaluation
 {
     using System;
 
@@ -10,7 +16,9 @@
     /// <summary>
     /// Implements <see cref="IExpressionRewriter"/> for rewriting <see cref="Expression"/>s.
     /// </summary>
-    public partial class ExpressionRewriter : IExpressionRewriter, IExpressionVisitor<bool, FlatRepresentationConsumer, Reference<Expression>, Expression>
+    public partial class ExpressionRewriter : IExpressionRewriter,
+                                              IExpressionVisitor
+                                                  <bool, FlatRepresentationConsumer, Reference<Expression>, Expression>
     {
         /// <summary>
         /// Rewrites the specified expression.
@@ -21,7 +29,10 @@
         /// <returns>
         /// The rewritten <see cref="Expression" />.
         /// </returns>
-        public Expression Rewrite(Expression expression, bool reduceByBaseUnit, FlatRepresentationConsumer flatRepresentationConsumer)
+        public Expression Rewrite(
+            Expression expression,
+            bool reduceByBaseUnit,
+            FlatRepresentationConsumer flatRepresentationConsumer)
         {
             return this.Visit(expression, reduceByBaseUnit, flatRepresentationConsumer);
         }
@@ -34,7 +45,11 @@
         /// <param name="flatRepresentationConsumer">The flat representation consumer.</param>
         /// <param name="currentResult">The current result.</param>
         /// <returns>The rewritten <see cref="Expression"/>.</returns>
-        public Expression Visit(Expression expression, bool reduceByBaseUnit = false, FlatRepresentationConsumer flatRepresentationConsumer = null, Reference<Expression> currentResult = null)
+        public Expression Visit(
+            Expression expression,
+            bool reduceByBaseUnit = false,
+            FlatRepresentationConsumer flatRepresentationConsumer = null,
+            Reference<Expression> currentResult = null)
         {
             currentResult = currentResult ?? new Reference<Expression>(expression);
             expression.Visit(this, reduceByBaseUnit, flatRepresentationConsumer, currentResult);
@@ -54,13 +69,21 @@
         /// <param name="reduceByBaseUnit">If set to <c>true</c> the expression is reduced by the base unit.</param>
         /// <param name="flatRepresentationConsumer">The flat representation consumer.</param>
         /// <param name="currentResult">The current result.</param>
-        public void Multiply(MultiplicationExpression multiplicationExpression, bool reduceByBaseUnit, FlatRepresentationConsumer flatRepresentationConsumer, Reference<Expression> currentResult)
+        public void Multiply(
+            MultiplicationExpression multiplicationExpression,
+            bool reduceByBaseUnit,
+            FlatRepresentationConsumer flatRepresentationConsumer,
+            Reference<Expression> currentResult)
         {
             multiplicationExpression.Lhs.Visit(this, reduceByBaseUnit, flatRepresentationConsumer, currentResult);
             var lhs = currentResult.Value;
             multiplicationExpression.Rhs.Visit(this, reduceByBaseUnit, flatRepresentationConsumer, currentResult);
             var rhs = currentResult.Value;
-            currentResult.Value = this.SelectCurrentExpression(multiplicationExpression, lhs, rhs, (newLhs, newRhs) => new MultiplicationExpression(newLhs, newRhs));
+            currentResult.Value = this.SelectCurrentExpression(
+                multiplicationExpression,
+                lhs,
+                rhs,
+                (newLhs, newRhs) => new MultiplicationExpression(newLhs, newRhs));
         }
 
         /// <summary>
@@ -70,13 +93,21 @@
         /// <param name="reduceByBaseUnit">If set to <c>true</c> the expression is reduced by the base unit.</param>
         /// <param name="flatRepresentationConsumer">The flat representation consumer.</param>
         /// <param name="currentResult">The current result.</param>
-        public void Divide(DivisionExpression divisionExpression, bool reduceByBaseUnit, FlatRepresentationConsumer flatRepresentationConsumer, Reference<Expression> currentResult)
+        public void Divide(
+            DivisionExpression divisionExpression,
+            bool reduceByBaseUnit,
+            FlatRepresentationConsumer flatRepresentationConsumer,
+            Reference<Expression> currentResult)
         {
             divisionExpression.Lhs.Visit(this, reduceByBaseUnit, flatRepresentationConsumer, currentResult);
             var lhs = currentResult.Value;
             divisionExpression.Rhs.Visit(this, reduceByBaseUnit, flatRepresentationConsumer, currentResult);
             var rhs = currentResult.Value;
-            currentResult.Value = this.SelectCurrentExpression(divisionExpression, lhs, rhs, (newLhs, newRhs) => new DivisionExpression(newLhs, newRhs));
+            currentResult.Value = this.SelectCurrentExpression(
+                divisionExpression,
+                lhs,
+                rhs,
+                (newLhs, newRhs) => new DivisionExpression(newLhs, newRhs));
         }
 
         /// <summary>
@@ -86,7 +117,11 @@
         /// <param name="reduceByBaseUnit">If set to <c>true</c> the expression is reduced by the base unit.</param>
         /// <param name="flatRepresentationConsumer">The flat representation consumer.</param>
         /// <param name="currentResult">The current result.</param>
-        public void Magnitude(MagnitudeExpression magnitudeExpression, bool reduceByBaseUnit, FlatRepresentationConsumer flatRepresentationConsumer, Reference<Expression> currentResult)
+        public void Magnitude(
+            MagnitudeExpression magnitudeExpression,
+            bool reduceByBaseUnit,
+            FlatRepresentationConsumer flatRepresentationConsumer,
+            Reference<Expression> currentResult)
         {
             magnitudeExpression.Lhs.Visit(this, reduceByBaseUnit, flatRepresentationConsumer, currentResult);
         }
@@ -98,7 +133,11 @@
         /// <param name="reduceByBaseUnit">If set to <c>true</c> the expression is reduced by the base unit.</param>
         /// <param name="flatRepresentationConsumer">The flat representation consumer.</param>
         /// <param name="currentResult">The current result.</param>
-        public void Parenthesis(ParenthesisExpression parenthesisExpression, bool reduceByBaseUnit, FlatRepresentationConsumer flatRepresentationConsumer, Reference<Expression> currentResult)
+        public void Parenthesis(
+            ParenthesisExpression parenthesisExpression,
+            bool reduceByBaseUnit,
+            FlatRepresentationConsumer flatRepresentationConsumer,
+            Reference<Expression> currentResult)
         {
             parenthesisExpression.Expression.Visit(this, reduceByBaseUnit, flatRepresentationConsumer, currentResult);
             if (ReferenceEquals(parenthesisExpression.Expression, currentResult.Value))
@@ -118,7 +157,11 @@
         /// <param name="reduceByBaseUnit">If set to <c>true</c> the expression is reduced by the base unit.</param>
         /// <param name="flatRepresentationConsumer">The flat representation consumer.</param>
         /// <param name="currentResult">The current result.</param>
-        public void Unit(UnitExpression unitExpression, bool reduceByBaseUnit, FlatRepresentationConsumer flatRepresentationConsumer, Reference<Expression> currentResult)
+        public void Unit(
+            UnitExpression unitExpression,
+            bool reduceByBaseUnit,
+            FlatRepresentationConsumer flatRepresentationConsumer,
+            Reference<Expression> currentResult)
         {
             currentResult.Value = flatRepresentationConsumer.GetResultingExpression(unitExpression, reduceByBaseUnit);
         }
@@ -130,7 +173,11 @@
         /// <param name="reduceByBaseUnit">If set to <c>true</c> the expression is reduced by the base unit.</param>
         /// <param name="flatRepresentationConsumer">The flat representation consumer.</param>
         /// <param name="currentResult">The current result.</param>
-        public void Variable(VariableExpression variableExpression, bool reduceByBaseUnit, FlatRepresentationConsumer flatRepresentationConsumer, Reference<Expression> currentResult)
+        public void Variable(
+            VariableExpression variableExpression,
+            bool reduceByBaseUnit,
+            FlatRepresentationConsumer flatRepresentationConsumer,
+            Reference<Expression> currentResult)
         {
             currentResult.Value = flatRepresentationConsumer.GetResultingExpression(variableExpression);
         }
@@ -142,12 +189,20 @@
         /// <param name="reduceByBaseUnit">If set to <c>true</c> the expression is reduced by the base unit.</param>
         /// <param name="flatRepresentationConsumer">The flat representation consumer.</param>
         /// <param name="currentResult">The current result.</param>
-        public void Constant(ConstantExpression constantExpression, bool reduceByBaseUnit, FlatRepresentationConsumer flatRepresentationConsumer, Reference<Expression> currentResult)
+        public void Constant(
+            ConstantExpression constantExpression,
+            bool reduceByBaseUnit,
+            FlatRepresentationConsumer flatRepresentationConsumer,
+            Reference<Expression> currentResult)
         {
             currentResult.Value = flatRepresentationConsumer.GetResultingExpression(constantExpression);
         }
 
-        private Expression SelectCurrentExpression<TExpression>(TExpression originalExpression, Expression newLhs, Expression newRhs, Func<Expression, Expression, Expression> bothHaveChangedFactory)
+        private Expression SelectCurrentExpression<TExpression>(
+            TExpression originalExpression,
+            Expression newLhs,
+            Expression newRhs,
+            Func<Expression, Expression, Expression> bothHaveChangedFactory)
             where TExpression : Expression, IHaveLhsAndRhs<Expression>
         {
             if (ReferenceEquals(originalExpression.Lhs, newLhs) && ReferenceEquals(originalExpression.Rhs, newRhs))

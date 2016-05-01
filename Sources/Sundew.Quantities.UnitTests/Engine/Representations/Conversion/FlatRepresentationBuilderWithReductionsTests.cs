@@ -1,4 +1,10 @@
-﻿namespace Sundew.Quantities.UnitTests.Engine.Representations.Conversion
+﻿// // --------------------------------------------------------------------------------------------------------------------
+// // <copyright file="FlatRepresentationBuilderWithReductionsTests.cs" company="Hukano">
+// //   2016 (c) Hukano. All Rights Reserved. Licensed under the MIT License. See License.txt in the project root for license information.
+// // </copyright>
+// // --------------------------------------------------------------------------------------------------------------------
+
+namespace Sundew.Quantities.UnitTests.Engine.Representations.Conversion
 {
     using FluentAssertions;
 
@@ -11,12 +17,12 @@
 
     public class FlatRepresentationBuilderWithReductionsTests
     {
-        private readonly FlatRepresentationBuilderWithReductions flatRepresentationBuilderWithReductions;
-
         public FlatRepresentationBuilderWithReductionsTests()
         {
             this.flatRepresentationBuilderWithReductions = new FlatRepresentationBuilderWithReductions(0);
         }
+
+        private readonly FlatRepresentationBuilderWithReductions flatRepresentationBuilderWithReductions;
 
         [Fact]
         public void Build_Then_ResultShouldContainExpectedInOrder()
@@ -40,7 +46,7 @@
 
             result.Should().BeFalse();
         }
-        
+
         [Fact]
         public void Reductions_When_AddedUnitsHasNotPreviouslyBeenAdded_Then_ResultShouldBeEmpty()
         {
@@ -71,7 +77,9 @@
 
             var result = this.flatRepresentationBuilderWithReductions.Reductions;
 
-            result.Should().ContainSingle(reduction => reduction.ReducedUnit.Notation == "s" && reduction.TargetUnit.Notation == "s");
+            result.Should()
+                .ContainSingle(
+                    reduction => reduction.ReducedUnit.Notation == "s" && reduction.TargetUnit.Notation == "s");
         }
     }
 }

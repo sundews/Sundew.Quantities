@@ -1,4 +1,10 @@
-﻿namespace Sundew.Quantities.Electromagnetism.UnitSelection
+﻿// // --------------------------------------------------------------------------------------------------------------------
+// // <copyright file="PotentialUnitSelector.cs" company="Hukano">
+// //   2016 (c) Hukano. All Rights Reserved. Licensed under the MIT License. See License.txt in the project root for license information.
+// // </copyright>
+// // --------------------------------------------------------------------------------------------------------------------
+
+namespace Sundew.Quantities.Electromagnetism.UnitSelection
 {
     using System.Collections.Generic;
 
@@ -10,7 +16,8 @@
     /// <summary>
     /// Unit selector for <see cref="Potential"/>.
     /// </summary>
-    public class PotentialUnitSelector : PrefixSelector<IPotentialUnitSelector, IPrefixSelector<IPotentialUnitSelector>>, IPotentialUnitSelector
+    public class PotentialUnitSelector : PrefixSelector<IPotentialUnitSelector, IPrefixSelector<IPotentialUnitSelector>>,
+                                         IPotentialUnitSelector
     {
         /// <summary>
         /// Gets the base unit.

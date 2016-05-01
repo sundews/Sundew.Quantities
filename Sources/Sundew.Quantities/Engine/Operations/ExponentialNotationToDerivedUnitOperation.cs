@@ -1,4 +1,10 @@
-﻿namespace Sundew.Quantities.Engine.Operations
+﻿// // --------------------------------------------------------------------------------------------------------------------
+// // <copyright file="ExponentialNotationToDerivedUnitOperation.cs" company="Hukano">
+// //   2016 (c) Hukano. All Rights Reserved. Licensed under the MIT License. See License.txt in the project root for license information.
+// // </copyright>
+// // --------------------------------------------------------------------------------------------------------------------
+
+namespace Sundew.Quantities.Engine.Operations
 {
     using Sundew.Quantities.Engine.Representations.Evaluation;
     using Sundew.Quantities.Engine.Representations.Hierarchical.Units;
@@ -18,7 +24,9 @@
         /// </summary>
         /// <param name="unitFactory">The unit factory.</param>
         /// <param name="unitOperation">The unit operation.</param>
-        public UnitOperationToDerivedUnitOperation(IUnitFactory unitFactory, IUnitOperation<ReductionResult> unitOperation)
+        public UnitOperationToDerivedUnitOperation(
+            IUnitFactory unitFactory,
+            IUnitOperation<ReductionResult> unitOperation)
         {
             this.unitFactory = unitFactory;
             this.unitOperation = unitOperation;

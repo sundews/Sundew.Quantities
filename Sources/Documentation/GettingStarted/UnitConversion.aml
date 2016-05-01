@@ -27,7 +27,9 @@
         <content>
           <code lang="cs" source="..\Sources\Sundew.Quantities.Samples\UnitConversion.cs" region="UsageDistance" title="Usage" />
         </content>
-        <para></para>
+	  </section>
+	  <para/>
+	  <section>
         <title>Volume</title>
         <content>
           <code lang="cs" source="..\Sources\Sundew.Quantities.Samples\UnitConversion.cs" region="UsageVolume" title="Usage" />

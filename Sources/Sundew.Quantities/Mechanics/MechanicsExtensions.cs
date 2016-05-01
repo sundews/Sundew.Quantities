@@ -1,4 +1,10 @@
-﻿namespace Sundew.Quantities.Mechanics
+﻿// // --------------------------------------------------------------------------------------------------------------------
+// // <copyright file="MechanicsExtensions.cs" company="Hukano">
+// //   2016 (c) Hukano. All Rights Reserved. Licensed under the MIT License. See License.txt in the project root for license information.
+// // </copyright>
+// // --------------------------------------------------------------------------------------------------------------------
+
+namespace Sundew.Quantities.Mechanics
 {
     using System;
 
@@ -16,8 +22,7 @@
         /// <typeparam name="TValue">The type of the value.</typeparam>
         /// <param name="value">The mass value.</param>
         /// <returns>A new <see cref="Mass"/>.</returns>
-        public static Mass Grams<TValue>(this TValue value)
-            where TValue : struct, IComparable, IFormattable
+        public static Mass Grams<TValue>(this TValue value) where TValue : struct, IComparable, IFormattable
         {
             return value.ToMass(x => x.Grams);
         }
@@ -28,8 +33,7 @@
         /// <typeparam name="TValue">The type of the value.</typeparam>
         /// <param name="value">The mass value.</param>
         /// <returns>A new <see cref="Mass"/>.</returns>
-        public static Mass KiloGrams<TValue>(this TValue value)
-            where TValue : struct, IComparable, IFormattable
+        public static Mass KiloGrams<TValue>(this TValue value) where TValue : struct, IComparable, IFormattable
         {
             return value.ToMass(x => x.KiloGrams);
         }
@@ -53,8 +57,7 @@
         /// <typeparam name="TValue">The type of the value.</typeparam>
         /// <param name="value">The energy value.</param>
         /// <returns>A new <see cref="Energy"/>.</returns>
-        public static Energy Joules<TValue>(this TValue value) 
-            where TValue : struct, IComparable, IFormattable
+        public static Energy Joules<TValue>(this TValue value) where TValue : struct, IComparable, IFormattable
         {
             return value.ToEnergy(x => x.Joules);
         }
@@ -78,8 +81,7 @@
         /// <typeparam name="TValue">The type of the value.</typeparam>
         /// <param name="value">The force value.</param>
         /// <returns>A new <see cref="Force"/>.</returns>
-        public static Force Newtons<TValue>(this TValue value)
-            where TValue : struct, IComparable, IFormattable
+        public static Force Newtons<TValue>(this TValue value) where TValue : struct, IComparable, IFormattable
         {
             return value.ToForce(x => x.Newtons);
         }
@@ -128,8 +130,7 @@
         /// <typeparam name="TValue">The type of the value.</typeparam>
         /// <param name="value">The power value.</param>
         /// <returns>A new <see cref="Power"/>.</returns>
-        public static Power Watts<TValue>(this TValue value)
-            where TValue : struct, IComparable, IFormattable
+        public static Power Watts<TValue>(this TValue value) where TValue : struct, IComparable, IFormattable
         {
             return value.ToPower(x => x.Watts);
         }
@@ -153,8 +154,7 @@
         /// <typeparam name="TValue">The type of the value.</typeparam>
         /// <param name="value">The pressure value.</param>
         /// <returns>A new <see cref="Pressure"/>.</returns>
-        public static Pressure Pascals<TValue>(this TValue value)
-            where TValue : struct, IComparable, IFormattable
+        public static Pressure Pascals<TValue>(this TValue value) where TValue : struct, IComparable, IFormattable
         {
             return value.ToPressure(x => x.Pascals);
         }

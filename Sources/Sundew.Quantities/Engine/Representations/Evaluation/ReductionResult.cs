@@ -1,4 +1,10 @@
-﻿namespace Sundew.Quantities.Engine.Representations.Evaluation
+﻿// // --------------------------------------------------------------------------------------------------------------------
+// // <copyright file="ReductionResult.cs" company="Hukano">
+// //   2016 (c) Hukano. All Rights Reserved. Licensed under the MIT License. See License.txt in the project root for license information.
+// // </copyright>
+// // --------------------------------------------------------------------------------------------------------------------
+
+namespace Sundew.Quantities.Engine.Representations.Evaluation
 {
     using Sundew.Quantities.Engine.Representations.Flat;
     using Sundew.Quantities.Engine.Representations.Hierarchical.Expressions;
@@ -42,7 +48,10 @@
         /// </returns>
         public Expression GetReducedExpression(IExpressionRewriter expressionRewriter)
         {
-            return expressionRewriter.Rewrite(this.expression, this.reduceByBaseUnit, this.FlatRepresentation.GetConsumer());
+            return expressionRewriter.Rewrite(
+                this.expression,
+                this.reduceByBaseUnit,
+                this.FlatRepresentation.GetConsumer());
         }
     }
 }

@@ -1,4 +1,10 @@
-﻿namespace Sundew.Quantities.Spatial.UnitSelection
+﻿// // --------------------------------------------------------------------------------------------------------------------
+// // <copyright file="AngleUnitSelector.cs" company="Hukano">
+// //   2016 (c) Hukano. All Rights Reserved. Licensed under the MIT License. See License.txt in the project root for license information.
+// // </copyright>
+// // --------------------------------------------------------------------------------------------------------------------
+
+namespace Sundew.Quantities.Spatial.UnitSelection
 {
     using System.Collections.Generic;
 
@@ -10,7 +16,8 @@
     /// <summary>
     /// Unit selector for <see cref="Angle"/>.
     /// </summary>
-    public class AngleUnitSelector : PrefixSelector<IAngleUnitSelector, IPrefixSelector<IAngleUnitSelector>>, IAngleUnitSelector
+    public class AngleUnitSelector : PrefixSelector<IAngleUnitSelector, IPrefixSelector<IAngleUnitSelector>>,
+                                     IAngleUnitSelector
     {
         /// <summary>
         /// Gets the base unit.
@@ -43,7 +50,6 @@
         /// The turns.
         /// </value>
         public Expression Turns => this.SpecifyUnit(UnitDefinitions.Turn);
-
 
         /// <summary>
         /// Gets the default units.

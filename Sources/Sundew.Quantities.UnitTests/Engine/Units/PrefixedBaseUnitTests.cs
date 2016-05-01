@@ -1,3 +1,9 @@
+// // --------------------------------------------------------------------------------------------------------------------
+// // <copyright file="PrefixedBaseUnitTests.cs" company="Hukano">
+// //   2016 (c) Hukano. All Rights Reserved. Licensed under the MIT License. See License.txt in the project root for license information.
+// // </copyright>
+// // --------------------------------------------------------------------------------------------------------------------
+
 namespace Sundew.Quantities.UnitTests.Engine.Units
 {
     using FluentAssertions;
@@ -12,12 +18,24 @@ namespace Sundew.Quantities.UnitTests.Engine.Units
     {
         private readonly PrefixedBaseUnit testee = new PrefixedBaseUnit(Prefixes.Kilo, "g");
 
-        [Fact]
-        public void GetBaseNotation_Then_ResultShouldBeKg()
+        [Theory]
+        [InlineData("mg")]
+        public void GetPrefixedUnit_When_PrefixIsMilli_Then_ResultNotationShouldBeExpectedNotation(
+            string expectedNotation)
         {
-            var result = this.testee.GetBaseNotation();
+            var result = this.testee.GetPrefixedUnit(Prefixes.Milli);
 
-            result.Should().Be("kg");
+            result.Notation.Should().Be(expectedNotation);
+        }
+
+        [Theory]
+        [InlineData("g")]
+        public void GetPrefixedUnit_When_PrefixIsNone_Then_ResultNotationShouldBeExpectedNotation(
+            string expectedNotation)
+        {
+            var result = this.testee.GetPrefixedUnit(Prefix.None);
+
+            result.Notation.Should().Be(expectedNotation);
         }
 
         [Fact]
@@ -28,22 +46,12 @@ namespace Sundew.Quantities.UnitTests.Engine.Units
             result.Should().Be(DefaultVisitors.BaseExpressionVisitor.Visit(result));
         }
 
-        [Theory]
-        [InlineData("mg")]
-        public void GetPrefixedUnit_When_PrefixIsMilli_Then_ResultNotationShouldBeExpectedNotation(string expectedNotation)
+        [Fact]
+        public void GetBaseNotation_Then_ResultShouldBeKg()
         {
-            var result = this.testee.GetPrefixedUnit(Prefixes.Milli);
+            var result = this.testee.GetBaseNotation();
 
-            result.Notation.Should().Be(expectedNotation);
-        }
-
-        [Theory]
-        [InlineData("g")]
-        public void GetPrefixedUnit_When_PrefixIsNone_Then_ResultNotationShouldBeExpectedNotation(string expectedNotation)
-        {
-            var result = this.testee.GetPrefixedUnit(Prefix.None);
-
-            result.Notation.Should().Be(expectedNotation);
+            result.Should().Be("kg");
         }
     }
 }

@@ -1,4 +1,10 @@
-﻿namespace Sundew.Quantities.Engine.Representations.Conversion
+﻿// // --------------------------------------------------------------------------------------------------------------------
+// // <copyright file="FlatRepresentationConsumer.cs" company="Hukano">
+// //   2016 (c) Hukano. All Rights Reserved. Licensed under the MIT License. See License.txt in the project root for license information.
+// // </copyright>
+// // --------------------------------------------------------------------------------------------------------------------
+
+namespace Sundew.Quantities.Engine.Representations.Conversion
 {
     using System.Collections.Generic;
 
@@ -14,7 +20,8 @@
 
         private readonly HashSet<string> usedExpressions;
 
-        internal FlatRepresentationConsumer(Dictionary<string, IFlatIdentifierRepresentation> flatIdentifierRepresentations)
+        internal FlatRepresentationConsumer(
+            Dictionary<string, IFlatIdentifierRepresentation> flatIdentifierRepresentations)
         {
             this.flatIdentifierRepresentations = flatIdentifierRepresentations;
             this.usedExpressions = new HashSet<string>();
@@ -55,7 +62,8 @@
         private Expression GetResultingExpression(string identifier)
         {
             IFlatIdentifierRepresentation flatIdentifierRepresentation;
-            if (this.flatIdentifierRepresentations.TryGetValue(identifier, out flatIdentifierRepresentation) && !this.usedExpressions.Contains(identifier))
+            if (this.flatIdentifierRepresentations.TryGetValue(identifier, out flatIdentifierRepresentation)
+                && !this.usedExpressions.Contains(identifier))
             {
                 this.usedExpressions.Add(identifier);
                 return flatIdentifierRepresentation.ToResultingExpression();

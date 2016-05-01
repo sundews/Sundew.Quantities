@@ -1,4 +1,10 @@
-﻿namespace Sundew.Quantities.Spacetime.UnitSelection
+﻿// // --------------------------------------------------------------------------------------------------------------------
+// // <copyright file="SpacetimeUnitSelector.cs" company="Hukano">
+// //   2016 (c) Hukano. All Rights Reserved. Licensed under the MIT License. See License.txt in the project root for license information.
+// // </copyright>
+// // --------------------------------------------------------------------------------------------------------------------
+
+namespace Sundew.Quantities.Spacetime.UnitSelection
 {
     using Sundew.Quantities.Engine.Representations.Hierarchical.Expressions;
     using Sundew.Quantities.Engine.UnitSelection;
@@ -9,8 +15,7 @@
     /// <typeparam name="TUnits">The type of the units.</typeparam>
     /// <typeparam name="TPrefixedUnits">The type of the prefixed units.</typeparam>
     public abstract class SpacetimeUnitSelector<TUnits, TPrefixedUnits> : PrefixSelector<TUnits, TPrefixedUnits>
-        where TUnits : IUnitSelector 
-        where TPrefixedUnits : IUnitSelector, IPrefixSelector<TUnits>
+        where TUnits : IUnitSelector where TPrefixedUnits : IUnitSelector, IPrefixSelector<TUnits>
     {
         private readonly SpacetimeUnits spacetimeUnits = new SpacetimeUnits();
 

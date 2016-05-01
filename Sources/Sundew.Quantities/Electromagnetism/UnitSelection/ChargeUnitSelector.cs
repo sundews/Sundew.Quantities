@@ -1,4 +1,10 @@
-﻿namespace Sundew.Quantities.Electromagnetism.UnitSelection
+﻿// // --------------------------------------------------------------------------------------------------------------------
+// // <copyright file="ChargeUnitSelector.cs" company="Hukano">
+// //   2016 (c) Hukano. All Rights Reserved. Licensed under the MIT License. See License.txt in the project root for license information.
+// // </copyright>
+// // --------------------------------------------------------------------------------------------------------------------
+
+namespace Sundew.Quantities.Electromagnetism.UnitSelection
 {
     using System.Collections.Generic;
 
@@ -11,7 +17,8 @@
     /// <summary>
     /// Unit selector for <see cref="Charge"/>.
     /// </summary>
-    public class ChargeUnitSelector : PrefixSelector<IChargeUnitSelector, IPrefixSelector<IChargeUnitSelector>>, IChargeUnitSelector
+    public class ChargeUnitSelector : PrefixSelector<IChargeUnitSelector, IPrefixSelector<IChargeUnitSelector>>,
+                                      IChargeUnitSelector
     {
         private readonly TimeUnits timeUnits = new TimeUnits();
 

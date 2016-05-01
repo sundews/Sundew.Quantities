@@ -1,3 +1,9 @@
+// // --------------------------------------------------------------------------------------------------------------------
+// // <copyright file="IExpressionVisitor{TParameter1,TParameter2,TResult}.cs" company="Hukano">
+// //   2016 (c) Hukano. All Rights Reserved. Licensed under the MIT License. See License.txt in the project root for license information.
+// // </copyright>
+// // --------------------------------------------------------------------------------------------------------------------
+
 namespace Sundew.Quantities.Engine.Representations.Hierarchical.Visitors
 {
     using Sundew.Base.Visiting;
@@ -9,7 +15,8 @@ namespace Sundew.Quantities.Engine.Representations.Hierarchical.Visitors
     /// <typeparam name="TParameter1">The type of the parameter1.</typeparam>
     /// <typeparam name="TParameter2">The type of the parameter2.</typeparam>
     /// <typeparam name="TResult">The type of the result.</typeparam>
-    public interface IExpressionVisitor<in TParameter1, in TParameter2, out TResult> : IVisitor<Expression, TParameter1, TParameter2, TResult>
+    public interface IExpressionVisitor<in TParameter1, in TParameter2, out TResult> :
+        IVisitor<Expression, TParameter1, TParameter2, TResult>
     {
         /// <summary>
         /// Visits a <see cref="MultiplicationExpression"/>.

@@ -1,4 +1,10 @@
-﻿namespace Sundew.Quantities.Spatial.UnitSelection
+﻿// // --------------------------------------------------------------------------------------------------------------------
+// // <copyright file="VolumeUnitSelector.cs" company="Hukano">
+// //   2016 (c) Hukano. All Rights Reserved. Licensed under the MIT License. See License.txt in the project root for license information.
+// // </copyright>
+// // --------------------------------------------------------------------------------------------------------------------
+
+namespace Sundew.Quantities.Spatial.UnitSelection
 {
     using System.Collections.Generic;
 
@@ -10,7 +16,8 @@
     /// <summary>
     /// Unit selector for <see cref="Volume"/>.
     /// </summary>
-    public class VolumeUnitSelector : PrefixSelector<IVolumeUnitSelector, IPrefixedVolumeSelector>, IPrefixedVolumeSelector
+    public class VolumeUnitSelector : PrefixSelector<IVolumeUnitSelector, IPrefixedVolumeSelector>,
+                                      IPrefixedVolumeSelector
     {
         /// <summary>
         /// Gets the base unit.

@@ -1,4 +1,10 @@
-﻿namespace Sundew.Quantities.Electromagnetism
+﻿// // --------------------------------------------------------------------------------------------------------------------
+// // <copyright file="ElectricCurrent.cs" company="Hukano">
+// //   2016 (c) Hukano. All Rights Reserved. Licensed under the MIT License. See License.txt in the project root for license information.
+// // </copyright>
+// // --------------------------------------------------------------------------------------------------------------------
+
+namespace Sundew.Quantities.Electromagnetism
 {
     using Sundew.Quantities.Electromagnetism.UnitSelection;
     using Sundew.Quantities.Engine.Quantities;
@@ -15,7 +21,9 @@
         /// </summary>
         /// <param name="electricCurrent">The electricCurrent.</param>
         /// <param name="electricCurrentUnitSelector">The ElectricCurrent unit selector.</param>
-        public ElectricCurrent(double electricCurrent, SelectUnit<ElectricCurrentUnitSelector> electricCurrentUnitSelector)
+        public ElectricCurrent(
+            double electricCurrent,
+            SelectUnit<ElectricCurrentUnitSelector> electricCurrentUnitSelector)
             : base(electricCurrent, electricCurrentUnitSelector(new ElectricCurrentUnitSelector()))
         {
         }
@@ -55,7 +63,7 @@
         /// This instance.
         /// </value>
         protected override ElectricCurrent Self => this;
-        
+
         /// <summary>
         /// Increments the specified LHS with 1.
         /// </summary>
@@ -95,7 +103,7 @@
         {
             return new ElectricCurrentUnitSelector();
         }
-        
+
         /// <summary>
         /// Creates a interval based on the specified min, max and unit.
         /// </summary>
@@ -103,7 +111,10 @@
         /// <param name="max">The maximum.</param>
         /// <param name="unitSelector">The unit selector.</param>
         /// <returns>The new interval.</returns>
-        public static Interval<ElectricCurrent> Interval(double min, double max, SelectUnit<ElectricCurrentUnitSelector> unitSelector)
+        public static Interval<ElectricCurrent> Interval(
+            double min,
+            double max,
+            SelectUnit<ElectricCurrentUnitSelector> unitSelector)
         {
             return new Interval<ElectricCurrent>(min, max, unitSelector(new ElectricCurrentUnitSelector()));
         }

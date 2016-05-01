@@ -1,6 +1,11 @@
-﻿namespace Sundew.Quantities.Serialization.Poco.Mechanics
+﻿// // --------------------------------------------------------------------------------------------------------------------
+// // <copyright file="Force.cs" company="Hukano">
+// //   2016 (c) Hukano. All Rights Reserved. Licensed under the MIT License. See License.txt in the project root for license information.
+// // </copyright>
+// // --------------------------------------------------------------------------------------------------------------------
+
+namespace Sundew.Quantities.Serialization.Poco.Mechanics
 {
-    using Sundew.Quantities.Engine;
     using Sundew.Quantities.Engine.Quantities;
 
     /// <summary>
@@ -20,7 +25,7 @@
         /// </summary>
         /// <param name="quantity">The quantity.</param>
         public Force(IQuantity quantity)
-                    : base(quantity)
+            : base(quantity)
         {
         }
 

@@ -1,4 +1,10 @@
-﻿namespace Sundew.Quantities.UnitTests.Engine.Representations.Hierarchical.Parsing.LexicalAnalysis
+﻿// // --------------------------------------------------------------------------------------------------------------------
+// // <copyright file="LexicalAnalyzerTests.cs" company="Hukano">
+// //   2016 (c) Hukano. All Rights Reserved. Licensed under the MIT License. See License.txt in the project root for license information.
+// // </copyright>
+// // --------------------------------------------------------------------------------------------------------------------
+
+namespace Sundew.Quantities.UnitTests.Engine.Representations.Hierarchical.Parsing.LexicalAnalysis
 {
     using System;
     using System.Linq;
@@ -18,7 +24,7 @@
         {
             this.testee = new LexicalAnalyzer(TokenMatching.CompositeUnit);
         }
-        
+
         [Theory]
         [InlineData("m*s⁻²", new[] { "m", "*", "s", "⁻²", "" })]
         [InlineData("km", new[] { "km", "" })]

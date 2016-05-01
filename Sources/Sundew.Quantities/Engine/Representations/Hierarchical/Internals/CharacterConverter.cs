@@ -1,4 +1,10 @@
-﻿namespace Sundew.Quantities.Engine.Representations.Hierarchical.Internals
+﻿// // --------------------------------------------------------------------------------------------------------------------
+// // <copyright file="CharacterConverter.cs" company="Hukano">
+// //   2016 (c) Hukano. All Rights Reserved. Licensed under the MIT License. See License.txt in the project root for license information.
+// // </copyright>
+// // --------------------------------------------------------------------------------------------------------------------
+
+namespace Sundew.Quantities.Engine.Representations.Hierarchical.Internals
 {
     using System;
     using System.Collections.Generic;
@@ -7,6 +13,7 @@
     internal class CharacterConverter
     {
         private static readonly IDictionary<char, char> CharacterToAboveCharacter = new Dictionary<char, char>();
+
         private static readonly IDictionary<char, char> AboveCharacterToCharacter = new Dictionary<char, char>();
 
         static CharacterConverter()

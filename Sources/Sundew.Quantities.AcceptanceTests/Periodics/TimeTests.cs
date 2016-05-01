@@ -1,4 +1,10 @@
-﻿namespace Sundew.Quantities.AcceptanceTests.Periodics
+﻿// // --------------------------------------------------------------------------------------------------------------------
+// // <copyright file="TimeTests.cs" company="Hukano">
+// //   2016 (c) Hukano. All Rights Reserved. Licensed under the MIT License. See License.txt in the project root for license information.
+// // </copyright>
+// // --------------------------------------------------------------------------------------------------------------------
+
+namespace Sundew.Quantities.AcceptanceTests.Periodics
 {
     using FluentAssertions;
 
@@ -24,18 +30,6 @@
         }
 
         [Fact]
-        public void Time_Division_ThenTimeIsRhs_Then_ResultShouldBeExpected()
-        {
-            const double Expected = 5000000;
-            const double Value = 20000000;
-            var time = new Time(4, units => units.Seconds);
-
-            var result = Value / time;
-
-            result.Should().Be(Expected, "Hz", UnitFormat.Default);
-        }
-
-        [Fact]
         public void Time_Division_ThenTimeInYearsIsRhs_Then_ResultShouldBeExpected()
         {
             const double Expected = 5000000;
@@ -45,6 +39,18 @@
             var result = Value / time;
 
             result.Should().Be(Expected, "1/y", UnitFormat.Default);
+        }
+
+        [Fact]
+        public void Time_Division_ThenTimeIsRhs_Then_ResultShouldBeExpected()
+        {
+            const double Expected = 5000000;
+            const double Value = 20000000;
+            var time = new Time(4, units => units.Seconds);
+
+            var result = Value / time;
+
+            result.Should().Be(Expected, "Hz", UnitFormat.Default);
         }
     }
 }

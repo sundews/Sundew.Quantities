@@ -1,24 +1,25 @@
-﻿namespace Sundew.Quantities.Serialization.Poco.AcceptanceTests.Thermodynamics
+﻿// // --------------------------------------------------------------------------------------------------------------------
+// // <copyright file="TemperatureTests.cs" company="Hukano">
+// //   2016 (c) Hukano. All Rights Reserved. Licensed under the MIT License. See License.txt in the project root for license information.
+// // </copyright>
+// // --------------------------------------------------------------------------------------------------------------------
+
+namespace Sundew.Quantities.Serialization.Poco.AcceptanceTests.Thermodynamics
 {
     using FluentAssertions;
 
     using Newtonsoft.Json;
-    using Poco.Thermodynamics;
+
+    using Sundew.Quantities.Serialization.Poco.Thermodynamics;
     using Sundew.Quantities.Thermodynamics;
 
     using Xunit;
 
     public class TemperatureTests
     {
-        [Fact]
-        public void SerializeObject_Then_ResultShouldShouldBeExpected()
+        public class ConfigurationContainer
         {
-            const string Expected = "{\"Value\":5.0,\"Unit\":\"°C\"}";
-            var testee = 5.Celsius().ToSerializable();
-
-            var result = JsonConvert.SerializeObject(testee);
-
-            result.Should().Be(Expected);
+            public Poco.Thermodynamics.Temperature Temperature { get; set; }
         }
 
         [Fact]
@@ -32,9 +33,15 @@
             result.Should().Be(expected);
         }
 
-        public class ConfigurationContainer
+        [Fact]
+        public void SerializeObject_Then_ResultShouldShouldBeExpected()
         {
-            public Poco.Thermodynamics.Temperature Temperature { get; set; }
+            const string Expected = "{\"Value\":5.0,\"Unit\":\"°C\"}";
+            var testee = 5.Celsius().ToSerializable();
+
+            var result = JsonConvert.SerializeObject(testee);
+
+            result.Should().Be(Expected);
         }
     }
 }

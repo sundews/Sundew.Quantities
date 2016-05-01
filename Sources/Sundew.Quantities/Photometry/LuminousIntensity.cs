@@ -1,4 +1,10 @@
-﻿namespace Sundew.Quantities.Photometry
+﻿// // --------------------------------------------------------------------------------------------------------------------
+// // <copyright file="LuminousIntensity.cs" company="Hukano">
+// //   2016 (c) Hukano. All Rights Reserved. Licensed under the MIT License. See License.txt in the project root for license information.
+// // </copyright>
+// // --------------------------------------------------------------------------------------------------------------------
+
+namespace Sundew.Quantities.Photometry
 {
     using Sundew.Quantities.Engine.Quantities;
     using Sundew.Quantities.Engine.Representations.Hierarchical.Units;
@@ -15,7 +21,9 @@
         /// </summary>
         /// <param name="luminousIntensity">The luminousIntensity.</param>
         /// <param name="luminousIntensityUnitSelector">The luminousIntensity unit selector.</param>
-        public LuminousIntensity(double luminousIntensity, SelectUnit<LuminousIntensityUnitSelector> luminousIntensityUnitSelector)
+        public LuminousIntensity(
+            double luminousIntensity,
+            SelectUnit<LuminousIntensityUnitSelector> luminousIntensityUnitSelector)
             : base(luminousIntensity, luminousIntensityUnitSelector(new LuminousIntensityUnitSelector()))
         {
         }
@@ -55,7 +63,7 @@
         /// This instance.
         /// </value>
         protected override LuminousIntensity Self => this;
-        
+
         /// <summary>
         /// Increments the specified LHS with 1.
         /// </summary>
@@ -103,7 +111,10 @@
         /// <param name="max">The maximum.</param>
         /// <param name="unitSelector">The unit selector.</param>
         /// <returns>The new interval.</returns>
-        public static Interval<LuminousIntensity> Interval(double min, double max, SelectUnit<LuminousIntensityUnitSelector> unitSelector)
+        public static Interval<LuminousIntensity> Interval(
+            double min,
+            double max,
+            SelectUnit<LuminousIntensityUnitSelector> unitSelector)
         {
             return new Interval<LuminousIntensity>(min, max, unitSelector(new LuminousIntensityUnitSelector()));
         }

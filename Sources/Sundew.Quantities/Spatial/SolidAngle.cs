@@ -1,4 +1,10 @@
-﻿namespace Sundew.Quantities.Spatial
+﻿// // --------------------------------------------------------------------------------------------------------------------
+// // <copyright file="SolidAngle.cs" company="Hukano">
+// //   2016 (c) Hukano. All Rights Reserved. Licensed under the MIT License. See License.txt in the project root for license information.
+// // </copyright>
+// // --------------------------------------------------------------------------------------------------------------------
+
+namespace Sundew.Quantities.Spatial
 {
     using Sundew.Quantities.Engine.Quantities;
     using Sundew.Quantities.Engine.Representations.Hierarchical.Units;
@@ -44,7 +50,7 @@
         /// </summary>
         /// <param name="solidAngle">The solid angle.</param>
         public SolidAngle(double solidAngle)
-                : this(solidAngle, x => x.BaseUnit)
+            : this(solidAngle, x => x.BaseUnit)
         {
         }
 
@@ -55,7 +61,7 @@
         /// This instance.
         /// </value>
         protected override SolidAngle Self => this;
-        
+
         /// <summary>
         /// Increments the specified LHS with 1.
         /// </summary>
@@ -103,7 +109,10 @@
         /// <param name="max">The maximum.</param>
         /// <param name="unitSelector">The unit selector.</param>
         /// <returns>The new interval.</returns>
-        public static Interval<SolidAngle> Interval(double min, double max, SelectUnit<SolidAngleUnitSelector> unitSelector)
+        public static Interval<SolidAngle> Interval(
+            double min,
+            double max,
+            SelectUnit<SolidAngleUnitSelector> unitSelector)
         {
             return new Interval<SolidAngle>(min, max, unitSelector(new SolidAngleUnitSelector()));
         }

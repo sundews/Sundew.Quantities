@@ -1,10 +1,15 @@
-﻿namespace Sundew.Quantities.Formatters.MathML
+﻿// // --------------------------------------------------------------------------------------------------------------------
+// // <copyright file="QuantityToMathMLConverter.cs" company="Hukano">
+// //   2016 (c) Hukano. All Rights Reserved. Licensed under the MIT License. See License.txt in the project root for license information.
+// // </copyright>
+// // --------------------------------------------------------------------------------------------------------------------
+
+namespace Sundew.Quantities.Formatters.MathML
 {
     using System.Xml.Linq;
 
-    using Engine.Representations.Hierarchical.Units;
-
     using Sundew.Quantities.Engine.Quantities;
+    using Sundew.Quantities.Engine.Representations.Hierarchical.Units;
 
     /// <summary>
     /// 
@@ -20,7 +25,10 @@
         /// <param name="unitFormat">The unit format.</param>
         /// <param name="multiplicationSign">The multiplication sign.</param>
         /// <returns>The root <see cref="XElement"/> node.</returns>
-        public XElement GetMathML(IQuantity quantity, UnitFormat unitFormat = UnitFormat.Default, MultiplicationSign multiplicationSign = MultiplicationSign.Invisible)
+        public XElement GetMathML(
+            IQuantity quantity,
+            UnitFormat unitFormat = UnitFormat.Default,
+            MultiplicationSign multiplicationSign = MultiplicationSign.Invisible)
         {
             var mn = new XElement(MathML.Mn, quantity.Value);
             var mrow = new XElement(MathML.Mrow, mn);
@@ -32,7 +40,10 @@
                 unitElement = mfenced;
             }
 
-            ExpressionToMathMLVisitor.DefaultMathMLVisitor.Visit(quantity.Unit.GetExpression(), multiplicationSign, unitElement);
+            ExpressionToMathMLVisitor.DefaultMathMLVisitor.Visit(
+                quantity.Unit.GetExpression(),
+                multiplicationSign,
+                unitElement);
             return new XElement(MathML.Math, new XAttribute(MathML.NamespaceAlias, MathML.Namespace), mrow);
         }
     }

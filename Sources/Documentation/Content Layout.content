@@ -10,7 +10,9 @@
     <Topic id="e9530030-8f81-4198-9b3b-6f2b3bd33740" visible="True" title="Equality" />
   </Topic>
   <Topic id="df0f2600-7ca8-4c9d-89b7-0ebeb5917af0" visible="True" isExpanded="true" title="Extensibility">
-    <Topic id="04b7df16-7033-479c-8a52-36a1217c095f" visible="True" isSelected="true" title="Implementing a formatter" />
+    <Topic id="d44fc388-be7c-4779-b535-4032ed2b87d8" visible="True" title="Adding new units" />
+    <Topic id="04b7df16-7033-479c-8a52-36a1217c095f" visible="True" title="Implementing a formatter" />
+    <Topic id="01adfd60-aef8-4e05-8d0a-3c6e209e06ac" visible="True" isSelected="true" title="Replacing the unit system" />
   </Topic>
   <Topic id="0ddef589-5c17-462a-8fc4-b45dd14c90d8" visible="True" title="Serialization" />
 </Topics>

@@ -1,3 +1,9 @@
+// // --------------------------------------------------------------------------------------------------------------------
+// // <copyright file="ExpressionReducer.cs" company="Hukano">
+// //   2016 (c) Hukano. All Rights Reserved. Licensed under the MIT License. See License.txt in the project root for license information.
+// // </copyright>
+// // --------------------------------------------------------------------------------------------------------------------
+
 namespace Sundew.Quantities.Engine.Representations.Evaluation
 {
     using Sundew.Quantities.Engine.Representations.Conversion;
@@ -29,7 +35,10 @@ namespace Sundew.Quantities.Engine.Representations.Evaluation
         public UnitReductionResult Reduce(Expression expression, bool reduceByBaseUnits)
         {
             var flatRepresentationBuilderWithReductions = new FlatRepresentationBuilderWithReductions();
-            var flatRepresentation = this.expressionToFlatRepresentationConverter.Convert(expression, reduceByBaseUnits, flatRepresentationBuilderWithReductions);
+            var flatRepresentation = this.expressionToFlatRepresentationConverter.Convert(
+                expression,
+                reduceByBaseUnits,
+                flatRepresentationBuilderWithReductions);
             return new UnitReductionResult(
                 flatRepresentation,
                 expression,

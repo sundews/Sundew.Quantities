@@ -1,4 +1,10 @@
-﻿namespace Sundew.Quantities.Engine.Representations.Hierarchical.Expressions
+﻿// // --------------------------------------------------------------------------------------------------------------------
+// // <copyright file="IHaveLhsAndRhs.cs" company="Hukano">
+// //   2016 (c) Hukano. All Rights Reserved. Licensed under the MIT License. See License.txt in the project root for license information.
+// // </copyright>
+// // --------------------------------------------------------------------------------------------------------------------
+
+namespace Sundew.Quantities.Engine.Representations.Hierarchical.Expressions
 {
     /// <summary>
     /// Interface for <see cref="Expression"/> with a lhs and a rhs.

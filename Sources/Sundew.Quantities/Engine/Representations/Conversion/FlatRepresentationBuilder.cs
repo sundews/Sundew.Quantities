@@ -1,4 +1,10 @@
-﻿namespace Sundew.Quantities.Engine.Representations.Conversion
+﻿// // --------------------------------------------------------------------------------------------------------------------
+// // <copyright file="FlatRepresentationBuilder.cs" company="Hukano">
+// //   2016 (c) Hukano. All Rights Reserved. Licensed under the MIT License. See License.txt in the project root for license information.
+// // </copyright>
+// // --------------------------------------------------------------------------------------------------------------------
+
+namespace Sundew.Quantities.Engine.Representations.Conversion
 {
     using System;
     using System.Collections.Generic;
@@ -15,11 +21,11 @@
 
         private readonly IDictionary<string, UnitFlatIdentifierRepresentation> unitFlatIdentifierRepresentations;
 
+        private int additionalCount;
+
         private ConstantFlatIdentifierRepresentation constantFlatIdentifierRepresentation;
 
         private IDictionary<string, VariableFlatIdentifierRepresentation> variableFlatIdentifierRepresentations;
-
-        private int additionalCount;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="FlatRepresentationBuilder"/> class.
@@ -94,7 +100,8 @@
         {
             if (this.variableFlatIdentifierRepresentations == null)
             {
-                this.variableFlatIdentifierRepresentations = new Dictionary<string, VariableFlatIdentifierRepresentation>();
+                this.variableFlatIdentifierRepresentations =
+                    new Dictionary<string, VariableFlatIdentifierRepresentation>();
             }
 
             var variableName = variableExpression.VariableName;
@@ -118,7 +125,9 @@
         /// <returns>A <see cref="FlatRepresentation"/>.</returns>
         public FlatRepresentation Build()
         {
-            var flatPresentations = new Dictionary<string, IFlatIdentifierRepresentation>(this.unitFlatIdentifierRepresentations.Count + this.additionalCount);
+            var flatPresentations =
+                new Dictionary<string, IFlatIdentifierRepresentation>(
+                    this.unitFlatIdentifierRepresentations.Count + this.additionalCount);
             foreach (var pair in this.unitFlatIdentifierRepresentations)
             {
                 if (!pair.Value.Exponent.Equals(0))

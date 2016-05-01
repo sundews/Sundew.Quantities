@@ -1,4 +1,10 @@
-﻿namespace Sundew.Quantities.Electromagnetism
+﻿// // --------------------------------------------------------------------------------------------------------------------
+// // <copyright file="Charge.cs" company="Hukano">
+// //   2016 (c) Hukano. All Rights Reserved. Licensed under the MIT License. See License.txt in the project root for license information.
+// // </copyright>
+// // --------------------------------------------------------------------------------------------------------------------
+
+namespace Sundew.Quantities.Electromagnetism
 {
     using Sundew.Quantities.Electromagnetism.UnitSelection;
     using Sundew.Quantities.Engine.Quantities;
@@ -55,7 +61,7 @@
         /// This instance.
         /// </value>
         protected override Charge Self => this;
-        
+
         /// <summary>
         /// Increments the specified LHS with 1.
         /// </summary>

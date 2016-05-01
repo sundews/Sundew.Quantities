@@ -1,4 +1,10 @@
-﻿namespace Sundew.Quantities.UnitTests.Engine.Representations.Hierarchical.Parsing
+﻿// // --------------------------------------------------------------------------------------------------------------------
+// // <copyright file="UnitExpressionParserTests.cs" company="Hukano">
+// //   2016 (c) Hukano. All Rights Reserved. Licensed under the MIT License. See License.txt in the project root for license information.
+// // </copyright>
+// // --------------------------------------------------------------------------------------------------------------------
+
+namespace Sundew.Quantities.UnitTests.Engine.Representations.Hierarchical.Parsing
 {
     using System.Collections.Generic;
     using System.Linq;
@@ -17,9 +23,9 @@
 
     public class UnitExpressionParserTests
     {
-        private readonly UnitExpressionParser testee;
-
         private readonly ILexicalAnalyzer lexicalAnalyzer;
+
+        private readonly UnitExpressionParser testee;
 
         public UnitExpressionParserTests()
         {
@@ -38,7 +44,8 @@
         [InlineData(new[] { "IG", "I°C", "E" }, "G°C")]
         public void Parse_Then_ResultShouldHaveExpectedValues(string[] tokens, string expectedNotation)
         {
-            A.CallTo(() => this.lexicalAnalyzer.Analyze(expectedNotation, A<bool>.Ignored)).Returns(Result.Success(GetLexemes(tokens)));
+            A.CallTo(() => this.lexicalAnalyzer.Analyze(expectedNotation, A<bool>.Ignored))
+                .Returns(Result.Success(GetLexemes(tokens)));
 
             var result = this.testee.Parse(expectedNotation, false);
 
@@ -66,9 +73,9 @@
 
         private class UnitRegistry : IUnitRegistry
         {
-            private readonly Dictionary<string, IUnit> units;
-
             private readonly Dictionary<string, Prefix> prefixes;
+
+            private readonly Dictionary<string, IUnit> units;
 
             public UnitRegistry()
             {

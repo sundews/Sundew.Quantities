@@ -11,7 +11,9 @@
       <content>
         <code lang="cs" source="..\Sources\Sundew.Quantities.Samples\CreatingQuantities.cs" region="UsageDistance" title="Usage" />
       </content>
-      <para></para>
+	</section>
+	<para/>
+	<section>
       <title>Acceleration</title>
       <content>
         <code lang="cs" source="..\Sources\Sundew.Quantities.Samples\CreatingQuantities.cs" region="UsageAcceleration" title="Usage" />

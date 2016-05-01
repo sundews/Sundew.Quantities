@@ -1,4 +1,10 @@
-﻿namespace Sundew.Quantities.Engine
+﻿// // --------------------------------------------------------------------------------------------------------------------
+// // <copyright file="UnitSystemDependencies.cs" company="Hukano">
+// //   2016 (c) Hukano. All Rights Reserved. Licensed under the MIT License. See License.txt in the project root for license information.
+// // </copyright>
+// // --------------------------------------------------------------------------------------------------------------------
+
+namespace Sundew.Quantities.Engine
 {
     using Sundew.Quantities.Engine.Operations;
     using Sundew.Quantities.Engine.Parsing;
@@ -20,7 +26,13 @@
         /// <param name="quantityParser">The quantity parser.</param>
         /// <param name="unitFactory">The unit factory.</param>
         /// <param name="quantityOperations">The quantity operations.</param>
-        public UnitSystemDependencies(UnitRegistry unitRegistry, ILexicalAnalyzer lexicalAnalyzer, IExpressionParser expressionParser, IQuantityParser quantityParser, IUnitFactory unitFactory, IQuantityOperations quantityOperations)
+        public UnitSystemDependencies(
+            UnitRegistry unitRegistry,
+            ILexicalAnalyzer lexicalAnalyzer,
+            IExpressionParser expressionParser,
+            IQuantityParser quantityParser,
+            IUnitFactory unitFactory,
+            IQuantityOperations quantityOperations)
         {
             this.UnitRegistry = unitRegistry;
             this.LexicalAnalyzer = lexicalAnalyzer;

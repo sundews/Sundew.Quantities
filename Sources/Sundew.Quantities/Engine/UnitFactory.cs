@@ -1,4 +1,10 @@
-﻿namespace Sundew.Quantities.Engine
+﻿// // --------------------------------------------------------------------------------------------------------------------
+// // <copyright file="UnitFactory.cs" company="Hukano">
+// //   2016 (c) Hukano. All Rights Reserved. Licensed under the MIT License. See License.txt in the project root for license information.
+// // </copyright>
+// // --------------------------------------------------------------------------------------------------------------------
+
+namespace Sundew.Quantities.Engine
 {
     using Sundew.Quantities.Engine.Registration;
     using Sundew.Quantities.Engine.Representations.Conversion;
@@ -12,11 +18,11 @@
     /// </summary>
     public class UnitFactory : IUnitFactory
     {
-        private readonly IExpressionToFlatRepresentationConverter expressionToFlatRepresentationConverter;
+        private readonly IDerivedUnitRegistry derivedUnitRegistry;
 
         private readonly IExpressionRewriter expressionRewriter;
 
-        private readonly IDerivedUnitRegistry derivedUnitRegistry;
+        private readonly IExpressionToFlatRepresentationConverter expressionToFlatRepresentationConverter;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="UnitFactory" /> class.
@@ -24,7 +30,10 @@
         /// <param name="expressionToFlatRepresentationConverter">The expression to flat representation converter.</param>
         /// <param name="expressionRewriter">The expression rewriter.</param>
         /// <param name="derivedUnitRegistry">The derived unit registry.</param>
-        public UnitFactory(IExpressionToFlatRepresentationConverter expressionToFlatRepresentationConverter, IExpressionRewriter expressionRewriter, IDerivedUnitRegistry derivedUnitRegistry)
+        public UnitFactory(
+            IExpressionToFlatRepresentationConverter expressionToFlatRepresentationConverter,
+            IExpressionRewriter expressionRewriter,
+            IDerivedUnitRegistry derivedUnitRegistry)
         {
             this.expressionToFlatRepresentationConverter = expressionToFlatRepresentationConverter;
             this.expressionRewriter = expressionRewriter;
@@ -76,7 +85,7 @@
         {
             return this.CreateDerivedUnit(reductionResult, reductionResult);
         }
-        
+
         /// <summary>
         /// Creates the derived unit.
         /// </summary>

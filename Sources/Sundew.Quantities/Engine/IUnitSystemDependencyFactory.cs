@@ -1,4 +1,10 @@
-﻿namespace Sundew.Quantities.Engine
+﻿// // --------------------------------------------------------------------------------------------------------------------
+// // <copyright file="IUnitSystemDependencyFactory.cs" company="Hukano">
+// //   2016 (c) Hukano. All Rights Reserved. Licensed under the MIT License. See License.txt in the project root for license information.
+// // </copyright>
+// // --------------------------------------------------------------------------------------------------------------------
+
+namespace Sundew.Quantities.Engine
 {
     using System.Collections.Generic;
 
@@ -14,6 +20,13 @@
     /// </summary>
     public interface IUnitSystemDependencyFactory
     {
+        /// <summary>
+        /// Creates the lexical analyzer.
+        /// </summary>
+        /// <param name="tokenMatchers">The token matchers.</param>
+        /// <returns>A new <see cref="LexicalAnalyzer"/>.</returns>
+        ILexicalAnalyzer CreateLexicalAnalyzer(IEnumerable<TokenMatcher> tokenMatchers);
+
         /// <summary>
         /// Creates the expression converter.
         /// </summary>
@@ -56,12 +69,5 @@
         /// <param name="unitFactory">The unit factory.</param>
         /// <returns>An <see cref="IQuantityOperations"/>.</returns>
         IQuantityOperations CreateQuantityOperations(IUnitFactory unitFactory);
-
-        /// <summary>
-        /// Creates the lexical analyzer.
-        /// </summary>
-        /// <param name="tokenMatchers">The token matchers.</param>
-        /// <returns>A new <see cref="LexicalAnalyzer"/>.</returns>
-        ILexicalAnalyzer CreateLexicalAnalyzer(IEnumerable<TokenMatcher> tokenMatchers);
     }
 }

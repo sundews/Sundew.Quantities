@@ -1,4 +1,10 @@
-﻿namespace Sundew.Quantities.AcceptanceTests.Spatial
+﻿// // --------------------------------------------------------------------------------------------------------------------
+// // <copyright file="AreaDivisionTests.cs" company="Hukano">
+// //   2016 (c) Hukano. All Rights Reserved. Licensed under the MIT License. See License.txt in the project root for license information.
+// // </copyright>
+// // --------------------------------------------------------------------------------------------------------------------
+
+namespace Sundew.Quantities.AcceptanceTests.Spatial
 {
     using FluentAssertions;
 
@@ -43,7 +49,10 @@
 
         [Theory]
         [InlineData(8, 2000, 4)]
-        public void Area_Division_When_LhsIsSquareKiloMeter_Then_ResultShouldBeExpected(double lhs, double rhs, double expected)
+        public void Area_Division_When_LhsIsSquareKiloMeter_Then_ResultShouldBeExpected(
+            double lhs,
+            double rhs,
+            double expected)
         {
             var testee1 = new Area(lhs, x => x.Square.Kilo.Meters);
             var testee2 = new Distance(rhs, x => x.Meters);
@@ -58,7 +67,10 @@
         [InlineData(0.0, 1.0, 0.0)]
         [InlineData(0.0, 0.0, double.NaN)]
         [InlineData(-50.0, 40.0, -1.25)]
-        public void Area_Division_When_DividingWithAnyNumber_Then_ResultShouldBeExpected(double lhs, double rhs, double expected)
+        public void Area_Division_When_DividingWithAnyNumber_Then_ResultShouldBeExpected(
+            double lhs,
+            double rhs,
+            double expected)
         {
             var testee = new Area(lhs, x => x.Meters * x.Meters);
 
@@ -69,7 +81,10 @@
 
         [Theory]
         [InlineData(2, 50, 0.4)]
-        public void Area_Division_When_RhsIsLengthAndPrefixesAreDifferent_Then_ResultShouldBeExpected(double lhs, double rhs, double expected)
+        public void Area_Division_When_RhsIsLengthAndPrefixesAreDifferent_Then_ResultShouldBeExpected(
+            double lhs,
+            double rhs,
+            double expected)
         {
             var testee1 = new Area(lhs, x => x.Square.Deci.Meters);
             var testee2 = new Distance(rhs, x => x.Centi.Meters);

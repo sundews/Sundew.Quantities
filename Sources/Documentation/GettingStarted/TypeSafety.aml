@@ -70,12 +70,6 @@
       <para>
       	Additionally, a generic <codeEntityReference qualifyHint="false">T:Sundew.Quantities.Quantity</codeEntityReference> also exists and all quantities implement the <codeEntityReference qualifyHint="false">T:Sundew.Quantities.Engine.Quantities.IQuantity</codeEntityReference> interface.
       </para>
-      <section address="SubSection1">
-              <title>Programming interfaces</title>
-              <content>
-                  <para>Sub-section content.</para>
-              </content>
-      </section>
     </section>
   </developerConceptualDocument>
 </topic>

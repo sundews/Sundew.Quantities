@@ -1,12 +1,17 @@
-﻿namespace Sundew.Quantities.Serialization.Poco
+﻿// // --------------------------------------------------------------------------------------------------------------------
+// // <copyright file="Quantity.cs" company="Hukano">
+// //   2016 (c) Hukano. All Rights Reserved. Licensed under the MIT License. See License.txt in the project root for license information.
+// // </copyright>
+// // --------------------------------------------------------------------------------------------------------------------
+
+namespace Sundew.Quantities.Serialization.Poco
 {
-    using Sundew.Quantities.Engine;
     using Sundew.Quantities.Engine.Quantities;
 
     /// <summary>
     /// Represents <see cref="Quantity"/> serializable type.
     /// </summary>
-    public class Quantity : SerializableQuantity<Sundew.Quantities.Quantity>
+    public class Quantity : SerializableQuantity<Quantities.Quantity>
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="Quantity"/> class.
@@ -30,9 +35,9 @@
         /// <returns>
         /// A <see cref="Quantity" />.
         /// </returns>
-        public override Sundew.Quantities.Quantity ToQuantity()
+        public override Quantities.Quantity ToQuantity()
         {
-            return new Sundew.Quantities.Quantity(this.Value, this.GetUnit());
+            return new Quantities.Quantity(this.Value, this.GetUnit());
         }
     }
 }

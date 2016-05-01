@@ -11,7 +11,9 @@
       <content>
         <code lang="cs" source="..\Sources\Sundew.Quantities.Samples\Operations.cs" region="UsageSpacetime" title="Usage" />
       </content>
-      <para></para>
+    </section>
+    <para/>
+    <section>
       <title>Electromagnetism</title>
       <content>
         <code lang="cs" source="..\Sources\Sundew.Quantities.Samples\Operations.cs" region="UsageElectromagnetism" title="Usage" />

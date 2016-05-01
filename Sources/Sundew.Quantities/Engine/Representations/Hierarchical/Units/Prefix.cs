@@ -1,4 +1,10 @@
-﻿namespace Sundew.Quantities.Engine.Representations.Hierarchical.Units
+﻿// // --------------------------------------------------------------------------------------------------------------------
+// // <copyright file="Prefix.cs" company="Hukano">
+// //   2016 (c) Hukano. All Rights Reserved. Licensed under the MIT License. See License.txt in the project root for license information.
+// // </copyright>
+// // --------------------------------------------------------------------------------------------------------------------
+
+namespace Sundew.Quantities.Engine.Representations.Hierarchical.Units
 {
     using System;
 
@@ -15,7 +21,7 @@
         /// <value>
         /// The none prefix.
         /// </value>
-        public static Prefix None { get;  } = new FactorOnePrefix();
+        public static Prefix None { get; } = new FactorOnePrefix();
 
         /// <summary>
         /// Gets the name.
@@ -42,6 +48,18 @@
         public abstract string Notation { get; }
 
         /// <summary>
+        /// Indicates whether the current object is equal to another object of the same type.
+        /// </summary>
+        /// <param name="other">An object to compare with this object.</param>
+        /// <returns>
+        /// true if the current object is equal to the <paramref name="other" /> parameter; otherwise, false.
+        /// </returns>
+        public bool Equals(Prefix other)
+        {
+            return this.Factor.Equals(other.Factor);
+        }
+
+        /// <summary>
         /// Multiplies the specified LHS with the RHS.
         /// </summary>
         /// <param name="prefix">The prefix.</param>
@@ -53,7 +71,7 @@
         {
             return new UnitExpression(unit.GetPrefixedUnit(prefix));
         }
-        
+
         /// <summary>
         /// Gets the prefixed notation.
         /// </summary>
@@ -75,18 +93,6 @@
         /// </summary>
         /// <param name="value">The value.</param>
         public abstract double FromBase(double value);
-        
-        /// <summary>
-        /// Indicates whether the current object is equal to another object of the same type.
-        /// </summary>
-        /// <param name="other">An object to compare with this object.</param>
-        /// <returns>
-        /// true if the current object is equal to the <paramref name="other" /> parameter; otherwise, false.
-        /// </returns>
-        public bool Equals(Prefix other)
-        {
-            return this.Factor.Equals(other.Factor);
-        }
 
         /// <summary>
         /// Returns a <see cref="System.String" /> that represents this instance.

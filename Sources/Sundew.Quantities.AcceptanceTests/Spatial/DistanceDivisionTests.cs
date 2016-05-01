@@ -1,4 +1,10 @@
-﻿namespace Sundew.Quantities.AcceptanceTests.Spatial
+﻿// // --------------------------------------------------------------------------------------------------------------------
+// // <copyright file="DistanceDivisionTests.cs" company="Hukano">
+// //   2016 (c) Hukano. All Rights Reserved. Licensed under the MIT License. See License.txt in the project root for license information.
+// // </copyright>
+// // --------------------------------------------------------------------------------------------------------------------
+
+namespace Sundew.Quantities.AcceptanceTests.Spatial
 {
     using FluentAssertions;
 
@@ -31,7 +37,10 @@
         [InlineData(0.0, 1.0, 0.0)]
         [InlineData(0.0, 0.0, double.NaN)]
         [InlineData(-50.0, 40.0, -1.25)]
-        public void Distance_Division_When_DividingWithAnyNumber_Then_ResultShouldBeExpected(double lhs, double rhs, double expected)
+        public void Distance_Division_When_DividingWithAnyNumber_Then_ResultShouldBeExpected(
+            double lhs,
+            double rhs,
+            double expected)
         {
             var testee = new Distance(lhs, x => x.Meters);
 
@@ -42,7 +51,10 @@
 
         [Theory]
         [InlineData(10000, 50, 2)]
-        public void Distance_Division_When_RhsIsVelocityAndPrefixesAreDifferent_Then_ResultShouldBeExpected(double lhs, double rhs, double expected)
+        public void Distance_Division_When_RhsIsVelocityAndPrefixesAreDifferent_Then_ResultShouldBeExpected(
+            double lhs,
+            double rhs,
+            double expected)
         {
             var testee1 = new Distance(lhs, x => x.Centi.Meters);
             var testee2 = new Velocity(rhs, selector => selector.Meters / selector.Seconds);
@@ -54,7 +66,10 @@
 
         [Theory]
         [InlineData(50, 10, 5)]
-        public void Distance_Division_When_RhsIsVelocity_Then_ResultShouldBeExpected(double lhs, double rhs, double expected)
+        public void Distance_Division_When_RhsIsVelocity_Then_ResultShouldBeExpected(
+            double lhs,
+            double rhs,
+            double expected)
         {
             var testee1 = new Distance(lhs, x => x.Meters);
             var testee2 = new Velocity(rhs, selector => selector.Meters / selector.Seconds);

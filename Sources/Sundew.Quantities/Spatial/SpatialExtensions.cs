@@ -1,4 +1,10 @@
-﻿namespace Sundew.Quantities.Spatial
+﻿// // --------------------------------------------------------------------------------------------------------------------
+// // <copyright file="SpatialExtensions.cs" company="Hukano">
+// //   2016 (c) Hukano. All Rights Reserved. Licensed under the MIT License. See License.txt in the project root for license information.
+// // </copyright>
+// // --------------------------------------------------------------------------------------------------------------------
+
+namespace Sundew.Quantities.Spatial
 {
     using System;
 
@@ -16,8 +22,7 @@
         /// <typeparam name="TValue">The type of the value.</typeparam>
         /// <param name="value">The distance value.</param>
         /// <returns>A <see cref="Distance"/>.</returns>
-        public static Distance Meters<TValue>(this TValue value) 
-            where TValue : struct, IComparable, IFormattable
+        public static Distance Meters<TValue>(this TValue value) where TValue : struct, IComparable, IFormattable
         {
             return value.ToDistance(x => x.Meters);
         }
@@ -41,8 +46,7 @@
         /// <typeparam name="TValue">The type of the value.</typeparam>
         /// <param name="value">The area value.</param>
         /// <returns>A new <see cref="Area"/>.</returns>
-        public static Area SquareMeters<TValue>(this TValue value)
-            where TValue : struct, IComparable, IFormattable
+        public static Area SquareMeters<TValue>(this TValue value) where TValue : struct, IComparable, IFormattable
         {
             return value.ToArea(x => x.Square.Meters);
         }
@@ -66,8 +70,7 @@
         /// <typeparam name="TValue">The type of the value.</typeparam>
         /// <param name="value">The volume value.</param>
         /// <returns>A new <see cref="Volume"/>.</returns>
-        public static Volume CubicMeters<TValue>(this TValue value)
-            where TValue : struct, IComparable, IFormattable
+        public static Volume CubicMeters<TValue>(this TValue value) where TValue : struct, IComparable, IFormattable
         {
             return value.ToVolume(x => x.Meters);
         }
@@ -78,8 +81,7 @@
         /// <typeparam name="TValue">The type of the value.</typeparam>
         /// <param name="value">The liter value.</param>
         /// <returns>A new <see cref="Volume"/>.</returns>
-        public static Volume Liters<TValue>(this TValue value)
-            where TValue : struct, IComparable, IFormattable
+        public static Volume Liters<TValue>(this TValue value) where TValue : struct, IComparable, IFormattable
         {
             return value.ToVolume(x => x.Liters);
         }
@@ -103,8 +105,7 @@
         /// <typeparam name="TValue">The type of the value.</typeparam>
         /// <param name="value">The angle value.</param>
         /// <returns>A new <see cref="Angle"/>.</returns>
-        public static Angle Radians<TValue>(this TValue value)
-            where TValue : struct, IComparable, IFormattable
+        public static Angle Radians<TValue>(this TValue value) where TValue : struct, IComparable, IFormattable
         {
             return value.ToAngle(x => x.Radians);
         }
@@ -128,8 +129,7 @@
         /// <typeparam name="TValue">The type of the value.</typeparam>
         /// <param name="value">The value.</param>
         /// <returns>A new <see cref="SolidAngle"/>.</returns>
-        public static SolidAngle Steradians<TValue>(this TValue value)
-            where TValue : struct, IComparable, IFormattable
+        public static SolidAngle Steradians<TValue>(this TValue value) where TValue : struct, IComparable, IFormattable
         {
             return value.ToSolidAngle(x => x.Steradians);
         }
@@ -141,8 +141,9 @@
         /// <param name="value">The solid angle value.</param>
         /// <param name="unitSelector">The unit selector.</param>
         /// <returns>A new <see cref="SolidAngle"/>.</returns>
-        public static SolidAngle ToSolidAngle<TValue>(this TValue value, SelectUnit<SolidAngleUnitSelector> unitSelector)
-            where TValue : struct, IComparable, IFormattable
+        public static SolidAngle ToSolidAngle<TValue>(
+            this TValue value,
+            SelectUnit<SolidAngleUnitSelector> unitSelector) where TValue : struct, IComparable, IFormattable
         {
             return new SolidAngle(Convert.ToDouble(value), unitSelector);
         }

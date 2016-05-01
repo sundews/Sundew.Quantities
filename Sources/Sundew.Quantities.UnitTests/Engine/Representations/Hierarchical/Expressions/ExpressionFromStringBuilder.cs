@@ -1,4 +1,10 @@
-﻿namespace Sundew.Quantities.UnitTests.Engine.Representations.Hierarchical.Expressions
+﻿// // --------------------------------------------------------------------------------------------------------------------
+// // <copyright file="ExpressionFromStringBuilder.cs" company="Hukano">
+// //   2016 (c) Hukano. All Rights Reserved. Licensed under the MIT License. See License.txt in the project root for license information.
+// // </copyright>
+// // --------------------------------------------------------------------------------------------------------------------
+
+namespace Sundew.Quantities.UnitTests.Engine.Representations.Hierarchical.Expressions
 {
     using System.Globalization;
 
@@ -29,9 +35,13 @@
             switch (operation)
             {
                 case "*":
-                    return new MultiplicationExpression(CreateExpression(expressions, ref index), CreateExpression(expressions, ref index));
+                    return new MultiplicationExpression(
+                        CreateExpression(expressions, ref index),
+                        CreateExpression(expressions, ref index));
                 case "/":
-                    return new DivisionExpression(CreateExpression(expressions, ref index), CreateExpression(expressions, ref index));
+                    return new DivisionExpression(
+                        CreateExpression(expressions, ref index),
+                        CreateExpression(expressions, ref index));
                 default:
                     double constant;
                     if (double.TryParse(operation, out constant))

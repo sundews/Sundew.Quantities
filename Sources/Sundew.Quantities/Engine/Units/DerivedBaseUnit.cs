@@ -1,4 +1,10 @@
-﻿namespace Sundew.Quantities.Engine.Units
+﻿// // --------------------------------------------------------------------------------------------------------------------
+// // <copyright file="DerivedBaseUnit.cs" company="Hukano">
+// //   2016 (c) Hukano. All Rights Reserved. Licensed under the MIT License. See License.txt in the project root for license information.
+// // </copyright>
+// // --------------------------------------------------------------------------------------------------------------------
+
+namespace Sundew.Quantities.Engine.Units
 {
     using System;
     using System.Globalization;
@@ -35,7 +41,7 @@
         /// <value>
         /// The notation.
         /// </value>
-        public string Notation => this.GetNotation(CultureInfo.CurrentCulture); 
+        public string Notation => this.GetNotation(CultureInfo.CurrentCulture);
 
         /// <summary>
         /// Gets the base unit.
@@ -98,7 +104,9 @@
         /// <returns>The notation.</returns>
         public string GetNotation(IFormatProvider formatProvider = null)
         {
-            return DefaultVisitors.NotationVisitor.Visit(this.GetExpression(), formatProvider ?? CultureInfo.CurrentCulture);
+            return DefaultVisitors.NotationVisitor.Visit(
+                this.GetExpression(),
+                formatProvider ?? CultureInfo.CurrentCulture);
         }
 
         /// <summary>
@@ -111,6 +119,18 @@
         public string FormatValue(double value, string format, IFormatProvider formatProvider)
         {
             return value.ToString(format, formatProvider);
+        }
+
+        /// <summary>
+        /// Equalses the specified other.
+        /// </summary>
+        /// <param name="other">The other.</param>
+        /// <returns>
+        ///   <c>true</c> if the specified <see cref="System.Object" /> is equal to this instance; otherwise, <c>false</c>.
+        /// </returns>
+        public bool Equals(IUnit other)
+        {
+            return UnitHelper.AreUnitsEqual(this, other);
         }
 
         /// <summary>
@@ -134,18 +154,6 @@
         public override bool Equals(object obj)
         {
             return UnitHelper.AreUnitsEqual(this, obj);
-        }
-
-        /// <summary>
-        /// Equalses the specified other.
-        /// </summary>
-        /// <param name="other">The other.</param>
-        /// <returns>
-        ///   <c>true</c> if the specified <see cref="System.Object" /> is equal to this instance; otherwise, <c>false</c>.
-        /// </returns>
-        public bool Equals(IUnit other)
-        {
-            return UnitHelper.AreUnitsEqual(this, other);
         }
 
         /// <summary>

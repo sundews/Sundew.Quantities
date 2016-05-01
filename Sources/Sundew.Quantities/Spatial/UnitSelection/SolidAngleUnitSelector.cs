@@ -1,4 +1,10 @@
-﻿namespace Sundew.Quantities.Spatial.UnitSelection
+﻿// // --------------------------------------------------------------------------------------------------------------------
+// // <copyright file="SolidAngleUnitSelector.cs" company="Hukano">
+// //   2016 (c) Hukano. All Rights Reserved. Licensed under the MIT License. See License.txt in the project root for license information.
+// // </copyright>
+// // --------------------------------------------------------------------------------------------------------------------
+
+namespace Sundew.Quantities.Spatial.UnitSelection
 {
     using System.Collections.Generic;
 
@@ -10,7 +16,9 @@
     /// <summary>
     /// Unit selector for <see cref="SolidAngle"/>.
     /// </summary>
-    public class SolidAngleUnitSelector : PrefixSelector<ISolidAngleUnitSelector, IPrefixSelector<ISolidAngleUnitSelector>>, ISolidAngleUnitSelector
+    public class SolidAngleUnitSelector :
+        PrefixSelector<ISolidAngleUnitSelector, IPrefixSelector<ISolidAngleUnitSelector>>,
+        ISolidAngleUnitSelector
     {
         /// <summary>
         /// Gets the base unit.

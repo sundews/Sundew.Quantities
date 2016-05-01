@@ -1,4 +1,10 @@
-﻿namespace Sundew.Quantities.AcceptanceTests.Spatial
+﻿// // --------------------------------------------------------------------------------------------------------------------
+// // <copyright file="DistanceEqualityTests.cs" company="Hukano">
+// //   2016 (c) Hukano. All Rights Reserved. Licensed under the MIT License. See License.txt in the project root for license information.
+// // </copyright>
+// // --------------------------------------------------------------------------------------------------------------------
+
+namespace Sundew.Quantities.AcceptanceTests.Spatial
 {
     using FluentAssertions;
 
@@ -26,7 +32,12 @@
         [InlineData(4.0, 1000, 4.0, 1000, true)]
         [InlineData(4.0, 1, 5.0, 1, false)]
         [InlineData(4.0, 1000, 4.0, 1, false)]
-        public void Distance_Equals_When_PrefixesAreDifferent_Then_ResultShouldBeAsExpected(double lhs, double lhsPrefix, double rhs, double rhsPrefix, bool expected)
+        public void Distance_Equals_When_PrefixesAreDifferent_Then_ResultShouldBeAsExpected(
+            double lhs,
+            double lhsPrefix,
+            double rhs,
+            double rhsPrefix,
+            bool expected)
         {
             var testee1 = new Distance(lhs, x => x.By(lhsPrefix).Meters);
             var testee2 = new Distance(rhs, x => x.By(rhsPrefix).Meters);
@@ -36,7 +47,7 @@
             result.Should().Be(expected);
         }
 
-      /*  [Theory]
+        /*  [Theory]
         [InlineData(4.0, 1, 1, 4.0)]
         [InlineData(4.0, 1000, 1, 4000.0)]
         [InlineData(8.0, 1, 1000, 8000.0)]

@@ -1,4 +1,10 @@
-﻿namespace Sundew.Quantities.UnitTests.Engine.Representations.Hierarchical.Parsing
+﻿// // --------------------------------------------------------------------------------------------------------------------
+// // <copyright file="ExpressionParserTests.cs" company="Hukano">
+// //   2016 (c) Hukano. All Rights Reserved. Licensed under the MIT License. See License.txt in the project root for license information.
+// // </copyright>
+// // --------------------------------------------------------------------------------------------------------------------
+
+namespace Sundew.Quantities.UnitTests.Engine.Representations.Hierarchical.Parsing
 {
     using System;
     using System.Collections.Generic;
@@ -42,8 +48,11 @@
         [InlineData(new[] { "Ia", "O*", "O{", "Ib", "O*", "Ic", "O}", "." }, "a*{b*c}")]
         public void Parse_Then_ResultShouldBeExpectedUnit(string[] tokens, string expectedUnit)
         {
-            var precedenceNotationVisitor = new NotationVisitor(NotationOptions.From(OperationOrderFormat.CurlyBrackets));
-            A.CallTo(() => this.unitExpressionParser.Parse(A<string>.Ignored, A<bool>.Ignored)).ReturnsLazily<Result<Expression, Error<UnitError>>, string, bool>((identifier, ignored) => Result.Success<Expression>(new UnitExpression(new Unit(identifier))));
+            var precedenceNotationVisitor = new NotationVisitor(
+                NotationOptions.From(OperationOrderFormat.CurlyBrackets));
+            A.CallTo(() => this.unitExpressionParser.Parse(A<string>.Ignored, A<bool>.Ignored))
+                .ReturnsLazily<Result<Expression, Error<UnitError>>, string, bool>(
+                    (identifier, ignored) => Result.Success<Expression>(new UnitExpression(new Unit(identifier))));
             var lexemes = GetLexemes(tokens);
 
             var result = this.testee.Parse(lexemes, ParseSettings.DefaultInvariantCulture);
@@ -57,9 +66,14 @@
         [InlineData("3", new[] { "Ia", "N3", "E" }, 1)]
         [InlineData("4", new[] { "O(", "Ia", "O*", "Ib", "." }, 4)]
         [InlineData("5", new[] { "O)", "Ia", "O/", "Ib", "O)", "." }, 0)]
-        public void Parse_When_LexemesAreInvalid_Then_ParseExceptionShouldBeThrown(string testNumber, string[] tokens, int expectedPosition)
+        public void Parse_When_LexemesAreInvalid_Then_ParseExceptionShouldBeThrown(
+            string testNumber,
+            string[] tokens,
+            int expectedPosition)
         {
-            A.CallTo(() => this.unitExpressionParser.Parse(A<string>.Ignored, A<bool>.Ignored)).ReturnsLazily<Result<Expression, Error<UnitError>>, string, bool>((identifier, ignored) => Result.Success<Expression>(new UnitExpression(new Unit(identifier))));
+            A.CallTo(() => this.unitExpressionParser.Parse(A<string>.Ignored, A<bool>.Ignored))
+                .ReturnsLazily<Result<Expression, Error<UnitError>>, string, bool>(
+                    (identifier, ignored) => Result.Success<Expression>(new UnitExpression(new Unit(identifier))));
             var lexemes = GetLexemes(tokens);
 
             Action act = () => this.testee.Parse(lexemes, ParseSettings.DefaultInvariantCulture);

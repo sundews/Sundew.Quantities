@@ -1,4 +1,10 @@
-﻿namespace Sundew.Quantities.Engine.Representations.Conversion
+﻿// // --------------------------------------------------------------------------------------------------------------------
+// // <copyright file="ExpressionToFlatRepresentationConverter.cs" company="Hukano">
+// //   2016 (c) Hukano. All Rights Reserved. Licensed under the MIT License. See License.txt in the project root for license information.
+// // </copyright>
+// // --------------------------------------------------------------------------------------------------------------------
+
+namespace Sundew.Quantities.Engine.Representations.Conversion
 {
     using Sundew.Quantities.Engine.Representations.Flat;
     using Sundew.Quantities.Engine.Representations.Hierarchical.Expressions;
@@ -7,7 +13,10 @@
     /// <summary>
     /// Converts <see cref="Expression"/> into <see cref="FlatRepresentation"/>.
     /// </summary>
-    public class ExpressionToFlatRepresentationConverter : IExpressionToFlatRepresentationConverter, IExpressionVisitor<bool, double, bool, FlatRepresentationBuilder, FlatRepresentation>
+    public class ExpressionToFlatRepresentationConverter : IExpressionToFlatRepresentationConverter,
+                                                           IExpressionVisitor
+                                                               <bool, double, bool, FlatRepresentationBuilder,
+                                                               FlatRepresentation>
     {
         /// <summary>
         /// Converts the specified expression.
@@ -16,7 +25,10 @@
         /// <param name="reduceUsingBaseUnits">If set to <c>true</c> reduction will be done using base units.</param>
         /// <param name="flatRepresentationBuilder">The flat representation builder.</param>
         /// <returns>A <see cref="FlatRepresentation"/>.</returns>
-        public FlatRepresentation Convert(Expression expression, bool reduceUsingBaseUnits, FlatRepresentationBuilder flatRepresentationBuilder)
+        public FlatRepresentation Convert(
+            Expression expression,
+            bool reduceUsingBaseUnits,
+            FlatRepresentationBuilder flatRepresentationBuilder)
         {
             return this.Visit(expression, reduceUsingBaseUnits, 0.0, false, flatRepresentationBuilder);
         }
@@ -30,11 +42,21 @@
         /// <param name="expressionIsPartOfDenominator">If set to <c>true</c> the expression is part of the denominator.</param>
         /// <param name="flatRepresentationBuilder">The flat representation builder.</param>
         /// <returns>A <see cref="FlatRepresentation"/>.</returns>
-        public FlatRepresentation Visit(Expression expression, bool reduceUsingBaseUnits = false, double exponent = 0.0, bool expressionIsPartOfDenominator = false, FlatRepresentationBuilder flatRepresentationBuilder = null)
+        public FlatRepresentation Visit(
+            Expression expression,
+            bool reduceUsingBaseUnits = false,
+            double exponent = 0.0,
+            bool expressionIsPartOfDenominator = false,
+            FlatRepresentationBuilder flatRepresentationBuilder = null)
         {
             flatRepresentationBuilder = flatRepresentationBuilder ?? new FlatRepresentationBuilder();
             exponent = exponent.Equals(0.0) ? 1 : exponent;
-            expression.Visit(this, reduceUsingBaseUnits, exponent, expressionIsPartOfDenominator, flatRepresentationBuilder);
+            expression.Visit(
+                this,
+                reduceUsingBaseUnits,
+                exponent,
+                expressionIsPartOfDenominator,
+                flatRepresentationBuilder);
             return flatRepresentationBuilder.Build();
         }
 
@@ -46,10 +68,25 @@
         /// <param name="exponent">The exponent.</param>
         /// <param name="expressionIsPartOfDenominator">If set to <c>true</c> the expression is part of the denominator.</param>
         /// <param name="flatRepresentationBuilder">The flat representation builder.</param>
-        public void Multiply(MultiplicationExpression multiplicationExpression, bool reduceUsingBaseUnits, double exponent, bool expressionIsPartOfDenominator, FlatRepresentationBuilder flatRepresentationBuilder)
+        public void Multiply(
+            MultiplicationExpression multiplicationExpression,
+            bool reduceUsingBaseUnits,
+            double exponent,
+            bool expressionIsPartOfDenominator,
+            FlatRepresentationBuilder flatRepresentationBuilder)
         {
-            multiplicationExpression.Lhs.Visit(this, reduceUsingBaseUnits, exponent, expressionIsPartOfDenominator, flatRepresentationBuilder);
-            multiplicationExpression.Rhs.Visit(this, reduceUsingBaseUnits, exponent, expressionIsPartOfDenominator, flatRepresentationBuilder);
+            multiplicationExpression.Lhs.Visit(
+                this,
+                reduceUsingBaseUnits,
+                exponent,
+                expressionIsPartOfDenominator,
+                flatRepresentationBuilder);
+            multiplicationExpression.Rhs.Visit(
+                this,
+                reduceUsingBaseUnits,
+                exponent,
+                expressionIsPartOfDenominator,
+                flatRepresentationBuilder);
         }
 
         /// <summary>
@@ -60,9 +97,19 @@
         /// <param name="exponent">The exponent.</param>
         /// <param name="expressionIsPartOfDenominator">If set to <c>true</c> the expression is part of the denominator.</param>
         /// <param name="flatRepresentationBuilder">The flat representation builder.</param>
-        public void Divide(DivisionExpression divisionExpression, bool reduceUsingBaseUnits, double exponent, bool expressionIsPartOfDenominator, FlatRepresentationBuilder flatRepresentationBuilder)
+        public void Divide(
+            DivisionExpression divisionExpression,
+            bool reduceUsingBaseUnits,
+            double exponent,
+            bool expressionIsPartOfDenominator,
+            FlatRepresentationBuilder flatRepresentationBuilder)
         {
-            divisionExpression.Lhs.Visit(this, reduceUsingBaseUnits, exponent, expressionIsPartOfDenominator, flatRepresentationBuilder);
+            divisionExpression.Lhs.Visit(
+                this,
+                reduceUsingBaseUnits,
+                exponent,
+                expressionIsPartOfDenominator,
+                flatRepresentationBuilder);
             divisionExpression.Rhs.Visit(this, reduceUsingBaseUnits, exponent * -1, true, flatRepresentationBuilder);
         }
 
@@ -74,9 +121,19 @@
         /// <param name="exponent">The exponent.</param>
         /// <param name="expressionIsPartOfDenominator">If set to <c>true</c> the expression is part of the denominator.</param>
         /// <param name="flatRepresentationBuilder">The flat representation builder.</param>
-        public void Magnitude(MagnitudeExpression magnitudeExpression, bool reduceUsingBaseUnits, double exponent, bool expressionIsPartOfDenominator, FlatRepresentationBuilder flatRepresentationBuilder)
+        public void Magnitude(
+            MagnitudeExpression magnitudeExpression,
+            bool reduceUsingBaseUnits,
+            double exponent,
+            bool expressionIsPartOfDenominator,
+            FlatRepresentationBuilder flatRepresentationBuilder)
         {
-            magnitudeExpression.Lhs.Visit(this, reduceUsingBaseUnits, exponent * magnitudeExpression.Rhs.Constant, expressionIsPartOfDenominator, flatRepresentationBuilder);
+            magnitudeExpression.Lhs.Visit(
+                this,
+                reduceUsingBaseUnits,
+                exponent * magnitudeExpression.Rhs.Constant,
+                expressionIsPartOfDenominator,
+                flatRepresentationBuilder);
         }
 
         /// <summary>
@@ -87,9 +144,19 @@
         /// <param name="exponent">The exponent.</param>
         /// <param name="expressionIsPartOfDenominator">If set to <c>true</c> the expression is part of the denominator.</param>
         /// <param name="flatRepresentationBuilder">The flat representation builder.</param>
-        public void Parenthesis(ParenthesisExpression parenthesisExpression, bool reduceUsingBaseUnits, double exponent, bool expressionIsPartOfDenominator, FlatRepresentationBuilder flatRepresentationBuilder)
+        public void Parenthesis(
+            ParenthesisExpression parenthesisExpression,
+            bool reduceUsingBaseUnits,
+            double exponent,
+            bool expressionIsPartOfDenominator,
+            FlatRepresentationBuilder flatRepresentationBuilder)
         {
-            parenthesisExpression.Expression.Visit(this, reduceUsingBaseUnits, exponent, expressionIsPartOfDenominator, flatRepresentationBuilder);
+            parenthesisExpression.Expression.Visit(
+                this,
+                reduceUsingBaseUnits,
+                exponent,
+                expressionIsPartOfDenominator,
+                flatRepresentationBuilder);
         }
 
         /// <summary>
@@ -100,7 +167,12 @@
         /// <param name="exponent">The exponent.</param>
         /// <param name="expressionIsPartOfDenominator">If set to <c>true</c> the expression is part of the denominator.</param>
         /// <param name="flatRepresentationBuilder">The flat representation builder.</param>
-        public void Unit(UnitExpression unitExpression, bool reduceUsingBaseUnits, double exponent, bool expressionIsPartOfDenominator, FlatRepresentationBuilder flatRepresentationBuilder)
+        public void Unit(
+            UnitExpression unitExpression,
+            bool reduceUsingBaseUnits,
+            double exponent,
+            bool expressionIsPartOfDenominator,
+            FlatRepresentationBuilder flatRepresentationBuilder)
         {
             flatRepresentationBuilder.Add(unitExpression, reduceUsingBaseUnits, exponent);
         }
@@ -113,7 +185,12 @@
         /// <param name="exponent">The exponent.</param>
         /// <param name="expressionIsPartOfDenominator">If set to <c>true</c> the expression is part of the denominator.</param>
         /// <param name="flatRepresentationBuilder">The flat representation builder.</param>
-        public void Variable(VariableExpression variableExpression, bool reduceUsingBaseUnits, double exponent, bool expressionIsPartOfDenominator, FlatRepresentationBuilder flatRepresentationBuilder)
+        public void Variable(
+            VariableExpression variableExpression,
+            bool reduceUsingBaseUnits,
+            double exponent,
+            bool expressionIsPartOfDenominator,
+            FlatRepresentationBuilder flatRepresentationBuilder)
         {
             flatRepresentationBuilder.Add(variableExpression, exponent);
         }
@@ -126,7 +203,12 @@
         /// <param name="exponent">The exponent.</param>
         /// <param name="expressionIsPartOfDenominator">If set to <c>true</c> the expression is part of the denominator.</param>
         /// <param name="flatRepresentationBuilder">The flat representation builder.</param>
-        public void Constant(ConstantExpression constantExpression, bool reduceUsingBaseUnits, double exponent, bool expressionIsPartOfDenominator, FlatRepresentationBuilder flatRepresentationBuilder)
+        public void Constant(
+            ConstantExpression constantExpression,
+            bool reduceUsingBaseUnits,
+            double exponent,
+            bool expressionIsPartOfDenominator,
+            FlatRepresentationBuilder flatRepresentationBuilder)
         {
             flatRepresentationBuilder.Add(constantExpression, exponent);
         }

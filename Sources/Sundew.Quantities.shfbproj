@@ -101,6 +101,8 @@
     <ContentLayout Include="Documentation\Content Layout.content" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Documentation\Extensibility\ReplacingTheUnitSystem.aml" />
+    <None Include="Documentation\Extensibility\AddingNewUnits.aml" />
     <None Include="Documentation\GettingStarted\Operations.aml" />
     <None Include="Documentation\GettingStarted\TypeSafety.aml" />
     <None Include="Documentation\GettingStarted\GettingStarted.aml" />

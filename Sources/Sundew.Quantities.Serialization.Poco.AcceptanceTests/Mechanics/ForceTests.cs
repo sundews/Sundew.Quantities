@@ -1,26 +1,25 @@
-﻿namespace Sundew.Quantities.Serialization.Poco.AcceptanceTests.Mechanics
+﻿// // --------------------------------------------------------------------------------------------------------------------
+// // <copyright file="ForceTests.cs" company="Hukano">
+// //   2016 (c) Hukano. All Rights Reserved. Licensed under the MIT License. See License.txt in the project root for license information.
+// // </copyright>
+// // --------------------------------------------------------------------------------------------------------------------
+
+namespace Sundew.Quantities.Serialization.Poco.AcceptanceTests.Mechanics
 {
     using FluentAssertions;
 
     using Newtonsoft.Json;
 
-    using Poco.Mechanics;
-
     using Sundew.Quantities.Mechanics;
+    using Sundew.Quantities.Serialization.Poco.Mechanics;
 
     using Xunit;
 
     public class ForceTests
     {
-        [Fact]
-        public void SerializeObject_Then_ResultShouldShouldBeExpected()
+        public class ConfigurationContainer
         {
-            const string Expected = "{\"Value\":5.0,\"Unit\":\"N\"}";
-            var testee = 5.Newtons().ToSerializable();
-
-            var result = JsonConvert.SerializeObject(testee);
-
-            result.Should().Be(Expected);
+            public Poco.Mechanics.Force Force { get; set; }
         }
 
         [Fact]
@@ -33,10 +32,16 @@
 
             result.Should().Be(expected);
         }
-        
-        public class ConfigurationContainer
+
+        [Fact]
+        public void SerializeObject_Then_ResultShouldShouldBeExpected()
         {
-            public Serialization.Poco.Mechanics.Force Force { get; set; }
+            const string Expected = "{\"Value\":5.0,\"Unit\":\"N\"}";
+            var testee = 5.Newtons().ToSerializable();
+
+            var result = JsonConvert.SerializeObject(testee);
+
+            result.Should().Be(Expected);
         }
     }
 }

@@ -1,4 +1,10 @@
-﻿namespace Sundew.Quantities.Engine.Representations.Flat
+﻿// // --------------------------------------------------------------------------------------------------------------------
+// // <copyright file="FlatRepresentation.cs" company="Hukano">
+// //   2016 (c) Hukano. All Rights Reserved. Licensed under the MIT License. See License.txt in the project root for license information.
+// // </copyright>
+// // --------------------------------------------------------------------------------------------------------------------
+
+namespace Sundew.Quantities.Engine.Representations.Flat
 {
     using System;
     using System.Collections;
@@ -40,7 +46,9 @@
         /// <returns>An <see cref="IEnumerator{IFlatIdentifierRepresentation}"/>.</returns>
         public IEnumerator<IFlatIdentifierRepresentation> GetEnumerator()
         {
-            return this.flatIdentifierRepresentations.Select(unitFlatIdentifierRepresentation => unitFlatIdentifierRepresentation.Value).GetEnumerator();
+            return
+                this.flatIdentifierRepresentations.Select(
+                    unitFlatIdentifierRepresentation => unitFlatIdentifierRepresentation.Value).GetEnumerator();
         }
 
         /// <summary>

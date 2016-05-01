@@ -1,6 +1,11 @@
-﻿namespace Sundew.Quantities.Serialization.Poco.Thermodynamics
+﻿// // --------------------------------------------------------------------------------------------------------------------
+// // <copyright file="Temperature.cs" company="Hukano">
+// //   2016 (c) Hukano. All Rights Reserved. Licensed under the MIT License. See License.txt in the project root for license information.
+// // </copyright>
+// // --------------------------------------------------------------------------------------------------------------------
+
+namespace Sundew.Quantities.Serialization.Poco.Thermodynamics
 {
-    using Sundew.Quantities.Engine;
     using Sundew.Quantities.Engine.Quantities;
 
     /// <summary>

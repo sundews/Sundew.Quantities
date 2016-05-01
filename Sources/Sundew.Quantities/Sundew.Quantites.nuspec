@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/10/nuspec.xsd">
+    <metadata>
+        <id>Sundew.Quantities</id>
+        <version>1.0.1-alpha</version>
+        <authors>Kim Hugener-Ohlsen</authors>
+        <licenseUrl>https://opensource.org/licenses/MIT</licenseUrl>
+        <projectUrl>https://github.com/hugener/Sundew.Quantities</projectUrl>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <description>Sundew.Quantities is a portable library, which provides classes for representing physical quantities such as:
+- Distance
+- Velocity 
+- Acceleration
+- Area
+- Volume
+- Mass
+- Time</description>
+        <releaseNotes>1.0.1: First version</releaseNotes>
+        <copyright>Hukano</copyright>
+        <dependencies>
+            <dependency id="Sundew.Base" version="1.0.26" />
+        </dependencies>
+    </metadata>
+    <files>
+        <file src="bin\Release\Sundew.Quantities.dll" target="lib\portable-net45+netcore45+wpa81+wp8\Sundew.Quantities.dll" />
+    </files>
+</package>

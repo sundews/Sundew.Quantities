@@ -1,4 +1,10 @@
-﻿namespace Sundew.Quantities.AcceptanceTests.Integrity
+﻿// // --------------------------------------------------------------------------------------------------------------------
+// // <copyright file="QuantityIntegrityTests.cs" company="Hukano">
+// //   2016 (c) Hukano. All Rights Reserved. Licensed under the MIT License. See License.txt in the project root for license information.
+// // </copyright>
+// // --------------------------------------------------------------------------------------------------------------------
+
+namespace Sundew.Quantities.AcceptanceTests.Integrity
 {
     using System;
     using System.Linq;
@@ -16,7 +22,12 @@
         private const string OperatorPrefix = "op_";
 
         private static readonly Type QuantityInterfaceType = typeof(IQuantity);
-        private static readonly Type[] ExcludedQuantityTypes = { typeof(IQuantity<>), typeof(Quantity<>), typeof(Quantity<,>) };
+
+        private static readonly Type[] ExcludedQuantityTypes =
+            {
+                typeof(IQuantity<>), typeof(Quantity<>),
+                typeof(Quantity<,>)
+            };
 
         [Theory]
         [InlineData("Addition", typeof(double))]
@@ -36,10 +47,8 @@
                                  x.Name == OperatorPrefix + @operator
                                  && x.GetParameters()
                                         .Select(parameterInfo => parameterInfo.ParameterType)
-                                        .SequenceEqual(new[]
-                                                           {
-                                                               x.DeclaringType, rhsType
-                                                           }))).ToList();
+                                        .SequenceEqual(new[] { x.DeclaringType, rhsType })))
+                    .ToList();
 
             incompleteTypes.Should()
                 .BeEmpty(
@@ -67,75 +76,14 @@
                                  x.Name == OperatorPrefix + @operator
                                  && x.GetParameters()
                                         .Select(parameterInfo => parameterInfo.ParameterType)
-                                        .SequenceEqual(new[]
-                                                           {
-                                                               x.DeclaringType, x.DeclaringType
-                                                           }))).ToList();
-
-            incompleteTypes.Should()
-                .BeEmpty(
-                       "The types: {0} did not implement the operator: {1} accepting a their own type as the rhs.",
-                       IntegrityHelper.GetTypes(incompleteTypes),
-                       @operator);
-        }
-
-        [Fact]
-        public void All_Quantities_Should_Be_Sealed()
-        {
-            var incompleteTypes =
-                IntegrityHelper.GetDerivedTypes(QuantityInterfaceType, ExcludedQuantityTypes)
-                    .Where(quantityType => !quantityType.IsSealed)
+                                        .SequenceEqual(new[] { x.DeclaringType, x.DeclaringType })))
                     .ToList();
 
             incompleteTypes.Should()
                 .BeEmpty(
-                       "The types: {0} is not sealed.",
-                       IntegrityHelper.GetTypes(incompleteTypes));
-        }
-
-        [Fact]
-        public void No_Quantities_Should_Have_Implicit_To_Double_Operators()
-        {
-            var invalidTypes =
-                IntegrityHelper.GetDerivedTypes(
-                    QuantityInterfaceType,
-                    ExcludedQuantityTypes).Where(
-                        quantityType =>
-                            {
-                                return
-                                    quantityType.GetMethods()
-                                        .Any(
-                                            x =>
-                                            x.Name == "op_Implicit"
-                                            && x.GetParameters().Select(parameterInfo => parameterInfo.ParameterType)
-                                                .SequenceEqual(new[]
-                                                                   {
-                                                                       quantityType
-                                                                   })
-                                            && x.ReturnType == typeof(double));
-                            }).ToList();
-
-            Execute.Assertion.ForCondition(!invalidTypes.Any())
-                   .FailWith(
-                       "The types: {0} did implement the {1} to double operator.",
-                       IntegrityHelper.GetTypes(invalidTypes),
-                       "Implicit");
-        }
-
-        [Fact]
-        public void No_Quantities_Should_Have_Implicit_From_Double_Operators()
-        {
-            var invalidTypes =
-                IntegrityHelper.GetDerivedTypes(
-                    QuantityInterfaceType,
-                    ExcludedQuantityTypes)
-                    .Where(quantityType => quantityType.GetMethod("op_Implicit", new[] { typeof(double) }) != null).ToList();
-
-            invalidTypes.Should()
-                .BeEmpty(
-                       "The types: {0} should not implement the implicit from {1} operator.",
-                       IntegrityHelper.GetTypes(invalidTypes),
-                       typeof(double));
+                    "The types: {0} did not implement the operator: {1} accepting a their own type as the rhs.",
+                    IntegrityHelper.GetTypes(incompleteTypes),
+                    @operator);
         }
 
         [Theory]
@@ -143,11 +91,18 @@
         [InlineData("Decrement")]
         public void All_Quantities_Should_Implement_Unary_Operators(string @operator)
         {
-            var incompleteTypes = IntegrityHelper.GetDerivedTypes(QuantityInterfaceType, ExcludedQuantityTypes)
-                .Where(quantityType => quantityType.GetMethod(OperatorPrefix + @operator, new[] { quantityType }) == null).ToList();
+            var incompleteTypes =
+                IntegrityHelper.GetDerivedTypes(QuantityInterfaceType, ExcludedQuantityTypes)
+                    .Where(
+                        quantityType =>
+                        quantityType.GetMethod(OperatorPrefix + @operator, new[] { quantityType }) == null)
+                    .ToList();
 
             incompleteTypes.Should()
-                .BeEmpty("The types: {0} should implement the {1} operator.", IntegrityHelper.GetTypes(incompleteTypes), @operator);
+                .BeEmpty(
+                    "The types: {0} should implement the {1} operator.",
+                    IntegrityHelper.GetTypes(incompleteTypes),
+                    @operator);
         }
 
         [Theory]
@@ -160,17 +115,20 @@
                     .Where(
                         quantityType =>
                         !quantityType.GetMethods(
-                            BindingFlags.Public | BindingFlags.Static | BindingFlags.FlattenHierarchy).Any(
-                                x =>
-                                x.Name == OperatorPrefix + @operator
-                                && x.GetParameters().Select(parameterInfo => parameterInfo.ParameterType)
-                                .SequenceEqual(new[]
-                                                   {
-                                                       x.DeclaringType
-                                                   }))).ToList();
+                            BindingFlags.Public | BindingFlags.Static | BindingFlags.FlattenHierarchy)
+                             .Any(
+                                 x =>
+                                 x.Name == OperatorPrefix + @operator
+                                 && x.GetParameters()
+                                        .Select(parameterInfo => parameterInfo.ParameterType)
+                                        .SequenceEqual(new[] { x.DeclaringType })))
+                    .ToList();
 
             incompleteTypes.Should()
-                .BeEmpty("The types: {0} should implement the {1} operator.", IntegrityHelper.GetTypes(incompleteTypes), @operator);
+                .BeEmpty(
+                    "The types: {0} should implement the {1} operator.",
+                    IntegrityHelper.GetTypes(incompleteTypes),
+                    @operator);
         }
 
         [Theory]
@@ -187,17 +145,73 @@
                     .Where(
                         quantityType =>
                         !quantityType.GetMethods(
-                            BindingFlags.Public | BindingFlags.Static | BindingFlags.FlattenHierarchy).Any(
-                                x =>
-                                x.Name == OperatorPrefix + @operator
-                                && x.GetParameters().Select(parameterInfo => parameterInfo.ParameterType)
-                                .SequenceEqual(new[]
-                                                   {
-                                                       x.DeclaringType, x.DeclaringType
-                                                   }))).ToList();
+                            BindingFlags.Public | BindingFlags.Static | BindingFlags.FlattenHierarchy)
+                             .Any(
+                                 x =>
+                                 x.Name == OperatorPrefix + @operator
+                                 && x.GetParameters()
+                                        .Select(parameterInfo => parameterInfo.ParameterType)
+                                        .SequenceEqual(new[] { x.DeclaringType, x.DeclaringType })))
+                    .ToList();
 
             incompleteTypes.Should()
-                .BeEmpty("The types: {0} should implement the {1} operator.", IntegrityHelper.GetTypes(incompleteTypes), @operator);
+                .BeEmpty(
+                    "The types: {0} should implement the {1} operator.",
+                    IntegrityHelper.GetTypes(incompleteTypes),
+                    @operator);
+        }
+
+        [Fact]
+        public void All_Quantities_Should_Be_Sealed()
+        {
+            var incompleteTypes =
+                IntegrityHelper.GetDerivedTypes(QuantityInterfaceType, ExcludedQuantityTypes)
+                    .Where(quantityType => !quantityType.IsSealed)
+                    .ToList();
+
+            incompleteTypes.Should().BeEmpty("The types: {0} is not sealed.", IntegrityHelper.GetTypes(incompleteTypes));
+        }
+
+        [Fact]
+        public void No_Quantities_Should_Have_Implicit_From_Double_Operators()
+        {
+            var invalidTypes =
+                IntegrityHelper.GetDerivedTypes(QuantityInterfaceType, ExcludedQuantityTypes)
+                    .Where(quantityType => quantityType.GetMethod("op_Implicit", new[] { typeof(double) }) != null)
+                    .ToList();
+
+            invalidTypes.Should()
+                .BeEmpty(
+                    "The types: {0} should not implement the implicit from {1} operator.",
+                    IntegrityHelper.GetTypes(invalidTypes),
+                    typeof(double));
+        }
+
+        [Fact]
+        public void No_Quantities_Should_Have_Implicit_To_Double_Operators()
+        {
+            var invalidTypes =
+                IntegrityHelper.GetDerivedTypes(QuantityInterfaceType, ExcludedQuantityTypes)
+                    .Where(
+                        quantityType =>
+                            {
+                                return
+                                    quantityType.GetMethods()
+                                        .Any(
+                                            x =>
+                                            x.Name == "op_Implicit"
+                                            && x.GetParameters()
+                                                   .Select(parameterInfo => parameterInfo.ParameterType)
+                                                   .SequenceEqual(new[] { quantityType })
+                                            && x.ReturnType == typeof(double));
+                            })
+                    .ToList();
+
+            Execute.Assertion.ForCondition(!invalidTypes.Any())
+                .FailWith(
+                    "The types: {0} did implement the {1} to double operator.",
+                    IntegrityHelper.GetTypes(invalidTypes),
+                    "Implicit");
         }
     }
 }

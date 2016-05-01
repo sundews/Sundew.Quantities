@@ -1,4 +1,10 @@
-﻿namespace Sundew.Quantities.Engine.Operations
+﻿// // --------------------------------------------------------------------------------------------------------------------
+// // <copyright file="ExponentiationOperation.cs" company="Hukano">
+// //   2016 (c) Hukano. All Rights Reserved. Licensed under the MIT License. See License.txt in the project root for license information.
+// // </copyright>
+// // --------------------------------------------------------------------------------------------------------------------
+
+namespace Sundew.Quantities.Engine.Operations
 {
     using System;
 
@@ -11,9 +17,9 @@
     /// </summary>
     public class ExponentiationOperation : IQuantityOperation<double>
     {
-        private readonly IUnitFactory unitFactory;
-
         private readonly IExpressionReducer expressionReducer;
+
+        private readonly IUnitFactory unitFactory;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ExponentiationOperation"/> class.

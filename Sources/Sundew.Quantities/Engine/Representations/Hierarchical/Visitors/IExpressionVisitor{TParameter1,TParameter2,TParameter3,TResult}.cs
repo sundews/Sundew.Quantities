@@ -1,3 +1,9 @@
+// // --------------------------------------------------------------------------------------------------------------------
+// // <copyright file="IExpressionVisitor{TParameter1,TParameter2,TParameter3,TResult}.cs" company="Hukano">
+// //   2016 (c) Hukano. All Rights Reserved. Licensed under the MIT License. See License.txt in the project root for license information.
+// // </copyright>
+// // --------------------------------------------------------------------------------------------------------------------
+
 namespace Sundew.Quantities.Engine.Representations.Hierarchical.Visitors
 {
     using Sundew.Base.Visiting;
@@ -10,7 +16,8 @@ namespace Sundew.Quantities.Engine.Representations.Hierarchical.Visitors
     /// <typeparam name="TParameter2">The type of the parameter2.</typeparam>
     /// <typeparam name="TParameter3">The type of the parameter3.</typeparam>
     /// <typeparam name="TResult">The type of the result.</typeparam>
-    public interface IExpressionVisitor<in TParameter1, in TParameter2, in TParameter3, out TResult> : IVisitor<Expression, TParameter1, TParameter2, TParameter3, TResult>
+    public interface IExpressionVisitor<in TParameter1, in TParameter2, in TParameter3, out TResult> :
+        IVisitor<Expression, TParameter1, TParameter2, TParameter3, TResult>
     {
         /// <summary>
         /// Visits a <see cref="MultiplicationExpression"/>.
@@ -19,7 +26,11 @@ namespace Sundew.Quantities.Engine.Representations.Hierarchical.Visitors
         /// <param name="parameter1">The parameter1.</param>
         /// <param name="parameter2">The parameter2.</param>
         /// <param name="parameter3">The parameter3.</param>
-        void Multiply(MultiplicationExpression multiplicationExpression, TParameter1 parameter1, TParameter2 parameter2, TParameter3 parameter3);
+        void Multiply(
+            MultiplicationExpression multiplicationExpression,
+            TParameter1 parameter1,
+            TParameter2 parameter2,
+            TParameter3 parameter3);
 
         /// <summary>
         /// Visits a <see cref="DivisionExpression"/>.
@@ -28,7 +39,11 @@ namespace Sundew.Quantities.Engine.Representations.Hierarchical.Visitors
         /// <param name="parameter1">The parameter1.</param>
         /// <param name="parameter2">The parameter2.</param>
         /// <param name="parameter3">The parameter3.</param>
-        void Divide(DivisionExpression divisionExpression, TParameter1 parameter1, TParameter2 parameter2, TParameter3 parameter3);
+        void Divide(
+            DivisionExpression divisionExpression,
+            TParameter1 parameter1,
+            TParameter2 parameter2,
+            TParameter3 parameter3);
 
         /// <summary>
         /// Visits a <see cref="MagnitudeExpression"/>.
@@ -37,7 +52,11 @@ namespace Sundew.Quantities.Engine.Representations.Hierarchical.Visitors
         /// <param name="parameter1">The parameter1.</param>
         /// <param name="parameter2">The parameter2.</param>
         /// <param name="parameter3">The parameter3.</param>
-        void Magnitude(MagnitudeExpression magnitudeExpression, TParameter1 parameter1, TParameter2 parameter2, TParameter3 parameter3);
+        void Magnitude(
+            MagnitudeExpression magnitudeExpression,
+            TParameter1 parameter1,
+            TParameter2 parameter2,
+            TParameter3 parameter3);
 
         /// <summary>
         /// Visits a <see cref="ParenthesisExpression"/>.
@@ -46,7 +65,11 @@ namespace Sundew.Quantities.Engine.Representations.Hierarchical.Visitors
         /// <param name="parameter1">The parameter1.</param>
         /// <param name="parameter2">The parameter2.</param>
         /// <param name="parameter3">The parameter3.</param>
-        void Parenthesis(ParenthesisExpression parenthesisExpression, TParameter1 parameter1, TParameter2 parameter2, TParameter3 parameter3);
+        void Parenthesis(
+            ParenthesisExpression parenthesisExpression,
+            TParameter1 parameter1,
+            TParameter2 parameter2,
+            TParameter3 parameter3);
 
         /// <summary>
         /// Visits a <see cref="UnitExpression"/>.
@@ -64,7 +87,11 @@ namespace Sundew.Quantities.Engine.Representations.Hierarchical.Visitors
         /// <param name="parameter1">The parameter1.</param>
         /// <param name="parameter2">The parameter2.</param>
         /// <param name="parameter3">The parameter3.</param>
-        void Variable(VariableExpression variableExpression, TParameter1 parameter1, TParameter2 parameter2, TParameter3 parameter3);
+        void Variable(
+            VariableExpression variableExpression,
+            TParameter1 parameter1,
+            TParameter2 parameter2,
+            TParameter3 parameter3);
 
         /// <summary>
         /// Visits a <see cref="ConstantExpression"/>.
@@ -73,6 +100,10 @@ namespace Sundew.Quantities.Engine.Representations.Hierarchical.Visitors
         /// <param name="parameter1">The parameter1.</param>
         /// <param name="parameter2">The parameter2.</param>
         /// <param name="parameter3">The parameter3.</param>
-        void Constant(ConstantExpression constantExpression, TParameter1 parameter1, TParameter2 parameter2, TParameter3 parameter3);
+        void Constant(
+            ConstantExpression constantExpression,
+            TParameter1 parameter1,
+            TParameter2 parameter2,
+            TParameter3 parameter3);
     }
 }

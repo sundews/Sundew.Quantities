@@ -1,3 +1,9 @@
+// // --------------------------------------------------------------------------------------------------------------------
+// // <copyright file="MultiplicationExpression.cs" company="Hukano">
+// //   2016 (c) Hukano. All Rights Reserved. Licensed under the MIT License. See License.txt in the project root for license information.
+// // </copyright>
+// // --------------------------------------------------------------------------------------------------------------------
+
 namespace Sundew.Quantities.Engine.Representations.Hierarchical.Expressions
 {
     using System;
@@ -7,7 +13,9 @@ namespace Sundew.Quantities.Engine.Representations.Hierarchical.Expressions
     /// <summary>
     /// Represents a multiplication operation of two expressions.
     /// </summary>
-    public sealed class MultiplicationExpression : Expression, IHaveLhsAndRhs<Expression>, IEquatable<MultiplicationExpression>
+    public sealed class MultiplicationExpression : Expression,
+                                                   IHaveLhsAndRhs<Expression>,
+                                                   IEquatable<MultiplicationExpression>
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="MultiplicationExpression"/> class.
@@ -18,6 +26,19 @@ namespace Sundew.Quantities.Engine.Representations.Hierarchical.Expressions
         {
             this.Lhs = lhs;
             this.Rhs = rhs;
+        }
+
+        /// <summary>
+        /// Indicates whether the current object is equal to another object of the same type.
+        /// </summary>
+        /// <param name="other">An object to compare with this object.</param>
+        /// <returns>
+        ///     <c>true</c> if the current object is equal to the <paramref name="other" /> parameter; otherwise, false.
+        /// </returns>
+        public bool Equals(MultiplicationExpression other)
+        {
+            return (Equals(this.Lhs, other.Lhs) && Equals(this.Rhs, other.Rhs))
+                   || (Equals(this.Lhs, other.Rhs) && Equals(this.Rhs, other.Lhs));
         }
 
         /// <summary>
@@ -43,7 +64,9 @@ namespace Sundew.Quantities.Engine.Representations.Hierarchical.Expressions
         /// <typeparam name="TResult">The type of the result.</typeparam>
         /// <param name="expressionVisitor">The expression visitor.</param>
         /// <param name="parameter">The parameter.</param>
-        public override void Visit<TParameter, TResult>(IExpressionVisitor<TParameter, TResult> expressionVisitor, TParameter parameter)
+        public override void Visit<TParameter, TResult>(
+            IExpressionVisitor<TParameter, TResult> expressionVisitor,
+            TParameter parameter)
         {
             expressionVisitor.Multiply(this, parameter);
         }
@@ -106,19 +129,6 @@ namespace Sundew.Quantities.Engine.Representations.Hierarchical.Expressions
             TParameter4 parameter4)
         {
             expressionVisitor.Multiply(this, parameter1, parameter2, parameter3, parameter4);
-        }
-
-        /// <summary>
-        /// Indicates whether the current object is equal to another object of the same type.
-        /// </summary>
-        /// <param name="other">An object to compare with this object.</param>
-        /// <returns>
-        ///     <c>true</c> if the current object is equal to the <paramref name="other" /> parameter; otherwise, false.
-        /// </returns>
-        public bool Equals(MultiplicationExpression other)
-        {
-            return (object.Equals(this.Lhs, other.Lhs) && object.Equals(this.Rhs, other.Rhs))
-                   || (object.Equals(this.Lhs, other.Rhs) && object.Equals(this.Rhs, other.Lhs));
         }
     }
 }

@@ -1,4 +1,10 @@
-﻿namespace Sundew.Quantities.Engine.Units
+﻿// // --------------------------------------------------------------------------------------------------------------------
+// // <copyright file="Unit.cs" company="Hukano">
+// //   2016 (c) Hukano. All Rights Reserved. Licensed under the MIT License. See License.txt in the project root for license information.
+// // </copyright>
+// // --------------------------------------------------------------------------------------------------------------------
+
+namespace Sundew.Quantities.Engine.Units
 {
     using System;
 
@@ -10,9 +16,9 @@
     /// </summary>
     public class Unit : IUnit
     {
-        private readonly Prefix prefix;
-
         private readonly string notation;
+
+        private readonly Prefix prefix;
 
         private readonly UnitExpression unitExpression;
 
@@ -71,38 +77,6 @@
         }
 
         /// <summary>
-        /// Gets the expression for the specified unit.
-        /// </summary>
-        /// <param name="unit">The unit.</param>
-        /// <returns>An <see cref="Expression"/>.</returns>
-        public static implicit operator Expression(Unit unit)
-        {
-            return unit.GetExpression();
-        }
-
-        /// <summary>
-        /// Multiplies the specified LHS with the RHS.
-        /// </summary>
-        /// <param name="lhs">The LHS.</param>
-        /// <param name="rhs">The RHS.</param>
-        /// <returns>A <see cref="DerivedUnit"/>.</returns>
-        public static Expression operator *(Unit lhs, IUnit rhs)
-        {
-            return lhs.GetExpression() * rhs.GetExpression();
-        }
-
-        /// <summary>
-        /// Multiplies the specified LHS with the RHS.
-        /// </summary>
-        /// <param name="lhs">The LHS.</param>
-        /// <param name="rhs">The RHS.</param>
-        /// <returns>A <see cref="DerivedUnit"/>.</returns>
-        public static Expression operator /(Unit lhs, IUnit rhs)
-        {
-            return lhs.GetExpression() / rhs.GetExpression();
-        }
-
-        /// <summary>
         /// Converts the specified value into the unit's base value.
         /// </summary>
         /// <param name="value">The value.</param>
@@ -135,22 +109,6 @@
         public Expression GetExpression()
         {
             return this.unitExpression;
-        }
-
-        /// <summary>
-        /// Gets the base expression.
-        /// </summary>
-        /// <returns>
-        /// the base <see cref="Expression" />.
-        /// </returns>
-        public Expression GetBaseExpression()
-        {
-            if (this.prefix == Prefix.None)
-            {
-                return this.unitExpression;
-            }
-
-            return new UnitExpression(this.GetPrefixedUnit(null));
         }
 
         /// <summary>
@@ -196,6 +154,66 @@
         }
 
         /// <summary>
+        /// Indicates whether the current object is equal to another object of the same type.
+        /// </summary>
+        /// <param name="other">An object to compare with this object.</param>
+        /// <returns>
+        /// true if the current object is equal to the <paramref name="other" /> parameter; otherwise, false.
+        /// </returns>
+        public bool Equals(IUnit other)
+        {
+            return UnitHelper.AreUnitsEqual(this, other);
+        }
+
+        /// <summary>
+        /// Gets the expression for the specified unit.
+        /// </summary>
+        /// <param name="unit">The unit.</param>
+        /// <returns>An <see cref="Expression"/>.</returns>
+        public static implicit operator Expression(Unit unit)
+        {
+            return unit.GetExpression();
+        }
+
+        /// <summary>
+        /// Multiplies the specified LHS with the RHS.
+        /// </summary>
+        /// <param name="lhs">The LHS.</param>
+        /// <param name="rhs">The RHS.</param>
+        /// <returns>A <see cref="DerivedUnit"/>.</returns>
+        public static Expression operator *(Unit lhs, IUnit rhs)
+        {
+            return lhs.GetExpression() * rhs.GetExpression();
+        }
+
+        /// <summary>
+        /// Multiplies the specified LHS with the RHS.
+        /// </summary>
+        /// <param name="lhs">The LHS.</param>
+        /// <param name="rhs">The RHS.</param>
+        /// <returns>A <see cref="DerivedUnit"/>.</returns>
+        public static Expression operator /(Unit lhs, IUnit rhs)
+        {
+            return lhs.GetExpression() / rhs.GetExpression();
+        }
+
+        /// <summary>
+        /// Gets the base expression.
+        /// </summary>
+        /// <returns>
+        /// the base <see cref="Expression" />.
+        /// </returns>
+        public Expression GetBaseExpression()
+        {
+            if (this.prefix == Prefix.None)
+            {
+                return this.unitExpression;
+            }
+
+            return new UnitExpression(this.GetPrefixedUnit(null));
+        }
+
+        /// <summary>
         /// Returns a hash code for this instance.
         /// </summary>
         /// <returns>
@@ -219,18 +237,6 @@
         }
 
         /// <summary>
-        /// Indicates whether the current object is equal to another object of the same type.
-        /// </summary>
-        /// <param name="other">An object to compare with this object.</param>
-        /// <returns>
-        /// true if the current object is equal to the <paramref name="other" /> parameter; otherwise, false.
-        /// </returns>
-        public bool Equals(IUnit other)
-        {
-            return UnitHelper.AreUnitsEqual(this, other);
-        }
-
-        /// <summary>
         /// Returns a <see cref="System.String" /> that represents this instance.
         /// </summary>
         /// <returns>
@@ -241,4 +247,4 @@
             return this.Notation;
         }
     }
-} 
+}

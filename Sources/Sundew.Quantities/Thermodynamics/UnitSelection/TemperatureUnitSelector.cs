@@ -1,4 +1,10 @@
-﻿namespace Sundew.Quantities.Thermodynamics.UnitSelection
+﻿// // --------------------------------------------------------------------------------------------------------------------
+// // <copyright file="TemperatureUnitSelector.cs" company="Hukano">
+// //   2016 (c) Hukano. All Rights Reserved. Licensed under the MIT License. See License.txt in the project root for license information.
+// // </copyright>
+// // --------------------------------------------------------------------------------------------------------------------
+
+namespace Sundew.Quantities.Thermodynamics.UnitSelection
 {
     using System.Collections.Generic;
 
@@ -10,7 +16,9 @@
     /// <summary>
     /// Unit selector for <see cref="Temperature"/>.
     /// </summary>
-    public class TemperatureUnitSelector : PrefixSelector<ITemperatureUnitSelector, IPrefixSelector<ITemperatureUnitSelector>>, ITemperatureUnitSelector
+    public class TemperatureUnitSelector :
+        PrefixSelector<ITemperatureUnitSelector, IPrefixSelector<ITemperatureUnitSelector>>,
+        ITemperatureUnitSelector
     {
         /// <summary>
         /// Gets the base unit.

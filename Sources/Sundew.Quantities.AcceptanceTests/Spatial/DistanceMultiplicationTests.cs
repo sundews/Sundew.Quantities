@@ -1,4 +1,10 @@
-﻿namespace Sundew.Quantities.AcceptanceTests.Spatial
+﻿// // --------------------------------------------------------------------------------------------------------------------
+// // <copyright file="DistanceMultiplicationTests.cs" company="Hukano">
+// //   2016 (c) Hukano. All Rights Reserved. Licensed under the MIT License. See License.txt in the project root for license information.
+// // </copyright>
+// // --------------------------------------------------------------------------------------------------------------------
+
+namespace Sundew.Quantities.AcceptanceTests.Spatial
 {
     using FluentAssertions;
 
@@ -28,7 +34,10 @@
         [InlineData(3.0, 10.0, 30.0)]
         [InlineData(0.0, 0.0, 0.0)]
         [InlineData(-50.0, 40.0, -2000.0)]
-        public void Distance_Multiplication_When_MultiplyingWithAnyNumber_Then_ResultShouldBeExpected(double lhs, double rhs, double expected)
+        public void Distance_Multiplication_When_MultiplyingWithAnyNumber_Then_ResultShouldBeExpected(
+            double lhs,
+            double rhs,
+            double expected)
         {
             var testee1 = new Distance(lhs, x => x.Meters);
 
@@ -41,7 +50,10 @@
         [InlineData(3.0, 30.0, 0.9)]
         [InlineData(0.0, 0.0, 0.0)]
         [InlineData(-50.0, 40.0, -20.0)]
-        public void Distance_Multiplication_When_PrefixesAreDifferent_Then_ResultShouldBeExpected(double lhs, double rhs, double expected)
+        public void Distance_Multiplication_When_PrefixesAreDifferent_Then_ResultShouldBeExpected(
+            double lhs,
+            double rhs,
+            double expected)
         {
             var testee1 = new Distance(lhs, x => x.Meters);
             var testee2 = new Distance(rhs, x => x.Centi.Meters);
@@ -54,7 +66,10 @@
         [Theory]
         [InlineData(2.0, 20.0, 4)]
         [InlineData(2.0, 0.0, 0)]
-        public void Distance_Multiplication_When_UnitsAndPrefixesAreDifferent_Then_ResultShouldBeExpected(double lhs, double rhs, double expected)
+        public void Distance_Multiplication_When_UnitsAndPrefixesAreDifferent_Then_ResultShouldBeExpected(
+            double lhs,
+            double rhs,
+            double expected)
         {
             var testee1 = new Distance(lhs, x => x.Deci.Meters);
             var testee2 = new Distance(rhs, x => x.Centi.Meters);

@@ -1,3 +1,9 @@
+// // --------------------------------------------------------------------------------------------------------------------
+// // <copyright file="Lexemes.cs" company="Hukano">
+// //   2016 (c) Hukano. All Rights Reserved. Licensed under the MIT License. See License.txt in the project root for license information.
+// // </copyright>
+// // --------------------------------------------------------------------------------------------------------------------
+
 namespace Sundew.Quantities.Engine.Representations.Hierarchical.Parsing.LexicalAnalysis
 {
     using System.Collections;
@@ -30,6 +36,24 @@ namespace Sundew.Quantities.Engine.Representations.Hierarchical.Parsing.LexicalA
         /// The current.
         /// </value>
         public Lexeme Current => this.currentLexeme?.Value;
+
+        /// <summary>
+        /// Gets the enumerator.
+        /// </summary>
+        /// <returns>An <see cref="IEnumerator{Lexeme}"/>.</returns>
+        public IEnumerator<Lexeme> GetEnumerator()
+        {
+            return this.currentLexeme.List.GetEnumerator();
+        }
+
+        /// <summary>
+        /// Gets the enumerator.
+        /// </summary>
+        /// <returns>An <see cref="IEnumerator"/>.</returns>
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return this.GetEnumerator();
+        }
 
         /// <summary>
         /// Accepts the token from.
@@ -100,9 +124,9 @@ namespace Sundew.Quantities.Engine.Representations.Hierarchical.Parsing.LexicalA
         /// <param name="result">The result.</param>
         /// <returns></returns>
         public bool AcceptTokenFrom<TResult>(
-                    ILexemeRegistry<TResult> possibleTokens,
-                    bool ignoreWhiteSpace,
-                    out TResult result)
+            ILexemeRegistry<TResult> possibleTokens,
+            bool ignoreWhiteSpace,
+            out TResult result)
         {
             Contract.Requires(possibleTokens != null);
 
@@ -210,24 +234,6 @@ namespace Sundew.Quantities.Engine.Representations.Hierarchical.Parsing.LexicalA
         {
             this.currentLexeme = this.currentLexeme.Previous;
             return this.currentLexeme.Value;
-        }
-
-        /// <summary>
-        /// Gets the enumerator.
-        /// </summary>
-        /// <returns>An <see cref="IEnumerator{Lexeme}"/>.</returns>
-        public IEnumerator<Lexeme> GetEnumerator()
-        {
-            return this.currentLexeme.List.GetEnumerator();
-        }
-
-        /// <summary>
-        /// Gets the enumerator.
-        /// </summary>
-        /// <returns>An <see cref="IEnumerator"/>.</returns>
-        IEnumerator IEnumerable.GetEnumerator()
-        {
-            return this.GetEnumerator();
         }
 
         private bool TryIgnoreWhiteSpace(bool ignoreWhiteSpace, Lexeme lexeme)

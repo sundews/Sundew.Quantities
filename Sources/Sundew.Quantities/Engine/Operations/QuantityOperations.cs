@@ -1,11 +1,17 @@
-﻿namespace Sundew.Quantities.Engine.Operations
+﻿// // --------------------------------------------------------------------------------------------------------------------
+// // <copyright file="QuantityOperations.cs" company="Hukano">
+// //   2016 (c) Hukano. All Rights Reserved. Licensed under the MIT License. See License.txt in the project root for license information.
+// // </copyright>
+// // --------------------------------------------------------------------------------------------------------------------
+
+namespace Sundew.Quantities.Engine.Operations
 {
     using Sundew.Quantities.Engine.Quantities;
     using Sundew.Quantities.Engine.Representations.Evaluation;
     using Sundew.Quantities.Engine.Representations.Hierarchical.Visitors;
 
     /// <summary>
-    /// Contains operations for <see cref="IQuantity{IQuantity}"/> instances.
+    /// Contains operations for <see cref="IQuantity{TQuantity}"/> instances.
     /// </summary>
     public class QuantityOperations : IQuantityOperations
     {
@@ -16,12 +22,22 @@
         /// <param name="expressionReducer">The expression reducer.</param>
         /// <param name="valueFromBaseVisitor">From base visitor.</param>
         /// <param name="valueToBaseVisitor">To base visitor.</param>
-        public QuantityOperations(IUnitFactory unitFactory, IExpressionReducer expressionReducer, ValueFromBaseVisitor valueFromBaseVisitor, ValueToBaseVisitor valueToBaseVisitor)
+        public QuantityOperations(
+            IUnitFactory unitFactory,
+            IExpressionReducer expressionReducer,
+            ValueFromBaseVisitor valueFromBaseVisitor,
+            ValueToBaseVisitor valueToBaseVisitor)
         {
             this.Addition = new AdditionOperation(valueFromBaseVisitor, valueToBaseVisitor);
             this.Subtraction = new SubtractionOperation(valueFromBaseVisitor, valueToBaseVisitor);
-            this.Multiplication = new ReducingOperation(unitFactory, new UnitMultiplicationOperation(expressionReducer), new MultiplicationOperation());
-            this.Division = new ReducingOperation(unitFactory, new UnitDivisionOperation(expressionReducer), new DivisionOperation());
+            this.Multiplication = new ReducingOperation(
+                unitFactory,
+                new UnitMultiplicationOperation(expressionReducer),
+                new MultiplicationOperation());
+            this.Division = new ReducingOperation(
+                unitFactory,
+                new UnitDivisionOperation(expressionReducer),
+                new DivisionOperation());
             this.Exponentiation = new ExponentiationOperation(unitFactory, expressionReducer);
             this.NthRoot = new NthRootOperation(unitFactory, expressionReducer);
             this.ConvertToUnit = new ConvertToUnitOperation();

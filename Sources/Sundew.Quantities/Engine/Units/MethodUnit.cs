@@ -1,4 +1,10 @@
-﻿namespace Sundew.Quantities.Engine.Units
+﻿// // --------------------------------------------------------------------------------------------------------------------
+// // <copyright file="MethodUnit.cs" company="Hukano">
+// //   2016 (c) Hukano. All Rights Reserved. Licensed under the MIT License. See License.txt in the project root for license information.
+// // </copyright>
+// // --------------------------------------------------------------------------------------------------------------------
+
+namespace Sundew.Quantities.Engine.Units
 {
     using System;
 
@@ -10,15 +16,15 @@
     /// </summary>
     public class MethodUnit : IUnit
     {
-        private readonly Prefix prefix;
-
-        private readonly Func<double, double> toBase;
+        private readonly Expression expression;
 
         private readonly Func<double, double> fromBase;
 
         private readonly string notation;
 
-        private readonly Expression expression;
+        private readonly Prefix prefix;
+
+        private readonly Func<double, double> toBase;
 
         private readonly UnitExpression unitExpression;
 
@@ -30,7 +36,12 @@
         /// <param name="fromBase">From base.</param>
         /// <param name="notation">The notation.</param>
         /// <param name="expression">The expression.</param>
-        public MethodUnit(Prefix prefix, Func<double, double> toBase, Func<double, double> fromBase, string notation, Expression expression)
+        public MethodUnit(
+            Prefix prefix,
+            Func<double, double> toBase,
+            Func<double, double> fromBase,
+            string notation,
+            Expression expression)
         {
             this.prefix = prefix ?? Prefix.None;
             this.toBase = toBase;
@@ -48,7 +59,11 @@
         /// <param name="fromBase">From base.</param>
         /// <param name="notation">The notation.</param>
         /// <param name="expression">The expression.</param>
-        public MethodUnit(Func<double, double> toBase, Func<double, double> fromBase, string notation, Expression expression)
+        public MethodUnit(
+            Func<double, double> toBase,
+            Func<double, double> fromBase,
+            string notation,
+            Expression expression)
             : this(null, toBase, fromBase, notation, expression)
         {
         }
@@ -153,6 +168,18 @@
         }
 
         /// <summary>
+        /// Indicates whether the current object is equal to another object of the same type.
+        /// </summary>
+        /// <param name="other">An object to compare with this object.</param>
+        /// <returns>
+        /// true if the current object is equal to the <paramref name="other" /> parameter; otherwise, false.
+        /// </returns>
+        public bool Equals(IUnit other)
+        {
+            return UnitHelper.AreUnitsEqual(this, other);
+        }
+
+        /// <summary>
         /// Returns a hash code for this instance.
         /// </summary>
         /// <returns>
@@ -171,18 +198,6 @@
         ///   <c>true</c> if the specified <see cref="System.Object" /> is equal to this instance; otherwise, <c>false</c>.
         /// </returns>
         public override bool Equals(object other)
-        {
-            return UnitHelper.AreUnitsEqual(this, other);
-        }
-
-        /// <summary>
-        /// Indicates whether the current object is equal to another object of the same type.
-        /// </summary>
-        /// <param name="other">An object to compare with this object.</param>
-        /// <returns>
-        /// true if the current object is equal to the <paramref name="other" /> parameter; otherwise, false.
-        /// </returns>
-        public bool Equals(IUnit other)
         {
             return UnitHelper.AreUnitsEqual(this, other);
         }

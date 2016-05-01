@@ -1,4 +1,10 @@
-﻿namespace Sundew.Quantities.Samples
+﻿// // --------------------------------------------------------------------------------------------------------------------
+// // <copyright file="UnitConversion.cs" company="Hukano">
+// //   2016 (c) Hukano. All Rights Reserved. Licensed under the MIT License. See License.txt in the project root for license information.
+// // </copyright>
+// // --------------------------------------------------------------------------------------------------------------------
+
+namespace Sundew.Quantities.Samples
 {
     using Sundew.Quantities.Spatial;
 
@@ -7,17 +13,18 @@
 
     public class UnitConversion
     {
-        private readonly ITestOutputHelper output;
-
         public UnitConversion(ITestOutputHelper output)
         {
             this.output = output;
         }
 
+        private readonly ITestOutputHelper output;
+
         [Fact(Skip = "Sample")]
         public void ConvertDistance()
         {
             #region UsageDistance
+
             // Create kilo meters
             var kilometers = 4.ToDistance(x => x.Kilo.Meters);
 
@@ -26,6 +33,7 @@
 
             this.output.WriteLine(kilometers + " is " + miles);
             // 4 [km] is 2,48548476894934 [mi]
+
             #endregion
         }
 
@@ -33,6 +41,7 @@
         public void ConvertVolume()
         {
             #region UsageVolume
+
             // Create cubic meters
             var m3 = 4.ToVolume(x => x.Cubic.Meters);
 
@@ -41,6 +50,7 @@
 
             this.output.WriteLine(m3 + " is " + l);
             // 4 [m³] is 4000 [L]
+
             #endregion
         }
     }

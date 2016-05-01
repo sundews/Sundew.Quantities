@@ -1,4 +1,10 @@
-﻿namespace Sundew.Quantities.Formatters.MathML
+﻿// // --------------------------------------------------------------------------------------------------------------------
+// // <copyright file="UnitExtensions.cs" company="Hukano">
+// //   2016 (c) Hukano. All Rights Reserved. Licensed under the MIT License. See License.txt in the project root for license information.
+// // </copyright>
+// // --------------------------------------------------------------------------------------------------------------------
+
+namespace Sundew.Quantities.Formatters.MathML
 {
     using System.Xml.Linq;
 
@@ -15,7 +21,9 @@
         /// <param name="unit">The unit.</param>
         /// <param name="multiplicationSign">The multiplication sign.</param>
         /// <returns>The resulting MathML string.</returns>
-        public static string ToMathMLString(this IUnit unit, MultiplicationSign multiplicationSign = MultiplicationSign.Invisible)
+        public static string ToMathMLString(
+            this IUnit unit,
+            MultiplicationSign multiplicationSign = MultiplicationSign.Invisible)
         {
             return unit.ToMathML(multiplicationSign).ToString();
         }
@@ -28,7 +36,9 @@
         /// <returns>
         /// The root <see cref="XElement" /> of the MathML.
         /// </returns>
-        public static XElement ToMathML(this IUnit unit, MultiplicationSign multiplicationSign = MultiplicationSign.Invisible)
+        public static XElement ToMathML(
+            this IUnit unit,
+            MultiplicationSign multiplicationSign = MultiplicationSign.Invisible)
         {
             return ExpressionToMathMLVisitor.DefaultMathMLVisitor.Visit(unit.GetExpression(), multiplicationSign);
         }

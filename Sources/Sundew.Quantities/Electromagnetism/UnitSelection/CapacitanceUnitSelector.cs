@@ -1,4 +1,10 @@
-﻿namespace Sundew.Quantities.Electromagnetism.UnitSelection
+﻿// // --------------------------------------------------------------------------------------------------------------------
+// // <copyright file="CapacitanceUnitSelector.cs" company="Hukano">
+// //   2016 (c) Hukano. All Rights Reserved. Licensed under the MIT License. See License.txt in the project root for license information.
+// // </copyright>
+// // --------------------------------------------------------------------------------------------------------------------
+
+namespace Sundew.Quantities.Electromagnetism.UnitSelection
 {
     using System.Collections.Generic;
 
@@ -10,7 +16,9 @@
     /// <summary>
     /// Unit selector for <see cref="Capacitance"/>.
     /// </summary>
-    public class CapacitanceUnitSelector : PrefixSelector<ICapacitanceUnitSelector, IPrefixSelector<ICapacitanceUnitSelector>>, ICapacitanceUnitSelector
+    public class CapacitanceUnitSelector :
+        PrefixSelector<ICapacitanceUnitSelector, IPrefixSelector<ICapacitanceUnitSelector>>,
+        ICapacitanceUnitSelector
     {
         /// <summary>
         /// Gets the base unit.

@@ -1,4 +1,10 @@
-﻿namespace Sundew.Quantities.Engine.Representations.Hierarchical.Visitors
+﻿// // --------------------------------------------------------------------------------------------------------------------
+// // <copyright file="NotationVisitor.cs" company="Hukano">
+// //   2016 (c) Hukano. All Rights Reserved. Licensed under the MIT License. See License.txt in the project root for license information.
+// // </copyright>
+// // --------------------------------------------------------------------------------------------------------------------
+
+namespace Sundew.Quantities.Engine.Representations.Hierarchical.Visitors
 {
     using System;
     using System.Globalization;
@@ -34,7 +40,12 @@
         /// <returns>
         /// The resulting string notation.
         /// </returns>
-        public string Visit(Expression expression, IFormatProvider formatProvider = null, bool requestPrecendence = false, bool expressionIsChild = false, StringBuilder stringBuilder = null)
+        public string Visit(
+            Expression expression,
+            IFormatProvider formatProvider = null,
+            bool requestPrecendence = false,
+            bool expressionIsChild = false,
+            StringBuilder stringBuilder = null)
         {
             stringBuilder = stringBuilder ?? new StringBuilder();
             formatProvider = formatProvider ?? CultureInfo.CurrentCulture;
@@ -50,7 +61,12 @@
         /// <param name="requestPrecendence">If set to <c>true</c> precedence is requested.</param>
         /// <param name="expressionIsChild">If set to <c>true</c> the expression is a child expression.</param>
         /// <param name="stringBuilder">The string builder.</param>
-        public void Multiply(MultiplicationExpression multiplicationExpression, IFormatProvider formatProvider, bool requestPrecendence, bool expressionIsChild, StringBuilder stringBuilder)
+        public void Multiply(
+            MultiplicationExpression multiplicationExpression,
+            IFormatProvider formatProvider,
+            bool requestPrecendence,
+            bool expressionIsChild,
+            StringBuilder stringBuilder)
         {
             this.HandleLeftPrecedence(requestPrecendence, stringBuilder);
             multiplicationExpression.Lhs.Visit(this, formatProvider, false, true, stringBuilder);
@@ -67,7 +83,12 @@
         /// <param name="requestPrecendence">If set to <c>true</c> precedence is requested.</param>
         /// <param name="expressionIsChild">If set to <c>true</c> the expression is a child expression.</param>
         /// <param name="stringBuilder">The string builder.</param>
-        public void Divide(DivisionExpression divisionExpression, IFormatProvider formatProvider, bool requestPrecendence, bool expressionIsChild, StringBuilder stringBuilder)
+        public void Divide(
+            DivisionExpression divisionExpression,
+            IFormatProvider formatProvider,
+            bool requestPrecendence,
+            bool expressionIsChild,
+            StringBuilder stringBuilder)
         {
             this.HandleLeftPrecedence(requestPrecendence, stringBuilder);
             divisionExpression.Lhs.Visit(this, formatProvider, false, true, stringBuilder);
@@ -84,7 +105,12 @@
         /// <param name="requestPrecendence">If set to <c>true</c> precedence is requested.</param>
         /// <param name="expressionIsChild">If set to <c>true</c> the expression is a child expression.</param>
         /// <param name="stringBuilder">The string builder.</param>
-        public void Magnitude(MagnitudeExpression magnitudeExpression, IFormatProvider formatProvider, bool requestPrecendence, bool expressionIsChild, StringBuilder stringBuilder)
+        public void Magnitude(
+            MagnitudeExpression magnitudeExpression,
+            IFormatProvider formatProvider,
+            bool requestPrecendence,
+            bool expressionIsChild,
+            StringBuilder stringBuilder)
         {
             this.HandleLeftPrecedence(requestPrecendence, stringBuilder);
             magnitudeExpression.Lhs.Visit(this, formatProvider, true, true, stringBuilder);
@@ -116,7 +142,12 @@
         /// <param name="requestPrecendence">If set to <c>true</c> precedence is requested.</param>
         /// <param name="expressionIsChild">If set to <c>true</c> the expression is a child expression.</param>
         /// <param name="stringBuilder">The string builder.</param>
-        public void Parenthesis(ParenthesisExpression parenthesisExpression, IFormatProvider formatProvider, bool requestPrecendence, bool expressionIsChild, StringBuilder stringBuilder)
+        public void Parenthesis(
+            ParenthesisExpression parenthesisExpression,
+            IFormatProvider formatProvider,
+            bool requestPrecendence,
+            bool expressionIsChild,
+            StringBuilder stringBuilder)
         {
             this.HandleLeftPrecedence(requestPrecendence, stringBuilder);
             stringBuilder.Append(Constants.LeftParenthesis);
@@ -133,7 +164,12 @@
         /// <param name="requestPrecendence">If set to <c>true</c> precedence is requested.</param>
         /// <param name="expressionIsChild">If set to <c>true</c> the expression is a child expression.</param>
         /// <param name="stringBuilder">The string builder.</param>
-        public void Unit(UnitExpression unitExpression, IFormatProvider formatProvider, bool requestPrecendence, bool expressionIsChild, StringBuilder stringBuilder)
+        public void Unit(
+            UnitExpression unitExpression,
+            IFormatProvider formatProvider,
+            bool requestPrecendence,
+            bool expressionIsChild,
+            StringBuilder stringBuilder)
         {
             stringBuilder.Append(unitExpression.Unit.Notation);
         }
@@ -146,7 +182,12 @@
         /// <param name="requestPrecendence">If set to <c>true</c> precedence is requested.</param>
         /// <param name="expressionIsChild">If set to <c>true</c> the expression is a child expression.</param>
         /// <param name="stringBuilder">The string builder.</param>
-        public void Variable(VariableExpression variableExpression, IFormatProvider formatProvider, bool requestPrecendence, bool expressionIsChild, StringBuilder stringBuilder)
+        public void Variable(
+            VariableExpression variableExpression,
+            IFormatProvider formatProvider,
+            bool requestPrecendence,
+            bool expressionIsChild,
+            StringBuilder stringBuilder)
         {
             stringBuilder.Append(variableExpression.VariableName);
         }
@@ -159,7 +200,12 @@
         /// <param name="requestPrecendence">If set to <c>true</c> precedence is requested.</param>
         /// <param name="expressionIsChild">If set to <c>true</c> the expression is a child expression.</param>
         /// <param name="stringBuilder">The string builder.</param>
-        public void Constant(ConstantExpression constantExpression, IFormatProvider formatProvider, bool requestPrecendence, bool expressionIsChild, StringBuilder stringBuilder)
+        public void Constant(
+            ConstantExpression constantExpression,
+            IFormatProvider formatProvider,
+            bool requestPrecendence,
+            bool expressionIsChild,
+            StringBuilder stringBuilder)
         {
             stringBuilder.Append(constantExpression.Constant.ToString(formatProvider));
         }

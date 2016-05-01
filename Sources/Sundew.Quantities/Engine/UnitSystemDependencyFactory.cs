@@ -1,4 +1,10 @@
-﻿namespace Sundew.Quantities.Engine
+﻿// // --------------------------------------------------------------------------------------------------------------------
+// // <copyright file="UnitSystemDependencyFactory.cs" company="Hukano">
+// //   2016 (c) Hukano. All Rights Reserved. Licensed under the MIT License. See License.txt in the project root for license information.
+// // </copyright>
+// // --------------------------------------------------------------------------------------------------------------------
+
+namespace Sundew.Quantities.Engine
 {
     using System.Collections.Generic;
 
@@ -26,9 +32,11 @@
         /// Initializes a new instance of the <see cref="UnitSystemDependencyFactory"/> class.
         /// </summary>
         /// <param name="expressionToFlatRepresentationConverter">The expression to flat representation converter.</param>
-        public UnitSystemDependencyFactory(IExpressionToFlatRepresentationConverter expressionToFlatRepresentationConverter = null)
+        public UnitSystemDependencyFactory(
+            IExpressionToFlatRepresentationConverter expressionToFlatRepresentationConverter = null)
         {
-            this.expressionToFlatRepresentationConverter = expressionToFlatRepresentationConverter ?? new ExpressionToFlatRepresentationConverter();
+            this.expressionToFlatRepresentationConverter = expressionToFlatRepresentationConverter
+                                                           ?? new ExpressionToFlatRepresentationConverter();
         }
 
         /// <summary>
@@ -73,15 +81,12 @@
         public IExpressionParser CreateParser(IUnitRegistry unitRegistry)
         {
             var tokenMatcherBuilder = new TokenMatcherBuilder();
-            var prefixTokenMatchers =
-                tokenMatcherBuilder.Build(unitRegistry.GetPrefixNotations(), true);
-            var unitTokenMatchers =
-                tokenMatcherBuilder.Build(unitRegistry.GetUnitNotations(), false);
+            var prefixTokenMatchers = tokenMatcherBuilder.Build(unitRegistry.GetPrefixNotations(), true);
+            var unitTokenMatchers = tokenMatcherBuilder.Build(unitRegistry.GetUnitNotations(), false);
             var unitExpressionParser = new UnitExpressionParser(
                 unitRegistry,
                 new LexicalAnalyzer(new[] { prefixTokenMatchers, unitTokenMatchers }));
-            return
-                new ExpressionParser(unitExpressionParser);
+            return new ExpressionParser(unitExpressionParser);
         }
 
         /// <summary>
@@ -119,7 +124,11 @@
         /// <returns>The <see cref="IQuantityOperations"/>.</returns>
         public IQuantityOperations CreateQuantityOperations(IUnitFactory unitFactory)
         {
-            return new QuantityOperations(unitFactory, new ExpressionReducer(this.expressionToFlatRepresentationConverter), ValueFromBaseVisitor, ValueToBaseVisitor);
+            return new QuantityOperations(
+                unitFactory,
+                new ExpressionReducer(this.expressionToFlatRepresentationConverter),
+                ValueFromBaseVisitor,
+                ValueToBaseVisitor);
         }
     }
 }

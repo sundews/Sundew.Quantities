@@ -1,4 +1,10 @@
-﻿namespace Sundew.Quantities.Photometry.UnitSelection
+﻿// // --------------------------------------------------------------------------------------------------------------------
+// // <copyright file="LuminousFluxUnitSelector.cs" company="Hukano">
+// //   2016 (c) Hukano. All Rights Reserved. Licensed under the MIT License. See License.txt in the project root for license information.
+// // </copyright>
+// // --------------------------------------------------------------------------------------------------------------------
+
+namespace Sundew.Quantities.Photometry.UnitSelection
 {
     using System.Collections.Generic;
 
@@ -10,7 +16,9 @@
     /// <summary>
     /// Interface for <see cref="LuminousFlux"/> unit selector.
     /// </summary>
-    public class LuminousFluxUnitSelector : PrefixSelector<ILuminousFluxUnitSelector, IPrefixSelector<ILuminousFluxUnitSelector>>, ILuminousFluxUnitSelector
+    public class LuminousFluxUnitSelector :
+        PrefixSelector<ILuminousFluxUnitSelector, IPrefixSelector<ILuminousFluxUnitSelector>>,
+        ILuminousFluxUnitSelector
     {
         /// <summary>
         /// Gets the base unit.

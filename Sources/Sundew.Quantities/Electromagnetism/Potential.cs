@@ -1,4 +1,10 @@
-﻿namespace Sundew.Quantities.Electromagnetism
+﻿// // --------------------------------------------------------------------------------------------------------------------
+// // <copyright file="Potential.cs" company="Hukano">
+// //   2016 (c) Hukano. All Rights Reserved. Licensed under the MIT License. See License.txt in the project root for license information.
+// // </copyright>
+// // --------------------------------------------------------------------------------------------------------------------
+
+namespace Sundew.Quantities.Electromagnetism
 {
     using Sundew.Quantities.Electromagnetism.UnitSelection;
     using Sundew.Quantities.Engine.Quantities;
@@ -55,7 +61,7 @@
         /// This instance.
         /// </value>
         protected override Potential Self => this;
-        
+
         /// <summary>
         /// Increments the specified LHS with 1.
         /// </summary>
@@ -103,7 +109,10 @@
         /// <param name="max">The maximum.</param>
         /// <param name="unitSelector">The unit selector.</param>
         /// <returns>The new interval.</returns>
-        public static Interval<Potential> Interval(double min, double max, SelectUnit<PotentialUnitSelector> unitSelector)
+        public static Interval<Potential> Interval(
+            double min,
+            double max,
+            SelectUnit<PotentialUnitSelector> unitSelector)
         {
             return new Interval<Potential>(min, max, unitSelector(new PotentialUnitSelector()));
         }

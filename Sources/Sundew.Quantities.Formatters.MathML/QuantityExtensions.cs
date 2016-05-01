@@ -1,4 +1,10 @@
-﻿namespace Sundew.Quantities.Formatters.MathML
+﻿// // --------------------------------------------------------------------------------------------------------------------
+// // <copyright file="QuantityExtensions.cs" company="Hukano">
+// //   2016 (c) Hukano. All Rights Reserved. Licensed under the MIT License. See License.txt in the project root for license information.
+// // </copyright>
+// // --------------------------------------------------------------------------------------------------------------------
+
+namespace Sundew.Quantities.Formatters.MathML
 {
     using System.Xml.Linq;
 
@@ -33,11 +39,13 @@
         /// <param name="multiplicationSign">The multiplication sign.</param>
         /// <returns></returns>
         public static string ToMathMLString(
-    this IQuantity quantity,
-    UnitFormat unitFormat = UnitFormat.Default,
-    MultiplicationSign multiplicationSign = MultiplicationSign.Invisible)
+            this IQuantity quantity,
+            UnitFormat unitFormat = UnitFormat.Default,
+            MultiplicationSign multiplicationSign = MultiplicationSign.Invisible)
         {
-            return QuantityToMathMLConverter.DefaultConverter.GetMathML(quantity, unitFormat, multiplicationSign).ToString();
+            return
+                QuantityToMathMLConverter.DefaultConverter.GetMathML(quantity, unitFormat, multiplicationSign)
+                    .ToString();
         }
     }
 }

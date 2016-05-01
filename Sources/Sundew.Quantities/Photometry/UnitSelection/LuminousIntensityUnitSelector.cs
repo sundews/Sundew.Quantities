@@ -1,4 +1,10 @@
-﻿namespace Sundew.Quantities.Photometry.UnitSelection
+﻿// // --------------------------------------------------------------------------------------------------------------------
+// // <copyright file="LuminousIntensityUnitSelector.cs" company="Hukano">
+// //   2016 (c) Hukano. All Rights Reserved. Licensed under the MIT License. See License.txt in the project root for license information.
+// // </copyright>
+// // --------------------------------------------------------------------------------------------------------------------
+
+namespace Sundew.Quantities.Photometry.UnitSelection
 {
     using System.Collections.Generic;
 
@@ -10,7 +16,9 @@
     /// <summary>
     /// Interface for <see cref="LuminousIntensity"/> unit selector.
     /// </summary>
-    public class LuminousIntensityUnitSelector : PrefixSelector<ILuminousIntensityUnitSelector, IPrefixSelector<ILuminousIntensityUnitSelector>>, ILuminousIntensityUnitSelector
+    public class LuminousIntensityUnitSelector :
+        PrefixSelector<ILuminousIntensityUnitSelector, IPrefixSelector<ILuminousIntensityUnitSelector>>,
+        ILuminousIntensityUnitSelector
     {
         /// <summary>
         /// Gets the base unit.

@@ -1,4 +1,10 @@
-﻿namespace Sundew.Quantities.AcceptanceTests.Spatial
+﻿// // --------------------------------------------------------------------------------------------------------------------
+// // <copyright file="AreaTests.cs" company="Hukano">
+// //   2016 (c) Hukano. All Rights Reserved. Licensed under the MIT License. See License.txt in the project root for license information.
+// // </copyright>
+// // --------------------------------------------------------------------------------------------------------------------
+
+namespace Sundew.Quantities.AcceptanceTests.Spatial
 {
     using FluentAssertions;
 
@@ -21,8 +27,8 @@
             var result = testee.ToUnit(x => x.Square.Miles);
 
             result.Should().BeApproximately(expected, "mi" + Constants.Exponent2, TestHelper.DefaultAssertPrecision);
-        } 
-        
+        }
+
         [Theory]
         [InlineData(20.0, 0.2)]
         [InlineData(0, 0)]

@@ -1,4 +1,10 @@
-﻿namespace Sundew.Quantities.Electromagnetism
+﻿// // --------------------------------------------------------------------------------------------------------------------
+// // <copyright file="Charge.Specific.cs" company="Hukano">
+// //   2016 (c) Hukano. All Rights Reserved. Licensed under the MIT License. See License.txt in the project root for license information.
+// // </copyright>
+// // --------------------------------------------------------------------------------------------------------------------
+
+namespace Sundew.Quantities.Electromagnetism
 {
     using Sundew.Quantities.Engine.Quantities;
     using Sundew.Quantities.Mechanics;
@@ -19,7 +25,7 @@
         {
             return new Energy(QuantityOperations.Multiply(lhs, rhs));
         }
-        
+
         /// <summary>
         /// Divides the specified LHS and RHS.
         /// </summary>

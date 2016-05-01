@@ -1,4 +1,10 @@
-﻿namespace Sundew.Quantities.Mechanics
+﻿// // --------------------------------------------------------------------------------------------------------------------
+// // <copyright file="Pressure.Specific.cs" company="Hukano">
+// //   2016 (c) Hukano. All Rights Reserved. Licensed under the MIT License. See License.txt in the project root for license information.
+// // </copyright>
+// // --------------------------------------------------------------------------------------------------------------------
+
+namespace Sundew.Quantities.Mechanics
 {
     using Sundew.Quantities.Engine.Quantities;
     using Sundew.Quantities.Spatial;

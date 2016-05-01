@@ -1,4 +1,10 @@
-﻿namespace Sundew.Quantities.Engine.Representations.Conversion
+﻿// // --------------------------------------------------------------------------------------------------------------------
+// // <copyright file="ConstantFlatIdentifierRepresentation.cs" company="Hukano">
+// //   2016 (c) Hukano. All Rights Reserved. Licensed under the MIT License. See License.txt in the project root for license information.
+// // </copyright>
+// // --------------------------------------------------------------------------------------------------------------------
+
+namespace Sundew.Quantities.Engine.Representations.Conversion
 {
     using System;
     using System.Globalization;
@@ -10,7 +16,8 @@
     /// <summary>
     /// Flat representation of a constant value.
     /// </summary>
-    public sealed class ConstantFlatIdentifierRepresentation : IFlatIdentifierRepresentation, IEquatable<ConstantFlatIdentifierRepresentation>
+    public sealed class ConstantFlatIdentifierRepresentation : IFlatIdentifierRepresentation,
+                                                               IEquatable<ConstantFlatIdentifierRepresentation>
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="ConstantFlatIdentifierRepresentation"/> class.
@@ -30,6 +37,18 @@
         public double Constant { get; }
 
         /// <summary>
+        /// Determines whether the specified <see cref="ConstantFlatIdentifierRepresentation" />, is equal to this instance.
+        /// </summary>
+        /// <param name="other">The <see cref="ConstantFlatIdentifierRepresentation" /> to compare with this instance.</param>
+        /// <returns>
+        ///   <c>true</c> if the specified <see cref="ConstantFlatIdentifierRepresentation" /> is equal to this instance; otherwise, <c>false</c>.
+        /// </returns>
+        public bool Equals(ConstantFlatIdentifierRepresentation other)
+        {
+            return EqualityHelper.Equals(this, other, () => this.Constant.Equals(other.Constant));
+        }
+
+        /// <summary>
         /// Converts this instance to the resulting expression.
         /// </summary>
         /// <returns>
@@ -38,6 +57,18 @@
         public Expression ToResultingExpression()
         {
             return new ConstantExpression(this.Constant);
+        }
+
+        /// <summary>
+        /// Determines whether the specified <see cref="IFlatIdentifierRepresentation" />, is equal to this instance.
+        /// </summary>
+        /// <param name="other">The <see cref="IFlatIdentifierRepresentation" /> to compare with this instance.</param>
+        /// <returns>
+        ///   <c>true</c> if the specified <see cref="IFlatIdentifierRepresentation" /> is equal to this instance; otherwise, <c>false</c>.
+        /// </returns>
+        public bool Equals(IFlatIdentifierRepresentation other)
+        {
+            return EqualityHelper.Equals(this, other);
         }
 
         /// <summary>
@@ -61,30 +92,6 @@
         public override bool Equals(object obj)
         {
             return EqualityHelper.Equals(this, obj);
-        }
-
-        /// <summary>
-        /// Determines whether the specified <see cref="IFlatIdentifierRepresentation" />, is equal to this instance.
-        /// </summary>
-        /// <param name="other">The <see cref="IFlatIdentifierRepresentation" /> to compare with this instance.</param>
-        /// <returns>
-        ///   <c>true</c> if the specified <see cref="IFlatIdentifierRepresentation" /> is equal to this instance; otherwise, <c>false</c>.
-        /// </returns>
-        public bool Equals(IFlatIdentifierRepresentation other)
-        {
-            return EqualityHelper.Equals(this, other);
-        }
-
-        /// <summary>
-        /// Determines whether the specified <see cref="ConstantFlatIdentifierRepresentation" />, is equal to this instance.
-        /// </summary>
-        /// <param name="other">The <see cref="ConstantFlatIdentifierRepresentation" /> to compare with this instance.</param>
-        /// <returns>
-        ///   <c>true</c> if the specified <see cref="ConstantFlatIdentifierRepresentation" /> is equal to this instance; otherwise, <c>false</c>.
-        /// </returns>
-        public bool Equals(ConstantFlatIdentifierRepresentation other)
-        {
-            return EqualityHelper.Equals(this, other, () => this.Constant.Equals(other.Constant));
         }
 
         /// <summary>

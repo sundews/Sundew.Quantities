@@ -1,4 +1,10 @@
-﻿namespace Sundew.Quantities.Engine.Representations.Hierarchical.Visitors
+﻿// // --------------------------------------------------------------------------------------------------------------------
+// // <copyright file="ValueFromBaseVisitor.cs" company="Hukano">
+// //   2016 (c) Hukano. All Rights Reserved. Licensed under the MIT License. See License.txt in the project root for license information.
+// // </copyright>
+// // --------------------------------------------------------------------------------------------------------------------
+
+namespace Sundew.Quantities.Engine.Representations.Hierarchical.Visitors
 {
     using System;
 
@@ -31,7 +37,10 @@
         /// <param name="multiplicationExpression">The multiplication expression.</param>
         /// <param name="value">The value.</param>
         /// <param name="currentResult">The current result.</param>
-        public void Multiply(MultiplicationExpression multiplicationExpression, double value, Reference<double> currentResult)
+        public void Multiply(
+            MultiplicationExpression multiplicationExpression,
+            double value,
+            Reference<double> currentResult)
         {
             var lhs = this.PrivateVisit(multiplicationExpression.Lhs, value, currentResult);
             if (lhs.Equals(Zero))
@@ -89,7 +98,10 @@
         /// <param name="parenthesisExpression">The parentheses expression.</param>
         /// <param name="value">The value.</param>
         /// <param name="currentResult">The current result.</param>
-        public void Parenthesis(ParenthesisExpression parenthesisExpression, double value, Reference<double> currentResult)
+        public void Parenthesis(
+            ParenthesisExpression parenthesisExpression,
+            double value,
+            Reference<double> currentResult)
         {
             currentResult.Value = this.PrivateVisit(parenthesisExpression.Expression, value, currentResult);
         }

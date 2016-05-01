@@ -1,3 +1,9 @@
+// // --------------------------------------------------------------------------------------------------------------------
+// // <copyright file="VelocityUnitSelector.cs" company="Hukano">
+// //   2016 (c) Hukano. All Rights Reserved. Licensed under the MIT License. See License.txt in the project root for license information.
+// // </copyright>
+// // --------------------------------------------------------------------------------------------------------------------
+
 namespace Sundew.Quantities.Spacetime.UnitSelection
 {
     using System.Collections.Generic;
@@ -9,7 +15,8 @@ namespace Sundew.Quantities.Spacetime.UnitSelection
     /// <summary>
     /// Unit selector for <see cref="Velocity"/>.
     /// </summary>
-    public class VelocityUnitSelector : SpacetimeUnitSelector<IVelocityUnitSelector, IPrefixedVelocityUnitSelector>, IPrefixedVelocityUnitSelector
+    public class VelocityUnitSelector : SpacetimeUnitSelector<IVelocityUnitSelector, IPrefixedVelocityUnitSelector>,
+                                        IPrefixedVelocityUnitSelector
     {
         /// <summary>
         /// Gets the base unit.

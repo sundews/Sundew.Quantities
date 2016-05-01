@@ -1,4 +1,10 @@
-﻿namespace Sundew.Quantities.Engine.Exceptions
+﻿// // --------------------------------------------------------------------------------------------------------------------
+// // <copyright file="UnitMismatchException.cs" company="Hukano">
+// //   2016 (c) Hukano. All Rights Reserved. Licensed under the MIT License. See License.txt in the project root for license information.
+// // </copyright>
+// // --------------------------------------------------------------------------------------------------------------------
+
+namespace Sundew.Quantities.Engine.Exceptions
 {
     using System;
 
@@ -9,7 +15,8 @@
     /// </summary>
     public class UnitMismatchException : Exception
     {
-        private const string TheFollowingOperationForTheLhsUnitAndTheRhsUnitIsInvalid = "The following operation: {0} for the lhs unit {1} and the rhs unit {2} is invalid";
+        private const string TheFollowingOperationForTheLhsUnitAndTheRhsUnitIsInvalid =
+            "The following operation: {0} for the lhs unit {1} and the rhs unit {2} is invalid";
 
         /// <summary>
         /// Initializes a new instance of the <see cref="UnitMismatchException" /> class.

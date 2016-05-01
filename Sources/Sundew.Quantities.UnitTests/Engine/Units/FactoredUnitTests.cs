@@ -1,4 +1,10 @@
-﻿namespace Sundew.Quantities.UnitTests.Engine.Units
+﻿// // --------------------------------------------------------------------------------------------------------------------
+// // <copyright file="FactoredUnitTests.cs" company="Hukano">
+// //   2016 (c) Hukano. All Rights Reserved. Licensed under the MIT License. See License.txt in the project root for license information.
+// // </copyright>
+// // --------------------------------------------------------------------------------------------------------------------
+
+namespace Sundew.Quantities.UnitTests.Engine.Units
 {
     using FluentAssertions;
 
@@ -13,22 +19,6 @@
         private const double ExpectedFactor = 4;
 
         private readonly FactoredUnit testee = new FactoredUnit(ExpectedFactor, ExpectedNotation, UnitDefinitions.Meter);
-
-        [Fact]
-        public void Notation_Then_ResultShouldBeAnyNotation()
-        {
-            var result = this.testee.Notation;
-
-            result.Should().Be(ExpectedNotation);
-        }
-
-        [Fact]
-        public void PrefixFactor_Then_ResultShouldBe1()
-        {
-            var result = this.testee.PrefixFactor;
-
-            result.Should().Be(1);
-        }
 
         [Theory]
         [InlineData("kanyDistance")]
@@ -48,6 +38,15 @@
             result.PrefixFactor.Should().Be(expectedPrefixFactor);
         }
 
+        [Theory]
+        [InlineData("m")]
+        public void BaseUnitGetNotation_ThenResultShouldBeExpectedNotation(string expectedNotation)
+        {
+            var result = this.testee.BaseUnit.GetNotation();
+
+            result.Should().Be(expectedNotation);
+        }
+
         [Fact]
         public void GetNotationWithoutPrefix_ThenResultShouldBeExpectedNotation()
         {
@@ -56,13 +55,20 @@
             result.Should().Be(ExpectedNotation);
         }
 
-        [Theory]
-        [InlineData("m")]
-        public void BaseUnitGetNotation_ThenResultShouldBeExpectedNotation(string expectedNotation)
+        [Fact]
+        public void Notation_Then_ResultShouldBeAnyNotation()
         {
-            var result = this.testee.BaseUnit.GetNotation();
+            var result = this.testee.Notation;
 
-            result.Should().Be(expectedNotation);
+            result.Should().Be(ExpectedNotation);
+        }
+
+        [Fact]
+        public void PrefixFactor_Then_ResultShouldBe1()
+        {
+            var result = this.testee.PrefixFactor;
+
+            result.Should().Be(1);
         }
     }
 }

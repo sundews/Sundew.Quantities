@@ -1,4 +1,10 @@
-﻿namespace Sundew.Quantities.Engine.Parsing
+﻿// // --------------------------------------------------------------------------------------------------------------------
+// // <copyright file="QuantityParser.cs" company="Hukano">
+// //   2016 (c) Hukano. All Rights Reserved. Licensed under the MIT License. See License.txt in the project root for license information.
+// // </copyright>
+// // --------------------------------------------------------------------------------------------------------------------
+
+namespace Sundew.Quantities.Engine.Parsing
 {
     using Sundew.Base.Computation;
     using Sundew.Quantities.Engine.Representations.Hierarchical.Parsing;
@@ -40,7 +46,9 @@
             if (lexemes.AcceptTokenType(TokenType.Number, out number))
             {
                 var value = double.Parse(number, parseSettings.CultureInfo);
-                var result = this.expressionParser.Parse(lexemes, new ParseSettings(parseSettings.CultureInfo, false, false));
+                var result = this.expressionParser.Parse(
+                    lexemes,
+                    new ParseSettings(parseSettings.CultureInfo, false, false));
 
                 if (parseSettings.AssertEnd && lexemes.AcceptTokenType(TokenType.End))
                 {
@@ -53,10 +61,13 @@
                     error => Error.From(QuantityError.UnitNotFound, lexemes.Current, error));
             }
 
-            return GetError(parseSettings, QuantityError.NumberNotFound,  lexemes);
+            return GetError(parseSettings, QuantityError.NumberNotFound, lexemes);
         }
 
-        private static Result<Quantity, Error<QuantityError>> GetError(ParseSettings parseSettings, QuantityError quantityError, Lexemes lexemes)
+        private static Result<Quantity, Error<QuantityError>> GetError(
+            ParseSettings parseSettings,
+            QuantityError quantityError,
+            Lexemes lexemes)
         {
             var error = Error.From(quantityError, lexemes.Current);
             if (parseSettings.ThrowOnError)

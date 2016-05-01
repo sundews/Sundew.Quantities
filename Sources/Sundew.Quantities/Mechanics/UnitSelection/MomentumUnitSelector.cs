@@ -1,4 +1,10 @@
-﻿namespace Sundew.Quantities.Mechanics.UnitSelection
+﻿// // --------------------------------------------------------------------------------------------------------------------
+// // <copyright file="MomentumUnitSelector.cs" company="Hukano">
+// //   2016 (c) Hukano. All Rights Reserved. Licensed under the MIT License. See License.txt in the project root for license information.
+// // </copyright>
+// // --------------------------------------------------------------------------------------------------------------------
+
+namespace Sundew.Quantities.Mechanics.UnitSelection
 {
     using System.Collections.Generic;
 
@@ -10,7 +16,8 @@
     /// <summary>
     /// Unit selector for <see cref="Momentum"/>.
     /// </summary>
-    public class MomentumUnitSelector : PrefixSelector<IMomentumUnitSelector, IPrefixSelector<IMomentumUnitSelector>>, IMomentumUnitSelector
+    public class MomentumUnitSelector : PrefixSelector<IMomentumUnitSelector, IPrefixSelector<IMomentumUnitSelector>>,
+                                        IMomentumUnitSelector
     {
         /// <summary>
         /// Gets the base unit.

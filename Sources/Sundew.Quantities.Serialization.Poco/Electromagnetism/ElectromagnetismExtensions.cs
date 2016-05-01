@@ -1,4 +1,10 @@
-﻿namespace Sundew.Quantities.Serialization.Poco.Electromagnetism
+﻿// // --------------------------------------------------------------------------------------------------------------------
+// // <copyright file="ElectromagnetismExtensions.cs" company="Hukano">
+// //   2016 (c) Hukano. All Rights Reserved. Licensed under the MIT License. See License.txt in the project root for license information.
+// // </copyright>
+// // --------------------------------------------------------------------------------------------------------------------
+
+namespace Sundew.Quantities.Serialization.Poco.Electromagnetism
 {
     /// <summary>
     /// Serialization extension methods for electromagnetism quantities.
@@ -54,7 +60,7 @@
         {
             return new Inductance(inductance);
         }
-        
+
         /// <summary>
         /// Creates the serializable magnetic flux.
         /// </summary>
@@ -70,7 +76,8 @@
         /// </summary>
         /// <param name="magneticFluxDensity">The magnetic flux density.</param>
         /// <returns>A new serializable <see cref="MagneticFluxDensity" />.</returns>
-        public static MagneticFluxDensity ToSerializable(this Quantities.Electromagnetism.MagneticFluxDensity magneticFluxDensity)
+        public static MagneticFluxDensity ToSerializable(
+            this Quantities.Electromagnetism.MagneticFluxDensity magneticFluxDensity)
         {
             return new MagneticFluxDensity(magneticFluxDensity);
         }

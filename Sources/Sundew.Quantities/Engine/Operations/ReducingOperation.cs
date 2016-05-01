@@ -1,19 +1,25 @@
-﻿namespace Sundew.Quantities.Engine.Operations
+﻿// // --------------------------------------------------------------------------------------------------------------------
+// // <copyright file="ReducingOperation.cs" company="Hukano">
+// //   2016 (c) Hukano. All Rights Reserved. Licensed under the MIT License. See License.txt in the project root for license information.
+// // </copyright>
+// // --------------------------------------------------------------------------------------------------------------------
+
+namespace Sundew.Quantities.Engine.Operations
 {
     using Sundew.Quantities.Engine.Quantities;
     using Sundew.Quantities.Engine.Representations.Evaluation;
     using Sundew.Quantities.Engine.Representations.Hierarchical.Units;
 
     /// <summary>
-    /// An operation for <see cref="IQuantity{IQuantity}"/> that reduces the units.
+    /// An operation for <see cref="IQuantity{TQuantity}"/> that reduces the units.
     /// </summary>
     public class ReducingOperation : IQuantityOperation<IQuantity>
     {
+        private readonly IDoubleOperation doubleOperation;
+
         private readonly IUnitFactory unitFactory;
 
         private readonly IUnitOperation<UnitReductionResult> unitOperation;
-
-        private readonly IDoubleOperation doubleOperation;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ReducingOperation" /> class.
@@ -21,7 +27,10 @@
         /// <param name="unitFactory">The unit factory.</param>
         /// <param name="unitOperation">The unit division operation.</param>
         /// <param name="doubleOperation">The double operation.</param>
-        public ReducingOperation(IUnitFactory unitFactory, IUnitOperation<UnitReductionResult> unitOperation, IDoubleOperation doubleOperation)
+        public ReducingOperation(
+            IUnitFactory unitFactory,
+            IUnitOperation<UnitReductionResult> unitOperation,
+            IDoubleOperation doubleOperation)
         {
             this.unitFactory = unitFactory;
             this.unitOperation = unitOperation;

@@ -1,4 +1,10 @@
-﻿namespace Sundew.Quantities.Serialization.Poco.AcceptanceTests.Electromagnetism
+﻿// // --------------------------------------------------------------------------------------------------------------------
+// // <copyright file="ResistanceTests.cs" company="Hukano">
+// //   2016 (c) Hukano. All Rights Reserved. Licensed under the MIT License. See License.txt in the project root for license information.
+// // </copyright>
+// // --------------------------------------------------------------------------------------------------------------------
+
+namespace Sundew.Quantities.Serialization.Poco.AcceptanceTests.Electromagnetism
 {
     using FluentAssertions;
 
@@ -11,15 +17,9 @@
 
     public class ResistanceTests
     {
-        [Fact]
-        public void SerializeObject_Then_ResultShouldShouldBeExpected()
+        public class ConfigurationContainer
         {
-            const string Expected = "{\"Value\":45.0,\"Unit\":\"μΩ\"}";
-            var testee = 45.ToResistance(units => units.Micro.Ohms).ToSerializable();
-
-            var result = JsonConvert.SerializeObject(testee);
-
-            result.Should().Be(Expected);
+            public Poco.Electromagnetism.Resistance Resistance { get; set; }
         }
 
         [Fact]
@@ -33,9 +33,15 @@
             result.Should().Be(expected);
         }
 
-        public class ConfigurationContainer
+        [Fact]
+        public void SerializeObject_Then_ResultShouldShouldBeExpected()
         {
-            public Poco.Electromagnetism.Resistance Resistance { get; set; }
+            const string Expected = "{\"Value\":45.0,\"Unit\":\"μΩ\"}";
+            var testee = 45.ToResistance(units => units.Micro.Ohms).ToSerializable();
+
+            var result = JsonConvert.SerializeObject(testee);
+
+            result.Should().Be(Expected);
         }
     }
 }

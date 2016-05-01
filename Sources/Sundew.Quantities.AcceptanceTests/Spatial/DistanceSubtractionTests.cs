@@ -1,4 +1,10 @@
-﻿namespace Sundew.Quantities.AcceptanceTests.Spatial
+﻿// // --------------------------------------------------------------------------------------------------------------------
+// // <copyright file="DistanceSubtractionTests.cs" company="Hukano">
+// //   2016 (c) Hukano. All Rights Reserved. Licensed under the MIT License. See License.txt in the project root for license information.
+// // </copyright>
+// // --------------------------------------------------------------------------------------------------------------------
+
+namespace Sundew.Quantities.AcceptanceTests.Spatial
 {
     using FluentAssertions;
 
@@ -27,7 +33,10 @@
         [InlineData(3.0, 10.0, -7.0)]
         [InlineData(0.0, 0.0, 0.0)]
         [InlineData(-50.0, 40.0, -90.0)]
-        public void Distance_Subtraction_When_SubtractingAnyNumber_Then_ResultShouldBeExpected(double lhs, double rhs, double expected)
+        public void Distance_Subtraction_When_SubtractingAnyNumber_Then_ResultShouldBeExpected(
+            double lhs,
+            double rhs,
+            double expected)
         {
             var testee = new Distance(lhs, x => x.Meters);
 

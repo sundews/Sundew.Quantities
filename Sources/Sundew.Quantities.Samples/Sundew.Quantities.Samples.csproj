@@ -60,11 +60,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddingUnits.cs" />
     <Compile Include="Comparison.cs" />
     <Compile Include="CreatingQuantities.cs" />
     <Compile Include="Equality.cs" />
     <Compile Include="Operations.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ReplacingTheUnitSystem.cs" />
     <Compile Include="TestOutHelperExtensions.cs" />
     <Compile Include="UnitConversion.cs" />
   </ItemGroup>

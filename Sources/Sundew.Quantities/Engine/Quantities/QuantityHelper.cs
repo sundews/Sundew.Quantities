@@ -1,4 +1,10 @@
-﻿namespace Sundew.Quantities.Engine.Quantities
+﻿// // --------------------------------------------------------------------------------------------------------------------
+// // <copyright file="QuantityHelper.cs" company="Hukano">
+// //   2016 (c) Hukano. All Rights Reserved. Licensed under the MIT License. See License.txt in the project root for license information.
+// // </copyright>
+// // --------------------------------------------------------------------------------------------------------------------
+
+namespace Sundew.Quantities.Engine.Quantities
 {
     using Sundew.Quantities.Engine.Exceptions;
     using Sundew.Quantities.Engine.Representations.Hierarchical.Internals;
@@ -86,8 +92,7 @@
         /// <returns>
         /// The result of <see cref="double"/> Compare based the rhs converted to the same unit as lhs.
         /// </returns>
-        public static int CompareTo<TQuantity>(IQuantity lhs, object rhs)
-            where TQuantity : class, IQuantity
+        public static int CompareTo<TQuantity>(IQuantity lhs, object rhs) where TQuantity : class, IQuantity
         {
             return CompareTo(lhs, (TQuantity)rhs);
         }

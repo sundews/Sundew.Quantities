@@ -1,3 +1,9 @@
+// // --------------------------------------------------------------------------------------------------------------------
+// // <copyright file="TimeUnitSelector.cs" company="Hukano">
+// //   2016 (c) Hukano. All Rights Reserved. Licensed under the MIT License. See License.txt in the project root for license information.
+// // </copyright>
+// // --------------------------------------------------------------------------------------------------------------------
+
 namespace Sundew.Quantities.Periodics.UnitSelection
 {
     using System.Collections.Generic;
@@ -10,7 +16,8 @@ namespace Sundew.Quantities.Periodics.UnitSelection
     /// <summary>
     /// Interface for <see cref="Time"/> unit selector.
     /// </summary>
-    public class TimeUnitSelector : PrefixSelector<ITimeUnitSelector, IPrefixedTimeUnitSelector>, IPrefixedTimeUnitSelector
+    public class TimeUnitSelector : PrefixSelector<ITimeUnitSelector, IPrefixedTimeUnitSelector>,
+                                    IPrefixedTimeUnitSelector
     {
         /// <summary>
         /// Gets the base unit.

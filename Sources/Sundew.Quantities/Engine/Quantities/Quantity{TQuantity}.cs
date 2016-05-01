@@ -1,4 +1,10 @@
-﻿namespace Sundew.Quantities.Engine.Quantities
+﻿// // --------------------------------------------------------------------------------------------------------------------
+// // <copyright file="Quantity{TQuantity}.cs" company="Hukano">
+// //   2016 (c) Hukano. All Rights Reserved. Licensed under the MIT License. See License.txt in the project root for license information.
+// // </copyright>
+// // --------------------------------------------------------------------------------------------------------------------
+
+namespace Sundew.Quantities.Engine.Quantities
 {
     using Sundew.Quantities.Engine.Representations.Hierarchical.Expressions;
     using Sundew.Quantities.Engine.Representations.Hierarchical.Units;
@@ -10,7 +16,7 @@
     /// <typeparam name="TQuantity">The type of the quantity.</typeparam>
     /// <typeparam name="TUnitSelector">The type of the unit selector.</typeparam>
     public abstract class Quantity<TQuantity, TUnitSelector> : Quantity<TQuantity>,
-        IUnitConvertible<TQuantity, TUnitSelector>
+                                                               IUnitConvertible<TQuantity, TUnitSelector>
         where TQuantity : class, IQuantity<TQuantity>, IDeferredQuantity
     {
         /// <summary>
@@ -43,17 +49,6 @@
         }
 
         /// <summary>
-        /// Checks if the specified LHS is greater than or equal to the RHS.
-        /// </summary>
-        /// <param name="lhs">The LHS quantity.</param>
-        /// <param name="rhs">The RHS quantity.</param>
-        /// <returns>A value indicating whether the lhs is greater than or equal to the rhs.</returns>
-        public static Squared<TQuantity> operator *(Quantity<TQuantity, TUnitSelector> lhs, Quantity<TQuantity, TUnitSelector> rhs)
-        {
-            return new Squared<TQuantity>(lhs.CreateQuantity(QuantityOperations.Multiply(lhs, rhs).Value, lhs.Unit));
-        }
-
-        /// <summary>
         /// Converts this object to a <see cref="TQuantity"/> using the unit specified by the <see cref="TUnitSelector"/>.
         /// </summary>
         /// <param name="unitSelector">The unit selector.</param>
@@ -62,7 +57,7 @@
         {
             return this.ToUnit(unitSelector(this.CreateUnitSelector()));
         }
-        
+
         /// <summary>
         /// Converts this object to a <see cref="double"/> using the unit specified by the <see cref="TUnitSelector"/>.
         /// </summary>
@@ -71,6 +66,19 @@
         public double ToDouble(SelectUnit<TUnitSelector> unitSelector)
         {
             return this.ToDouble(unitSelector(this.CreateUnitSelector()));
+        }
+
+        /// <summary>
+        /// Checks if the specified LHS is greater than or equal to the RHS.
+        /// </summary>
+        /// <param name="lhs">The LHS quantity.</param>
+        /// <param name="rhs">The RHS quantity.</param>
+        /// <returns>A value indicating whether the lhs is greater than or equal to the rhs.</returns>
+        public static Squared<TQuantity> operator *(
+            Quantity<TQuantity, TUnitSelector> lhs,
+            Quantity<TQuantity, TUnitSelector> rhs)
+        {
+            return new Squared<TQuantity>(lhs.CreateQuantity(QuantityOperations.Multiply(lhs, rhs).Value, lhs.Unit));
         }
 
         /// <summary>

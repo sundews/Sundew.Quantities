@@ -1,4 +1,10 @@
-﻿namespace Sundew.Quantities.Photometry
+﻿// // --------------------------------------------------------------------------------------------------------------------
+// // <copyright file="Illuminance.cs" company="Hukano">
+// //   2016 (c) Hukano. All Rights Reserved. Licensed under the MIT License. See License.txt in the project root for license information.
+// // </copyright>
+// // --------------------------------------------------------------------------------------------------------------------
+
+namespace Sundew.Quantities.Photometry
 {
     using Sundew.Quantities.Engine.Quantities;
     using Sundew.Quantities.Engine.Representations.Hierarchical.Units;
@@ -55,7 +61,7 @@
         /// This instance.
         /// </value>
         protected override Illuminance Self => this;
-        
+
         /// <summary>
         /// Increments the specified LHS with 1.
         /// </summary>
@@ -103,7 +109,10 @@
         /// <param name="max">The maximum.</param>
         /// <param name="unitSelector">The unit selector.</param>
         /// <returns>The new interval.</returns>
-        public static Interval<Illuminance> Interval(double min, double max, SelectUnit<IlluminanceUnitSelector> unitSelector)
+        public static Interval<Illuminance> Interval(
+            double min,
+            double max,
+            SelectUnit<IlluminanceUnitSelector> unitSelector)
         {
             return new Interval<Illuminance>(min, max, unitSelector(new IlluminanceUnitSelector()));
         }

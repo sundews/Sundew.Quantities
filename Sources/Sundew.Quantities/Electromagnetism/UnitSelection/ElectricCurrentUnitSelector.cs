@@ -1,4 +1,10 @@
-﻿namespace Sundew.Quantities.Electromagnetism.UnitSelection
+﻿// // --------------------------------------------------------------------------------------------------------------------
+// // <copyright file="ElectricCurrentUnitSelector.cs" company="Hukano">
+// //   2016 (c) Hukano. All Rights Reserved. Licensed under the MIT License. See License.txt in the project root for license information.
+// // </copyright>
+// // --------------------------------------------------------------------------------------------------------------------
+
+namespace Sundew.Quantities.Electromagnetism.UnitSelection
 {
     using System.Collections.Generic;
 
@@ -10,7 +16,9 @@
     /// <summary>
     /// Unit selector for <see cref="ElectricCurrent"/>.
     /// </summary>
-    public class ElectricCurrentUnitSelector : PrefixSelector<IElectricCurrentUnitSelector, IPrefixSelector<IElectricCurrentUnitSelector>>, IElectricCurrentUnitSelector
+    public class ElectricCurrentUnitSelector :
+        PrefixSelector<IElectricCurrentUnitSelector, IPrefixSelector<IElectricCurrentUnitSelector>>,
+        IElectricCurrentUnitSelector
     {
         /// <summary>
         /// Gets the base unit.

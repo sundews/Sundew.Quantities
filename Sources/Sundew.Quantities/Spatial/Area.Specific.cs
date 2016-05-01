@@ -1,4 +1,10 @@
-﻿namespace Sundew.Quantities.Spatial
+﻿// // --------------------------------------------------------------------------------------------------------------------
+// // <copyright file="Area.Specific.cs" company="Hukano">
+// //   2016 (c) Hukano. All Rights Reserved. Licensed under the MIT License. See License.txt in the project root for license information.
+// // </copyright>
+// // --------------------------------------------------------------------------------------------------------------------
+
+namespace Sundew.Quantities.Spatial
 {
     using Sundew.Quantities.Engine.Quantities;
 
@@ -30,7 +36,7 @@
         }
 
         /// <summary>
-        /// Performs an implicit conversion from <see cref="Squared{Distance}"/> to <see cref="Area"/>.
+        /// Performs an implicit conversion from <see cref="Squared{TBase}"/> to <see cref="Area"/>.
         /// </summary>
         /// <param name="area">The area as a <see cref="Squared{Distance}"/>.</param>
         /// <returns>

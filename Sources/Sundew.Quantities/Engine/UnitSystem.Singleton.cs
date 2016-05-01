@@ -1,4 +1,10 @@
-﻿namespace Sundew.Quantities.Engine
+﻿// // --------------------------------------------------------------------------------------------------------------------
+// // <copyright file="UnitSystem.Singleton.cs" company="Hukano">
+// //   2016 (c) Hukano. All Rights Reserved. Licensed under the MIT License. See License.txt in the project root for license information.
+// // </copyright>
+// // --------------------------------------------------------------------------------------------------------------------
+
+namespace Sundew.Quantities.Engine
 {
     using System;
     using System.Collections.Generic;
@@ -103,7 +109,9 @@
         /// </summary>
         /// <param name="unitSystemDependencyFactory">The unit system dependency factory.</param>
         /// <param name="registerUnitAction">The register unit action.</param>
-        public static UnitSystemDependencies InitializeWithDefaults(IUnitSystemDependencyFactory unitSystemDependencyFactory = null, Action<IUnitRegistrar> registerUnitAction = null)
+        public static UnitSystemDependencies InitializeWithDefaults(
+            IUnitSystemDependencyFactory unitSystemDependencyFactory = null,
+            Action<IUnitRegistrar> registerUnitAction = null)
         {
             return Instance.InitializeUnitSystemWithDefaults(unitSystemDependencyFactory, registerUnitAction);
         }
@@ -113,7 +121,9 @@
         /// </summary>
         /// <param name="unitSystemDependencyFactory">The unit system dependency factory.</param>
         /// <param name="registerUnitAction">The register unit action.</param>
-        public static UnitSystemDependencies Initialize(IUnitSystemDependencyFactory unitSystemDependencyFactory = null, Action<IUnitRegistrar> registerUnitAction = null)
+        public static UnitSystemDependencies Initialize(
+            IUnitSystemDependencyFactory unitSystemDependencyFactory = null,
+            Action<IUnitRegistrar> registerUnitAction = null)
         {
             return Instance.InitializeUnitSystem(unitSystemDependencyFactory, registerUnitAction);
         }
@@ -153,8 +163,7 @@
 
         private static class Nested
         {
-            internal static readonly UnitSystem UnitSystemInstance =
-                new UnitSystem();
+            internal static readonly UnitSystem UnitSystemInstance = new UnitSystem();
 
             [SuppressMessage("StyleCop.CSharp.MaintainabilityRules", "SA1409:RemoveUnnecessaryCode",
                 Justification = "Explicit static constructor to tell C# compiler not to mark type as beforefieldinit")]

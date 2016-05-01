@@ -1,4 +1,10 @@
-﻿namespace Sundew.Quantities.Spacetime
+﻿// // --------------------------------------------------------------------------------------------------------------------
+// // <copyright file="SpacetimeExtensions.cs" company="Hukano">
+// //   2016 (c) Hukano. All Rights Reserved. Licensed under the MIT License. See License.txt in the project root for license information.
+// // </copyright>
+// // --------------------------------------------------------------------------------------------------------------------
+
+namespace Sundew.Quantities.Spacetime
 {
     using System;
 
@@ -16,7 +22,7 @@
         /// <typeparam name="TValue">The type of the value.</typeparam>
         /// <param name="value">The value.</param>
         /// <returns>A <see cref="Velocity"/>.</returns>
-        public static Velocity MetersPerSecond<TValue>(this TValue value) 
+        public static Velocity MetersPerSecond<TValue>(this TValue value)
             where TValue : struct, IComparable, IFormattable
         {
             return value.ToVelocity(x => x.BaseUnit);
@@ -54,8 +60,9 @@
         /// <param name="value">The value.</param>
         /// <param name="unitSelector">The unit selector.</param>
         /// <returns>A <see cref="Acceleration"/>.</returns>
-        public static Acceleration ToAcceleration<TValue>(this TValue value, SelectUnit<AccelerationUnitSelector> unitSelector)
-            where TValue : struct, IComparable, IFormattable
+        public static Acceleration ToAcceleration<TValue>(
+            this TValue value,
+            SelectUnit<AccelerationUnitSelector> unitSelector) where TValue : struct, IComparable, IFormattable
         {
             return new Acceleration(Convert.ToDouble(value), unitSelector);
         }

@@ -1,4 +1,10 @@
-﻿namespace Sundew.Quantities.Engine.Representations.Hierarchical.Parsing
+﻿// // --------------------------------------------------------------------------------------------------------------------
+// // <copyright file="UnitExpressionParser.cs" company="Hukano">
+// //   2016 (c) Hukano. All Rights Reserved. Licensed under the MIT License. See License.txt in the project root for license information.
+// // </copyright>
+// // --------------------------------------------------------------------------------------------------------------------
+
+namespace Sundew.Quantities.Engine.Representations.Hierarchical.Parsing
 {
     using System;
     using System.Text.RegularExpressions;
@@ -17,9 +23,9 @@
     {
         private static readonly Regex VariableRegex = new Regex(@"^\d+$");
 
-        private readonly IUnitRegistry unitRegistry;
-
         private readonly ILexicalAnalyzer lexicalAnalyzer;
+
+        private readonly IUnitRegistry unitRegistry;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="UnitExpressionParser" /> class.
