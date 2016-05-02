@@ -1,5 +1,5 @@
 # Sundew.Quantities
-Sundew.Quantities is a portable class library, which provides types for various physical quantities such as distance, mass, velocity acceleration, volume, etc.
+Sundew.Quantities is a portable class library, which provides types for various physical quantities such as distance, mass, velocity, acceleration, volume, etc.
 
 ## Links:
 <a href="https://github.com/hugener/Sundew.Quantities/wiki" title="Documentation">Documentation</a>
