@@ -198,7 +198,7 @@ namespace Sundew.Quantities.Engine.Quantities
         /// <returns>
         /// The resulting <see cref="IQuantity" />.
         /// </returns>
-        IQuantity IUnitConvertible.ToQuantity(IUnit unit)
+        public IQuantity ToQuantity(IUnit unit)
         {
             return this.ToUnit(unit);
         }
