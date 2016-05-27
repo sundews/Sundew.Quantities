@@ -9,7 +9,6 @@ namespace Sundew.Quantities.Periodics
     using System;
 
     using Sundew.Quantities.Engine;
-    using Sundew.Quantities.Engine.Quantities;
     using Sundew.Quantities.Engine.Representations.Hierarchical.Expressions;
     using Sundew.Quantities.Spacetime;
     using Sundew.Quantities.Spatial;

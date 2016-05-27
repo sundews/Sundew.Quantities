@@ -6,7 +6,7 @@
 
 namespace Sundew.Quantities.Electromagnetism
 {
-    using Sundew.Quantities.Engine.Quantities;
+    using Sundew.Quantities.Engine;
 
     /// <summary>
     /// Represents a capacitance quantity.

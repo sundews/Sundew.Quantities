@@ -24,15 +24,32 @@ namespace Sundew.Quantities.AcceptanceTests.Spatial
             result.Should().Be(Expected, "mL");
         }
 
-        [Fact]
-        public void Volume_ToUnit_When_ConvertingLitersToCubicMeters_Then_ResultShouldBeExpected()
+        [Theory]
+        [InlineData(32, 0.032)]
+        [InlineData(0, 0)]
+        public void Volume_ToUnit_When_ConvertingLitersToCubicMeters_Then_ResultShouldBeExpected(
+            double value,
+            double expected)
         {
-            const double Expected = 0.032;
-            var volume = 32.ToVolume(units => units.Liters);
+            var testee = value.ToVolume(units => units.Liters);
 
-            var result = volume.ToUnit(units => units.Cubic.Meters);
+            var result = testee.ToUnit(units => units.Cubic.Meters);
 
-            result.Should().Be(Expected, "m³");
+            result.Should().Be(expected, "m³");
+        }
+
+        [Theory]
+        [InlineData(54, 54000)]
+        [InlineData(0, 0)]
+        public void Volume_ToUnit_When_ConvertingCubicMetersToLiters_Then_ResultShouldBeExpected(
+            double value,
+            double expected)
+        {
+            var testee = value.ToVolume(units => units.Cubic.Meters);
+
+            var result = testee.ToDouble(units => units.Liters);
+
+            result.Should().Be(expected);
         }
     }
 }

@@ -8,6 +8,7 @@ namespace Sundew.Quantities.AcceptanceTests.Spatial
 {
     using FluentAssertions;
 
+    using Sundew.Quantities.Engine.Quantities;
     using Sundew.Quantities.Spatial;
     using Sundew.Quantities.UnitTests;
 
@@ -25,7 +26,7 @@ namespace Sundew.Quantities.AcceptanceTests.Spatial
         {
             var testee = new Distance(length, x => x.Milli.Meters);
 
-            var result = testee.ToUnit(x => x.Miles);
+            IQuantity result = testee.ToUnit(x => x.Miles);
 
             result.Value.Should().BeApproximately(expected, TestHelper.DefaultAssertPrecision);
         }

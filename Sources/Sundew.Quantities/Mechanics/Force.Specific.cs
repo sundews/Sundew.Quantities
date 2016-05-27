@@ -6,7 +6,7 @@
 
 namespace Sundew.Quantities.Mechanics
 {
-    using Sundew.Quantities.Engine.Quantities;
+    using Sundew.Quantities.Engine;
     using Sundew.Quantities.Periodics;
     using Sundew.Quantities.Spatial;
 

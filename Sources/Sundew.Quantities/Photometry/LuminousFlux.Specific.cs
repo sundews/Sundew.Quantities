@@ -6,7 +6,7 @@
 
 namespace Sundew.Quantities.Photometry
 {
-    using Sundew.Quantities.Engine.Quantities;
+    using Sundew.Quantities.Engine;
     using Sundew.Quantities.Spatial;
 
     /// <summary>

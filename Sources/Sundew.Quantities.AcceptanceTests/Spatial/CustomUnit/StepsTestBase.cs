@@ -20,7 +20,7 @@ namespace Sundew.Quantities.AcceptanceTests.Spatial.CustomUnit
 
         protected StepsTestBase()
         {
-            UnitSystem.InitializeWithDefaults(null, unitRegistry => unitRegistry.Register(this.StepsUnit));
+            UnitSystem.InitializeWithDefaults(unitRegistry => unitRegistry.Register(this.StepsUnit));
         }
 
         public void Dispose()

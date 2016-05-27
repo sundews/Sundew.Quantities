@@ -14,15 +14,15 @@ namespace Sundew.Quantities.UnitTests.Engine.Units
 
     public class UnitTests
     {
-        [Theory]
-        [InlineData("km")]
-        public void GetPrefixedUnit_Then_ResultNotationShouldBeExpectedNotation(string expectedNotation)
+        [Fact]
+        public void GetPrefixedUnit_Then_ResultNotationShouldBeExpectedNotation()
         {
+            const string ExpectedNotation = "km";
             var testee = new Unit("m");
 
             var result = testee.GetPrefixedUnit(Prefixes.Kilo);
 
-            result.Notation.Should().Be(expectedNotation);
+            result.Notation.Should().Be(ExpectedNotation);
         }
 
         [Theory]

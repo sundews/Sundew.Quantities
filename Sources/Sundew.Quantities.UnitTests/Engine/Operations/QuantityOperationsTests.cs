@@ -8,7 +8,7 @@ namespace Sundew.Quantities.UnitTests.Engine.Operations
 {
     using FluentAssertions;
 
-    using Sundew.Quantities.Engine.Quantities;
+    using Sundew.Quantities.Engine;
     using Sundew.Quantities.Engine.Units;
 
     using Xunit;

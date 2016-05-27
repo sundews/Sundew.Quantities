@@ -4,8 +4,9 @@
 // // </copyright>
 // // --------------------------------------------------------------------------------------------------------------------
 
-namespace Sundew.Quantities.Engine.Quantities
+namespace Sundew.Quantities.Engine
 {
+    using Sundew.Quantities.Engine.Quantities;
     using Sundew.Quantities.Engine.Representations.Hierarchical.Units;
 
     /// <summary>

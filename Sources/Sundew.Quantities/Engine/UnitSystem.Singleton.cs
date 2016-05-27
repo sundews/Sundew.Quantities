@@ -110,8 +110,8 @@ namespace Sundew.Quantities.Engine
         /// <param name="unitSystemDependencyFactory">The unit system dependency factory.</param>
         /// <param name="registerUnitAction">The register unit action.</param>
         public static UnitSystemDependencies InitializeWithDefaults(
-            IUnitSystemDependencyFactory unitSystemDependencyFactory = null,
-            Action<IUnitRegistrar> registerUnitAction = null)
+            Action<IUnitRegistrar> registerUnitAction = null,
+            IUnitSystemDependencyFactory unitSystemDependencyFactory = null)
         {
             return Instance.InitializeUnitSystemWithDefaults(unitSystemDependencyFactory, registerUnitAction);
         }
@@ -122,8 +122,8 @@ namespace Sundew.Quantities.Engine
         /// <param name="unitSystemDependencyFactory">The unit system dependency factory.</param>
         /// <param name="registerUnitAction">The register unit action.</param>
         public static UnitSystemDependencies Initialize(
-            IUnitSystemDependencyFactory unitSystemDependencyFactory = null,
-            Action<IUnitRegistrar> registerUnitAction = null)
+            Action<IUnitRegistrar> registerUnitAction,
+            IUnitSystemDependencyFactory unitSystemDependencyFactory = null)
         {
             return Instance.InitializeUnitSystem(unitSystemDependencyFactory, registerUnitAction);
         }

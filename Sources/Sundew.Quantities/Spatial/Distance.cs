@@ -12,7 +12,7 @@ namespace Sundew.Quantities.Spatial
     using Sundew.Quantities.Spatial.UnitSelection;
 
     /// <summary>
-    /// Implementation of the Distance base unit.
+    /// Implementation of the Distance unit.
     /// </summary>
     public sealed partial class Distance : Quantity<Distance, DistanceUnitSelector>
     {

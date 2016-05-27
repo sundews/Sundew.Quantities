@@ -6,12 +6,13 @@
 
 namespace Sundew.Quantities.Spatial
 {
+    using Sundew.Quantities.Engine;
     using Sundew.Quantities.Engine.Quantities;
     using Sundew.Quantities.Periodics;
     using Sundew.Quantities.Spacetime;
 
     /// <summary>
-    /// Implementation of the Distance base unit.
+    /// Implementation of the Distance unit.
     /// </summary>
     public partial class Distance
     {

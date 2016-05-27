@@ -124,7 +124,7 @@ namespace Sundew.Quantities.Engine
         /// <returns>The <see cref="IQuantityOperations"/>.</returns>
         public IQuantityOperations CreateQuantityOperations(IUnitFactory unitFactory)
         {
-            return new QuantityOperations(
+            return new Operations.QuantityOperations(
                 unitFactory,
                 new ExpressionReducer(this.expressionToFlatRepresentationConverter),
                 ValueFromBaseVisitor,

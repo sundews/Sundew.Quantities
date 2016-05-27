@@ -9,6 +9,7 @@ namespace Sundew.Quantities.AcceptanceTests.Spatial
     using FluentAssertions;
 
     using Sundew.Quantities.AcceptanceTests.Testing;
+    using Sundew.Quantities.Engine.Quantities;
     using Sundew.Quantities.Spatial;
     using Sundew.Quantities.UnitTests;
 
@@ -25,7 +26,7 @@ namespace Sundew.Quantities.AcceptanceTests.Spatial
             var testee1 = new Area(lhs, x => x.Kilo.Meters * x.Kilo.Meters);
             var testee2 = new Area(rhs, x => x.Kilo.Meters * x.Kilo.Meters);
 
-            var result = testee1 + testee2;
+            IQuantity result = testee1 + testee2;
 
             result.Value.Should().Be(expected);
         }

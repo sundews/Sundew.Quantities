@@ -29,7 +29,7 @@ namespace Sundew.Quantities.Samples
             #region UsageInitializeUnitSystem
 
             // Initialize the unit system with a custom implementation of the IUnitSystemDependencyFactory interface.
-            var unitSystemDependencies = UnitSystem.Initialize(new CustomUnitSystemDependencyFactory());
+            var unitSystemDependencies = UnitSystem.InitializeWithDefaults(null, new CustomUnitSystemDependencyFactory());
             
             #endregion
         }
@@ -93,7 +93,7 @@ namespace Sundew.Quantities.Samples
 
             public IQuantityOperations CreateQuantityOperations(IUnitFactory unitFactory)
             {
-                return new QuantityOperations(
+                return new Engine.Operations.QuantityOperations(
                     unitFactory,
                     new ExpressionReducer(this.expressionToFlatRepresentationConverter),
                     ValueFromBaseVisitor,

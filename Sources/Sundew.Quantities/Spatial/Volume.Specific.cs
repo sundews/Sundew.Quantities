@@ -6,6 +6,7 @@
 
 namespace Sundew.Quantities.Spatial
 {
+    using Sundew.Quantities.Engine;
     using Sundew.Quantities.Engine.Quantities;
     using Sundew.Quantities.Mechanics;
 

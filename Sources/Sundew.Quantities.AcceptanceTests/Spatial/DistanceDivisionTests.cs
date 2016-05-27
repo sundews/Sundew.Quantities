@@ -9,6 +9,7 @@ namespace Sundew.Quantities.AcceptanceTests.Spatial
     using FluentAssertions;
 
     using Sundew.Quantities.AcceptanceTests.Testing;
+    using Sundew.Quantities.Periodics;
     using Sundew.Quantities.Spacetime;
     using Sundew.Quantities.Spatial;
     using Sundew.Quantities.UnitTests;
@@ -76,7 +77,24 @@ namespace Sundew.Quantities.AcceptanceTests.Spatial
 
             var result = testee1 / testee2;
 
-            result.Should().BeApproximately(expected, "s", TestHelper.DefaultAssertPrecision);
+            result.Should().BeApproximately(expected, "s");
+        }
+
+        [Theory]
+        [InlineData(50, 10, 5)]
+        [InlineData(0, 10, 0)]
+        [InlineData(40, 0, double.PositiveInfinity)]
+        public void Distance_Division_When_RhsIsTime_Then_ResultShouldBeExpected(
+            double lhs,
+            double rhs,
+            double expected)
+        {
+            var testee1 = new Distance(lhs, x => x.Meters);
+            var testee2 = new Time(rhs, x => x.Seconds);
+
+            var result = testee1 / testee2;
+
+            result.Should().BeApproximately(expected, "m/s");
         }
     }
 }

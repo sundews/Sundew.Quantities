@@ -18,8 +18,7 @@ namespace Sundew.Quantities.Samples
             #region UsageRegisterUnits
             // Only units registered in the code below will be supported by the unit systems.
             // If it is desired to use the default units and add/remove additional unit, use the UnitSystem.InitializeWithDefaults method instead.
-            UnitSystem.Initialize(new UnitSystemDependencyFactory(),
-                unitRegistrar =>
+            UnitSystem.Initialize(unitRegistrar =>
                     {
                         // Register base unit meters.
                         var meters = new Unit("m");

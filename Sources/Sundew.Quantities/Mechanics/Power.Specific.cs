@@ -7,7 +7,7 @@
 namespace Sundew.Quantities.Mechanics
 {
     using Sundew.Quantities.Electromagnetism;
-    using Sundew.Quantities.Engine.Quantities;
+    using Sundew.Quantities.Engine;
     using Sundew.Quantities.Periodics;
 
     /// <summary>

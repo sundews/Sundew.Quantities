@@ -125,6 +125,8 @@
     <CodeContractsRuntimeCheckingLevel>Full</CodeContractsRuntimeCheckingLevel>
     <CodeContractsReferenceAssembly>%28none%29</CodeContractsReferenceAssembly>
     <CodeContractsAnalysisWarningLevel>0</CodeContractsAnalysisWarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <RunCodeAnalysis>false</RunCodeAnalysis>
   </PropertyGroup>
   <ItemGroup>
     <!-- A reference to the entire .NET Framework is automatically included -->
@@ -208,11 +210,11 @@
     <Compile Include="Engine\Quantities\IUnitConvertible{TQuantity}.cs" />
     <Compile Include="Engine\Quantities\Product.cs" />
     <Compile Include="Engine\Quantities\QuantityHelper.cs" />
-    <Compile Include="Engine\Quantities\QuantityOperations.cs" />
+    <Compile Include="Engine\Quantities\Quantity{TQuantity,TUnitSelector}.cs" />
     <Compile Include="Engine\Quantities\Quantity{TQuantity}.cs" />
-    <Compile Include="Engine\Quantities\Quantity{TQuantity,TSerializable}.cs" />
     <Compile Include="Engine\Quantities\Quotient.cs" />
     <Compile Include="Engine\Quantities\Squared.cs" />
+    <Compile Include="Engine\QuantityOperations.cs" />
     <Compile Include="Engine\Registration\IDerivedUnitRegistry.cs" />
     <Compile Include="Engine\Registration\IUnitRegistrar.cs" />
     <Compile Include="Engine\Registration\UnitRegistry.cs" />

@@ -14,6 +14,7 @@ namespace Sundew.Quantities.AcceptanceTests.Testing
 
     using Sundew.Quantities.Engine.Quantities;
     using Sundew.Quantities.Engine.Representations.Hierarchical.Units;
+    using Sundew.Quantities.UnitTests;
 
     /// <summary>
     /// The quantity assertion extension.
@@ -102,7 +103,7 @@ namespace Sundew.Quantities.AcceptanceTests.Testing
             this ComparableTypeAssertions<IQuantity> quantityAssertions,
             double expectedValue,
             string expectedUnit,
-            double precision)
+            double precision = TestHelper.DefaultAssertPrecision)
         {
             return BeApproximately(quantityAssertions, expectedValue, expectedUnit, UnitFormat.Default, precision);
         }
@@ -138,7 +139,7 @@ namespace Sundew.Quantities.AcceptanceTests.Testing
             var quantity = (IQuantity)quantityAssertions.Subject;
             var quantityValue = quantity.Value;
             var quantityUnit = UnitHelper.GetNotation(quantity.Unit, unitFormat);
-            Execute.Assertion.ForCondition(Math.Abs(quantityValue - expectedValue) < precision)
+            Execute.Assertion.ForCondition(quantityValue == expectedValue || Math.Abs(quantityValue - expectedValue) < precision)
                 .FailWith("The value: {0}, but found: {1}", expectedValue, quantityValue);
             AssertUnit(quantityUnit, expectedUnit);
 
