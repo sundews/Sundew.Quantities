@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/10/nuspec.xsd">
     <metadata>
         <id>Sundew.Quantities</id>
-        <version>1.0.1-alpha</version>
+        <version>1.0.2-alpha</version>
         <authors>Kim Hugener-Ohlsen</authors>
         <licenseUrl>https://opensource.org/licenses/MIT</licenseUrl>
         <projectUrl>https://github.com/hugener/Sundew.Quantities</projectUrl>
@@ -15,7 +15,8 @@
 - Volume
 - Mass
 - Time</description>
-        <releaseNotes>1.0.1: First version</releaseNotes>
+        <releaseNotes>1.0.2: Minor fixes
+1.0.1: First version</releaseNotes>
         <copyright>Hukano</copyright>
         <dependencies>
             <dependency id="Sundew.Base" version="1.0.26" />

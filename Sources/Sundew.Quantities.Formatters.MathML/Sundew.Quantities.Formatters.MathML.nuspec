@@ -2,17 +2,18 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/10/nuspec.xsd">
     <metadata>
         <id>Sundew.Quantities.Formatters.MathML</id>
-        <version>1.0.1-alpha</version>
+        <version>1.0.2-alpha</version>
         <authors>Kim Hugener-Ohlsen</authors>
         <licenseUrl>https://opensource.org/licenses/MIT</licenseUrl>
         <projectUrl>https://github.com/hugener/Sundew.Quantities</projectUrl>
         <requireLicenseAcceptance>false</requireLicenseAcceptance>
         <description>Sundew.Quantities.Formatters.MathML provides an implementation of a expression visitor with functionality to convert unit expressions into MathML.</description>
-        <releaseNotes>1.0.1: First version</releaseNotes>
+        <releaseNotes>1.0.2: Referenced Sundew.Quantities 1.0.2
+1.0.1: First version</releaseNotes>
         <copyright>Hukano</copyright>
         <dependencies>
             <dependency id="Sundew.Base" version="1.0.26" />
-            <dependency id="Sundew.Quantities" version="1.0.1-alpha" />
+            <dependency id="Sundew.Quantities" version="1.0.2-alpha" />
         </dependencies>
     </metadata>
     <files>

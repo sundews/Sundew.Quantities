@@ -17,7 +17,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Hukano")]
 [assembly: AssemblyProduct("Sundew.Quantities")]
-[assembly: AssemblyCopyright("Copyright © Hukano 2015")]
+[assembly: AssemblyCopyright("Copyright © Hukano 2016")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 [assembly: NeutralResourcesLanguage("en")]
