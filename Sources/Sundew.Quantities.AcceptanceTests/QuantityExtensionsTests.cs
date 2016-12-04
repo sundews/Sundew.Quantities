@@ -9,7 +9,6 @@ namespace Sundew.Quantities.AcceptanceTests
     using FluentAssertions;
 
     using Sundew.Base.Numeric;
-    using Sundew.Quantities.Spatial;
 
     using Xunit;
 

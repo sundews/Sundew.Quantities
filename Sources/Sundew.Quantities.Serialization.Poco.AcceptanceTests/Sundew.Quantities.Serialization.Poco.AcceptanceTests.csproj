@@ -70,18 +70,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Electromagnetism\ResistanceTests.cs" />
-    <Compile Include="Mechanics\ForceTests.cs" />
+    <Compile Include="ResistanceTests.cs" />
+    <Compile Include="ForceTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Spatial\CustomUnitTests.cs" />
-    <Compile Include="Spatial\VolumeTests.cs" />
-    <Compile Include="Thermodynamics\TemperatureTests.cs" />
+    <Compile Include="CustomUnitTests.cs" />
+    <Compile Include="VolumeTests.cs" />
+    <Compile Include="TemperatureTests.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Periodics\" />
-    <Folder Include="Photometry\" />
-    <Folder Include="Spacetime\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="packages.config" />
     <None Include="Settings.StyleCop" />

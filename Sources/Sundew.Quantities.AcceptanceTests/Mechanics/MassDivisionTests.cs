@@ -9,9 +9,6 @@ namespace Sundew.Quantities.AcceptanceTests.Mechanics
     using FluentAssertions;
 
     using Sundew.Quantities.AcceptanceTests.Testing;
-    using Sundew.Quantities.Mechanics;
-    using Sundew.Quantities.Periodics;
-    using Sundew.Quantities.Spatial;
 
     using Xunit;
 

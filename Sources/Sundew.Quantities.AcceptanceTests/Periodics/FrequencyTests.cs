@@ -10,7 +10,6 @@ namespace Sundew.Quantities.AcceptanceTests.Periodics
 
     using Sundew.Quantities.AcceptanceTests.Testing;
     using Sundew.Quantities.Engine.Representations.Hierarchical.Units;
-    using Sundew.Quantities.Periodics;
 
     using Xunit;
 

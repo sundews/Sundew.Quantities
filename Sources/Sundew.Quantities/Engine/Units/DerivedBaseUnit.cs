@@ -1,9 +1,9 @@
-﻿// // --------------------------------------------------------------------------------------------------------------------
-// // <copyright file="DerivedBaseUnit.cs" company="Hukano">
-// //   2016 (c) Hukano. All Rights Reserved. Licensed under the MIT License. See License.txt in the project root for license information.
-// // </copyright>
-// // --------------------------------------------------------------------------------------------------------------------
-
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="DerivedBaseUnit.cs" company="Hukano">
+// Copyright (c) Hukano. All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
+// </copyright>
+// --------------------------------------------------------------------------------------------------------------------
 namespace Sundew.Quantities.Engine.Units
 {
     using System;
@@ -91,7 +91,10 @@ namespace Sundew.Quantities.Engine.Units
         /// <summary>
         /// Gets the notation without prefix.
         /// </summary>
-        /// <returns>The notation without a prefix.</returns>
+        /// <param name="formatProvider">The format provider.</param>
+        /// <returns>
+        /// The notation without a prefix.
+        /// </returns>
         public string GetNotationWithoutPrefix(IFormatProvider formatProvider = null)
         {
             return this.GetNotation(formatProvider);
@@ -126,7 +129,7 @@ namespace Sundew.Quantities.Engine.Units
         /// </summary>
         /// <param name="other">The other.</param>
         /// <returns>
-        ///   <c>true</c> if the specified <see cref="System.Object" /> is equal to this instance; otherwise, <c>false</c>.
+        ///   <c>true</c> if the specified <see cref="object" /> is equal to this instance; otherwise, <c>false</c>.
         /// </returns>
         public bool Equals(IUnit other)
         {
@@ -137,7 +140,7 @@ namespace Sundew.Quantities.Engine.Units
         /// Returns a hash code for this instance.
         /// </summary>
         /// <returns>
-        /// A hash code for this instance, suitable for use in hashing algorithms and data structures like a hash table. 
+        /// A hash code for this instance, suitable for use in hashing algorithms and data structures like a hash table.
         /// </returns>
         public override int GetHashCode()
         {
@@ -145,11 +148,11 @@ namespace Sundew.Quantities.Engine.Units
         }
 
         /// <summary>
-        /// Determines whether the specified <see cref="System.Object" />, is equal to this instance.
+        /// Determines whether the specified <see cref="object" />, is equal to this instance.
         /// </summary>
-        /// <param name="obj">The <see cref="System.Object" /> to compare with this instance.</param>
+        /// <param name="obj">The <see cref="object" /> to compare with this instance.</param>
         /// <returns>
-        ///   <c>true</c> if the specified <see cref="System.Object" /> is equal to this instance; otherwise, <c>false</c>.
+        ///   <c>true</c> if the specified <see cref="object" /> is equal to this instance; otherwise, <c>false</c>.
         /// </returns>
         public override bool Equals(object obj)
         {
@@ -157,10 +160,10 @@ namespace Sundew.Quantities.Engine.Units
         }
 
         /// <summary>
-        /// Returns a <see cref="System.String" /> that represents this instance.
+        /// Returns a <see cref="string" /> that represents this instance.
         /// </summary>
         /// <returns>
-        /// A <see cref="System.String" /> that represents this instance.
+        /// A <see cref="string" /> that represents this instance.
         /// </returns>
         public override string ToString()
         {

@@ -1,9 +1,9 @@
-﻿// // --------------------------------------------------------------------------------------------------------------------
-// // <copyright file="UnitSystem.Singleton.cs" company="Hukano">
-// //   2016 (c) Hukano. All Rights Reserved. Licensed under the MIT License. See License.txt in the project root for license information.
-// // </copyright>
-// // --------------------------------------------------------------------------------------------------------------------
-
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="UnitSystem.Singleton.cs" company="Hukano">
+// Copyright (c) Hukano. All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
+// </copyright>
+// --------------------------------------------------------------------------------------------------------------------
 namespace Sundew.Quantities.Engine
 {
     using System;
@@ -24,6 +24,40 @@ namespace Sundew.Quantities.Engine
     /// </summary>
     public partial class UnitSystem
     {
+        /// <summary>
+        /// Gets the instance.
+        /// </summary>
+        /// <value>
+        /// The instance.
+        /// </value>
+        public static UnitSystem Instance => Nested.UnitSystemInstance;
+
+        /// <summary>
+        /// Gets the prefixes.
+        /// </summary>
+        /// <returns>The prefixes.</returns>
+        public static IEnumerable<Prefix> Prefixes
+        {
+            get
+            {
+                EnsureInitialization();
+                return Instance.GetPrefixes();
+            }
+        }
+
+        /// <summary>
+        /// Gets the units.
+        /// </summary>
+        /// <returns>The units.</returns>
+        public static IEnumerable<IUnit> Units
+        {
+            get
+            {
+                EnsureInitialization();
+                return Instance.GetUnits();
+            }
+        }
+
         internal static IQuantityOperations QuantityOperations
         {
             get
@@ -39,40 +73,6 @@ namespace Sundew.Quantities.Engine
             {
                 EnsureInitialization();
                 return Instance.unitFactory;
-            }
-        }
-
-        /// <summary>
-        /// Gets the instance.
-        /// </summary>
-        /// <value>
-        /// The instance.
-        /// </value>
-        public static UnitSystem Instance => Nested.UnitSystemInstance;
-
-        /// <summary>
-        /// Gets the prefixes.
-        /// </summary>
-        /// <returns></returns>
-        public static IEnumerable<Prefix> Prefixes
-        {
-            get
-            {
-                EnsureInitialization();
-                return Instance.GetPrefixes();
-            }
-        }
-
-        /// <summary>
-        /// Gets the units.
-        /// </summary>
-        /// <returns></returns>
-        public static IEnumerable<IUnit> Units
-        {
-            get
-            {
-                EnsureInitialization();
-                return Instance.GetUnits();
             }
         }
 
@@ -107,8 +107,11 @@ namespace Sundew.Quantities.Engine
         /// <summary>
         /// Initializes the with defaults.
         /// </summary>
-        /// <param name="unitSystemDependencyFactory">The unit system dependency factory.</param>
         /// <param name="registerUnitAction">The register unit action.</param>
+        /// <param name="unitSystemDependencyFactory">The unit system dependency factory.</param>
+        /// <returns>
+        /// The <see cref="UnitSystemDependencies" />.
+        /// </returns>
         public static UnitSystemDependencies InitializeWithDefaults(
             Action<IUnitRegistrar> registerUnitAction = null,
             IUnitSystemDependencyFactory unitSystemDependencyFactory = null)
@@ -119,8 +122,9 @@ namespace Sundew.Quantities.Engine
         /// <summary>
         /// Initializes this instance.
         /// </summary>
-        /// <param name="unitSystemDependencyFactory">The unit system dependency factory.</param>
         /// <param name="registerUnitAction">The register unit action.</param>
+        /// <param name="unitSystemDependencyFactory">The unit system dependency factory.</param>
+        /// <returns>The <see cref="UnitSystemDependencies"/>.</returns>
         public static UnitSystemDependencies Initialize(
             Action<IUnitRegistrar> registerUnitAction,
             IUnitSystemDependencyFactory unitSystemDependencyFactory = null)
@@ -165,7 +169,9 @@ namespace Sundew.Quantities.Engine
         {
             internal static readonly UnitSystem UnitSystemInstance = new UnitSystem();
 
-            [SuppressMessage("StyleCop.CSharp.MaintainabilityRules", "SA1409:RemoveUnnecessaryCode",
+            [SuppressMessage(
+                "StyleCop.CSharp.MaintainabilityRules",
+                "SA1409:RemoveUnnecessaryCode",
                 Justification = "Explicit static constructor to tell C# compiler not to mark type as beforefieldinit")]
             static Nested()
             {

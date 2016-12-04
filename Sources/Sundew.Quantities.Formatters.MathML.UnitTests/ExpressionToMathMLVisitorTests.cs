@@ -8,9 +8,6 @@ namespace Sundew.Quantities.Formatters.MathML.UnitTests
 {
     using FluentAssertions;
 
-    using Sundew.Quantities.Electromagnetism;
-    using Sundew.Quantities.Spacetime;
-
     using Xunit;
 
     public class ExpressionToMathMLVisitorTests

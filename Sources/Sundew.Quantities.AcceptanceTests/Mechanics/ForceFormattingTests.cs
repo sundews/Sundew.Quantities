@@ -9,7 +9,6 @@ namespace Sundew.Quantities.AcceptanceTests.Mechanics
     using FluentAssertions;
 
     using Sundew.Quantities.Engine.Representations.Hierarchical.Units;
-    using Sundew.Quantities.Mechanics;
 
     using Xunit;
 

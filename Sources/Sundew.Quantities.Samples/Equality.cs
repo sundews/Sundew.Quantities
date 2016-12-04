@@ -6,8 +6,6 @@
 
 namespace Sundew.Quantities.Samples
 {
-    using Sundew.Quantities.Thermodynamics;
-
     using Xunit;
     using Xunit.Abstractions;
 

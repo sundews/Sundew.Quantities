@@ -1,9 +1,9 @@
-﻿// // --------------------------------------------------------------------------------------------------------------------
-// // <copyright file="Unit.cs" company="Hukano">
-// //   2016 (c) Hukano. All Rights Reserved. Licensed under the MIT License. See License.txt in the project root for license information.
-// // </copyright>
-// // --------------------------------------------------------------------------------------------------------------------
-
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="Unit.cs" company="Hukano">
+// Copyright (c) Hukano. All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
+// </copyright>
+// --------------------------------------------------------------------------------------------------------------------
 namespace Sundew.Quantities.Engine.Units
 {
     using System;
@@ -77,6 +77,38 @@ namespace Sundew.Quantities.Engine.Units
         }
 
         /// <summary>
+        /// Gets the expression for the specified unit.
+        /// </summary>
+        /// <param name="unit">The unit.</param>
+        /// <returns>An <see cref="Expression"/>.</returns>
+        public static implicit operator Expression(Unit unit)
+        {
+            return unit.GetExpression();
+        }
+
+        /// <summary>
+        /// Multiplies the specified LHS with the RHS.
+        /// </summary>
+        /// <param name="lhs">The LHS.</param>
+        /// <param name="rhs">The RHS.</param>
+        /// <returns>A <see cref="DerivedUnit"/>.</returns>
+        public static Expression operator *(Unit lhs, IUnit rhs)
+        {
+            return lhs.GetExpression() * rhs.GetExpression();
+        }
+
+        /// <summary>
+        /// Multiplies the specified LHS with the RHS.
+        /// </summary>
+        /// <param name="lhs">The LHS.</param>
+        /// <param name="rhs">The RHS.</param>
+        /// <returns>A <see cref="DerivedUnit"/>.</returns>
+        public static Expression operator /(Unit lhs, IUnit rhs)
+        {
+            return lhs.GetExpression() / rhs.GetExpression();
+        }
+
+        /// <summary>
         /// Converts the specified value into the unit's base value.
         /// </summary>
         /// <param name="value">The value.</param>
@@ -126,7 +158,10 @@ namespace Sundew.Quantities.Engine.Units
         /// <summary>
         /// Gets the notation without prefix.
         /// </summary>
-        /// <returns>The notation without a prefix.</returns>
+        /// <param name="formatProvider">The format provider.</param>
+        /// <returns>
+        /// The notation without a prefix.
+        /// </returns>
         public string GetNotationWithoutPrefix(IFormatProvider formatProvider = null)
         {
             return this.notation;
@@ -135,7 +170,10 @@ namespace Sundew.Quantities.Engine.Units
         /// <summary>
         /// Gets the notation.
         /// </summary>
-        /// <returns>The notation.</returns>
+        /// <param name="formatProvider">The format provider.</param>
+        /// <returns>
+        /// The notation.
+        /// </returns>
         public string GetNotation(IFormatProvider formatProvider = null)
         {
             return this.prefix.GetPrefixedNotation(this.notation);
@@ -166,38 +204,6 @@ namespace Sundew.Quantities.Engine.Units
         }
 
         /// <summary>
-        /// Gets the expression for the specified unit.
-        /// </summary>
-        /// <param name="unit">The unit.</param>
-        /// <returns>An <see cref="Expression"/>.</returns>
-        public static implicit operator Expression(Unit unit)
-        {
-            return unit.GetExpression();
-        }
-
-        /// <summary>
-        /// Multiplies the specified LHS with the RHS.
-        /// </summary>
-        /// <param name="lhs">The LHS.</param>
-        /// <param name="rhs">The RHS.</param>
-        /// <returns>A <see cref="DerivedUnit"/>.</returns>
-        public static Expression operator *(Unit lhs, IUnit rhs)
-        {
-            return lhs.GetExpression() * rhs.GetExpression();
-        }
-
-        /// <summary>
-        /// Multiplies the specified LHS with the RHS.
-        /// </summary>
-        /// <param name="lhs">The LHS.</param>
-        /// <param name="rhs">The RHS.</param>
-        /// <returns>A <see cref="DerivedUnit"/>.</returns>
-        public static Expression operator /(Unit lhs, IUnit rhs)
-        {
-            return lhs.GetExpression() / rhs.GetExpression();
-        }
-
-        /// <summary>
         /// Gets the base expression.
         /// </summary>
         /// <returns>
@@ -217,7 +223,7 @@ namespace Sundew.Quantities.Engine.Units
         /// Returns a hash code for this instance.
         /// </summary>
         /// <returns>
-        /// A hash code for this instance, suitable for use in hashing algorithms and data structures like a hash table. 
+        /// A hash code for this instance, suitable for use in hashing algorithms and data structures like a hash table.
         /// </returns>
         public override int GetHashCode()
         {
@@ -225,11 +231,11 @@ namespace Sundew.Quantities.Engine.Units
         }
 
         /// <summary>
-        /// Determines whether the specified <see cref="System.Object"/>, is equal to this instance.
+        /// Determines whether the specified <see cref="object"/>, is equal to this instance.
         /// </summary>
-        /// <param name="other">The <see cref="System.Object" /> to compare with this instance.</param>
+        /// <param name="other">The <see cref="object" /> to compare with this instance.</param>
         /// <returns>
-        ///   <c>true</c> if the specified <see cref="System.Object" /> is equal to this instance; otherwise, <c>false</c>.
+        ///   <c>true</c> if the specified <see cref="object" /> is equal to this instance; otherwise, <c>false</c>.
         /// </returns>
         public override bool Equals(object other)
         {
@@ -237,10 +243,10 @@ namespace Sundew.Quantities.Engine.Units
         }
 
         /// <summary>
-        /// Returns a <see cref="System.String" /> that represents this instance.
+        /// Returns a <see cref="string" /> that represents this instance.
         /// </summary>
         /// <returns>
-        /// A <see cref="System.String" /> that represents this instance.
+        /// A <see cref="string" /> that represents this instance.
         /// </returns>
         public override string ToString()
         {

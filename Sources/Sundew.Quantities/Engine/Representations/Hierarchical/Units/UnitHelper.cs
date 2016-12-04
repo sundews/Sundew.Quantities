@@ -1,9 +1,9 @@
-﻿// // --------------------------------------------------------------------------------------------------------------------
-// // <copyright file="UnitHelper.cs" company="Hukano">
-// //   2016 (c) Hukano. All Rights Reserved. Licensed under the MIT License. See License.txt in the project root for license information.
-// // </copyright>
-// // --------------------------------------------------------------------------------------------------------------------
-
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="UnitHelper.cs" company="Hukano">
+// Copyright (c) Hukano. All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
+// </copyright>
+// --------------------------------------------------------------------------------------------------------------------
 namespace Sundew.Quantities.Engine.Representations.Hierarchical.Units
 {
     using System.Diagnostics.Contracts;
@@ -83,11 +83,11 @@ namespace Sundew.Quantities.Engine.Representations.Hierarchical.Units
         }
 
         /// <summary>
-        /// Returns a <see cref="System.String" /> that represents this instance.
+        /// Returns a <see cref="string" /> that represents this instance.
         /// </summary>
         /// <param name="prefix">The prefix.</param>
         /// <param name="notation">The notation.</param>
-        /// <returns>A <see cref="System.String" /> that represents this instance.</returns>
+        /// <returns>A <see cref="string" /> that represents this instance.</returns>
         public static string ToString(Prefix prefix, string notation)
         {
             Contract.Requires(prefix != null);

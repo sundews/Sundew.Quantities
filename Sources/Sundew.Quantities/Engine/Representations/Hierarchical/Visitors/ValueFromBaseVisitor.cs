@@ -1,9 +1,9 @@
-﻿// // --------------------------------------------------------------------------------------------------------------------
-// // <copyright file="ValueFromBaseVisitor.cs" company="Hukano">
-// //   2016 (c) Hukano. All Rights Reserved. Licensed under the MIT License. See License.txt in the project root for license information.
-// // </copyright>
-// // --------------------------------------------------------------------------------------------------------------------
-
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="ValueFromBaseVisitor.cs" company="Hukano">
+// Copyright (c) Hukano. All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
+// </copyright>
+// --------------------------------------------------------------------------------------------------------------------
 namespace Sundew.Quantities.Engine.Representations.Hierarchical.Visitors
 {
     using System;

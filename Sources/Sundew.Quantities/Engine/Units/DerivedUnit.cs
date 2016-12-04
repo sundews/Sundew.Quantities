@@ -1,9 +1,9 @@
-﻿// // --------------------------------------------------------------------------------------------------------------------
-// // <copyright file="DerivedUnit.cs" company="Hukano">
-// //   2016 (c) Hukano. All Rights Reserved. Licensed under the MIT License. See License.txt in the project root for license information.
-// // </copyright>
-// // --------------------------------------------------------------------------------------------------------------------
-
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="DerivedUnit.cs" company="Hukano">
+// Copyright (c) Hukano. All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
+// </copyright>
+// --------------------------------------------------------------------------------------------------------------------
 namespace Sundew.Quantities.Engine.Units
 {
     using System;
@@ -61,19 +61,10 @@ namespace Sundew.Quantities.Engine.Units
         }
 
         /// <summary>
-        /// Gets a value indicating whether the <see cref="DerivedUnit"/> has its own notation.
-        /// </summary>
-        /// <value>
-        ///   <c>true</c> if [has own notation]; otherwise, <c>false</c>.
-        /// </value>
-        private bool HasOwnNotation => this.notation != null;
-
-        /// <summary>
         /// Gets the prefix factor.
         /// </summary>
         /// <value>The prefix.</value>
-        public double PrefixFactor
-            =>
+        public double PrefixFactor =>
                 this.HasOwnNotation
                     ? this.prefix.Factor
                     : this.prefix.Factor * DefaultVisitors.PrefixVisitor.Visit(this.expression);
@@ -89,6 +80,25 @@ namespace Sundew.Quantities.Engine.Units
         /// </summary>
         /// <value>The base unit.</value>
         public IUnit BaseUnit => this.derivedBaseUnit;
+
+        /// <summary>
+        /// Gets a value indicating whether the <see cref="DerivedUnit"/> has its own notation.
+        /// </summary>
+        /// <value>
+        ///   <c>true</c> if [has own notation]; otherwise, <c>false</c>.
+        /// </value>
+        private bool HasOwnNotation => this.notation != null;
+
+        /// <summary>
+        /// Gets the expression for the specified unit.
+        /// </summary>
+        /// <param name="unit">The unit.</param>
+        /// <returns>An <see cref="Expression"/>.</returns>
+        public static implicit operator Expression(DerivedUnit unit)
+        {
+            Contract.Requires(unit != null);
+            return unit.GetExpression();
+        }
 
         /// <summary>
         /// Converts the specified value into the unit's base value.
@@ -176,17 +186,6 @@ namespace Sundew.Quantities.Engine.Units
         }
 
         /// <summary>
-        /// Gets the expression for the specified unit.
-        /// </summary>
-        /// <param name="unit">The unit.</param>
-        /// <returns>An <see cref="Expression"/>.</returns>
-        public static implicit operator Expression(DerivedUnit unit)
-        {
-            Contract.Requires(unit != null);
-            return unit.GetExpression();
-        }
-
-        /// <summary>
         /// The base expression.
         /// </summary>
         /// <returns>The <see cref="Expression" />.</returns>
@@ -209,7 +208,7 @@ namespace Sundew.Quantities.Engine.Units
         /// Returns a hash code for this instance.
         /// </summary>
         /// <returns>
-        /// A hash code for this instance, suitable for use in hashing algorithms and data structures like a hash table. 
+        /// A hash code for this instance, suitable for use in hashing algorithms and data structures like a hash table.
         /// </returns>
         public override int GetHashCode()
         {
@@ -217,13 +216,13 @@ namespace Sundew.Quantities.Engine.Units
         }
 
         /// <summary>
-        /// Determines whether the specified <see cref="System.Object"/>, is equal to this instance.
+        /// Determines whether the specified <see cref="object"/>, is equal to this instance.
         /// </summary>
         /// <param name="other">
-        /// The <see cref="System.Object"/> to compare with this instance.
+        /// The <see cref="object"/> to compare with this instance.
         /// </param>
         /// <returns>
-        ///     <c>true</c> if the specified <see cref="System.Object"/> is equal to this instance; otherwise, <c>false</c>.
+        ///     <c>true</c> if the specified <see cref="object"/> is equal to this instance; otherwise, <c>false</c>.
         /// </returns>
         public override bool Equals(object other)
         {
@@ -231,10 +230,10 @@ namespace Sundew.Quantities.Engine.Units
         }
 
         /// <summary>
-        /// Returns a <see cref="System.String" /> that represents this instance.
+        /// Returns a <see cref="string" /> that represents this instance.
         /// </summary>
         /// <returns>
-        /// A <see cref="System.String" /> that represents this instance.
+        /// A <see cref="string" /> that represents this instance.
         /// </returns>
         public override string ToString()
         {

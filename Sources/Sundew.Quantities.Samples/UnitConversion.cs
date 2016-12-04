@@ -6,8 +6,6 @@
 
 namespace Sundew.Quantities.Samples
 {
-    using Sundew.Quantities.Spatial;
-
     using Xunit;
     using Xunit.Abstractions;
 

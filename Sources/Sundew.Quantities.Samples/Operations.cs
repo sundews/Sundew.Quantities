@@ -6,11 +6,6 @@
 
 namespace Sundew.Quantities.Samples
 {
-    using Sundew.Quantities.Electromagnetism;
-    using Sundew.Quantities.Mechanics;
-    using Sundew.Quantities.Periodics;
-    using Sundew.Quantities.Spatial;
-
     using Xunit;
     using Xunit.Abstractions;
 

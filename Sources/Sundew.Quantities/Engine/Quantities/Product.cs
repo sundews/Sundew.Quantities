@@ -1,9 +1,9 @@
-// // --------------------------------------------------------------------------------------------------------------------
-// // <copyright file="Product.cs" company="Hukano">
-// //   2016 (c) Hukano. All Rights Reserved. Licensed under the MIT License. See License.txt in the project root for license information.
-// // </copyright>
-// // --------------------------------------------------------------------------------------------------------------------
-
+// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="Product.cs" company="Hukano">
+// Copyright (c) Hukano. All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
+// </copyright>
+// --------------------------------------------------------------------------------------------------------------------
 namespace Sundew.Quantities.Engine.Quantities
 {
     /// <summary>
@@ -12,7 +12,8 @@ namespace Sundew.Quantities.Engine.Quantities
     /// <typeparam name="TMultiplier">The type of the multiplier quantity.</typeparam>
     /// <typeparam name="TMultiplicand">The type of the multiplicand quantity.</typeparam>
     public class Product<TMultiplier, TMultiplicand> : IDeferredQuantity
-        where TMultiplier : IDeferredQuantity where TMultiplicand : IDeferredQuantity
+        where TMultiplier : IDeferredQuantity
+        where TMultiplicand : IDeferredQuantity
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="Product{TMultiplier, TMultiplicand}" /> class.

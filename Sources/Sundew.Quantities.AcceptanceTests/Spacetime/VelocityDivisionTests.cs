@@ -10,8 +10,6 @@ namespace Sundew.Quantities.AcceptanceTests.Spacetime
 
     using Sundew.Quantities.AcceptanceTests.Testing;
     using Sundew.Quantities.Engine.Representations.Hierarchical.Internals;
-    using Sundew.Quantities.Periodics;
-    using Sundew.Quantities.Spacetime;
 
     using Xunit;
 

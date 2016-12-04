@@ -100,7 +100,7 @@
     <Compile Include="Engine\Units\PrefixedBaseUnitTests.cs" />
     <Compile Include="Engine\Units\RadianUnitTests.cs" />
     <Compile Include="Engine\Units\UnitTests.cs" />
-    <Compile Include="Mechanics\UnitSelection\MassUnitSelectorTests.cs" />
+    <Compile Include="UnitSelection\MassUnitSelectorTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TestHelper.cs" />
   </ItemGroup>

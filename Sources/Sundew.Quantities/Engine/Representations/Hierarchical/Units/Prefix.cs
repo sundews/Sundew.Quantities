@@ -1,9 +1,9 @@
-﻿// // --------------------------------------------------------------------------------------------------------------------
-// // <copyright file="Prefix.cs" company="Hukano">
-// //   2016 (c) Hukano. All Rights Reserved. Licensed under the MIT License. See License.txt in the project root for license information.
-// // </copyright>
-// // --------------------------------------------------------------------------------------------------------------------
-
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="Prefix.cs" company="Hukano">
+// Copyright (c) Hukano. All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
+// </copyright>
+// --------------------------------------------------------------------------------------------------------------------
 namespace Sundew.Quantities.Engine.Representations.Hierarchical.Units
 {
     using System;
@@ -48,18 +48,6 @@ namespace Sundew.Quantities.Engine.Representations.Hierarchical.Units
         public abstract string Notation { get; }
 
         /// <summary>
-        /// Indicates whether the current object is equal to another object of the same type.
-        /// </summary>
-        /// <param name="other">An object to compare with this object.</param>
-        /// <returns>
-        /// true if the current object is equal to the <paramref name="other" /> parameter; otherwise, false.
-        /// </returns>
-        public bool Equals(Prefix other)
-        {
-            return this.Factor.Equals(other.Factor);
-        }
-
-        /// <summary>
         /// Multiplies the specified LHS with the RHS.
         /// </summary>
         /// <param name="prefix">The prefix.</param>
@@ -70,6 +58,18 @@ namespace Sundew.Quantities.Engine.Representations.Hierarchical.Units
         public static UnitExpression operator *(Prefix prefix, IUnit unit)
         {
             return new UnitExpression(unit.GetPrefixedUnit(prefix));
+        }
+
+        /// <summary>
+        /// Indicates whether the current object is equal to another object of the same type.
+        /// </summary>
+        /// <param name="other">An object to compare with this object.</param>
+        /// <returns>
+        /// true if the current object is equal to the <paramref name="other" /> parameter; otherwise, false.
+        /// </returns>
+        public bool Equals(Prefix other)
+        {
+            return this.Factor.Equals(other.Factor);
         }
 
         /// <summary>
@@ -84,21 +84,22 @@ namespace Sundew.Quantities.Engine.Representations.Hierarchical.Units
         /// </summary>
         /// <param name="value">The value.</param>
         /// <returns>
-        /// The unit's base value.
+        /// The base value.
         /// </returns>
         public abstract double ToBase(double value);
 
         /// <summary>
-        /// Froms the base.
+        /// Converts the specified base value into the unit's value.
         /// </summary>
         /// <param name="value">The value.</param>
+        /// <returns>The unit's value.</returns>
         public abstract double FromBase(double value);
 
         /// <summary>
-        /// Returns a <see cref="System.String" /> that represents this instance.
+        /// Returns a <see cref="string" /> that represents this instance.
         /// </summary>
         /// <returns>
-        /// A <see cref="System.String" /> that represents this instance.
+        /// A <see cref="string" /> that represents this instance.
         /// </returns>
         public override string ToString()
         {

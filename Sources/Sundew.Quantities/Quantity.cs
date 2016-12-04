@@ -1,13 +1,13 @@
-﻿// // --------------------------------------------------------------------------------------------------------------------
-// // <copyright file="Quantity.cs" company="Hukano">
-// //   2016 (c) Hukano. All Rights Reserved. Licensed under the MIT License. See License.txt in the project root for license information.
-// // </copyright>
-// // --------------------------------------------------------------------------------------------------------------------
-
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="Quantity.cs" company="Hukano">
+// Copyright (c) Hukano. All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
+// </copyright>
+// --------------------------------------------------------------------------------------------------------------------
 namespace Sundew.Quantities
 {
+    using System;
     using System.Globalization;
-
     using Sundew.Quantities.Engine;
     using Sundew.Quantities.Engine.Quantities;
     using Sundew.Quantities.Engine.Representations.Hierarchical.Units;
@@ -15,75 +15,122 @@ namespace Sundew.Quantities
     /// <summary>
     /// Custom quantity.
     /// </summary>
-    public sealed class Quantity : Quantity<Quantity>
+    public struct Quantity : IQuantity
     {
+        private readonly double value;
+
         /// <summary>
-        /// Initializes a new instance of the <see cref="Quantity" /> class.
+        /// Initializes a new instance of the <see cref="Quantity" /> struct.
         /// </summary>
         /// <param name="quantity">The quantity.</param>
         public Quantity(IQuantity quantity)
-            : base(quantity.Value, quantity.Unit)
+            : this(quantity.Value, quantity.Unit)
         {
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Quantity"/> class.
+        /// Initializes a new instance of the <see cref="Quantity" /> struct.
         /// </summary>
         /// <param name="value">The value.</param>
         /// <param name="unit">The unit.</param>
         public Quantity(double value, IUnit unit)
-            : base(value, unit)
         {
+            this.value = value;
+            this.Unit = unit;
         }
 
-        /// <summary>
-        /// Gets this instance as a <see cref="Quantity"/>.
-        /// </summary>
-        /// <value>
-        /// This instance.
-        /// </value>
-        protected override Quantity Self => this;
+        double IQuantity.Value => this.value;
 
-        /// <summary>
-        /// Increments the specified LHS with 1.
-        /// </summary>
-        /// <param name="lhs">The LHS.</param>
-        /// <returns>The incremented result.</returns>
-        public static Quantity operator ++(Quantity lhs)
+        public IUnit Unit { get; }
+
+        public static Quantity operator +(Quantity quantity)
         {
-            return lhs.CreateQuantity(lhs.Value + 1, lhs.Unit);
+            return quantity;
         }
 
-        /// <summary>
-        /// Decrements the specified LHS with 1.
-        /// </summary>
-        /// <param name="lhs">The LHS.</param>
-        /// <returns>The decremented result.</returns>
-        public static Quantity operator --(Quantity lhs)
+        public static Quantity operator -(Quantity quantity)
         {
-            return lhs.CreateQuantity(lhs.Value - 1, lhs.Unit);
+            return new Quantity(-quantity.value, quantity.Unit);
         }
 
-        /// <summary>
-        /// Multiplies the specified LHS with the RHS.
-        /// </summary>
-        /// <param name="lhs">The LHS.</param>
-        /// <param name="rhs">The RHS.</param>
-        /// <returns>A <see cref="Quantity"/>.</returns>
+        public static Quantity operator ++(Quantity quantity)
+        {
+            return new Quantity(quantity.value + 1, quantity.Unit);
+        }
+
+        public static Quantity operator --(Quantity quantity)
+        {
+            return new Quantity(quantity.value - 1, quantity.Unit);
+        }
+
+        public static Quantity operator +(Quantity lhs, double rhs)
+        {
+            return new Quantity(lhs.value + rhs, lhs.Unit);
+        }
+
+        public static Quantity operator -(Quantity lhs, double rhs)
+        {
+            return new Quantity(lhs.value - rhs, lhs.Unit);
+        }
+
+        public static Quantity operator *(Quantity lhs, double rhs)
+        {
+            return new Quantity(lhs.value * rhs, lhs.Unit);
+        }
+
+        public static Quantity operator /(Quantity lhs, double rhs)
+        {
+            return new Quantity(lhs.value / rhs, lhs.Unit);
+        }
+
+        public static Quantity operator +(Quantity lhs, Quantity rhs)
+        {
+            return new Quantity(QuantityOperations.Add(lhs, rhs));
+        }
+
+        public static Quantity operator -(Quantity lhs, Quantity rhs)
+        {
+            return new Quantity(QuantityOperations.Subtract(lhs, rhs));
+        }
+
         public static Quantity operator *(Quantity lhs, Quantity rhs)
         {
-            return lhs.CreateQuantity(QuantityOperations.Multiply(lhs, rhs));
+            return new Quantity(QuantityOperations.Multiply(lhs, rhs));
         }
 
-        /// <summary>
-        /// Divides the specified LHS with the RHS.
-        /// </summary>
-        /// <param name="lhs">The LHS.</param>
-        /// <param name="rhs">The RHS.</param>
-        /// <returns>A <see cref="Quantity"/>.</returns>
-        public static Quantity operator /(Quantity lhs, Quantity rhs)
+        public static double operator /(Quantity lhs, Quantity rhs)
         {
-            return lhs.CreateQuantity(QuantityOperations.Divide(lhs, rhs));
+            return QuantityOperations.Divide(lhs, rhs).Value;
+        }
+
+        public static bool operator ==(Quantity lhs, Quantity rhs)
+        {
+            return QuantityHelper.AreEqual(lhs, rhs);
+        }
+
+        public static bool operator !=(Quantity lhs, Quantity rhs)
+        {
+            return !QuantityHelper.AreEqual(lhs, rhs);
+        }
+
+        public static bool operator >=(Quantity lhs, Quantity rhs)
+        {
+            return QuantityHelper.CompareTo(lhs, rhs) >= 0;
+        }
+
+        public static bool operator <=(Quantity lhs, Quantity rhs)
+        {
+            return QuantityHelper.CompareTo(lhs, rhs) <= 0;
+        }
+
+        public static bool operator >(Quantity lhs, Quantity rhs)
+        {
+            return QuantityHelper.CompareTo(lhs, rhs) > 0;
+        }
+
+        public static bool operator <(Quantity lhs, Quantity rhs)
+        {
+            return QuantityHelper.CompareTo(lhs, rhs) < 0;
         }
 
         /// <summary>
@@ -97,13 +144,120 @@ namespace Sundew.Quantities
             return UnitSystem.GetQuantityFrom(quantity, cultureInfo ?? CultureInfo.CurrentCulture);
         }
 
+        public Squared<Quantity> Squared()
+        {
+            return new Squared<Quantity>(this);
+        }
+
+        public Cubed<Quantity> Cubed()
+        {
+            return new Cubed<Quantity>(this);
+        }
+
+        public double ToDouble(IUnit unit)
+        {
+            return QuantityOperations.ConvertToUnit(this, unit);
+        }
+
+        public IQuantity ToQuantity(IUnit unit)
+        {
+            return this.ToUnit(unit);
+        }
+
+        public Quantity ToUnit(IUnit unit)
+        {
+            return new Quantity(this.ToDouble(unit), unit);
+        }
+
+        public override int GetHashCode()
+        {
+            return QuantityHelper.GetHashCode(this);
+        }
+
+        public override bool Equals(object obj)
+        {
+            return QuantityHelper.AreEqual(this, obj);
+        }
+
+        public bool Equals(IQuantity quantity)
+        {
+            return QuantityHelper.AreEqual(this, quantity);
+        }
+
+        public bool Equals(Quantity quantity)
+        {
+            return QuantityHelper.AreEqual(this, quantity);
+        }
+
+        public int CompareTo(object obj)
+        {
+            return QuantityHelper.CompareTo<Quantity>(this, obj);
+        }
+
+        public int CompareTo(IQuantity quantity)
+        {
+            return QuantityHelper.CompareTo(this, quantity);
+        }
+
+        public int CompareTo(Quantity quantity)
+        {
+            return QuantityHelper.CompareTo(this, quantity);
+        }
+
+        public override string ToString()
+        {
+            return this.ToString(CultureInfo.CurrentCulture);
+        }
+
+        IQuantity IDeferredQuantity.GetResult()
+        {
+            return this;
+        }
+
+        public string ToString(UnitFormat unitFormat)
+        {
+            return this.ToString(unitFormat, null, CultureInfo.CurrentCulture);
+        }
+
+        public string ToString(string format)
+        {
+            return this.ToString(format, CultureInfo.CurrentCulture);
+        }
+
+        public string ToString(IFormatProvider formatProvider)
+        {
+            return this.ToString(null, formatProvider);
+        }
+
+        public string ToString(UnitFormat unitFormat, string format)
+        {
+            return this.ToString(unitFormat, format, CultureInfo.CurrentCulture);
+        }
+
+        public string ToString(UnitFormat unitFormat, IFormatProvider formatProvider)
+        {
+            return this.ToString(unitFormat, null, formatProvider);
+        }
+
+        public string ToString(string format, IFormatProvider formatProvider)
+        {
+            return this.ToString(UnitFormat.Default, format, formatProvider);
+        }
+
+        public string ToString(UnitFormat unitFormat, string format, IFormatProvider formatProvider)
+        {
+            return QuantityHelper.ToString(
+                this.Unit.FormatValue(this.value, format, formatProvider),
+                UnitHelper.GetNotation(this.Unit, unitFormat));
+        }
+
         /// <summary>
         /// Creates the quantity.
         /// </summary>
         /// <param name="value">The value.</param>
         /// <param name="unit">The unit.</param>
         /// <returns>A <see cref="Quantity"/>.</returns>
-        public override Quantity CreateQuantity(double value, IUnit unit)
+        public Quantity CreateQuantity(double value, IUnit unit)
         {
             return new Quantity(value, unit);
         }

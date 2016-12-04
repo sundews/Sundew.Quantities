@@ -1,9 +1,9 @@
-﻿// // --------------------------------------------------------------------------------------------------------------------
-// // <copyright file="NotationOptions.cs" company="Hukano">
-// //   2016 (c) Hukano. All Rights Reserved. Licensed under the MIT License. See License.txt in the project root for license information.
-// // </copyright>
-// // --------------------------------------------------------------------------------------------------------------------
-
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="NotationOptions.cs" company="Hukano">
+// Copyright (c) Hukano. All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
+// </copyright>
+// --------------------------------------------------------------------------------------------------------------------
 namespace Sundew.Quantities.Engine.Representations.Hierarchical.Visitors
 {
     using System.Globalization;
@@ -53,6 +53,30 @@ namespace Sundew.Quantities.Engine.Representations.Hierarchical.Visitors
         public OperationOrderFormat OrderFormat { get; }
 
         /// <summary>
+        /// Creates a <see cref="NotationOptions"/> from <see cref="OperationOrderFormat"/>.
+        /// </summary>
+        /// <param name="operationOrderFormat">The operation order format.</param>
+        /// <returns>
+        /// A <see cref="NotationOptions" />.
+        /// </returns>
+        public static implicit operator NotationOptions(OperationOrderFormat operationOrderFormat)
+        {
+            return From(MagnitudeFormat.UseAboveLetter, operationOrderFormat);
+        }
+
+        /// <summary>
+        /// Creates a <see cref="NotationOptions"/> from <see cref="MagnitudeFormat"/>.
+        /// </summary>
+        /// <param name="magnitudeFormat">The magnitude format.</param>
+        /// <returns>
+        /// A <see cref="NotationOptions" />.
+        /// </returns>
+        public static implicit operator NotationOptions(MagnitudeFormat magnitudeFormat)
+        {
+            return From(magnitudeFormat, DefaultOperationOrderFormat);
+        }
+
+        /// <summary>
         /// Creates a <see cref="NotationOptions" /> from <see cref="CultureInfo" /> and <see cref="MagnitudeFormat" />.
         /// </summary>
         /// <param name="magnitudeFormat">The magnitude format.</param>
@@ -87,30 +111,6 @@ namespace Sundew.Quantities.Engine.Representations.Hierarchical.Visitors
         public static NotationOptions From(MagnitudeFormat magnitudeFormat, OperationOrderFormat operationOrderFormat)
         {
             return new NotationOptions(magnitudeFormat, operationOrderFormat);
-        }
-
-        /// <summary>
-        /// Creates a <see cref="NotationOptions"/> from <see cref="MagnitudeFormat"/>.
-        /// </summary>
-        /// <param name="magnitudeFormat">The magnitude format.</param>
-        /// <returns>
-        /// A <see cref="NotationOptions" />.
-        /// </returns>
-        public static implicit operator NotationOptions(MagnitudeFormat magnitudeFormat)
-        {
-            return From(magnitudeFormat, DefaultOperationOrderFormat);
-        }
-
-        /// <summary>
-        /// Creates a <see cref="NotationOptions"/> from <see cref="OperationOrderFormat"/>.
-        /// </summary>
-        /// <param name="operationOrderFormat">The operation order format.</param>
-        /// <returns>
-        /// A <see cref="NotationOptions" />.
-        /// </returns>
-        public static implicit operator NotationOptions(OperationOrderFormat operationOrderFormat)
-        {
-            return From(MagnitudeFormat.UseAboveLetter, operationOrderFormat);
         }
     }
 }

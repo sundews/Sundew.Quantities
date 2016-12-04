@@ -11,8 +11,6 @@ namespace Sundew.Quantities.AcceptanceTests.Spatial
     using FluentAssertions;
 
     using Sundew.Quantities.Engine.Exceptions;
-    using Sundew.Quantities.Periodics;
-    using Sundew.Quantities.Spatial;
 
     using Xunit;
 

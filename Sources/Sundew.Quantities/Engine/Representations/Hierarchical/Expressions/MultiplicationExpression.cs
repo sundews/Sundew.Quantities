@@ -1,9 +1,9 @@
-// // --------------------------------------------------------------------------------------------------------------------
-// // <copyright file="MultiplicationExpression.cs" company="Hukano">
-// //   2016 (c) Hukano. All Rights Reserved. Licensed under the MIT License. See License.txt in the project root for license information.
-// // </copyright>
-// // --------------------------------------------------------------------------------------------------------------------
-
+// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="MultiplicationExpression.cs" company="Hukano">
+// Copyright (c) Hukano. All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
+// </copyright>
+// --------------------------------------------------------------------------------------------------------------------
 namespace Sundew.Quantities.Engine.Representations.Hierarchical.Expressions
 {
     using System;
@@ -29,19 +29,6 @@ namespace Sundew.Quantities.Engine.Representations.Hierarchical.Expressions
         }
 
         /// <summary>
-        /// Indicates whether the current object is equal to another object of the same type.
-        /// </summary>
-        /// <param name="other">An object to compare with this object.</param>
-        /// <returns>
-        ///     <c>true</c> if the current object is equal to the <paramref name="other" /> parameter; otherwise, false.
-        /// </returns>
-        public bool Equals(MultiplicationExpression other)
-        {
-            return (Equals(this.Lhs, other.Lhs) && Equals(this.Rhs, other.Rhs))
-                   || (Equals(this.Lhs, other.Rhs) && Equals(this.Rhs, other.Lhs));
-        }
-
-        /// <summary>
         /// Gets the LHS.
         /// </summary>
         /// <value>
@@ -56,6 +43,19 @@ namespace Sundew.Quantities.Engine.Representations.Hierarchical.Expressions
         /// The RHS <see cref="Expression"/>.
         /// </value>
         public Expression Rhs { get; }
+
+        /// <summary>
+        /// Indicates whether the current object is equal to another object of the same type.
+        /// </summary>
+        /// <param name="other">An object to compare with this object.</param>
+        /// <returns>
+        ///     <c>true</c> if the current object is equal to the <paramref name="other" /> parameter; otherwise, false.
+        /// </returns>
+        public bool Equals(MultiplicationExpression other)
+        {
+            return (Equals(this.Lhs, other.Lhs) && Equals(this.Rhs, other.Rhs))
+                   || (Equals(this.Lhs, other.Rhs) && Equals(this.Rhs, other.Lhs));
+        }
 
         /// <summary>
         /// Visits the specified expression visitor.

@@ -8,8 +8,6 @@ namespace Sundew.Quantities.AcceptanceTests.Mechanics
 {
     using FluentAssertions;
 
-    using Sundew.Quantities.Mechanics;
-
     using Xunit;
 
     public class MassComparisonTests

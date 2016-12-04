@@ -9,8 +9,6 @@ namespace Sundew.Quantities.AcceptanceTests.Composition
     using FluentAssertions;
 
     using Sundew.Quantities.AcceptanceTests.Testing;
-    using Sundew.Quantities.Periodics;
-    using Sundew.Quantities.Photometry;
 
     using Xunit;
 

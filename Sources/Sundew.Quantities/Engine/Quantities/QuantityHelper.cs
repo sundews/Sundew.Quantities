@@ -1,9 +1,9 @@
-﻿// // --------------------------------------------------------------------------------------------------------------------
-// // <copyright file="QuantityHelper.cs" company="Hukano">
-// //   2016 (c) Hukano. All Rights Reserved. Licensed under the MIT License. See License.txt in the project root for license information.
-// // </copyright>
-// // --------------------------------------------------------------------------------------------------------------------
-
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="QuantityHelper.cs" company="Hukano">
+// Copyright (c) Hukano. All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
+// </copyright>
+// --------------------------------------------------------------------------------------------------------------------
 namespace Sundew.Quantities.Engine.Quantities
 {
     using Sundew.Quantities.Engine.Exceptions;
@@ -23,7 +23,7 @@ namespace Sundew.Quantities.Engine.Quantities
         /// </summary>
         /// <param name="quantity">The quantity.</param>
         /// <returns>
-        /// A hash code for this instance, suitable for use in hashing algorithms and data structures like a hash table. 
+        /// A hash code for this instance, suitable for use in hashing algorithms and data structures like a hash table.
         /// </returns>
         public static int GetHashCode(IQuantity quantity)
         {
@@ -31,12 +31,12 @@ namespace Sundew.Quantities.Engine.Quantities
         }
 
         /// <summary>
-        /// Returns a <see cref="System.String" /> that represents this instance.
+        /// Returns a <see cref="string" /> that represents this instance.
         /// </summary>
         /// <param name="value">The value.</param>
         /// <param name="notation">The notation.</param>
         /// <returns>
-        /// A <see cref="System.String" /> that represents this instance.
+        /// A <see cref="string" /> that represents this instance.
         /// </returns>
         public static string ToString(string value, string notation)
         {
@@ -92,7 +92,8 @@ namespace Sundew.Quantities.Engine.Quantities
         /// <returns>
         /// The result of <see cref="double"/> Compare based the rhs converted to the same unit as lhs.
         /// </returns>
-        public static int CompareTo<TQuantity>(IQuantity lhs, object rhs) where TQuantity : class, IQuantity
+        public static int CompareTo<TQuantity>(IQuantity lhs, object rhs)
+            where TQuantity : IQuantity
         {
             return CompareTo(lhs, (TQuantity)rhs);
         }

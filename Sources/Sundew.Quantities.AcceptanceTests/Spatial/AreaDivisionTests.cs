@@ -10,7 +10,6 @@ namespace Sundew.Quantities.AcceptanceTests.Spatial
 
     using Sundew.Quantities.AcceptanceTests.Testing;
     using Sundew.Quantities.Engine.Representations.Hierarchical.Internals;
-    using Sundew.Quantities.Spatial;
     using Sundew.Quantities.UnitTests;
 
     using Xunit;

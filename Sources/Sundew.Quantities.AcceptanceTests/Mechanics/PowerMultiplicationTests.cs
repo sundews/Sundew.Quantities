@@ -10,8 +10,6 @@ namespace Sundew.Quantities.AcceptanceTests.Mechanics
 
     using Sundew.Quantities.AcceptanceTests.Testing;
     using Sundew.Quantities.Engine.Representations.Hierarchical.Units;
-    using Sundew.Quantities.Mechanics;
-    using Sundew.Quantities.Periodics;
 
     using Xunit;
 

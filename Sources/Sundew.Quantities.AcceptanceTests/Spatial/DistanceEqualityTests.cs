@@ -8,8 +8,6 @@ namespace Sundew.Quantities.AcceptanceTests.Spatial
 {
     using FluentAssertions;
 
-    using Sundew.Quantities.Spatial;
-
     using Xunit;
 
     public class DistanceEqualityTests

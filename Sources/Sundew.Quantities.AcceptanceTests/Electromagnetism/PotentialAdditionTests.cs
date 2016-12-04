@@ -9,7 +9,6 @@ namespace Sundew.Quantities.AcceptanceTests.Electromagnetism
     using FluentAssertions;
 
     using Sundew.Quantities.AcceptanceTests.Testing;
-    using Sundew.Quantities.Electromagnetism;
     using Sundew.Quantities.Engine.Representations.Hierarchical.Units;
 
     using Xunit;

@@ -4,11 +4,12 @@
 // // </copyright>
 // // --------------------------------------------------------------------------------------------------------------------
 
+using Sundew.Quantities.UnitSelection;
+
 namespace Sundew.Quantities.AcceptanceTests.Spatial.CustomUnit
 {
     using Sundew.Quantities.Engine.Representations.Hierarchical.Expressions;
     using Sundew.Quantities.Engine.Units;
-    using Sundew.Quantities.Spatial.UnitSelection;
 
     public static class StepExtensions
     {

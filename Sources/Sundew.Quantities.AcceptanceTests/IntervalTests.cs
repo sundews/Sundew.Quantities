@@ -8,8 +8,6 @@ namespace Sundew.Quantities.AcceptanceTests
 {
     using FluentAssertions;
 
-    using Sundew.Quantities.Spatial;
-
     using Xunit;
 
     public class IntervalTests

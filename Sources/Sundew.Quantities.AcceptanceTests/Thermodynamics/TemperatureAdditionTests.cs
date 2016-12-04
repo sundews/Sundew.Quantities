@@ -9,7 +9,6 @@ namespace Sundew.Quantities.AcceptanceTests.Thermodynamics
     using FluentAssertions;
 
     using Sundew.Quantities.AcceptanceTests.Testing;
-    using Sundew.Quantities.Thermodynamics;
 
     using Xunit;
 

@@ -25,8 +25,8 @@ namespace Sundew.Quantities.AcceptanceTests.Integrity
 
         private static readonly Type[] ExcludedQuantityTypes =
             {
-                typeof(IQuantity<>), typeof(Quantity<>),
-                typeof(Quantity<,>)
+                typeof(IQuantity<>),
+                typeof(IQuantity<,>)
             };
 
         [Theory]
@@ -162,14 +162,14 @@ namespace Sundew.Quantities.AcceptanceTests.Integrity
         }
 
         [Fact]
-        public void All_Quantities_Should_Be_Sealed()
+        public void All_Quantities_Should_Be_Structs()
         {
             var incompleteTypes =
                 IntegrityHelper.GetDerivedTypes(QuantityInterfaceType, ExcludedQuantityTypes)
-                    .Where(quantityType => !quantityType.IsSealed)
+                    .Where(quantityType => !quantityType.IsValueType)
                     .ToList();
 
-            incompleteTypes.Should().BeEmpty("The types: {0} is not sealed.", IntegrityHelper.GetTypes(incompleteTypes));
+            incompleteTypes.Should().BeEmpty("The types: {0} are not structs.", IntegrityHelper.GetTypes(incompleteTypes));
         }
 
         [Fact]

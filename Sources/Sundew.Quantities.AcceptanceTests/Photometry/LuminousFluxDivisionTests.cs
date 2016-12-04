@@ -9,8 +9,6 @@ namespace Sundew.Quantities.AcceptanceTests.Photometry
     using FluentAssertions;
 
     using Sundew.Quantities.AcceptanceTests.Testing;
-    using Sundew.Quantities.Photometry;
-    using Sundew.Quantities.Spatial;
 
     using Xunit;
 

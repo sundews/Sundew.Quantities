@@ -1,9 +1,9 @@
-﻿// // --------------------------------------------------------------------------------------------------------------------
-// // <copyright file="UnitDefinitions.cs" company="Hukano">
-// //   2016 (c) Hukano. All Rights Reserved. Licensed under the MIT License. See License.txt in the project root for license information.
-// // </copyright>
-// // --------------------------------------------------------------------------------------------------------------------
-
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="UnitDefinitions.cs" company="Hukano">
+// Copyright (c) Hukano. All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
+// </copyright>
+// --------------------------------------------------------------------------------------------------------------------
 namespace Sundew.Quantities.Engine.Units
 {
     using System;
@@ -17,7 +17,9 @@ namespace Sundew.Quantities.Engine.Units
     /// Contains the unit and prefix definitions.
     /// See: http://www.ebyte.it/library/educards/siunits/TablesOfSiUnitsAndPrefixes.html.
     /// </summary>
-    [SuppressMessage("StyleCop.CSharp.DocumentationRules", "SA1650:ElementDocumentationMustBeSpelledCorrectly",
+    [SuppressMessage(
+        "StyleCop.CSharp.DocumentationRules",
+        "SA1650:ElementDocumentationMustBeSpelledCorrectly",
         Justification = "Spelling rules does not apply for links.")]
     public static class UnitDefinitions
     {
@@ -162,8 +164,7 @@ namespace Sundew.Quantities.Engine.Units
         /// <summary>The siemens unit.</summary>
         public static readonly DerivedUnit Siemens = new DerivedUnit(
             "S",
-            (ConstantExpression.One / KiloGram) * (ConstantExpression.One / Meter.Exp(2)) * Second.Exp(3)
-            * Ampere.Exp(2));
+            (ConstantExpression.One / KiloGram) * (ConstantExpression.One / Meter.Exp(2)) * Second.Exp(3) * Ampere.Exp(2));
 
         /// <summary>The farad unit.</summary>
         public static readonly DerivedUnit Farad = new DerivedUnit(

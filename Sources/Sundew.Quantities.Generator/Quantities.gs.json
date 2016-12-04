@@ -1,0 +1,19 @@
+﻿{
+  "ModelsFolder": "Models\\Quantities",
+  "ModelFilesSearchPattern": "*.json",
+  "OutputFileExtension": ".cs",
+  "OutputFileNameSuffix": ".generated",
+  "TargetProjects": [ "..\\..\\..\\Sundew.Quantities\\Sundew.Quantities.csproj" ],
+  "TargetNamespace": "",
+  "UseGlobalUsings":  true,
+  "Usings": [
+    "System",
+    "System.CodeDom.Compiler",
+    "System.Globalization",
+    "Sundew.Quantities.Engine",
+    "Sundew.Quantities.Engine.Quantities",
+    "Sundew.Quantities.Engine.UnitSelection",
+    "Sundew.Quantities.Engine.Representations.Hierarchical.Units",
+    "Sundew.Quantities.UnitSelection"
+  ]
+}

@@ -6,8 +6,6 @@
 
 namespace Sundew.Quantities.Samples
 {
-    using Sundew.Quantities.Periodics;
-
     using Xunit;
     using Xunit.Abstractions;
 

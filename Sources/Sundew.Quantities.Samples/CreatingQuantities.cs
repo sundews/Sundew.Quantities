@@ -8,8 +8,6 @@ namespace Sundew.Quantities.Samples
 {
     using Sundew.Quantities.Engine;
     using Sundew.Quantities.Engine.Representations.Hierarchical.Parsing;
-    using Sundew.Quantities.Spacetime;
-    using Sundew.Quantities.Spatial;
 
     using Xunit;
     using Xunit.Abstractions;

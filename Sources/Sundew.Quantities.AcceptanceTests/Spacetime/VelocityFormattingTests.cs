@@ -9,7 +9,6 @@ namespace Sundew.Quantities.AcceptanceTests.Spacetime
     using FluentAssertions;
 
     using Sundew.Quantities.Engine.Representations.Hierarchical.Units;
-    using Sundew.Quantities.Spacetime;
 
     using Xunit;
 

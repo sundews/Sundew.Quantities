@@ -8,8 +8,6 @@ namespace Sundew.Quantities.Formatters.MathML.UnitTests
 {
     using FluentAssertions;
 
-    using Sundew.Quantities.Mechanics;
-
     using Xunit;
 
     public class UnitExtensionsTests

@@ -1,9 +1,9 @@
-﻿// // --------------------------------------------------------------------------------------------------------------------
-// // <copyright file="QuantityExtensions.cs" company="Hukano">
-// //   2016 (c) Hukano. All Rights Reserved. Licensed under the MIT License. See License.txt in the project root for license information.
-// // </copyright>
-// // --------------------------------------------------------------------------------------------------------------------
-
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="QuantityExtensions.cs" company="Hukano">
+// Copyright (c) Hukano. All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
+// </copyright>
+// --------------------------------------------------------------------------------------------------------------------
 namespace Sundew.Quantities
 {
     using System;
@@ -91,7 +91,8 @@ namespace Sundew.Quantities
         /// <param name="quantity">The quantity.</param>
         /// <param name="other">The other.</param>
         /// <returns>The min of the two <see cref="IQuantity"/>s.</returns>
-        public static TQuantity Min<TQuantity>(this TQuantity quantity, TQuantity other) where TQuantity : IQuantity
+        public static TQuantity Min<TQuantity>(this TQuantity quantity, TQuantity other)
+            where TQuantity : IQuantity
         {
             Contract.Requires(quantity != null);
             Contract.Requires(other != null);
@@ -111,7 +112,8 @@ namespace Sundew.Quantities
         /// <param name="quantity">The quantity.</param>
         /// <param name="other">The other.</param>
         /// <returns>The max of the two <see cref="IQuantity"/>s.</returns>
-        public static TQuantity Max<TQuantity>(this TQuantity quantity, TQuantity other) where TQuantity : IQuantity
+        public static TQuantity Max<TQuantity>(this TQuantity quantity, TQuantity other)
+            where TQuantity : IQuantity
         {
             Contract.Requires(quantity != null);
             Contract.Requires(other != null);
@@ -186,11 +188,12 @@ namespace Sundew.Quantities
         ///   <c>true</c> if the specified quantity is within the interval, otherwise <c>false</c>.
         /// </returns>
         public static bool IsWithin<TQuantity, TUnitSelector>(
-            this Quantity<TQuantity, TUnitSelector> quantity,
+            this IQuantity<TQuantity, TUnitSelector> quantity,
             double min,
             double max,
             SelectUnit<TUnitSelector> unitSelector,
-            IntervalMode intervalMode = IntervalMode.Inclusive) where TQuantity : Quantity<TQuantity, TUnitSelector>
+            IntervalMode intervalMode = IntervalMode.Inclusive)
+            where TQuantity : IQuantity
         {
             Contract.Requires(unitSelector != null);
             Contract.Requires<ArgumentException>(min <= max, "min must be less than max");
@@ -211,7 +214,8 @@ namespace Sundew.Quantities
         public static bool IsWithin<TQuantity>(
             this TQuantity quantity,
             Interval<TQuantity> interval,
-            IntervalMode intervalMode = IntervalMode.Inclusive) where TQuantity : IQuantity<TQuantity>
+            IntervalMode intervalMode = IntervalMode.Inclusive)
+            where TQuantity : IQuantity
         {
             Contract.Requires(interval != null);
             return interval.Contains(quantity, intervalMode);
