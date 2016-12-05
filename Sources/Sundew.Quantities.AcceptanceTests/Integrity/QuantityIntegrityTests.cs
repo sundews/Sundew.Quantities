@@ -4,6 +4,9 @@
 // // </copyright>
 // // --------------------------------------------------------------------------------------------------------------------
 
+using Sundew.Quantities.Core;
+using Sundew.Quantities.Representations;
+
 namespace Sundew.Quantities.AcceptanceTests.Integrity
 {
     using System;
@@ -12,9 +15,6 @@ namespace Sundew.Quantities.AcceptanceTests.Integrity
 
     using FluentAssertions;
     using FluentAssertions.Execution;
-
-    using Sundew.Quantities.Engine.Quantities;
-
     using Xunit;
 
     public class QuantityIntegrityTests

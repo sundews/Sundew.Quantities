@@ -4,13 +4,15 @@
 // // </copyright>
 // // --------------------------------------------------------------------------------------------------------------------
 
+using Sundew.Quantities.Core;
+using Sundew.Quantities.Representations.Units;
+
 namespace Sundew.Quantities.AcceptanceTests.Spatial
 {
     using FluentAssertions;
 
     using Sundew.Quantities.AcceptanceTests.Spatial.CustomUnit;
     using Sundew.Quantities.AcceptanceTests.Testing;
-    using Sundew.Quantities.Engine.Units;
     using Sundew.Quantities.UnitTests;
 
     using Xunit;

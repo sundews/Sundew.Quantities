@@ -4,11 +4,11 @@
 // // </copyright>
 // // --------------------------------------------------------------------------------------------------------------------
 
+using Sundew.Quantities.Core;
+using Sundew.Quantities.Parsing;
+
 namespace Sundew.Quantities.Samples
 {
-    using Sundew.Quantities.Engine;
-    using Sundew.Quantities.Engine.Representations.Hierarchical.Parsing;
-
     using Xunit;
     using Xunit.Abstractions;
 

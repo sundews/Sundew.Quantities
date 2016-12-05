@@ -4,6 +4,14 @@
 // // </copyright>
 // // --------------------------------------------------------------------------------------------------------------------
 
+using Sundew.Quantities.Parsing;
+using Sundew.Quantities.Parsing.Errors;
+using Sundew.Quantities.Parsing.Exceptions;
+using Sundew.Quantities.Parsing.LexicalAnalysis;
+using Sundew.Quantities.Representations.Expressions;
+using Sundew.Quantities.Representations.Expressions.Visitors;
+using Sundew.Quantities.Representations.Units;
+
 namespace Sundew.Quantities.UnitTests.Engine.Representations.Hierarchical.Parsing
 {
     using System;
@@ -14,14 +22,6 @@ namespace Sundew.Quantities.UnitTests.Engine.Representations.Hierarchical.Parsin
     using FluentAssertions;
 
     using Sundew.Base.Computation;
-    using Sundew.Quantities.Engine.Representations.Hierarchical.Expressions;
-    using Sundew.Quantities.Engine.Representations.Hierarchical.Parsing;
-    using Sundew.Quantities.Engine.Representations.Hierarchical.Parsing.Errors;
-    using Sundew.Quantities.Engine.Representations.Hierarchical.Parsing.Exceptions;
-    using Sundew.Quantities.Engine.Representations.Hierarchical.Parsing.LexicalAnalysis;
-    using Sundew.Quantities.Engine.Representations.Hierarchical.Visitors;
-    using Sundew.Quantities.Engine.Units;
-
     using Xunit;
 
     public class ExpressionParserTests

@@ -4,13 +4,14 @@
 // // </copyright>
 // // --------------------------------------------------------------------------------------------------------------------
 
+using Sundew.Quantities.Core;
+using Sundew.Quantities.Representations;
+
 namespace Sundew.Quantities.AcceptanceTests.Electromagnetism
 {
     using FluentAssertions;
 
     using Sundew.Quantities.AcceptanceTests.Testing;
-    using Sundew.Quantities.Engine.Representations.Hierarchical.Units;
-
     using Xunit;
 
     public class ChargeMultiplicationTests

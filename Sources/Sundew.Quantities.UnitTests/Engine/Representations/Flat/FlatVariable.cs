@@ -4,12 +4,12 @@
 // // </copyright>
 // // --------------------------------------------------------------------------------------------------------------------
 
+using Sundew.Quantities.Representations;
+using Sundew.Quantities.Representations.Expressions;
+using Sundew.Quantities.Representations.Flat;
+
 namespace Sundew.Quantities.UnitTests.Engine.Representations.Flat
 {
-    using Sundew.Quantities.Engine.Representations.Conversion;
-    using Sundew.Quantities.Engine.Representations.Flat;
-    using Sundew.Quantities.Engine.Representations.Hierarchical.Expressions;
-
     internal class FlatVariable : IFlatIdentifier
     {
         private readonly double exponent;

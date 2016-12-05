@@ -4,6 +4,10 @@
 // // </copyright>
 // // --------------------------------------------------------------------------------------------------------------------
 
+using Sundew.Quantities.Core;
+using Sundew.Quantities.Representations;
+using Sundew.Quantities.Representations.Expressions;
+
 namespace Sundew.Quantities.AcceptanceTests.Testing
 {
     using System;
@@ -11,9 +15,6 @@ namespace Sundew.Quantities.AcceptanceTests.Testing
     using FluentAssertions;
     using FluentAssertions.Execution;
     using FluentAssertions.Numeric;
-
-    using Sundew.Quantities.Engine.Quantities;
-    using Sundew.Quantities.Engine.Representations.Hierarchical.Units;
     using Sundew.Quantities.UnitTests;
 
     /// <summary>
@@ -47,7 +48,7 @@ namespace Sundew.Quantities.AcceptanceTests.Testing
         {
             var quantity = (IQuantity)quantityAssertions.Subject;
             var quantityValue = quantity.Value;
-            var quantityUnit = UnitHelper.GetNotation(quantity.Unit, unitFormat);
+            var quantityUnit = UnitFormatHelper.GetNotation(quantity.Unit, unitFormat);
             Execute.Assertion.ForCondition(quantityValue.Equals(expectedValue))
                 .FailWith(
                     "The value: {0}, but found: {1}",
@@ -138,7 +139,7 @@ namespace Sundew.Quantities.AcceptanceTests.Testing
         {
             var quantity = (IQuantity)quantityAssertions.Subject;
             var quantityValue = quantity.Value;
-            var quantityUnit = UnitHelper.GetNotation(quantity.Unit, unitFormat);
+            var quantityUnit = UnitFormatHelper.GetNotation(quantity.Unit, unitFormat);
             Execute.Assertion.ForCondition(quantityValue == expectedValue || Math.Abs(quantityValue - expectedValue) < precision)
                 .FailWith("The value: {0}, but found: {1}", expectedValue, quantityValue);
             AssertUnit(quantityUnit, expectedUnit);

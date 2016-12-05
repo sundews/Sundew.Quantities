@@ -4,14 +4,13 @@
 // // </copyright>
 // // --------------------------------------------------------------------------------------------------------------------
 
+using Sundew.Quantities.Core.Exceptions;
+
 namespace Sundew.Quantities.AcceptanceTests.Spatial
 {
     using System;
 
     using FluentAssertions;
-
-    using Sundew.Quantities.Engine.Exceptions;
-
     using Xunit;
 
     public class DistanceComparisionTests

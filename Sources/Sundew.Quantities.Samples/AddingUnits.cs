@@ -3,11 +3,12 @@
 // //   2016 (c) Hukano. All Rights Reserved. Licensed under the MIT License. See License.txt in the project root for license information.
 // // </copyright>
 // // --------------------------------------------------------------------------------------------------------------------
+
+using Sundew.Quantities.Core;
+using Sundew.Quantities.Representations.Units;
+
 namespace Sundew.Quantities.Samples
 {
-    using Sundew.Quantities.Engine;
-    using Sundew.Quantities.Engine.Units;
-
     using Xunit;
 
     public class AddingUnits

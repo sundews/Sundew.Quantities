@@ -4,13 +4,13 @@
 // // </copyright>
 // // --------------------------------------------------------------------------------------------------------------------
 
+using Sundew.Quantities.Representations;
+using Sundew.Quantities.Representations.Expressions;
+using Sundew.Quantities.Representations.Units;
+
 namespace Sundew.Quantities.UnitTests.Engine.Representations.Hierarchical.Units
 {
     using FluentAssertions;
-
-    using Sundew.Quantities.Engine.Representations.Hierarchical.Units;
-    using Sundew.Quantities.Engine.Units;
-
     using Xunit;
 
     public class UnitHelperTests
@@ -21,7 +21,7 @@ namespace Sundew.Quantities.UnitTests.Engine.Representations.Hierarchical.Units
             var prefixedBaseUnitKg = UnitDefinitions.KiloGram;
             var prefixedUnitKg = UnitDefinitions.Gram.GetPrefixedUnit(Prefixes.Kilo);
 
-            var result = UnitHelper.AreUnitsEqual(prefixedBaseUnitKg, prefixedUnitKg);
+            var result = UnitEqualityHelper.AreUnitsEqual(prefixedBaseUnitKg, prefixedUnitKg);
 
             result.Should().BeTrue();
         }

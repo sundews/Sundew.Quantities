@@ -4,12 +4,12 @@
 // // </copyright>
 // // --------------------------------------------------------------------------------------------------------------------
 
+using Sundew.Quantities.Core;
+using Sundew.Quantities.Representations.Units;
+
 namespace Sundew.Quantities.AcceptanceTests.Spatial.CustomUnit
 {
     using System;
-
-    using Sundew.Quantities.Engine;
-    using Sundew.Quantities.Engine.Units;
 
     public abstract class StepsTestBase : IDisposable
     {

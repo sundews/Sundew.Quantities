@@ -4,21 +4,18 @@
 // // </copyright>
 // // --------------------------------------------------------------------------------------------------------------------
 
+using Sundew.Quantities.Core;
+using Sundew.Quantities.Core.Operations;
+using Sundew.Quantities.Parsing;
+using Sundew.Quantities.Parsing.LexicalAnalysis;
+using Sundew.Quantities.Registration;
+using Sundew.Quantities.Representations.Evaluation;
+using Sundew.Quantities.Representations.Expressions.Visitors;
+
 namespace Sundew.Quantities.Samples
 {
     using System.Collections;
     using System.Collections.Generic;
-
-    using Sundew.Quantities.Engine;
-    using Sundew.Quantities.Engine.Operations;
-    using Sundew.Quantities.Engine.Parsing;
-    using Sundew.Quantities.Engine.Registration;
-    using Sundew.Quantities.Engine.Representations.Conversion;
-    using Sundew.Quantities.Engine.Representations.Evaluation;
-    using Sundew.Quantities.Engine.Representations.Hierarchical.Parsing;
-    using Sundew.Quantities.Engine.Representations.Hierarchical.Parsing.LexicalAnalysis;
-    using Sundew.Quantities.Engine.Representations.Hierarchical.Visitors;
-
     using Xunit;
 
     public class ReplacingTheUnitSystem
@@ -93,7 +90,7 @@ namespace Sundew.Quantities.Samples
 
             public IQuantityOperations CreateQuantityOperations(IUnitFactory unitFactory)
             {
-                return new Engine.Operations.QuantityOperations(
+                return new Core.Operations.QuantityOperations(
                     unitFactory,
                     new ExpressionReducer(this.expressionToFlatRepresentationConverter),
                     ValueFromBaseVisitor,

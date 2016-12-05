@@ -4,7 +4,8 @@
 // // </copyright>
 // // --------------------------------------------------------------------------------------------------------------------
 
-using Sundew.Quantities.Engine.Quantities;
+using Sundew.Quantities.Core;
+using Sundew.Quantities.Representations;
 
 namespace Sundew.Quantities.Serialization.Poco
 {

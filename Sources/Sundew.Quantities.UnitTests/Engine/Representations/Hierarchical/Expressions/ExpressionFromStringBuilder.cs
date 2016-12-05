@@ -4,12 +4,12 @@
 // // </copyright>
 // // --------------------------------------------------------------------------------------------------------------------
 
+using Sundew.Quantities.Representations.Expressions;
+using Sundew.Quantities.Representations.Units;
+
 namespace Sundew.Quantities.UnitTests.Engine.Representations.Hierarchical.Expressions
 {
     using System.Globalization;
-
-    using Sundew.Quantities.Engine.Representations.Hierarchical.Expressions;
-    using Sundew.Quantities.Engine.Units;
 
     internal class ExpressionFromStringBuilder
     {

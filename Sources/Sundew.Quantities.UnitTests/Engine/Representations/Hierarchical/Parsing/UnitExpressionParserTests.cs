@@ -4,6 +4,12 @@
 // // </copyright>
 // // --------------------------------------------------------------------------------------------------------------------
 
+using Sundew.Quantities.Parsing;
+using Sundew.Quantities.Parsing.LexicalAnalysis;
+using Sundew.Quantities.Representations;
+using Sundew.Quantities.Representations.Expressions;
+using Sundew.Quantities.Representations.Units;
+
 namespace Sundew.Quantities.UnitTests.Engine.Representations.Hierarchical.Parsing
 {
     using System.Collections.Generic;
@@ -14,11 +20,6 @@ namespace Sundew.Quantities.UnitTests.Engine.Representations.Hierarchical.Parsin
     using FluentAssertions;
 
     using Sundew.Base.Computation;
-    using Sundew.Quantities.Engine.Representations.Hierarchical.Parsing;
-    using Sundew.Quantities.Engine.Representations.Hierarchical.Parsing.LexicalAnalysis;
-    using Sundew.Quantities.Engine.Representations.Hierarchical.Units;
-    using Sundew.Quantities.Engine.Units;
-
     using Xunit;
 
     public class UnitExpressionParserTests

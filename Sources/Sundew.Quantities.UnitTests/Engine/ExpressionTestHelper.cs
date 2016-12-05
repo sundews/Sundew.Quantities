@@ -4,12 +4,12 @@
 // // </copyright>
 // // --------------------------------------------------------------------------------------------------------------------
 
+using Sundew.Quantities.Core;
+using Sundew.Quantities.Representations.Expressions;
+using Sundew.Quantities.Representations.Units;
+
 namespace Sundew.Quantities.UnitTests.Engine
 {
-    using Sundew.Quantities.Engine;
-    using Sundew.Quantities.Engine.Representations.Hierarchical.Expressions;
-    using Sundew.Quantities.Engine.Units;
-
     internal static class ExpressionTestHelper
     {
         public static readonly UnitExpression Xray = new UnitExpression(new Unit("X"));

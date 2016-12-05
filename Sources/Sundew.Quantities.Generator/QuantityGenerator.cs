@@ -330,7 +330,7 @@ public string ToString(UnitFormat unitFormat, string format, IFormatProvider for
 {{
     return QuantityHelper.ToString(
         this.Unit.FormatValue(this.value, format, formatProvider),
-        UnitHelper.GetNotation(this.Unit, unitFormat));
+        UnitFormatHelper.GetNotation(this.Unit, unitFormat));
 }}
 ");
         }

@@ -4,12 +4,11 @@
 // // </copyright>
 // // --------------------------------------------------------------------------------------------------------------------
 
+using Sundew.Quantities.Representations.Expressions;
+
 namespace Sundew.Quantities.Formatters.MathML
 {
     using System.Xml.Linq;
-
-    using Sundew.Quantities.Engine.Representations.Hierarchical.Expressions;
-    using Sundew.Quantities.Engine.Representations.Hierarchical.Visitors;
 
     #region UsageMathML
 

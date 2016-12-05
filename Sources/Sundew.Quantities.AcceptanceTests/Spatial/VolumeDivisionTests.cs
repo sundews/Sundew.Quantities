@@ -4,13 +4,13 @@
 // // </copyright>
 // // --------------------------------------------------------------------------------------------------------------------
 
+using Sundew.Quantities.Representations.Internals;
+
 namespace Sundew.Quantities.AcceptanceTests.Spatial
 {
     using FluentAssertions;
 
     using Sundew.Quantities.AcceptanceTests.Testing;
-    using Sundew.Quantities.Engine.Representations.Hierarchical.Internals;
-
     using Xunit;
 
     public class VolumeDivisionTests

@@ -5,9 +5,10 @@
 // // --------------------------------------------------------------------------------------------------------------------
 
 using FluentAssertions;
-using Sundew.Quantities.Engine.Units;
-using Sundew.Quantities.Engine.UnitSelection;
+using Sundew.Quantities.Core;
+using Sundew.Quantities.Representations.Units;
 using Sundew.Quantities.UnitSelection;
+using Sundew.Quantities.UnitSelectors;
 using Xunit;
 
 namespace Sundew.Quantities.UnitTests.UnitSelection

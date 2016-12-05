@@ -4,12 +4,13 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
+
 namespace Sundew.Quantities
 {
     using System;
-
-    using Sundew.Quantities.Engine.UnitSelection;
+    using Sundew.Quantities.Core;
     using Sundew.Quantities.UnitSelection;
+    using Sundew.Quantities.UnitSelectors;
 
     /// <summary>
     /// Extends the structs which implement <see cref="IComparable"/> and <see cref="IFormattable"/> with easy to use methods.

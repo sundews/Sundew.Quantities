@@ -4,15 +4,16 @@
 // // </copyright>
 // // --------------------------------------------------------------------------------------------------------------------
 
+using Sundew.Quantities.Representations;
+using Sundew.Quantities.Representations.Expressions;
+using Sundew.Quantities.Representations.Flat;
+using Sundew.Quantities.Representations.Units;
+
 namespace Sundew.Quantities.UnitTests.Engine.Representations.Conversion
 {
     using System.Collections.Generic;
 
     using FluentAssertions;
-
-    using Sundew.Quantities.Engine.Representations.Conversion;
-    using Sundew.Quantities.Engine.Representations.Hierarchical.Expressions;
-    using Sundew.Quantities.Engine.Units;
     using Sundew.Quantities.UnitTests.Engine.Representations.Flat;
 
     using Xunit;

@@ -4,12 +4,12 @@
 // // </copyright>
 // // --------------------------------------------------------------------------------------------------------------------
 
+using Sundew.Quantities.Core;
+using Sundew.Quantities.Representations;
+
 namespace Sundew.Quantities.AcceptanceTests.Spacetime
 {
     using FluentAssertions;
-
-    using Sundew.Quantities.Engine.Representations.Hierarchical.Units;
-
     using Xunit;
 
     public class VelocityFormattingTests

@@ -4,13 +4,12 @@
 // // </copyright>
 // // --------------------------------------------------------------------------------------------------------------------
 
+using Sundew.Quantities.Core;
+using Sundew.Quantities.Parsing;
+
 namespace Sundew.Quantities.AcceptanceTests
 {
     using FluentAssertions;
-
-    using Sundew.Quantities.Engine;
-    using Sundew.Quantities.Engine.Representations.Hierarchical.Parsing;
-
     using Xunit;
 
     public class UnitSystemTests

@@ -4,10 +4,10 @@
 // // </copyright>
 // // --------------------------------------------------------------------------------------------------------------------
 
-using Sundew.Quantities.Engine.Quantities;
-
 namespace Sundew.Quantities.Serialization.Poco
 {
+    using Sundew.Quantities.Core;
+
     /// <summary>
     /// Represents <see cref="Sundew.Quantities.Pressure"/> as a serializable type.
     /// </summary>

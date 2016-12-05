@@ -4,16 +4,15 @@
 // // </copyright>
 // // --------------------------------------------------------------------------------------------------------------------
 
+using Sundew.Quantities.Parsing;
+using Sundew.Quantities.Parsing.LexicalAnalysis;
+
 namespace Sundew.Quantities.UnitTests.Engine.Representations.Hierarchical.Parsing.LexicalAnalysis
 {
     using System;
     using System.Linq;
 
     using FluentAssertions;
-
-    using Sundew.Quantities.Engine.Representations.Hierarchical.Parsing;
-    using Sundew.Quantities.Engine.Representations.Hierarchical.Parsing.LexicalAnalysis;
-
     using Xunit;
 
     public class LexicalAnalyzerTests

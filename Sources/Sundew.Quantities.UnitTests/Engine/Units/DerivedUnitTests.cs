@@ -4,20 +4,19 @@
 // // </copyright>
 // // --------------------------------------------------------------------------------------------------------------------
 
+using Sundew.Quantities.Representations.Expressions;
+using Sundew.Quantities.Representations.Units;
+
 namespace Sundew.Quantities.UnitTests.Engine.Units
 {
     using FluentAssertions;
-
-    using Sundew.Quantities.Engine.Representations.Hierarchical.Expressions;
-    using Sundew.Quantities.Engine.Units;
-
     using Xunit;
 
     public class DerivedUnitTests
     {
         private static readonly Unit MeterUnit = new Unit("m");
 
-        private static readonly Expression CentiMeterUnitExpression = Prefixes.Centi * MeterUnit;
+        private static readonly Expression CentiMeterUnitExpression = new UnitExpression(MeterUnit.GetPrefixedUnit(Prefixes.Centi));
 
         [Theory]
         [InlineData("cm²", "cm²")]

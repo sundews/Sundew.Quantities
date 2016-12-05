@@ -4,16 +4,16 @@
 // // </copyright>
 // // --------------------------------------------------------------------------------------------------------------------
 
+using Sundew.Quantities.Core;
+using Sundew.Quantities.Representations;
+using Sundew.Quantities.Representations.Expressions;
+using Sundew.Quantities.Representations.Units;
+
 namespace Sundew.Quantities.UnitTests.Engine.Quantities
 {
     using System.Linq;
 
     using FluentAssertions;
-
-    using Sundew.Quantities.Engine.Quantities;
-    using Sundew.Quantities.Engine.Representations.Hierarchical.Units;
-    using Sundew.Quantities.Engine.Units;
-
     using Xunit;
 
     public class QuantityHelperTests
@@ -51,7 +51,7 @@ namespace Sundew.Quantities.UnitTests.Engine.Quantities
                 rhs,
                 new DerivedUnit(
                     string.Empty,
-                    Prefixes.Kilo * UnitDefinitions.Meter / UnitDefinitions.Hour.GetExpression()));
+                    new UnitExpression(UnitDefinitions.Meter.GetPrefixedUnit(Prefixes.Kilo)) / UnitDefinitions.Hour.GetExpression()));
 
             var result = QuantityHelper.AreEqual(testee1, testee2);
 

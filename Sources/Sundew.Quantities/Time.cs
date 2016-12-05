@@ -4,12 +4,12 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
+
 namespace Sundew.Quantities
 {
     using System;
-    using Sundew.Quantities.Engine;
-    using Sundew.Quantities.Engine.Quantities;
-    using Sundew.Quantities.Engine.Representations.Hierarchical.Expressions;
+    using Sundew.Quantities.Core;
+    using Sundew.Quantities.Representations.Expressions;
 
     /// <summary>
     /// Represents a time quantity.

@@ -4,14 +4,14 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
+
 namespace Sundew.Quantities
 {
     using System;
     using System.Diagnostics.Contracts;
-
     using Sundew.Base.Numeric;
-    using Sundew.Quantities.Engine.Quantities;
-    using Sundew.Quantities.Engine.UnitSelection;
+    using Sundew.Quantities.Core;
+    using Sundew.Quantities.UnitSelection;
 
     /// <summary>
     /// Extends <see cref="IQuantity{TQuantity}"/> with easy to use methods.

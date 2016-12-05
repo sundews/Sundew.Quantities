@@ -4,14 +4,14 @@
 // // </copyright>
 // // --------------------------------------------------------------------------------------------------------------------
 
+using Sundew.Quantities.Representations;
+using Sundew.Quantities.Representations.Expressions;
+using Sundew.Quantities.Representations.Expressions.Visitors;
+using Sundew.Quantities.Representations.Units;
+
 namespace Sundew.Quantities.UnitTests.Engine.Units
 {
     using FluentAssertions;
-
-    using Sundew.Quantities.Engine.Representations.Hierarchical.Units;
-    using Sundew.Quantities.Engine.Representations.Hierarchical.Visitors;
-    using Sundew.Quantities.Engine.Units;
-
     using Xunit;
 
     public class PrefixedBaseUnitTests

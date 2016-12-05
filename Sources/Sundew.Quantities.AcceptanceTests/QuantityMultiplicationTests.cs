@@ -4,15 +4,15 @@
 // // </copyright>
 // // --------------------------------------------------------------------------------------------------------------------
 
+using Sundew.Quantities.Core;
+using Sundew.Quantities.Parsing;
+using Sundew.Quantities.Representations;
+
 namespace Sundew.Quantities.AcceptanceTests
 {
     using FluentAssertions;
 
     using Sundew.Quantities.AcceptanceTests.Testing;
-    using Sundew.Quantities.Engine;
-    using Sundew.Quantities.Engine.Representations.Hierarchical.Parsing;
-    using Sundew.Quantities.Engine.Representations.Hierarchical.Units;
-
     using Xunit;
 
     public class QuantityMultiplicationTests

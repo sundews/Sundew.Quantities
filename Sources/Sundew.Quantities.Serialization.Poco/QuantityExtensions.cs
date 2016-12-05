@@ -16,7 +16,7 @@ namespace Sundew.Quantities.Serialization.Poco
         /// </summary>
         /// <param name="quantity">The quantity.</param>
         /// <returns>A new serializable <see cref="Quantity" />.</returns>
-        public static Quantity ToSerializable(this Quantities.Quantity quantity)
+        public static Quantity ToSerializable(this Core.Quantity quantity)
         {
             return new Quantity(quantity);
         }

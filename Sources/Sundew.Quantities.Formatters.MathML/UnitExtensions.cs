@@ -4,11 +4,12 @@
 // // </copyright>
 // // --------------------------------------------------------------------------------------------------------------------
 
+using Sundew.Quantities.Representations;
+using Sundew.Quantities.Representations.Expressions;
+
 namespace Sundew.Quantities.Formatters.MathML
 {
     using System.Xml.Linq;
-
-    using Sundew.Quantities.Engine.Representations.Hierarchical.Units;
 
     /// <summary>
     /// Extends the <see cref="IUnit"/> interface with math ml functionality.

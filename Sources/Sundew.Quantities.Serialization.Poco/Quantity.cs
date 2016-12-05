@@ -4,14 +4,15 @@
 // // </copyright>
 // // --------------------------------------------------------------------------------------------------------------------
 
+using Sundew.Quantities.Core;
+using Sundew.Quantities.Representations;
+
 namespace Sundew.Quantities.Serialization.Poco
 {
-    using Sundew.Quantities.Engine.Quantities;
-
     /// <summary>
     /// Represents <see cref="Quantity"/> serializable type.
     /// </summary>
-    public class Quantity : SerializableQuantity<Quantities.Quantity>
+    public class Quantity : SerializableQuantity<Core.Quantity>
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="Quantity"/> class.
@@ -35,9 +36,9 @@ namespace Sundew.Quantities.Serialization.Poco
         /// <returns>
         /// A <see cref="Quantity" />.
         /// </returns>
-        public override Quantities.Quantity ToQuantity()
+        public override Core.Quantity ToQuantity()
         {
-            return new Quantities.Quantity(this.Value, this.GetUnit());
+            return new Core.Quantity(this.Value, this.GetUnit());
         }
     }
 }

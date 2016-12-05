@@ -4,15 +4,14 @@
 // // </copyright>
 // // --------------------------------------------------------------------------------------------------------------------
 
+using Sundew.Quantities.Representations.Units;
+
 namespace Sundew.Quantities.UnitTests.Engine.Units
 {
     using System;
     using System.Globalization;
 
     using FluentAssertions;
-
-    using Sundew.Quantities.Engine.Units;
-
     using Xunit;
 
     public class RadianUnitTests

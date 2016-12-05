@@ -4,13 +4,13 @@
 // // </copyright>
 // // --------------------------------------------------------------------------------------------------------------------
 
+using Sundew.Quantities.Representations.Evaluation;
+using Sundew.Quantities.Representations.Expressions;
+using Sundew.Quantities.Representations.Units;
+
 namespace Sundew.Quantities.UnitTests.Engine.Representations.Conversion
 {
     using FluentAssertions;
-
-    using Sundew.Quantities.Engine.Representations.Conversion;
-    using Sundew.Quantities.Engine.Representations.Hierarchical.Expressions;
-    using Sundew.Quantities.Engine.Units;
     using Sundew.Quantities.UnitTests.Engine.Representations.Flat;
 
     using Xunit;

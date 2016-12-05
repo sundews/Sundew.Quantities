@@ -4,15 +4,15 @@
 // // </copyright>
 // // --------------------------------------------------------------------------------------------------------------------
 
+using Sundew.Quantities.Representations.Expressions;
+using Sundew.Quantities.Representations.Expressions.Visitors;
+using Sundew.Quantities.Representations.Units;
+
 namespace Sundew.Quantities.UnitTests.Engine.Representations.Hierarchical.Expressions
 {
     using FluentAssertions;
 
     using Sundew.Base.Visiting;
-    using Sundew.Quantities.Engine.Representations.Hierarchical.Expressions;
-    using Sundew.Quantities.Engine.Representations.Hierarchical.Visitors;
-    using Sundew.Quantities.Engine.Units;
-
     using Xunit;
 
     public class MultiplicationExpressionTests

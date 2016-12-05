@@ -4,12 +4,11 @@
 // // </copyright>
 // // --------------------------------------------------------------------------------------------------------------------
 
+using Sundew.Quantities.Parsing.LexicalAnalysis;
+
 namespace Sundew.Quantities.UnitTests.Engine.Representations.Hierarchical.Parsing.LexicalAnalysis
 {
     using FluentAssertions;
-
-    using Sundew.Quantities.Engine.Representations.Hierarchical.Parsing.LexicalAnalysis;
-
     using Xunit;
 
     public class TokenMatcherBuilderTests
