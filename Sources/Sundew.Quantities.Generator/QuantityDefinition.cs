@@ -1,7 +1,7 @@
-﻿using System.Collections.Generic;
-
-namespace Sundew.Quantities.Generator
+﻿namespace Sundew.Quantities.Generator
 {
+    using System.Collections.Generic;
+
     public class QuantityDefinition
     {
         public QuantityDefinition(string name, IReadOnlyList<string> usings, bool useGlobalUsings, string unitSelector)

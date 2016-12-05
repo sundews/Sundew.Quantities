@@ -4,13 +4,13 @@
 // // </copyright>
 // // --------------------------------------------------------------------------------------------------------------------
 
-using FluentAssertions;
-using Newtonsoft.Json;
-using Sundew.Quantities.AcceptanceTests.Spatial.CustomUnit;
-using Xunit;
-
 namespace Sundew.Quantities.Serialization.Poco.AcceptanceTests
 {
+    using FluentAssertions;
+    using Newtonsoft.Json;
+    using Sundew.Quantities.AcceptanceTests.Spatial.CustomUnit;
+    using Xunit;
+
     public class CustomUnitTests
     {
         public class ConfigurationContainer

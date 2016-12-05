@@ -11,7 +11,6 @@ namespace Sundew.Quantities
     using System.Diagnostics.Contracts;
     using Sundew.Base.Numeric;
     using Sundew.Quantities.Core;
-    using Sundew.Quantities.UnitSelection;
 
     /// <summary>
     /// Extends <see cref="IQuantity{TQuantity}"/> with easy to use methods.

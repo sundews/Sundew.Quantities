@@ -4,16 +4,12 @@
 // // </copyright>
 // // --------------------------------------------------------------------------------------------------------------------
 
-using Sundew.Quantities.Core;
-using Sundew.Quantities.Representations;
-
 namespace Sundew.Quantities.AcceptanceTests.Periodics
 {
     using FluentAssertions;
-
     using Sundew.Quantities.AcceptanceTests.Testing;
+    using Sundew.Quantities.Core;
     using Sundew.Quantities.UnitTests;
-
     using Xunit;
 
     public class TimeTests

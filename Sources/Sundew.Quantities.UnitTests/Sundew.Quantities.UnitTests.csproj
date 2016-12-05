@@ -33,16 +33,16 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="FakeItEasy, Version=2.0.0.0, Culture=neutral, PublicKeyToken=eff28e2146d5fd2c, processorArchitecture=MSIL">
-      <HintPath>..\packages\FakeItEasy.2.0.0-beta010\lib\net40\FakeItEasy.dll</HintPath>
+    <Reference Include="FakeItEasy, Version=2.3.1.0, Culture=neutral, PublicKeyToken=eff28e2146d5fd2c, processorArchitecture=MSIL">
+      <HintPath>..\packages\FakeItEasy.2.3.1\lib\net40\FakeItEasy.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="FluentAssertions, Version=4.3.0.0, Culture=neutral, PublicKeyToken=33f2691a05b67b6a, processorArchitecture=MSIL">
-      <HintPath>..\packages\FluentAssertions.4.3.0\lib\net45\FluentAssertions.dll</HintPath>
+    <Reference Include="FluentAssertions, Version=4.18.0.0, Culture=neutral, PublicKeyToken=33f2691a05b67b6a, processorArchitecture=MSIL">
+      <HintPath>..\packages\FluentAssertions.4.18.0\lib\net45\FluentAssertions.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="FluentAssertions.Core, Version=4.3.0.0, Culture=neutral, PublicKeyToken=33f2691a05b67b6a, processorArchitecture=MSIL">
-      <HintPath>..\packages\FluentAssertions.4.3.0\lib\net45\FluentAssertions.Core.dll</HintPath>
+    <Reference Include="FluentAssertions.Core, Version=4.18.0.0, Culture=neutral, PublicKeyToken=33f2691a05b67b6a, processorArchitecture=MSIL">
+      <HintPath>..\packages\FluentAssertions.4.18.0\lib\net45\FluentAssertions.Core.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Sundew.Base, Version=2.0.26.0, Culture=neutral, processorArchitecture=MSIL">
@@ -75,32 +75,32 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Engine\ExpressionTestHelper.cs" />
-    <Compile Include="Engine\Operations\QuantityOperationsTests.cs" />
-    <Compile Include="Engine\Quantities\QuantityHelperTests.cs" />
-    <Compile Include="Engine\Representations\Conversion\FlatRepresentationBuilderTests.cs" />
-    <Compile Include="Engine\Representations\Conversion\FlatRepresentationBuilderWithReductionsTests.cs" />
-    <Compile Include="Engine\Representations\Conversion\FlatRepresentationConsumerTests.cs" />
-    <Compile Include="Engine\Representations\Conversion\FlatUnitIdentifierRepresentationTests.cs" />
-    <Compile Include="Engine\Representations\Flat\FlatConstant.cs" />
-    <Compile Include="Engine\Representations\Flat\FlatRepresentationTests.cs" />
-    <Compile Include="Engine\Representations\Flat\FlatUnit.cs" />
-    <Compile Include="Engine\Representations\Flat\FlatVariable.cs" />
-    <Compile Include="Engine\Representations\Flat\IFlatIdentifier.cs" />
-    <Compile Include="Engine\Representations\Hierarchical\Expressions\ExpressionFromStringBuilder.cs" />
-    <Compile Include="Engine\Representations\Hierarchical\Expressions\MultiplicationExpressionTests.cs" />
-    <Compile Include="Engine\Representations\Hierarchical\Parsing\ExpressionParserTests.cs" />
-    <Compile Include="Engine\Representations\Hierarchical\Parsing\LexicalAnalysis\LexicalAnalyzerTests.cs" />
-    <Compile Include="Engine\Representations\Hierarchical\Parsing\LexicalAnalysis\TokenMatcherBuilderTests.cs" />
-    <Compile Include="Engine\Representations\Hierarchical\Parsing\UnitExpressionParserTests.cs" />
-    <Compile Include="Engine\Representations\Hierarchical\Units\UnitHelperTests.cs" />
-    <Compile Include="Engine\Units\DerivedUnitTests.cs" />
-    <Compile Include="Engine\Units\FactoredUnitTests.cs" />
-    <Compile Include="Engine\Units\NotationBaseUnitTests.cs" />
-    <Compile Include="Engine\Units\PrefixedBaseUnitTests.cs" />
-    <Compile Include="Engine\Units\RadianUnitTests.cs" />
-    <Compile Include="Engine\Units\UnitTests.cs" />
-    <Compile Include="UnitSelection\MassUnitSelectorTests.cs" />
+    <Compile Include="ExpressionTestHelper.cs" />
+    <Compile Include="Core\QuantityOperationsTests.cs" />
+    <Compile Include="Core\QuantityHelperTests.cs" />
+    <Compile Include="Representations\Flat\FlatRepresentationBuilderTests.cs" />
+    <Compile Include="Representations\Evaluation\FlatRepresentationBuilderWithReductionsTests.cs" />
+    <Compile Include="Representations\Flat\FlatRepresentationConsumerTests.cs" />
+    <Compile Include="Representations\Flat\FlatUnitIdentifierRepresentationTests.cs" />
+    <Compile Include="Representations\Flat\FlatConstant.cs" />
+    <Compile Include="Representations\Flat\FlatRepresentationTests.cs" />
+    <Compile Include="Representations\Flat\FlatUnit.cs" />
+    <Compile Include="Representations\Flat\FlatVariable.cs" />
+    <Compile Include="Representations\Flat\IFlatIdentifier.cs" />
+    <Compile Include="Representations\Expressions\ExpressionFromStringBuilder.cs" />
+    <Compile Include="Representations\Expressions\MultiplicationExpressionTests.cs" />
+    <Compile Include="Parsing\ExpressionParserTests.cs" />
+    <Compile Include="Parsing\LexicalAnalysis\LexicalAnalyzerTests.cs" />
+    <Compile Include="Parsing\LexicalAnalysis\TokenMatcherBuilderTests.cs" />
+    <Compile Include="Parsing\UnitExpressionParserTests.cs" />
+    <Compile Include="Representations\Expressions\UnitEqualityHelperTests.cs" />
+    <Compile Include="Representations\Units\DerivedUnitTests.cs" />
+    <Compile Include="Representations\Units\FactoredUnitTests.cs" />
+    <Compile Include="Representations\Units\NotationBaseUnitTests.cs" />
+    <Compile Include="Representations\Units\PrefixedBaseUnitTests.cs" />
+    <Compile Include="Representations\Units\RadianUnitTests.cs" />
+    <Compile Include="Representations\Units\UnitTests.cs" />
+    <Compile Include="UnitSelector\MassUnitSelectorTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TestHelper.cs" />
   </ItemGroup>
@@ -108,7 +108,11 @@
     <None Include="packages.config" />
     <None Include="Settings.StyleCop" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Analyzer Include="..\packages\StyleCop.Analyzers.1.0.0\analyzers\dotnet\cs\Newtonsoft.Json.dll" />
+    <Analyzer Include="..\packages\StyleCop.Analyzers.1.0.0\analyzers\dotnet\cs\StyleCop.Analyzers.CodeFixes.dll" />
+    <Analyzer Include="..\packages\StyleCop.Analyzers.1.0.0\analyzers\dotnet\cs\StyleCop.Analyzers.dll" />
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Sundew.Quantities\Sundew.Quantities.csproj">
       <Project>{e4e2e3b0-ae2d-495c-ba8e-c14896ee2b05}</Project>

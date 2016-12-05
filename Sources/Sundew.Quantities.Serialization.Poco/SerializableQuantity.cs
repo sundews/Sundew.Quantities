@@ -4,14 +4,12 @@
 // // </copyright>
 // // --------------------------------------------------------------------------------------------------------------------
 
-using Sundew.Quantities.Core;
-using Sundew.Quantities.Parsing;
-using Sundew.Quantities.Representations;
-using Sundew.Quantities.Representations.Expressions;
-
 namespace Sundew.Quantities.Serialization.Poco
 {
     using System.Globalization;
+    using Sundew.Quantities.Core;
+    using Sundew.Quantities.Parsing;
+    using Sundew.Quantities.Representations.Expressions;
 
     /// <summary>
     /// Abstract base class for implementing a serializable quantity.

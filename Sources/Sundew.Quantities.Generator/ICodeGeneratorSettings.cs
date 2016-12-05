@@ -1,11 +1,13 @@
-﻿using System.Collections.Generic;
-
-namespace Sundew.Quantities.Generator
+﻿namespace Sundew.Quantities.Generator
 {
+    using System.Collections.Generic;
+
     public interface ICodeGeneratorSettings
     {
-        string TargetNamespace { get; set; }
-        IEnumerable<string> Usings { get; set; }
-        bool UseGlobalUsings { get; set; }
+        string TargetNamespace { get; }
+
+        IReadOnlyList<string> Usings { get; }
+
+        bool UseGlobalUsings { get; }
     }
 }

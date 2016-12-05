@@ -1,13 +1,13 @@
-﻿using System;
-
-namespace Sundew.Quantities.Generator
+﻿namespace Sundew.Quantities.Generator
 {
+    using System;
+
     public class GeneratorString
     {
         private const char IndentChar = ' ';
         private static readonly char[] NewLineChars = Environment.NewLine.ToCharArray();
-        private readonly string _value;
-        private readonly int _lineIndent;
+        private readonly string value;
+        private readonly int lineIndent;
 
         public GeneratorString(string value)
             : this(0, value)
@@ -16,8 +16,8 @@ namespace Sundew.Quantities.Generator
 
         public GeneratorString(int lineIndent, string value)
         {
-            _value = value;
-            _lineIndent = lineIndent;
+            this.value = value;
+            this.lineIndent = lineIndent;
         }
 
         public static  implicit operator string(GeneratorString generatorString)
@@ -32,29 +32,17 @@ namespace Sundew.Quantities.Generator
 
         public override string ToString()
         {
-            if (_lineIndent > 0)
+            if (this.lineIndent > 0)
             {
-                var indent = new string(IndentChar, _lineIndent);
+                var indent = new string(IndentChar, this.lineIndent);
                 return
-                    _value.Replace(Environment.NewLine, Environment.NewLine + indent)
+                    this.value.Replace(Environment.NewLine, Environment.NewLine + indent)
                     .Replace(Environment.NewLine + indent + Environment.NewLine, Environment.NewLine + Environment.NewLine)
                         .TrimEnd(IndentChar)
                         .Trim(NewLineChars);
             }
 
-            return _value.Trim(NewLineChars);
-            /* var result = _value;
-             if (result.StartsWith(Environment.NewLine))
-             {
-                 result = result.Remove(0, 2);
-             }
- 
-             if (result.EndsWith(Environment.NewLine))
-             {
-                 result = result.Remove(result.Length - 2, 2);
-             }
- 
-             return result;*/
+            return this.value.Trim(NewLineChars);
         }
     }
 }

@@ -9,7 +9,6 @@ namespace Sundew.Quantities
 {
     using System;
     using Sundew.Quantities.Core;
-    using Sundew.Quantities.UnitSelection;
     using Sundew.Quantities.UnitSelectors;
 
     /// <summary>

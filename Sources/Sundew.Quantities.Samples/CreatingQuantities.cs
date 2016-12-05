@@ -4,11 +4,10 @@
 // // </copyright>
 // // --------------------------------------------------------------------------------------------------------------------
 
-using Sundew.Quantities.Core;
-using Sundew.Quantities.Parsing;
-
 namespace Sundew.Quantities.Samples
 {
+    using Sundew.Quantities.Core;
+    using Sundew.Quantities.Parsing;
     using Xunit;
     using Xunit.Abstractions;
 

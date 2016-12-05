@@ -4,11 +4,10 @@
 // // </copyright>
 // // --------------------------------------------------------------------------------------------------------------------
 
-using Sundew.Quantities.Core;
-using Sundew.Quantities.Representations;
-
 namespace Sundew.Quantities.Serialization.Poco
 {
+    using Sundew.Quantities.Core;
+
     /// <summary>
     /// Represents <see cref="Sundew.Quantities.ElectricCurrent"/> as a serializable type.
     /// </summary>

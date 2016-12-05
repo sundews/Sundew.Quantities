@@ -4,18 +4,16 @@
 // // </copyright>
 // // --------------------------------------------------------------------------------------------------------------------
 
-using Sundew.Quantities.Core;
-using Sundew.Quantities.Core.Operations;
-using Sundew.Quantities.Parsing;
-using Sundew.Quantities.Parsing.LexicalAnalysis;
-using Sundew.Quantities.Registration;
-using Sundew.Quantities.Representations.Evaluation;
-using Sundew.Quantities.Representations.Expressions.Visitors;
-
 namespace Sundew.Quantities.Samples
 {
-    using System.Collections;
     using System.Collections.Generic;
+    using Sundew.Quantities.Core;
+    using Sundew.Quantities.Core.Operations;
+    using Sundew.Quantities.Parsing;
+    using Sundew.Quantities.Parsing.LexicalAnalysis;
+    using Sundew.Quantities.Registration;
+    using Sundew.Quantities.Representations.Evaluation;
+    using Sundew.Quantities.Representations.Expressions.Visitors;
     using Xunit;
 
     public class ReplacingTheUnitSystem

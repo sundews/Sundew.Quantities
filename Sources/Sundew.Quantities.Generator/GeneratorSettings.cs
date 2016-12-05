@@ -1,23 +1,35 @@
-﻿using System.Collections.Generic;
-
-namespace Sundew.Quantities.Generator
+﻿namespace Sundew.Quantities.Generator
 {
+    using System.Collections.Generic;
+
     public class GeneratorSettings : IGeneratorSettings
     {
-        public string ModelsFolder { get; set; }
+        public GeneratorSettings(string modelsFolder, string modelFilesSearchPattern, string outputFileExtension, string outputFileNameSuffix, IReadOnlyList<string> targetProjects, string targetNamespace, IReadOnlyList<string> usings, bool useGlobalUsings)
+        {
+            this.ModelsFolder = modelsFolder;
+            this.ModelFilesSearchPattern = modelFilesSearchPattern;
+            this.OutputFileExtension = outputFileExtension;
+            this.OutputFileNameSuffix = outputFileNameSuffix;
+            this.TargetProjects = targetProjects;
+            this.TargetNamespace = targetNamespace;
+            this.Usings = usings;
+            this.UseGlobalUsings = useGlobalUsings;
+        }
 
-        public string ModelFilesSearchPattern { get; set; }
+        public string ModelsFolder { get; }
 
-        public string OutputFileExtension { get; set; }
+        public string ModelFilesSearchPattern { get; }
 
-        public string OutputFileNameSuffix { get; set; }
+        public string OutputFileExtension { get; }
 
-        public IEnumerable<string> TargetProjects { get; set; }
+        public string OutputFileNameSuffix { get; }
 
-        public string TargetNamespace { get; set; }
+        public IReadOnlyList<string> TargetProjects { get; }
 
-        public IEnumerable<string> Usings { get; set; }
+        public string TargetNamespace { get; }
 
-        public bool UseGlobalUsings { get; set; }
+        public IReadOnlyList<string> Usings { get; }
+
+        public bool UseGlobalUsings { get; }
     }
 }

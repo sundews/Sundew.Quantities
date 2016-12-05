@@ -4,15 +4,12 @@
 // // </copyright>
 // // --------------------------------------------------------------------------------------------------------------------
 
-using Sundew.Quantities.Representations.Internals;
-
 namespace Sundew.Quantities.AcceptanceTests.Spatial
 {
     using FluentAssertions;
-
     using Sundew.Quantities.AcceptanceTests.Testing;
+    using Sundew.Quantities.Representations.Internals;
     using Sundew.Quantities.UnitTests;
-
     using Xunit;
 
     public class AreaTests

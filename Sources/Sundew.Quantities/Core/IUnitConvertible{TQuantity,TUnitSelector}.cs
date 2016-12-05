@@ -7,8 +7,6 @@
 
 namespace Sundew.Quantities.Core
 {
-    using Sundew.Quantities.UnitSelection;
-
     /// <summary>
     /// Interface for implementing unit conversion methods.
     /// </summary>

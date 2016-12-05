@@ -8,8 +8,6 @@
 namespace Sundew.Quantities.Representations.Expressions
 {
     using System.Diagnostics.Contracts;
-    using Sundew.Quantities.Core;
-    using Sundew.Quantities.Representations.Internals;
 
     /// <summary>
     /// Helper class for <see cref="IUnit" />.

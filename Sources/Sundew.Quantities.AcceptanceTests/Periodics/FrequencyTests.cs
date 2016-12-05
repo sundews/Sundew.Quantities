@@ -4,14 +4,11 @@
 // // </copyright>
 // // --------------------------------------------------------------------------------------------------------------------
 
-using Sundew.Quantities.Core;
-using Sundew.Quantities.Representations;
-
 namespace Sundew.Quantities.AcceptanceTests.Periodics
 {
     using FluentAssertions;
-
     using Sundew.Quantities.AcceptanceTests.Testing;
+    using Sundew.Quantities.Core;
     using Xunit;
 
     public class FrequencyTests

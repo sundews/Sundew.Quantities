@@ -4,12 +4,12 @@
 // // </copyright>
 // // --------------------------------------------------------------------------------------------------------------------
 
-using FluentAssertions;
-using Newtonsoft.Json;
-using Xunit;
-
 namespace Sundew.Quantities.Serialization.Poco.AcceptanceTests
 {
+    using FluentAssertions;
+    using Newtonsoft.Json;
+    using Xunit;
+
     public class ResistanceTests
     {
         public class ConfigurationContainer

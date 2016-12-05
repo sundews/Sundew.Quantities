@@ -12,7 +12,6 @@ namespace Sundew.Quantities
     using Sundew.Base.Numeric;
     using Sundew.Quantities.Core;
     using Sundew.Quantities.Representations.Expressions;
-    using Sundew.Quantities.UnitSelection;
 
     /// <summary>
     /// Represents a range of a given quantity.

@@ -4,12 +4,10 @@
 // // </copyright>
 // // --------------------------------------------------------------------------------------------------------------------
 
-using Sundew.Quantities.Core;
-using Sundew.Quantities.Representations;
-
 namespace Sundew.Quantities.Formatters.MathML.UnitTests
 {
     using FluentAssertions;
+    using Sundew.Quantities.Core;
     using Xunit;
 
     public class QuantityToMathMLVisitorTests

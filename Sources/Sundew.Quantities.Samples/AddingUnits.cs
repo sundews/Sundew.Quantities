@@ -4,11 +4,10 @@
 // // </copyright>
 // // --------------------------------------------------------------------------------------------------------------------
 
-using Sundew.Quantities.Core;
-using Sundew.Quantities.Representations.Units;
-
 namespace Sundew.Quantities.Samples
 {
+    using Sundew.Quantities.Core;
+    using Sundew.Quantities.Representations.Units;
     using Xunit;
 
     public class AddingUnits

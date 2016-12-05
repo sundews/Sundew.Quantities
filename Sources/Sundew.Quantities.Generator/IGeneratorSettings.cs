@@ -1,13 +1,17 @@
-﻿using System.Collections.Generic;
-
-namespace Sundew.Quantities.Generator
+﻿namespace Sundew.Quantities.Generator
 {
+    using System.Collections.Generic;
+
     public interface IGeneratorSettings : ICodeGeneratorSettings
     {
-        string ModelsFolder { get; set; }
-        string ModelFilesSearchPattern { get; set; }
-        string OutputFileExtension { get; set; }
-        string OutputFileNameSuffix { get; set; }
-        IEnumerable<string> TargetProjects { get; set; }
+        string ModelsFolder { get; }
+
+        string ModelFilesSearchPattern { get; }
+
+        string OutputFileExtension { get; }
+
+        string OutputFileNameSuffix { get; }
+
+        IReadOnlyList<string> TargetProjects { get; }
     }
 }

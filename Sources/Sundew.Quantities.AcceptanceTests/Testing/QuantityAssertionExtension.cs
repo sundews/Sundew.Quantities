@@ -4,17 +4,13 @@
 // // </copyright>
 // // --------------------------------------------------------------------------------------------------------------------
 
-using Sundew.Quantities.Core;
-using Sundew.Quantities.Representations;
-using Sundew.Quantities.Representations.Expressions;
-
 namespace Sundew.Quantities.AcceptanceTests.Testing
 {
     using System;
-
     using FluentAssertions;
     using FluentAssertions.Execution;
     using FluentAssertions.Numeric;
+    using Sundew.Quantities.Core;
     using Sundew.Quantities.UnitTests;
 
     /// <summary>

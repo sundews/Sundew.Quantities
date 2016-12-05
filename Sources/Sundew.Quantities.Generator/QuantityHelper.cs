@@ -1,7 +1,7 @@
-﻿using System;
-
-namespace Sundew.Quantities.Generator
+﻿namespace Sundew.Quantities.Generator
 {
+    using System;
+
     public class QuantityHelper
     {
         public static string GetOperator(Operator @operator)

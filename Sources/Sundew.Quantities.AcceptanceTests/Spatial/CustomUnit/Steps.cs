@@ -4,12 +4,12 @@
 // // </copyright>
 // // --------------------------------------------------------------------------------------------------------------------
 
-using Sundew.Quantities.Representations.Expressions;
-using Sundew.Quantities.Representations.Units;
-using Sundew.Quantities.UnitSelectors;
-
 namespace Sundew.Quantities.AcceptanceTests.Spatial.CustomUnit
 {
+    using Sundew.Quantities.Representations.Expressions;
+    using Sundew.Quantities.Representations.Units;
+    using Sundew.Quantities.UnitSelectors;
+
     public static class StepExtensions
     {
         public static Expression Steps(this IDistanceUnitSelector distanceUnitSelector)
