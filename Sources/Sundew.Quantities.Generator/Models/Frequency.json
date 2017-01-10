@@ -1,0 +1,19 @@
+﻿{
+  "Name": "Frequency",
+  "Units": [
+    {
+      "Identifier": "Hertz",
+      "Unit": "Hertz",
+      "Name": "hertz"
+    },
+    { "Identifier": "Seconds" },
+    { "Identifier": "Years" },
+    { "Identifier": "Months" },
+    { "Identifier": "Weeks" },
+    { "Identifier": "Days" },
+    { "Identifier": "Minutes" },
+    { "Identifier": "Hours" }
+  ],
+  "BaseUnit": "Hertz",
+  "DefaultUnits": [ "Hertz" ]
+}

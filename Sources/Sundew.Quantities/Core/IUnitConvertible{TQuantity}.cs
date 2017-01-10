@@ -16,10 +16,10 @@ namespace Sundew.Quantities.Core
     public interface IUnitConvertible<out TQuantity> : IUnitConvertible
     {
         /// <summary>
-        /// Converts this object to a <see cref="TQuantity"/> using the specified unit.
+        /// Converts this object to a quantity using the specified unit.
         /// </summary>
         /// <param name="unit">The quantity unit.</param>
-        /// <returns>The converted <see cref="TQuantity"/>.</returns>
+        /// <returns>The converted quantity.</returns>
         TQuantity ToUnit(IUnit unit);
     }
 }

@@ -1,19 +1,22 @@
-﻿// // --------------------------------------------------------------------------------------------------------------------
-// // <copyright file="QuantityToMathMLConverter.cs" company="Hukano">
-// //   2016 (c) Hukano. All Rights Reserved. Licensed under the MIT License. See License.txt in the project root for license information.
-// // </copyright>
-// // --------------------------------------------------------------------------------------------------------------------
-
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="QuantityToMathMLConverter.cs" company="Hukano">
+// Copyright (c) Hukano. All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
+// </copyright>
+// --------------------------------------------------------------------------------------------------------------------
 namespace Sundew.Quantities.Formatters.MathML
 {
     using System.Xml.Linq;
     using Sundew.Quantities.Core;
 
     /// <summary>
-    /// 
+    /// Converter for converting quantities to MathML.
     /// </summary>
     public sealed class QuantityToMathMLConverter
     {
+        /// <summary>
+        /// The default converter.
+        /// </summary>
         public static readonly QuantityToMathMLConverter DefaultConverter = new QuantityToMathMLConverter();
 
         /// <summary>

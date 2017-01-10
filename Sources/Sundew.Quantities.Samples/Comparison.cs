@@ -1,9 +1,9 @@
-﻿// // --------------------------------------------------------------------------------------------------------------------
-// // <copyright file="Comparison.cs" company="Hukano">
-// //   2016 (c) Hukano. All Rights Reserved. Licensed under the MIT License. See License.txt in the project root for license information.
-// // </copyright>
-// // --------------------------------------------------------------------------------------------------------------------
-
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="Comparison.cs" company="Hukano">
+// Copyright (c) Hukano. All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
+// </copyright>
+// --------------------------------------------------------------------------------------------------------------------
 namespace Sundew.Quantities.Samples
 {
     using Xunit;
@@ -11,27 +11,11 @@ namespace Sundew.Quantities.Samples
 
     public class Comparison
     {
+        private readonly ITestOutputHelper output;
+
         public Comparison(ITestOutputHelper output)
         {
             this.output = output;
-        }
-
-        private readonly ITestOutputHelper output;
-
-        private void WriteResult(Time lhs, Time rhs, int comparison)
-        {
-            if (comparison < 0)
-            {
-                this.output.WriteLine(lhs + " is less than " + rhs);
-            }
-            else if (comparison > 0)
-            {
-                this.output.WriteLine(lhs + " is greater than " + rhs);
-            }
-            else
-            {
-                this.output.WriteLine(lhs + " and " + rhs + " are equal");
-            }
         }
 
         [Fact(Skip = "Sample")]
@@ -67,6 +51,22 @@ namespace Sundew.Quantities.Samples
             // 3 [h] and 10800 [s] are equal
 
             #endregion
+        }
+
+        private void WriteResult(Time lhs, Time rhs, int comparison)
+        {
+            if (comparison < 0)
+            {
+                this.output.WriteLine(lhs + " is less than " + rhs);
+            }
+            else if (comparison > 0)
+            {
+                this.output.WriteLine(lhs + " is greater than " + rhs);
+            }
+            else
+            {
+                this.output.WriteLine(lhs + " and " + rhs + " are equal");
+            }
         }
     }
 }

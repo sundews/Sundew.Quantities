@@ -1,9 +1,9 @@
-﻿// // --------------------------------------------------------------------------------------------------------------------
-// // <copyright file="Temperature.cs" company="Hukano">
-// //   2016 (c) Hukano. All Rights Reserved. Licensed under the MIT License. See License.txt in the project root for license information.
-// // </copyright>
-// // --------------------------------------------------------------------------------------------------------------------
-
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="Temperature.cs" company="Hukano">
+// Copyright (c) Hukano. All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
+// </copyright>
+// --------------------------------------------------------------------------------------------------------------------
 namespace Sundew.Quantities.Serialization.Poco
 {
     using Sundew.Quantities.Core;
@@ -33,7 +33,7 @@ namespace Sundew.Quantities.Serialization.Poco
         /// Converts this instances to a quantity.
         /// </summary>
         /// <returns>
-        /// A <see cref="Sundew.Quantities.Thermodynamics.Temperature" />.
+        /// A <see cref="Sundew.Quantities.Temperature" />.
         /// </returns>
         public override Quantities.Temperature ToQuantity()
         {

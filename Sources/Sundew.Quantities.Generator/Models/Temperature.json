@@ -1,0 +1,14 @@
+﻿{
+  "Name": "Temperature",
+  "Units": [
+    { "Identifier": "Kelvin" },
+    {
+      "Identifier": "Celsius",
+      "Unit": "Celsius",
+      "Name": "celsius"
+    },
+    { "Identifier": "Fahrenheits" }
+  ],
+  "BaseUnit": "Kelvin",
+  "DefaultUnits": [ "Kelvin", "Celsius", "Fahrenheit" ]
+}

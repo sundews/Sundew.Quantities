@@ -1,9 +1,9 @@
-﻿// // --------------------------------------------------------------------------------------------------------------------
-// // <copyright file="QuantityExtensions.cs" company="Hukano">
-// //   2016 (c) Hukano. All Rights Reserved. Licensed under the MIT License. See License.txt in the project root for license information.
-// // </copyright>
-// // --------------------------------------------------------------------------------------------------------------------
-
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="QuantityExtensions.cs" company="Hukano">
+// Copyright (c) Hukano. All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
+// </copyright>
+// --------------------------------------------------------------------------------------------------------------------
 namespace Sundew.Quantities.Formatters.MathML
 {
     using System.Xml.Linq;
@@ -35,7 +35,7 @@ namespace Sundew.Quantities.Formatters.MathML
         /// <param name="quantity">The quantity.</param>
         /// <param name="unitFormat">The unit format.</param>
         /// <param name="multiplicationSign">The multiplication sign.</param>
-        /// <returns></returns>
+        /// <returns>A MathML string.</returns>
         public static string ToMathMLString(
             this IQuantity quantity,
             UnitFormat unitFormat = UnitFormat.Default,

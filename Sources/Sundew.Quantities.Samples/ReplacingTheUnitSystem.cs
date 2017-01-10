@@ -1,9 +1,9 @@
-﻿// // --------------------------------------------------------------------------------------------------------------------
-// // <copyright file="ReplacingTheEngine.cs" company="Hukano">
-// //   2016 (c) Hukano. All Rights Reserved. Licensed under the MIT License. See License.txt in the project root for license information.
-// // </copyright>
-// // --------------------------------------------------------------------------------------------------------------------
-
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="ReplacingTheUnitSystem.cs" company="Hukano">
+// Copyright (c) Hukano. All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
+// </copyright>
+// --------------------------------------------------------------------------------------------------------------------
 namespace Sundew.Quantities.Samples
 {
     using System.Collections.Generic;
@@ -25,7 +25,7 @@ namespace Sundew.Quantities.Samples
 
             // Initialize the unit system with a custom implementation of the IUnitSystemDependencyFactory interface.
             var unitSystemDependencies = UnitSystem.InitializeWithDefaults(null, new CustomUnitSystemDependencyFactory());
-            
+
             #endregion
         }
 
@@ -51,7 +51,7 @@ namespace Sundew.Quantities.Samples
             {
                 return this.expressionToFlatRepresentationConverter;
             }
-            
+
             public ILexicalAnalyzer CreateLexicalAnalyzer(IEnumerable<TokenMatcher> tokenMatchers)
             {
                 return new LexicalAnalyzer(tokenMatchers);

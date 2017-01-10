@@ -1,9 +1,9 @@
-﻿// // --------------------------------------------------------------------------------------------------------------------
-// // <copyright file="SerializableQuantity.cs" company="Hukano">
-// //   2016 (c) Hukano. All Rights Reserved. Licensed under the MIT License. See License.txt in the project root for license information.
-// // </copyright>
-// // --------------------------------------------------------------------------------------------------------------------
-
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="SerializableQuantity.cs" company="Hukano">
+// Copyright (c) Hukano. All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
+// </copyright>
+// --------------------------------------------------------------------------------------------------------------------
 namespace Sundew.Quantities.Serialization.Poco
 {
     using System.Globalization;
@@ -53,7 +53,7 @@ namespace Sundew.Quantities.Serialization.Poco
         /// <summary>
         /// Converts this instances to a quantity.
         /// </summary>
-        /// <returns>A <see cref="TQuantity"/>.</returns>
+        /// <returns>A quantity.</returns>
         public abstract TQuantity ToQuantity();
 
         /// <summary>

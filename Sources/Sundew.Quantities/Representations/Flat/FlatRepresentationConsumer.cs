@@ -8,6 +8,7 @@
 namespace Sundew.Quantities.Representations.Flat
 {
     using System.Collections.Generic;
+    using System.Diagnostics.Contracts;
     using Sundew.Quantities.Representations.Expressions;
 
     /// <summary>
@@ -34,6 +35,7 @@ namespace Sundew.Quantities.Representations.Flat
         /// <returns>An <see cref="Expression"/>.</returns>
         public Expression GetResultingExpression(UnitExpression unitExpression, bool reduceByBaseUnit)
         {
+            Contract.Requires(unitExpression != null);
             var unitNotation = reduceByBaseUnit ? unitExpression.Unit.BaseUnit.Notation : unitExpression.Unit.Notation;
             return this.GetResultingExpression(unitNotation);
         }
@@ -45,6 +47,7 @@ namespace Sundew.Quantities.Representations.Flat
         /// <returns>An <see cref="Expression"/>.</returns>
         public Expression GetResultingExpression(ConstantExpression constantExpression)
         {
+            Contract.Requires(constantExpression != null);
             return this.GetResultingExpression(FlatRepresentationBuilder.Constant);
         }
 
@@ -55,6 +58,7 @@ namespace Sundew.Quantities.Representations.Flat
         /// <returns>An <see cref="Expression"/>.</returns>
         public Expression GetResultingExpression(VariableExpression variableExpression)
         {
+            Contract.Requires(variableExpression != null);
             return this.GetResultingExpression(variableExpression.VariableName);
         }
 

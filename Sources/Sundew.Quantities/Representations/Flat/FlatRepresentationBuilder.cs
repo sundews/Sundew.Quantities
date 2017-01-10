@@ -9,6 +9,7 @@ namespace Sundew.Quantities.Representations.Flat
 {
     using System;
     using System.Collections.Generic;
+    using System.Diagnostics.Contracts;
     using Sundew.Quantities.Representations.Expressions;
 
     /// <summary>
@@ -49,6 +50,8 @@ namespace Sundew.Quantities.Representations.Flat
         /// <param name="exponent">The exponent.</param>
         public void Add(UnitExpression unitExpression, bool reduceUsingBaseUnits, double exponent)
         {
+            Contract.Requires(unitExpression != null);
+
             var unit = unitExpression.Unit;
             var unitNotation = unit.Notation;
             if (reduceUsingBaseUnits)
@@ -76,6 +79,8 @@ namespace Sundew.Quantities.Representations.Flat
         /// <param name="exponent">The exponent.</param>
         public void Add(ConstantExpression constantExpression, double exponent)
         {
+            Contract.Requires(constantExpression != null);
+
             var additionalConstant = Math.Pow(constantExpression.Constant, exponent);
             if (this.constantFlatIdentifierRepresentation == null)
             {
@@ -97,6 +102,8 @@ namespace Sundew.Quantities.Representations.Flat
         /// <param name="exponent">The exponent.</param>
         public void Add(VariableExpression variableExpression, double exponent)
         {
+            Contract.Requires(variableExpression != null);
+
             if (this.variableFlatIdentifierRepresentations == null)
             {
                 this.variableFlatIdentifierRepresentations =

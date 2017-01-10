@@ -1,29 +1,31 @@
-﻿// // --------------------------------------------------------------------------------------------------------------------
-// // <copyright file="ExpressionToMathMLVisitor.cs" company="Hukano">
-// //   2016 (c) Hukano. All Rights Reserved. Licensed under the MIT License. See License.txt in the project root for license information.
-// // </copyright>
-// // --------------------------------------------------------------------------------------------------------------------
-
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="ExpressionToMathMLVisitor.cs" company="Hukano">
+// Copyright (c) Hukano. All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
+// </copyright>
+// --------------------------------------------------------------------------------------------------------------------
 namespace Sundew.Quantities.Formatters.MathML
 {
     using System.Xml.Linq;
     using Sundew.Quantities.Representations.Expressions;
 
+#pragma warning disable SA1124 // Do not use regions
     #region UsageMathML
+#pragma warning restore SA1124 // Do not use regions
 
     /// <summary>
     /// Implements an <see cref="IExpressionVisitor{TParameter1,TParameter2,TResult}"/> for converting <see cref="Expression"/>s to MathML.
     /// </summary>
     public class ExpressionToMathMLVisitor : IExpressionVisitor<MultiplicationSign, XElement, XElement>
     {
-        private const string LeftParenthesis = "(";
-
-        private const string RightParenthesis = ")";
-
         /// <summary>
         /// The default math ml visitor
         /// </summary>
         public static readonly ExpressionToMathMLVisitor DefaultMathMLVisitor = new ExpressionToMathMLVisitor();
+
+        private const string LeftParenthesis = "(";
+
+        private const string RightParenthesis = ")";
 
         /// <summary>
         /// Visits the specified expression.

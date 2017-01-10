@@ -21,7 +21,7 @@ namespace Sundew.Quantities.Core.Operations
         /// <param name="lhs">The LHS unit.</param>
         /// <param name="rhs">The RHS unit.</param>
         /// <param name="reduceByBaseUnits">If set to <c>true</c> reduction will be done with base units.</param>
-        /// <returns>A new <see cref="TResult"/>.</returns>
+        /// <returns>A new result.</returns>
         TResult Execute(IUnit lhs, IUnit rhs, bool reduceByBaseUnits);
     }
 }

@@ -31,7 +31,7 @@ namespace Sundew.Quantities.Parsing.LexicalAnalysis
         }
 
         /// <summary>
-        /// Gets or sets the current.
+        /// Gets the current.
         /// </summary>
         /// <value>
         /// The current.
@@ -123,7 +123,9 @@ namespace Sundew.Quantities.Parsing.LexicalAnalysis
         /// <param name="possibleTokens">The possible tokens.</param>
         /// <param name="ignoreWhiteSpace">if set to <c>true</c> white space will be ignored.</param>
         /// <param name="result">The result.</param>
-        /// <returns></returns>
+        /// <returns>
+        ///   <c>true</c> if the token was accepted, otherwise <c>false</c>.
+        /// </returns>
         public bool AcceptTokenFrom<TResult>(
             ILexemeRegistry<TResult> possibleTokens,
             bool ignoreWhiteSpace,

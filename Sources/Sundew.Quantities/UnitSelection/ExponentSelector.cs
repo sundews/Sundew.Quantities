@@ -55,16 +55,6 @@ namespace Sundew.Quantities.UnitSelection
         public TPrefixesAndUnits Quintic => this.GetPrefixesAndUnits(5);
 
         /// <summary>
-        /// Wraps the specified <see cref="Expression"/> in a <see cref="ParenthesisExpression"/>.
-        /// </summary>
-        /// <param name="expression">The expression.</param>
-        /// <returns>A new <see cref="ParenthesisExpression"/>.</returns>
-        public ParenthesisExpression P(Expression expression)
-        {
-            return new ParenthesisExpression(expression);
-        }
-
-        /// <summary>
         /// Specifies the exponent.
         /// </summary>
         /// <param name="exponent">The exponent.</param>
@@ -112,7 +102,7 @@ namespace Sundew.Quantities.UnitSelection
         /// <summary>
         /// Gets the prefixes and unit selector.
         /// </summary>
-        /// <returns>A <see cref="TPrefixesAndUnits"/>.</returns>
+        /// <returns>The available prefixes and units.</returns>
         protected abstract TPrefixesAndUnits GetPrefixesAndUnits();
 
         /// <summary>
@@ -120,7 +110,7 @@ namespace Sundew.Quantities.UnitSelection
         /// </summary>
         /// <param name="exponent">The exponent.</param>
         /// <returns>
-        /// A <see cref="TPrefixesAndUnits" />.
+        /// The available prefixes and units.
         /// </returns>
         private TPrefixesAndUnits GetPrefixesAndUnits(int exponent)
         {

@@ -1,0 +1,45 @@
+﻿{
+  "Name": "Mass",
+  "Units": [
+    {
+      "Identifier": "KiloGrams",
+      "Unit": "KiloGram",
+      "Name": "kilo gram"
+    },
+    { "Identifier": "Grams" },
+    { "Identifier": "Tonnes" },
+    {
+      "Identifier": "ChineseMetricOunces",
+      "Unit": "ChineseMetricOunce",
+      "Name": "chinese metric ounce"
+    },
+    {
+      "Identifier": "DutchMetricOunces",
+      "Unit": "DutchMetricOunce",
+      "Name": "dutch metric ounce"
+    },
+    {
+      "Identifier": "InternationalAvoirdupoisOunces",
+      "Unit": "InternationalAvoirdupoisOunce",
+      "Name": "international avoirdupois ounce"
+    },
+    {
+      "Identifier": "InternationalTroyOunces",
+      "Unit": "InternationalTroyOunce",
+      "Name": "international troy ounce"
+    },
+    {
+      "Identifier": "MariaTheresaOunces",
+      "Unit": "MariaTheresaOunce",
+      "Name": "maria theresa ounce"
+    },
+    { "Identifier": "Ounces" },
+    {
+      "Identifier": "SpanishOunces",
+      "Unit": "SpanishOunce",
+      "Name": "spanish ounce"
+    }
+  ],
+  "BaseUnit": "KiloGram",
+  "DefaultUnits": [ "Gram", "Tonne", "ChineseMetricOunce", "DutchMetricOunce", "InternationalAvoirdupoisOunce", "InternationalTroyOunce", "MariaTheresaOunce", "Ounce", "SpanishOunce" ]
+}

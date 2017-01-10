@@ -1,9 +1,9 @@
-﻿// // --------------------------------------------------------------------------------------------------------------------
-// // <copyright file="FlatRepresentationConsumerTests.cs" company="Hukano">
-// //   2016 (c) Hukano. All Rights Reserved. Licensed under the MIT License. See License.txt in the project root for license information.
-// // </copyright>
-// // --------------------------------------------------------------------------------------------------------------------
-
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="FlatRepresentationConsumerTests.cs" company="Hukano">
+// Copyright (c) Hukano. All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
+// </copyright>
+// --------------------------------------------------------------------------------------------------------------------
 namespace Sundew.Quantities.UnitTests.Representations.Flat
 {
     using FluentAssertions;
@@ -67,9 +67,7 @@ namespace Sundew.Quantities.UnitTests.Representations.Flat
         }
 
         [Fact]
-        public void
-            GetResultingExpression_When_UnitReducedByBaseUnitAndBaseUnitIsAddedFirst_Then_ResultShouldBeBaseUnitExpression
-            ()
+        public void GetResultingExpression_When_UnitReducedByBaseUnitAndBaseUnitIsAddedFirst_Then_ResultShouldBeBaseUnitExpression()
         {
             var flatRepresentation = FlatUnit.CreateFlatRepresentation(new FlatUnit("s"));
             var testee = flatRepresentation.GetConsumer();
@@ -83,9 +81,7 @@ namespace Sundew.Quantities.UnitTests.Representations.Flat
         }
 
         [Fact]
-        public void
-            GetResultingExpression_When_UnitReducedByBaseUnitAndDerivedUnitIsAddedFirst_Then_ResultShouldBeBaseUnitExpression
-            ()
+        public void GetResultingExpression_When_UnitReducedByBaseUnitAndDerivedUnitIsAddedFirst_Then_ResultShouldBeBaseUnitExpression()
         {
             var flatRepresentation = FlatUnit.CreateFlatRepresentation(new FlatUnit("min", "s"));
             var testee = flatRepresentation.GetConsumer();

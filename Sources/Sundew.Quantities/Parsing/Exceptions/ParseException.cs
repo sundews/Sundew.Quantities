@@ -8,6 +8,7 @@
 namespace Sundew.Quantities.Parsing.Exceptions
 {
     using System;
+    using System.Diagnostics.Contracts;
 
     /// <summary>
     /// Abstract base class for various parse exceptions.
@@ -22,6 +23,7 @@ namespace Sundew.Quantities.Parsing.Exceptions
         protected ParseException(IError error)
             : base(error.GetMessage())
         {
+            Contract.Requires(error != null);
         }
     }
 }

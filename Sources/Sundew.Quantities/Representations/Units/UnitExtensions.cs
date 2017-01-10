@@ -7,6 +7,7 @@
 
 namespace Sundew.Quantities.Representations.Units
 {
+    using System.Diagnostics.Contracts;
     using Sundew.Quantities.Representations.Expressions;
 
     /// <summary>
@@ -22,6 +23,7 @@ namespace Sundew.Quantities.Representations.Units
         /// <returns>A new <see cref="Expression"/>.</returns>
         public static Expression Exp(this IUnit lhs, double exponent)
         {
+            Contract.Requires(lhs != null);
             return new MagnitudeExpression(lhs.GetExpression(), new ConstantExpression(exponent));
         }
     }

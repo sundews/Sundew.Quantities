@@ -1,0 +1,6 @@
+﻿{
+  "Name": "Energy",
+  "Units": [ { "Identifier": "Joules" } ],
+  "BaseUnit": "Joule",
+  "DefaultUnits": [ "Joule" ]
+}

@@ -6,7 +6,7 @@
 // --------------------------------------------------------------------------------------------------------------------
 namespace Sundew.Quantities.Representations.Internals
 {
-    internal class Constants
+    internal static class Constants
     {
         public const string ValueAndUnitFormat = Arg0 + " " + Arg1;
 

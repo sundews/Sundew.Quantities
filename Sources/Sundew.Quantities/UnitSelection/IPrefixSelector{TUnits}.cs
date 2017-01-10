@@ -176,7 +176,7 @@ namespace Sundew.Quantities.UnitSelection
         /// Specifies a custom prefix.
         /// </summary>
         /// <param name="prefix">The prefix.</param>
-        /// <returns>The available <see cref="TUnits"/>.</returns>
+        /// <returns>The available units.</returns>
         TUnits By(double prefix);
     }
 }

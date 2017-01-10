@@ -1,9 +1,9 @@
-﻿// // --------------------------------------------------------------------------------------------------------------------
-// // <copyright file="QuantityHelperTests.cs" company="Hukano">
-// //   2016 (c) Hukano. All Rights Reserved. Licensed under the MIT License. See License.txt in the project root for license information.
-// // </copyright>
-// // --------------------------------------------------------------------------------------------------------------------
-
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="QuantityHelperTests.cs" company="Hukano">
+// Copyright (c) Hukano. All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
+// </copyright>
+// --------------------------------------------------------------------------------------------------------------------
 namespace Sundew.Quantities.UnitTests.Core
 {
     using System.Linq;
@@ -46,9 +46,7 @@ namespace Sundew.Quantities.UnitTests.Core
             var testee1 = new Quantity(lhs, UnitDefinitions.Velocity);
             var testee2 = new Quantity(
                 rhs,
-                new DerivedUnit(
-                    string.Empty,
-                    new UnitExpression(UnitDefinitions.Meter.GetPrefixedUnit(Prefixes.Kilo)) / UnitDefinitions.Hour.GetExpression()));
+                new DerivedUnit(string.Empty, new UnitExpression(UnitDefinitions.Meter.GetPrefixedUnit(Prefixes.Kilo)) / UnitDefinitions.Hour.GetExpression()));
 
             var result = QuantityHelper.AreEqual(testee1, testee2);
 

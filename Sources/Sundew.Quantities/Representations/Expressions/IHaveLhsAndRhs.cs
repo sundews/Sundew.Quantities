@@ -16,7 +16,7 @@ namespace Sundew.Quantities.Representations.Expressions
         /// Gets the LHS.
         /// </summary>
         /// <value>
-        /// The LHS  <see cref="TObject"/>.
+        /// The LHS object.
         /// </value>
         TObject Lhs { get; }
 
@@ -24,7 +24,7 @@ namespace Sundew.Quantities.Representations.Expressions
         /// Gets the RHS.
         /// </summary>
         /// <value>
-        /// The RHS  <see cref="TObject"/>.
+        /// The RHS object.
         /// </value>
         TObject Rhs { get; }
     }

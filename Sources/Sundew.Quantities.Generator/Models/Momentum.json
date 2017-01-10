@@ -1,0 +1,12 @@
+﻿{
+  "Name": "Momentum",
+  "Units": [
+    {
+      "Identifier": "Momentum",
+      "Unit": "Momentum",
+      "Name": "momentum"
+    }
+  ],
+  "BaseUnit": "Momentum",
+  "DefaultUnits": [ "Momentum" ]
+}

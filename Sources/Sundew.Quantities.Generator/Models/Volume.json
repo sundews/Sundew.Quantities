@@ -1,0 +1,27 @@
+﻿{
+  "Name": "Volume",
+  "Units": [
+    { "Identifier": "Liters" },
+    { "Identifier": "Meters" },
+    { "Identifier": "Miles" },
+    {
+      "Identifier": "Feet",
+      "Unit": "Foot",
+      "Name": "feet"
+    },
+    {
+      "Identifier": "Inches",
+      "Unit": "Inch",
+      "Name": "inches"
+    },
+    {
+      "Identifier": "NauticalMiles",
+      "Unit": "NauticalMile",
+      "Name": "nautical miles"
+    },
+    { "Identifier": "Yards" }
+  ],
+  "BaseUnit": "Liter",
+  "DefaultUnits": [ "Liter", "Meter", "Mile", "NauticalMile", "Foot", "Inch", "Yard" ]
+}
+

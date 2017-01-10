@@ -13,6 +13,8 @@ namespace Sundew.Quantities.Parsing.Errors
     /// <summary>
     /// Represents a parser error.
     /// </summary>
+    /// <typeparam name="TErrorInfo">The type of the error information.</typeparam>
+    /// <seealso cref="Sundew.Quantities.Parsing.IError" />
     public class Error<TErrorInfo> : IError
     {
         /// <summary>
@@ -45,7 +47,7 @@ namespace Sundew.Quantities.Parsing.Errors
         public IError InnerError { get; }
 
         /// <summary>
-        /// Gets or sets a value indicating whether this instance has inner error.
+        /// Gets a value indicating whether this instance has inner error.
         /// </summary>
         /// <value>
         ///   <c>true</c> if this instance has inner error; otherwise, <c>false</c>.

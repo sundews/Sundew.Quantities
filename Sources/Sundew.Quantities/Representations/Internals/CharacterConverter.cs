@@ -11,7 +11,7 @@ namespace Sundew.Quantities.Representations.Internals
     using System.Collections.Generic;
     using System.Text;
 
-    internal class CharacterConverter
+    internal static class CharacterConverter
     {
         private static readonly IDictionary<char, char> CharacterToAboveCharacter = new Dictionary<char, char>();
 
@@ -19,37 +19,21 @@ namespace Sundew.Quantities.Representations.Internals
 
         static CharacterConverter()
         {
-            CharacterToAboveCharacter.Add('0', Constants.Exponent0);
-            CharacterToAboveCharacter.Add('1', Constants.Exponent1);
-            CharacterToAboveCharacter.Add('2', Constants.Exponent2);
-            CharacterToAboveCharacter.Add('3', Constants.Exponent3);
-            CharacterToAboveCharacter.Add('4', Constants.Exponent4);
-            CharacterToAboveCharacter.Add('5', Constants.Exponent5);
-            CharacterToAboveCharacter.Add('6', Constants.Exponent6);
-            CharacterToAboveCharacter.Add('7', Constants.Exponent7);
-            CharacterToAboveCharacter.Add('8', Constants.Exponent8);
-            CharacterToAboveCharacter.Add('9', Constants.Exponent9);
-            CharacterToAboveCharacter.Add('.', Constants.DotAbove);
-            CharacterToAboveCharacter.Add(',', Constants.CommaAbove);
-            CharacterToAboveCharacter.Add('-', Constants.SuperScriptMinus);
-            CharacterToAboveCharacter.Add('(', Constants.LeftParentheseAbove);
-            CharacterToAboveCharacter.Add(')', Constants.RightParentheseAbove);
-
-            AboveCharacterToCharacter.Add(Constants.Exponent0, '0');
-            AboveCharacterToCharacter.Add(Constants.Exponent1, '1');
-            AboveCharacterToCharacter.Add(Constants.Exponent2, '2');
-            AboveCharacterToCharacter.Add(Constants.Exponent3, '3');
-            AboveCharacterToCharacter.Add(Constants.Exponent4, '4');
-            AboveCharacterToCharacter.Add(Constants.Exponent5, '5');
-            AboveCharacterToCharacter.Add(Constants.Exponent6, '6');
-            AboveCharacterToCharacter.Add(Constants.Exponent7, '7');
-            AboveCharacterToCharacter.Add(Constants.Exponent8, '8');
-            AboveCharacterToCharacter.Add(Constants.Exponent9, '9');
-            AboveCharacterToCharacter.Add(Constants.DotAbove, '.');
-            AboveCharacterToCharacter.Add(Constants.CommaAbove, ',');
-            AboveCharacterToCharacter.Add(Constants.SuperScriptMinus, '-');
-            AboveCharacterToCharacter.Add(Constants.LeftParentheseAbove, '(');
-            AboveCharacterToCharacter.Add(Constants.RightParentheseAbove, ')');
+            Add('0', Constants.Exponent0);
+            Add('1', Constants.Exponent1);
+            Add('2', Constants.Exponent2);
+            Add('3', Constants.Exponent3);
+            Add('4', Constants.Exponent4);
+            Add('5', Constants.Exponent5);
+            Add('6', Constants.Exponent6);
+            Add('7', Constants.Exponent7);
+            Add('8', Constants.Exponent8);
+            Add('9', Constants.Exponent9);
+            Add('.', Constants.DotAbove);
+            Add(',', Constants.CommaAbove);
+            Add('-', Constants.SuperScriptMinus);
+            Add('(', Constants.LeftParentheseAbove);
+            Add(')', Constants.RightParentheseAbove);
         }
 
         internal static string FromExponentNotation(string exponent)
@@ -81,6 +65,12 @@ namespace Sundew.Quantities.Representations.Internals
             }
 
             return exponentNotation.ToString();
+        }
+
+        private static void Add(char normalCharacter, char raisedCharacter)
+        {
+            CharacterToAboveCharacter.Add(normalCharacter, raisedCharacter);
+            AboveCharacterToCharacter.Add(raisedCharacter, normalCharacter);
         }
     }
 }

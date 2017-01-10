@@ -1,0 +1,6 @@
+﻿{
+  "Name": "LuminousFlux",
+  "Units": [ { "Identifier": "Lumens" } ],
+  "BaseUnit": "Lumen",
+  "DefaultUnits": [ "Lumen" ]
+}

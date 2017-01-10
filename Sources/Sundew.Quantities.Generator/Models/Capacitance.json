@@ -1,0 +1,6 @@
+﻿{
+  "Name": "Capacitance",
+  "Units": [ { "Identifier": "Farads" } ],
+  "BaseUnit": "Farad",
+  "DefaultUnits": [ "Farad" ]
+}

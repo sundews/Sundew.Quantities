@@ -15,14 +15,14 @@ namespace Sundew.Quantities.Core
     public interface IUnitConvertible<out TQuantity, out TUnitSelector> : IUnitConvertible<TQuantity>
     {
         /// <summary>
-        /// Converts this object to a <see cref="TQuantity"/> using the unit specified by the <see cref="TUnitSelector"/>.
+        /// Converts this object to a quantity using the unit specified by the unit selector"/>.
         /// </summary>
         /// <param name="unitSelector">The unit selector.</param>
-        /// <returns>The converted <see cref="TQuantity"/>.</returns>
+        /// <returns>The converted quantity.</returns>
         TQuantity ToUnit(SelectUnit<TUnitSelector> unitSelector);
 
         /// <summary>
-        /// Converts this object to a <see cref="double"/> using the unit specified by the <see cref="TUnitSelector"/>.
+        /// Converts this object to a <see cref="double"/> using the unit specified by the unit selector/>.
         /// </summary>
         /// <param name="unitSelector">The unit selector.</param>
         /// <returns>The converted <see cref="double"/>.</returns>

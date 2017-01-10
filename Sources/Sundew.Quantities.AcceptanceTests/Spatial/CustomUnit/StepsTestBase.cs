@@ -1,9 +1,9 @@
-﻿// // --------------------------------------------------------------------------------------------------------------------
-// // <copyright file="StepsTestBase.cs" company="Hukano">
-// //   2016 (c) Hukano. All Rights Reserved. Licensed under the MIT License. See License.txt in the project root for license information.
-// // </copyright>
-// // --------------------------------------------------------------------------------------------------------------------
-
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="StepsTestBase.cs" company="Hukano">
+// Copyright (c) Hukano. All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
+// </copyright>
+// --------------------------------------------------------------------------------------------------------------------
 namespace Sundew.Quantities.AcceptanceTests.Spatial.CustomUnit
 {
     using System;
@@ -12,7 +12,7 @@ namespace Sundew.Quantities.AcceptanceTests.Spatial.CustomUnit
 
     public abstract class StepsTestBase : IDisposable
     {
-        protected readonly FactoredUnit StepsUnit = new FactoredUnit(
+        private readonly FactoredUnit stepsUnit = new FactoredUnit(
             (1 / 53.4323198) / 1000,
             "steps",
             UnitDefinitions.Meter);
@@ -21,6 +21,8 @@ namespace Sundew.Quantities.AcceptanceTests.Spatial.CustomUnit
         {
             UnitSystem.InitializeWithDefaults(unitRegistry => unitRegistry.Register(this.StepsUnit));
         }
+
+        protected FactoredUnit StepsUnit => this.stepsUnit;
 
         public void Dispose()
         {

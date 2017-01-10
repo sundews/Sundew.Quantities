@@ -1,0 +1,6 @@
+﻿{
+  "Name": "Resistance",
+  "Units": [ { "Identifier": "Ohms" } ],
+  "BaseUnit": "Ohm",
+  "DefaultUnits": [ "Ohm" ]
+}

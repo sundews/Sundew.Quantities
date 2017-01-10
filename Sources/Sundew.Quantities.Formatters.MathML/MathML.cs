@@ -1,9 +1,9 @@
-﻿// // --------------------------------------------------------------------------------------------------------------------
-// // <copyright file="MathML.cs" company="Hukano">
-// //   2016 (c) Hukano. All Rights Reserved. Licensed under the MIT License. See License.txt in the project root for license information.
-// // </copyright>
-// // --------------------------------------------------------------------------------------------------------------------
-
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="MathML.cs" company="Hukano">
+// Copyright (c) Hukano. All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
+// </copyright>
+// --------------------------------------------------------------------------------------------------------------------
 namespace Sundew.Quantities.Formatters.MathML
 {
     using System.Xml.Linq;
@@ -91,17 +91,23 @@ namespace Sundew.Quantities.Formatters.MathML
         /// <summary>
         /// The mfenced xname.
         /// </summary>
-        public static XName Mfenced = Namespace + "mfenced";
+        public static readonly XName Mfenced = Namespace + "mfenced";
 
+        /// <summary>
+        /// The open left bracket.
+        /// </summary>
         public static readonly XAttribute OpenLeftBracket = new XAttribute("open", "[");
 
+        /// <summary>
+        /// The close right brack.
+        /// </summary>
         public static readonly XAttribute CloseRightBrack = new XAttribute("close", "]");
 
         /// <summary>
         /// Gets the multiplication sign as a string.
         /// </summary>
         /// <param name="multiplicationSign">The multiplication sign.</param>
-        /// <returns>The multiplication sign.</returns>
+        /// <returns>The multiplication sign as a string.</returns>
         public static string GetMultiplicationSign(MultiplicationSign multiplicationSign)
         {
             switch (multiplicationSign)

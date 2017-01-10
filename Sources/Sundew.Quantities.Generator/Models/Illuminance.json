@@ -1,0 +1,12 @@
+﻿{
+  "Name": "Illuminance",
+  "Units": [
+    {
+      "Identifier": "Lux",
+      "Unit": "Lux",
+      "Name": "lux"
+    }
+  ],
+  "BaseUnit": "Lux",
+  "DefaultUnits": [ "Lux" ]
+}

@@ -1,9 +1,9 @@
-﻿// // --------------------------------------------------------------------------------------------------------------------
-// // <copyright file="FlatRepresentationBuilderTests.cs" company="Hukano">
-// //   2016 (c) Hukano. All Rights Reserved. Licensed under the MIT License. See License.txt in the project root for license information.
-// // </copyright>
-// // --------------------------------------------------------------------------------------------------------------------
-
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="FlatRepresentationBuilderTests.cs" company="Hukano">
+// Copyright (c) Hukano. All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
+// </copyright>
+// --------------------------------------------------------------------------------------------------------------------
 namespace Sundew.Quantities.UnitTests.Representations.Flat
 {
     using System.Collections.Generic;
@@ -15,15 +15,15 @@ namespace Sundew.Quantities.UnitTests.Representations.Flat
 
     public class FlatRepresentationBuilderTests
     {
+        private readonly FlatRepresentationBuilder testee;
+
+        private readonly Dictionary<string, UnitFlatIdentifierRepresentation> unitFlatIdentifierRepresentations;
+
         public FlatRepresentationBuilderTests()
         {
             this.unitFlatIdentifierRepresentations = new Dictionary<string, UnitFlatIdentifierRepresentation>();
             this.testee = new FlatRepresentationBuilder(this.unitFlatIdentifierRepresentations);
         }
-
-        private readonly FlatRepresentationBuilder testee;
-
-        private readonly Dictionary<string, UnitFlatIdentifierRepresentation> unitFlatIdentifierRepresentations;
 
         [Theory]
         [InlineData("s", 1)]

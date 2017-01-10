@@ -1,0 +1,6 @@
+﻿{
+  "Name": "Potential",
+  "Units": [ { "Identifier": "Volts" } ],
+  "BaseUnit": "Volt",
+  "DefaultUnits": [ "Volt" ]
+}

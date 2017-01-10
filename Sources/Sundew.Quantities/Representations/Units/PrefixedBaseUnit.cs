@@ -8,6 +8,7 @@
 namespace Sundew.Quantities.Representations.Units
 {
     using System;
+    using System.Diagnostics.Contracts;
     using Sundew.Quantities.Representations.Expressions;
 
     /// <summary>
@@ -72,6 +73,7 @@ namespace Sundew.Quantities.Representations.Units
         /// <returns>An <see cref="Expression"/>.</returns>
         public static implicit operator Expression(PrefixedBaseUnit unit)
         {
+            Contract.Requires(unit != null);
             return unit.GetExpression();
         }
 
@@ -83,6 +85,8 @@ namespace Sundew.Quantities.Representations.Units
         /// <returns>A <see cref="DerivedUnit"/>.</returns>
         public static Expression operator *(PrefixedBaseUnit lhs, IUnit rhs)
         {
+            Contract.Requires(lhs != null);
+            Contract.Requires(rhs != null);
             return lhs.GetExpression() * rhs.GetExpression();
         }
 
@@ -94,6 +98,8 @@ namespace Sundew.Quantities.Representations.Units
         /// <returns>A <see cref="DerivedUnit"/>.</returns>
         public static Expression operator /(PrefixedBaseUnit lhs, IUnit rhs)
         {
+            Contract.Requires(lhs != null);
+            Contract.Requires(rhs != null);
             return lhs.GetExpression() / rhs.GetExpression();
         }
 

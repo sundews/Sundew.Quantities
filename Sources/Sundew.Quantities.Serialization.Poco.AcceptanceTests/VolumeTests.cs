@@ -1,9 +1,9 @@
-﻿// // --------------------------------------------------------------------------------------------------------------------
-// // <copyright file="VolumeTests.cs" company="Hukano">
-// //   2016 (c) Hukano. All Rights Reserved. Licensed under the MIT License. See License.txt in the project root for license information.
-// // </copyright>
-// // --------------------------------------------------------------------------------------------------------------------
-
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="VolumeTests.cs" company="Hukano">
+// Copyright (c) Hukano. All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
+// </copyright>
+// --------------------------------------------------------------------------------------------------------------------
 namespace Sundew.Quantities.Serialization.Poco.AcceptanceTests
 {
     using FluentAssertions;
@@ -12,11 +12,6 @@ namespace Sundew.Quantities.Serialization.Poco.AcceptanceTests
 
     public class VolumeTests
     {
-        public class ConfigurationContainer
-        {
-            public Volume Volume { get; set; }
-        }
-
         [Fact]
         public void DeserializeObject_When_QuantityIsNested_Then_ResultShouldShouldBeExpected()
         {
@@ -59,6 +54,11 @@ namespace Sundew.Quantities.Serialization.Poco.AcceptanceTests
             var result = JsonConvert.SerializeObject(testee);
 
             result.Should().Be(Expected);
+        }
+
+        public class ConfigurationContainer
+        {
+            public Volume Volume { get; set; }
         }
     }
 }

@@ -1,9 +1,9 @@
-﻿// // --------------------------------------------------------------------------------------------------------------------
-// // <copyright file="ExpressionToMathMLVisitorTests.cs" company="Hukano">
-// //   2016 (c) Hukano. All Rights Reserved. Licensed under the MIT License. See License.txt in the project root for license information.
-// // </copyright>
-// // --------------------------------------------------------------------------------------------------------------------
-
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="ExpressionToMathMLVisitorTests.cs" company="Hukano">
+// Copyright (c) Hukano. All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
+// </copyright>
+// --------------------------------------------------------------------------------------------------------------------
 namespace Sundew.Quantities.Formatters.MathML.UnitTests
 {
     using FluentAssertions;
@@ -12,12 +12,12 @@ namespace Sundew.Quantities.Formatters.MathML.UnitTests
 
     public class ExpressionToMathMLVisitorTests
     {
+        private readonly ExpressionToMathMLVisitor testee;
+
         public ExpressionToMathMLVisitorTests()
         {
             this.testee = new ExpressionToMathMLVisitor();
         }
-
-        private readonly ExpressionToMathMLVisitor testee;
 
         [Fact]
         public void Visit_When_QuantityIsAcceleration_Then_ResultTextShouldBeExpectedResult()

@@ -1,0 +1,14 @@
+﻿{
+  "Name": "Time",
+  "Units": [
+    { "Identifier": "Seconds" },
+    { "Identifier": "Years" },
+    { "Identifier": "Months" },
+    { "Identifier": "Weeks" },
+    { "Identifier": "Days" },
+    { "Identifier": "Minutes" },
+    { "Identifier": "Hours" }
+  ],
+  "BaseUnit": "Second",
+  "DefaultUnits": [ "Second", "Year", "Month", "Week", "Day", "Minute", "Hour" ]
+}

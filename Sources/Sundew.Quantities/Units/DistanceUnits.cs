@@ -23,16 +23,6 @@ namespace Sundew.Quantities.Units
         /// </value>
         public IUnit BaseUnit => this.Meters;
 
-        /*   public IEnumerable<IUnit> GetDefaultUnits()
-        {
-            yield return UnitDefinitions.Meter;
-            yield return UnitDefinitions.Mile;
-            yield return UnitDefinitions.NauticalMile;
-            yield return UnitDefinitions.Foot;
-            yield return UnitDefinitions.Inch;
-            yield return UnitDefinitions.Yard;
-        }*/
-
         /// <summary>
         /// Gets the meter.
         /// </summary>

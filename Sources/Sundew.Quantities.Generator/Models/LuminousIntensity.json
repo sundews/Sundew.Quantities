@@ -1,0 +1,6 @@
+﻿{
+  "Name": "LuminousIntensity",
+  "Units": [ { "Identifier": "Candelas" } ],
+  "BaseUnit": "Candela",
+  "DefaultUnits": [ "Candela" ]
+}

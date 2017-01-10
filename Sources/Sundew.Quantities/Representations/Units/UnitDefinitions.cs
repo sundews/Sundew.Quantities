@@ -38,7 +38,7 @@ namespace Sundew.Quantities.Representations.Units
         public static readonly Unit Candela = new Unit("cd");
 
         /// <summary>The kilogram unit.</summary>
-        public static readonly PrefixedBaseUnit KiloGram = new PrefixedBaseUnit(Prefixes.Kilo, "g");
+        public static readonly PrefixedBaseUnit KiloGram = new PrefixedBaseUnit(Representations.Units.Prefixes.Kilo, "g");
 
         /// <summary>The readian unit.</summary>
         public static readonly Unit Radian = new RadianUnit("rad");
@@ -231,57 +231,107 @@ namespace Sundew.Quantities.Representations.Units
         /// <summary>The lux unit.</summary>
         public static readonly DerivedUnit Lux = new DerivedUnit("lx", Lumen / Meter.Exp(2));
 
+        private static readonly IUnit[] Units =
+        {
+            Meter, Mile,
+            NauticalMile,
+            Inch,
+            Foot,
+            Yard,
+            Liter,
+
+            Second,
+            Minute,
+            Hour,
+            Day,
+            Week,
+            Month,
+            Year,
+
+            Kelvin,
+            Fahrenheit,
+            Celsius,
+
+            Gram,
+            Tonne,
+            ChineseMetricOunce,
+            DutchMetricOunce,
+            InternationalAvoirdupoisOunce,
+            InternationalTroyOunce,
+            MariaTheresaOunce,
+            Ounce,
+            SpanishOunce,
+
+            Bar,
+            TechnicalAtmosphere,
+            StandardAtmosphere,
+            Torr,
+            Psi,
+
+            Ampere,
+
+            Candela,
+
+            Radian,
+            Degree,
+            Turn,
+
+            Steradian
+        };
+
+        private static readonly DerivedUnit[] DerivedUnits =
+        {
+            Lux,
+            Lumen,
+
+            Hertz,
+
+            Joule,
+            Newton,
+            Pascal,
+            Watt,
+
+            Volt,
+            Coulomb,
+            Farad,
+            Henry,
+            Ohm,
+            Siemens,
+            Tesla,
+            Weber
+        };
+
+        private static readonly Prefix[] Prefixes =
+        {
+            Representations.Units.Prefixes.Yotta,
+            Representations.Units.Prefixes.Zetta,
+            Representations.Units.Prefixes.Exa,
+            Representations.Units.Prefixes.Peta,
+            Representations.Units.Prefixes.Tera,
+            Representations.Units.Prefixes.Giga,
+            Representations.Units.Prefixes.Mega,
+            Representations.Units.Prefixes.Kilo,
+            Representations.Units.Prefixes.Hecto,
+            Representations.Units.Prefixes.Deca,
+            Representations.Units.Prefixes.Deci,
+            Representations.Units.Prefixes.Centi,
+            Representations.Units.Prefixes.Milli,
+            Representations.Units.Prefixes.Micro,
+            Representations.Units.Prefixes.Nano,
+            Representations.Units.Prefixes.Pico,
+            Representations.Units.Prefixes.Femto,
+            Representations.Units.Prefixes.Atto,
+            Representations.Units.Prefixes.Zepto,
+            Representations.Units.Prefixes.Yocto
+        };
+
         /// <summary>
         /// Gets the default units.
         /// </summary>
         /// <returns>An <see cref="IEnumerable{IUnit}"/>.</returns>
         public static IEnumerable<IUnit> GetDefaultUnits()
         {
-            yield return Meter;
-            yield return Mile;
-            yield return NauticalMile;
-            yield return Inch;
-            yield return Foot;
-            yield return Yard;
-            yield return Liter;
-
-            yield return Second;
-            yield return Minute;
-            yield return Hour;
-            yield return Day;
-            yield return Week;
-            yield return Month;
-            yield return Year;
-
-            yield return Kelvin;
-            yield return Fahrenheit;
-            yield return Celsius;
-
-            yield return Gram;
-            yield return Tonne;
-            yield return ChineseMetricOunce;
-            yield return DutchMetricOunce;
-            yield return InternationalAvoirdupoisOunce;
-            yield return InternationalTroyOunce;
-            yield return MariaTheresaOunce;
-            yield return Ounce;
-            yield return SpanishOunce;
-
-            yield return Bar;
-            yield return TechnicalAtmosphere;
-            yield return StandardAtmosphere;
-            yield return Torr;
-            yield return Psi;
-
-            yield return Ampere;
-
-            yield return Candela;
-
-            yield return Radian;
-            yield return Degree;
-            yield return Turn;
-
-            yield return Steradian;
+            return Units;
         }
 
         /// <summary>
@@ -290,24 +340,7 @@ namespace Sundew.Quantities.Representations.Units
         /// <returns>An <see cref="IEnumerable{IUnit}"/>.</returns>
         public static IEnumerable<DerivedUnit> GetDefaultDerivedUnit()
         {
-            yield return Lux;
-            yield return Lumen;
-
-            yield return Hertz;
-
-            yield return Joule;
-            yield return Newton;
-            yield return Pascal;
-            yield return Watt;
-
-            yield return Volt;
-            yield return Coulomb;
-            yield return Farad;
-            yield return Henry;
-            yield return Ohm;
-            yield return Siemens;
-            yield return Tesla;
-            yield return Weber;
+            return DerivedUnits;
         }
 
         /// <summary>
@@ -316,26 +349,7 @@ namespace Sundew.Quantities.Representations.Units
         /// <returns>An <see cref="IEnumerable{Prefix}"/>.</returns>
         public static IEnumerable<Prefix> GetDefaultPrefixes()
         {
-            yield return Prefixes.Yotta;
-            yield return Prefixes.Zetta;
-            yield return Prefixes.Exa;
-            yield return Prefixes.Peta;
-            yield return Prefixes.Tera;
-            yield return Prefixes.Giga;
-            yield return Prefixes.Mega;
-            yield return Prefixes.Kilo;
-            yield return Prefixes.Hecto;
-            yield return Prefixes.Deca;
-            yield return Prefixes.Deci;
-            yield return Prefixes.Centi;
-            yield return Prefixes.Milli;
-            yield return Prefixes.Micro;
-            yield return Prefixes.Nano;
-            yield return Prefixes.Pico;
-            yield return Prefixes.Femto;
-            yield return Prefixes.Atto;
-            yield return Prefixes.Zepto;
-            yield return Prefixes.Yocto;
+            return Prefixes;
         }
     }
 }

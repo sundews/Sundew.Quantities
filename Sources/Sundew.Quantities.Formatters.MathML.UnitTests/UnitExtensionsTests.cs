@@ -1,9 +1,9 @@
-﻿// // --------------------------------------------------------------------------------------------------------------------
-// // <copyright file="UnitExtensionsTests.cs" company="Hukano">
-// //   2016 (c) Hukano. All Rights Reserved. Licensed under the MIT License. See License.txt in the project root for license information.
-// // </copyright>
-// // --------------------------------------------------------------------------------------------------------------------
-
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="UnitExtensionsTests.cs" company="Hukano">
+// Copyright (c) Hukano. All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
+// </copyright>
+// --------------------------------------------------------------------------------------------------------------------
 namespace Sundew.Quantities.Formatters.MathML.UnitTests
 {
     using FluentAssertions;
@@ -25,8 +25,7 @@ namespace Sundew.Quantities.Formatters.MathML.UnitTests
   <mml:mfrac>
     <mml:mrow>
       <mml:mi mathvariant=""normal"" class=""MathML-Unit"">kg</mml:mi>
-      <mml:mo>{MathML
-                    .GetMultiplicationSign(multiplicationSign)}</mml:mo>
+      <mml:mo>{MathML.GetMultiplicationSign(multiplicationSign)}</mml:mo>
       <mml:msup>
         <mml:mi mathvariant=""normal"" class=""MathML-Unit"">m</mml:mi>
         <mml:mn>2</mml:mn>

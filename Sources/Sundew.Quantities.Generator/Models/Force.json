@@ -1,0 +1,6 @@
+﻿{
+  "Name": "Force",
+  "Units": [ { "Identifier": "Newtons" } ],
+  "BaseUnit": "Newton",
+  "DefaultUnits": [ "Newton" ]
+}

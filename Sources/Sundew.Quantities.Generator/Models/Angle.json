@@ -1,0 +1,10 @@
+﻿{
+  "Name": "Angle",
+  "Units": [
+    { "Identifier": "Radians" },
+    { "Identifier": "Degrees" },
+    { "Identifier": "Turns" }
+  ],
+  "BaseUnit": "Radian",
+  "DefaultUnits": [ "Radian", "Degree", "Turn" ]
+}

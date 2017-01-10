@@ -39,6 +39,8 @@ namespace Sundew.Quantities
         public static TQuantity Round<TQuantity>(this IQuantity<TQuantity> quantity, int digits)
         {
             Contract.Requires(quantity != null);
+            Contract.Requires(digits >= 0);
+            Contract.Requires(digits <= 15);
             return quantity.CreateQuantity(Math.Round(quantity.Value, digits), quantity.Unit);
         }
 
@@ -56,6 +58,8 @@ namespace Sundew.Quantities
             MidpointRounding midpointRounding)
         {
             Contract.Requires(quantity != null);
+            Contract.Requires(digits >= 0);
+            Contract.Requires(digits <= 15);
             return quantity.CreateQuantity(Math.Round(quantity.Value, digits, midpointRounding), quantity.Unit);
         }
 
@@ -153,6 +157,7 @@ namespace Sundew.Quantities
             where TQuantity : IQuantity
         {
             Contract.Requires(quantity != null);
+            Contract.Requires(min <= max);
             return new Interval<TQuantity>(min, max, quantity.Unit);
         }
 
@@ -194,6 +199,7 @@ namespace Sundew.Quantities
             IntervalMode intervalMode = IntervalMode.Inclusive)
             where TQuantity : IQuantity
         {
+            Contract.Requires(quantity != null);
             Contract.Requires(unitSelector != null);
             Contract.Requires<ArgumentException>(min <= max, "min must be less than max");
             var unit = UnitBuilder.BuildUnit(unitSelector(quantity.CreateUnitSelector()));
@@ -217,6 +223,7 @@ namespace Sundew.Quantities
             where TQuantity : IQuantity
         {
             Contract.Requires(interval != null);
+            Contract.Requires(quantity != null);
             return interval.Contains(quantity, intervalMode);
         }
     }

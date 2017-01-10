@@ -1,9 +1,9 @@
-﻿// // --------------------------------------------------------------------------------------------------------------------
-// // <copyright file="FlatUnit.cs" company="Hukano">
-// //   2016 (c) Hukano. All Rights Reserved. Licensed under the MIT License. See License.txt in the project root for license information.
-// // </copyright>
-// // --------------------------------------------------------------------------------------------------------------------
-
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="FlatUnit.cs" company="Hukano">
+// Copyright (c) Hukano. All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
+// </copyright>
+// --------------------------------------------------------------------------------------------------------------------
 namespace Sundew.Quantities.UnitTests.Representations.Flat
 {
     using System.Linq;
@@ -45,17 +45,17 @@ namespace Sundew.Quantities.UnitTests.Representations.Flat
 
         public string Id => this.reduceByBaseNotation ? this.baseNotation : this.notation;
 
-        public IFlatIdentifierRepresentation GetFlatIdentifierRepresentation()
-        {
-            return new UnitFlatIdentifierRepresentation(new UnitExpression(new Unit(this.notation)), this.exponent);
-        }
-
         public static FlatRepresentation CreateFlatRepresentation(params IFlatIdentifier[] flatIdentifiers)
         {
             var flatRepresentations = flatIdentifiers.ToDictionary(
                 flatUnit => flatUnit.Id,
                 flatUnit => flatUnit.GetFlatIdentifierRepresentation());
             return new FlatRepresentation(flatRepresentations);
+        }
+
+        public IFlatIdentifierRepresentation GetFlatIdentifierRepresentation()
+        {
+            return new UnitFlatIdentifierRepresentation(new UnitExpression(new Unit(this.notation)), this.exponent);
         }
     }
 }

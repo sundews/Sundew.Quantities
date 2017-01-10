@@ -20,7 +20,7 @@ namespace Sundew.Quantities.Core
         /// </summary>
         /// <param name="value">The quantity value.</param>
         /// <param name="unit">The quantity unit.</param>
-        /// <returns>A <see cref="TQuantity"/>.</returns>
+        /// <returns>A quantity.</returns>
         TQuantity CreateQuantity(double value, IUnit unit);
     }
 }

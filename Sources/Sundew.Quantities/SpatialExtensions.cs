@@ -60,7 +60,7 @@ namespace Sundew.Quantities
         /// <param name="value">The area value.</param>
         /// <param name="unitSelector">The unit selector.</param>
         /// <returns>A new <see cref="Area"/>.</returns>
-        public static Area ToArea<TValue>(this TValue value, SelectUnit<DistanceUnitSelector> unitSelector)
+        public static Area ToArea<TValue>(this TValue value, SelectUnit<AreaUnitSelector> unitSelector)
             where TValue : struct, IComparable, IFormattable
         {
             return new Area(Convert.ToDouble(value), unitSelector);

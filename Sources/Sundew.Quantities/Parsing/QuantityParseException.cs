@@ -7,6 +7,7 @@
 
 namespace Sundew.Quantities.Parsing
 {
+    using System.Diagnostics.Contracts;
     using Sundew.Quantities.Parsing.Errors;
     using Sundew.Quantities.Parsing.Exceptions;
 
@@ -22,6 +23,7 @@ namespace Sundew.Quantities.Parsing
         public QuantityParseException(Error<QuantityError> error)
             : base(error)
         {
+            Contract.Requires(error != null);
             this.Error = error;
         }
 

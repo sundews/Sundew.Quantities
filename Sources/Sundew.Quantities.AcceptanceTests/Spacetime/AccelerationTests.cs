@@ -1,16 +1,16 @@
-﻿// // --------------------------------------------------------------------------------------------------------------------
-// // <copyright file="AccelerationTests.cs" company="Hukano">
-// //   2016 (c) Hukano. All Rights Reserved. Licensed under the MIT License. See License.txt in the project root for license information.
-// // </copyright>
-// // --------------------------------------------------------------------------------------------------------------------
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="AccelerationTests.cs" company="Hukano">
+// Copyright (c) Hukano. All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
+// </copyright>
+// --------------------------------------------------------------------------------------------------------------------
 
 namespace Sundew.Quantities.AcceptanceTests.Spacetime
 {
     using FluentAssertions;
-
     using Sundew.Quantities.AcceptanceTests.Testing;
+    using Sundew.Quantities.Representations.Expressions;
     using Sundew.Quantities.UnitTests;
-
     using Xunit;
 
     public class AccelerationTests
@@ -33,14 +33,13 @@ namespace Sundew.Quantities.AcceptanceTests.Spacetime
         [InlineData(0, 0)]
         [InlineData(20, 44.738725841088)]
         public void
-            Acceleration_ToUnit_When_ConvertingFromMeterPerSecondPerSecondToMilePerHourSecond_Then_ResultShouldBeAsExpected
-            (double acceleration, double expected)
+            Acceleration_ToUnit_When_ConvertingFromMeterPerSecondPerSecondToMilePerHourSecond_Then_ResultShouldBeAsExpected(double acceleration, double expected)
         {
             var testee = new Acceleration(
                 acceleration,
                 selector => selector.Meters / selector.Seconds / selector.Seconds);
 
-            var result = testee.ToUnit(selector => selector.Miles / selector.P(selector.Hours * selector.Seconds));
+            var result = testee.ToUnit(selector => selector.Miles / new ParenthesisExpression(selector.Hours * selector.Seconds));
 
             result.Should().BeApproximately(expected, "mi/(h*s)", TestHelper.DefaultAssertPrecision);
         }
@@ -49,8 +48,7 @@ namespace Sundew.Quantities.AcceptanceTests.Spacetime
         [InlineData(0, 0)]
         [InlineData(20, 44.738725841088)]
         public void
-            Acceleration_ToUnit_When_ConvertingFromMeterPerSecondPerSecondToMilePerHourPerSecond_Then_ResultShouldBeAsExpected
-            (double acceleration, double expected)
+            Acceleration_ToUnit_When_ConvertingFromMeterPerSecondPerSecondToMilePerHourPerSecond_Then_ResultShouldBeAsExpected(double acceleration, double expected)
         {
             var testee = new Acceleration(
                 acceleration,

@@ -183,7 +183,7 @@ namespace Sundew.Quantities.UnitSelection
         /// Specifies the prefix by the specified factor.
         /// </summary>
         /// <param name="factor">The factor.</param>
-        /// <returns>A <see cref="TUnits"/>.</returns>
+        /// <returns>The available units.</returns>
         public TUnits By(double factor)
         {
             return this.GetUnits(new FactoredPrefix(factor));
@@ -192,14 +192,14 @@ namespace Sundew.Quantities.UnitSelection
         /// <summary>
         /// Gets the unit selector.
         /// </summary>
-        /// <returns>A <see cref="TUnits"/>.</returns>
+        /// <returns>The available units.</returns>
         protected abstract TUnits GetUnits();
 
         /// <summary>
         /// Gets the unit selector.
         /// </summary>
         /// <param name="prefix">The prefix.</param>
-        /// <returns>A <see cref="TUnits"/>.</returns>
+        /// <returns>The available units.</returns>
         private TUnits GetUnits(Prefix prefix)
         {
             this.SpecifyPrefix(prefix);

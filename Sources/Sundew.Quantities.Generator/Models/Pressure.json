@@ -1,0 +1,25 @@
+﻿{
+  "Name": "Pressure",
+  "Units": [
+    { "Identifier": "Pascals" },
+    { "Identifier": "Bars" },
+    { "Identifier": "Torr" },
+    {
+      "Identifier": "TechnicalAtmospheres",
+      "Unit": "TechnicalAtmosphere",
+      "Name": "technical atmosphere"
+    },
+    {
+      "Identifier": "StandardAtmospheres",
+      "Unit": "StandardAtmosphere",
+      "Name": "standard atmosphere"
+    },
+    {
+      "Identifier": "Psi",
+      "Unit": "Psi",
+      "Name": "psi"
+    }
+  ],
+  "BaseUnit": "Pascal",
+  "DefaultUnits": [ "Pascal", "Bar", "Torr", "TechnicalAtmosphere", "StandardAtmosphere", "Psi" ]
+}

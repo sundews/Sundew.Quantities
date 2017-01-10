@@ -7,8 +7,6 @@
 
 namespace Sundew.Quantities.UnitSelection
 {
-    using Sundew.Quantities.Representations.Expressions;
-
     /// <summary>
     /// Interface for implementing an order of magnitude selector.
     /// </summary>
@@ -46,12 +44,5 @@ namespace Sundew.Quantities.UnitSelection
         /// The quintic.
         /// </value>
         TUnitSelector Quintic { get; }
-
-        /// <summary>
-        /// Wraps the the specified expression in a <see cref="ParenthesisExpression"/>.
-        /// </summary>
-        /// <param name="expression">The expression.</param>
-        /// <returns>A new <see cref="ParenthesisExpression"/>.</returns>
-        ParenthesisExpression P(Expression expression);
     }
 }
