@@ -56,7 +56,7 @@ namespace Sundew.Quantities.Representations.Flat
             return EqualityHelper.Equals(
                 this,
                 other,
-                () => this.UnitExpression.Equals(other.UnitExpression) && this.Exponent.Equals(other.Exponent));
+                obj => this.UnitExpression.Equals(other.UnitExpression) && this.Exponent.Equals(obj.Exponent));
         }
 
         /// <summary>

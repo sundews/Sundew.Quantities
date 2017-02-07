@@ -1,17 +1,17 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="ConversionOperationsGenerator.cs" company="Hukano">
+// <copyright file="ConversionOperationsHelper.cs" company="Hukano">
 // Copyright (c) Hukano. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
 
-using Sundew.Text.Generation.Common;
-
 namespace Sundew.Quantities.Generator.Quantities
 {
-    public static class ConversionOperationsGenerator
+    using Sundew.Generator.Common;
+
+    public static class ConversionOperationsHelper
     {
-        public static IndentedString GetConversionOperations(QuantityModel quantityModel)
+        public static IndentedString GetConversionOperations(IQuantityModel quantityModel)
         {
             return new IndentedString(8, $@"
 /// <summary>

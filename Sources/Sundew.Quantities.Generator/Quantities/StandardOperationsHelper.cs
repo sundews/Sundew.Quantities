@@ -1,17 +1,17 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="StandardOperationsGenerator.cs" company="Hukano">
+// <copyright file="StandardOperationsHelper.cs" company="Hukano">
 // Copyright (c) Hukano. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
 
-using Sundew.Text.Generation.Common;
-
 namespace Sundew.Quantities.Generator.Quantities
 {
-    public static class StandardOperationsGenerator
+    using Sundew.Generator.Common;
+
+    public static class StandardOperationsHelper
     {
-        public static IndentedString GetStandardOperations(QuantityModel quantityModel)
+        public static IndentedString GetStandardOperations(IQuantityModel quantityModel)
         {
             return new IndentedString(8, $@"
 /// <summary>

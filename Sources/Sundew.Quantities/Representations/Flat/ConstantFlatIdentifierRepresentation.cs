@@ -44,7 +44,7 @@ namespace Sundew.Quantities.Representations.Flat
         /// </returns>
         public bool Equals(ConstantFlatIdentifierRepresentation other)
         {
-            return EqualityHelper.Equals(this, other, () => this.Constant.Equals(other.Constant));
+            return EqualityHelper.Equals(this, other, obj => this.Constant.Equals(obj.Constant));
         }
 
         /// <summary>

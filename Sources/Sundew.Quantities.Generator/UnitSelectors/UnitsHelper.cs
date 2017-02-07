@@ -1,5 +1,5 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="UnitsGenerator.cs" company="Hukano">
+// <copyright file="UnitsHelper.cs" company="Hukano">
 // Copyright (c) Hukano. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // </copyright>
@@ -8,11 +8,11 @@
 namespace Sundew.Quantities.Generator.UnitSelectors
 {
     using System.Text;
-    using Sundew.Text.Generation.Common;
+    using Sundew.Generator.Common;
 
-    public static class UnitsGenerator
+    public static class UnitsHelper
     {
-        public static IndentedString Generate(QuantityModel modelModel)
+        public static IndentedString GetUnits(IQuantityModel modelModel)
         {
             var stringBuilder = new StringBuilder();
             foreach (var modelDefinitionUnit in modelModel.Units)

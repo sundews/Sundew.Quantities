@@ -1,5 +1,5 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="PrefixesGenerator.cs" company="Hukano">
+// <copyright file="PrefixesHelper.cs" company="Hukano">
 // Copyright (c) Hukano. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // </copyright>
@@ -7,11 +7,11 @@
 
 namespace Sundew.Quantities.Generator.UnitSelectors
 {
-    using Sundew.Text.Generation.Common;
+    using Sundew.Generator.Common;
 
-    public static class PrefixesGenerator
+    public static class PrefixesHelper
     {
-        public static IndentedString Generate(QuantityModel quantityModel)
+        public static IndentedString GetPrefixes(IQuantityModel quantityModel)
         {
             return new IndentedString(8, $@"
 /// <summary>
@@ -176,12 +176,12 @@ public {GetUnitsInterface(quantityModel)} Yocto => this.GetUnits(Prefixes.Yocto)
 ");
         }
 
-        internal static string GetUnitsInterface(QuantityModel quantityModel)
+        internal static string GetUnitsInterface(IQuantityModel quantityModel)
         {
             return $"I{quantityModel.Name}UnitSelector";
         }
 
-        internal static string GetPrefixesAndUnitsInterface(QuantityModel quantityModel)
+        internal static string GetPrefixesAndUnitsInterface(IQuantityModel quantityModel)
         {
             return $"IPrefixed{quantityModel.Name}UnitSelector";
         }

@@ -77,20 +77,16 @@
       <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Sundew.Base, Version=2.1.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Sundew.Base.2.1.0\lib\portable-net45+netcore45+wpa81+wp8\Sundew.Base.dll</HintPath>
+    <Reference Include="Sundew.Base, Version=2.5.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Sundew.Base.2.5.0\lib\portable-net45+netcore45+wpa81+wp8\Sundew.Base.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Sundew.Code.Generation.CSharp, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Sundew.Code.Generation.CSharp.1.0.0-pre\lib\net461\Sundew.Code.Generation.CSharp.dll</HintPath>
+    <Reference Include="Sundew.Generator, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Sundew.Generator.1.0.0\lib\net461\Sundew.Generator.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Sundew.Text.Generation, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Sundew.Text.Generation.1.0.0-pre\lib\net461\Sundew.Text.Generation.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Sundew.Text.Generation.MSBuild, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Sundew.Text.Generation.MSBuild.1.0.0-pre\lib\net461\Sundew.Text.Generation.MSBuild.dll</HintPath>
+    <Reference Include="Sundew.Generator.MSBuild, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Sundew.Generator.MSBuild.1.0.0\lib\net461\Sundew.Generator.MSBuild.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
@@ -189,21 +185,22 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IQuantityModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Quantities\ConstructorsGenerator.cs" />
-    <Compile Include="Quantities\ConversionOperationsGenerator.cs" />
-    <Compile Include="Quantities\EqualityOperationsGenerator.cs" />
-    <Compile Include="Quantities\FormattingOperationsGenerator.cs" />
-    <Compile Include="Quantities\StandardOperationsGenerator.cs" />
+    <Compile Include="Quantities\ConstructorsHelper.cs" />
+    <Compile Include="Quantities\ConversionOperationsHelper.cs" />
+    <Compile Include="Quantities\EqualityOperationsHelper.cs" />
+    <Compile Include="Quantities\FormattingOperationsHelper.cs" />
+    <Compile Include="Quantities\StandardOperationsHelper.cs" />
     <Compile Include="Quantities\QuantityGenerator.cs" />
-    <Compile Include="UnitSelectors\ExponentsGenerator.cs" />
-    <Compile Include="UnitSelectors\PrefixesGenerator.cs" />
+    <Compile Include="UnitSelectors\ExponentsHelper.cs" />
+    <Compile Include="UnitSelectors\PrefixesHelper.cs" />
     <Compile Include="UnitSelectors\PrefixedUnitSelectorInterfaceGenerator.cs" />
     <Compile Include="UnitModel.cs" />
     <Compile Include="QuantityModel.cs" />
     <Compile Include="UnitSelectors\UnitSelectorGenerator.cs" />
     <Compile Include="UnitSelectors\UnitSelectorInterfaceGenerator.cs" />
-    <Compile Include="UnitSelectors\UnitsGenerator.cs" />
+    <Compile Include="UnitSelectors\UnitsHelper.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config">
@@ -214,6 +211,9 @@
     </None>
     <AdditionalFiles Include="stylecop.json" />
     <None Include="packages.config" />
+    <Content Include="sg.exe.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <None Include="Sundew.Quantities.Generator.ruleset" />
     <None Include="Models\Angle.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -299,9 +299,6 @@
     <None Include="Quantities.gs.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Sundew.Text.Generator.exe.config">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <Analyzer Include="..\packages\Microsoft.CodeAnalysis.Analyzers.1.1.0\analyzers\dotnet\cs\Microsoft.CodeAnalysis.Analyzers.dll" />
@@ -311,7 +308,7 @@
     <Analyzer Include="..\packages\StyleCop.Analyzers.1.0.0\analyzers\dotnet\cs\StyleCop.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Sundew.Text.Generator.exe">
+    <Content Include="sg.exe">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

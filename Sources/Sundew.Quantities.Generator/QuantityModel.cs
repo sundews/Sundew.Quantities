@@ -5,20 +5,29 @@
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
 
-using System.Collections.Generic;
-
 namespace Sundew.Quantities.Generator
 {
-    public class QuantityModel
+    using System.Collections.Generic;
+
+    /// <summary>
+    /// Model representing quantities for code generation.
+    /// </summary>
+    /// <seealso cref="Sundew.Quantities.Generator.IQuantityModel" />
+    public class QuantityModel : IQuantityModel
     {
-        public QuantityModel(string name, IReadOnlyList<UnitModel> units, string baseUnit, IReadOnlyList<string> defaultUnits, bool useGlobalUsings, IReadOnlyList<string> usings)
+        /// <summary>
+        /// Initializes a new instance of the <see cref="QuantityModel" /> class.
+        /// </summary>
+        /// <param name="name">The name.</param>
+        /// <param name="units">The units.</param>
+        /// <param name="baseUnit">The base unit.</param>
+        /// <param name="defaultUnits">The default units.</param>
+        public QuantityModel(string name, IReadOnlyList<UnitModel> units, string baseUnit, IReadOnlyList<string> defaultUnits)
         {
             this.Name = name;
             this.Units = units;
             this.BaseUnit = baseUnit;
             this.DefaultUnits = defaultUnits;
-            this.UseGlobalUsings = useGlobalUsings;
-            this.Usings = usings;
         }
 
         public string Name { get; }
@@ -28,9 +37,5 @@ namespace Sundew.Quantities.Generator
         public string BaseUnit { get; }
 
         public IReadOnlyList<string> DefaultUnits { get; }
-
-        public bool UseGlobalUsings { get; }
-
-        public IReadOnlyList<string> Usings { get; }
     }
 }

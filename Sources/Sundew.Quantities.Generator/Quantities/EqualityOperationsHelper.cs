@@ -1,5 +1,5 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="EqualityOperationsGenerator.cs" company="Hukano">
+// <copyright file="EqualityOperationsHelper.cs" company="Hukano">
 // Copyright (c) Hukano. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // </copyright>
@@ -7,11 +7,11 @@
 
 namespace Sundew.Quantities.Generator.Quantities
 {
-    using Sundew.Text.Generation.Common;
+    using Sundew.Generator.Common;
 
-    public static class EqualityOperationsGenerator
+    public static class EqualityOperationsHelper
     {
-        public static IndentedString GetEqualityOperations(QuantityModel quantityModel)
+        public static IndentedString GetEqualityOperations(IQuantityModel quantityModel)
         {
             return new IndentedString(8, $@"
 /// <summary>

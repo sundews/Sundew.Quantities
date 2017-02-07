@@ -1,5 +1,5 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="ExponentsGenerator.cs" company="Hukano">
+// <copyright file="ExponentsHelper.cs" company="Hukano">
 // Copyright (c) Hukano. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // </copyright>
@@ -7,11 +7,11 @@
 
 namespace Sundew.Quantities.Generator.UnitSelectors
 {
-    using Sundew.Text.Generation.Common;
+    using Sundew.Generator.Common;
 
-    public static class ExponentsGenerator
+    public static class ExponentsHelper
     {
-        public static IndentedString Generate(QuantityModel modelModel)
+        public static IndentedString GetExponents(IQuantityModel modelModel)
         {
             return new IndentedString(8, $@"
 /// <summary>
@@ -20,7 +20,7 @@ namespace Sundew.Quantities.Generator.UnitSelectors
 /// <value>
 /// The square.
 /// </value>
-public {PrefixesGenerator.GetPrefixesAndUnitsInterface(modelModel)} Square => this.GetPrefixesAndUnits(2);
+public {PrefixesHelper.GetPrefixesAndUnitsInterface(modelModel)} Square => this.GetPrefixesAndUnits(2);
 
 /// <summary>
 /// Gets the cubic.
@@ -28,7 +28,7 @@ public {PrefixesGenerator.GetPrefixesAndUnitsInterface(modelModel)} Square => th
 /// <value>
 /// The cubic.
 /// </value>
-public {PrefixesGenerator.GetPrefixesAndUnitsInterface(modelModel)} Cubic => this.GetPrefixesAndUnits(3);
+public {PrefixesHelper.GetPrefixesAndUnitsInterface(modelModel)} Cubic => this.GetPrefixesAndUnits(3);
 
 /// <summary>
 /// Gets the quartic.
@@ -36,7 +36,7 @@ public {PrefixesGenerator.GetPrefixesAndUnitsInterface(modelModel)} Cubic => thi
 /// <value>
 /// The quartic.
 /// </value>
-public {PrefixesGenerator.GetPrefixesAndUnitsInterface(modelModel)} Quartic => this.GetPrefixesAndUnits(4);
+public {PrefixesHelper.GetPrefixesAndUnitsInterface(modelModel)} Quartic => this.GetPrefixesAndUnits(4);
 
 /// <summary>
 /// Gets the quintic.
@@ -44,7 +44,7 @@ public {PrefixesGenerator.GetPrefixesAndUnitsInterface(modelModel)} Quartic => t
 /// <value>
 /// The quintic.
 /// </value>
-public {PrefixesGenerator.GetPrefixesAndUnitsInterface(modelModel)} Quintic => this.GetPrefixesAndUnits(5);
+public {PrefixesHelper.GetPrefixesAndUnitsInterface(modelModel)} Quintic => this.GetPrefixesAndUnits(5);
 ");
         }
 

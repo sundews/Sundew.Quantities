@@ -1,7 +1,16 @@
 ﻿{
-  "Type": "Sundew.Code.Generation.CSharp.CodeSetup, Sundew.Code.Generation.CSharp",
-  "HandlerType": "Sundew.Text.Generation.MSBuild.MSBuildTargetHandler, Sundew.Text.Generation.MSBuild",
-  "Targets": [ "..\\..\\..\\Sundew.Quantities\\Sundew.Quantities.csproj" ],
+  "Type": "Sundew.Generator.MSBuild.CSharp.CodeSetup, Sundew.Generator.MSBuild",
+  "TargetSetups": [
+    {
+      "Path": "..\\..\\..\\Sundew.Quantities\\Sundew.Quantities.csproj",
+      "HandlerType": "Sundew.Generator.MSBuild.MSBuildTextTargetHandler, Sundew.Generator.MSBuild",
+      "AddFilesToProject": true
+    }
+  ],
+  "ModelSetup": {
+    "ModelsFolder": "Models",
+    "ModelFilesSearchPattern": "*.json"
+  },
   "ModelsFolder": "Models",
   "ModelFilesSearchPattern": "*.json",
   "OutputFileExtension": ".cs",

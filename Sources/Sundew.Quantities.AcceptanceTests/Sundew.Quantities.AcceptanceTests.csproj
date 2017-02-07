@@ -49,8 +49,8 @@
       <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Sundew.Base, Version=2.0.26.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Sundew.Base.2.0.26\lib\portable-net45+netcore45+wpa81+wp8\Sundew.Base.dll</HintPath>
+    <Reference Include="Sundew.Base, Version=2.5.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Sundew.Base.2.5.0\lib\portable-net45+netcore45+wpa81+wp8\Sundew.Base.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />

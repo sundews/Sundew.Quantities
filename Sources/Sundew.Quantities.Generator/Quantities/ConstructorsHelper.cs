@@ -1,5 +1,5 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="ConstructorsGenerator.cs" company="Hukano">
+// <copyright file="ConstructorsHelper.cs" company="Hukano">
 // Copyright (c) Hukano. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // </copyright>
@@ -7,11 +7,11 @@
 
 namespace Sundew.Quantities.Generator.Quantities
 {
-    using Sundew.Text.Generation.Common;
+    using Sundew.Generator.Common;
 
-    public class ConstructorsGenerator
+    public class ConstructorsHelper
     {
-        public static IndentedString GetConstructors(QuantityModel quantityModel)
+        public static IndentedString GetConstructors(IQuantityModel quantityModel)
         {
             return new IndentedString(8, $@"
 /// <summary>
