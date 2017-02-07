@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/10/nuspec.xsd">
     <metadata>
         <id>Sundew.Quantities</id>
-        <version>2.0.0</version>
+        <version>2.0.1</version>
         <authors>Kim Hugener-Ohlsen</authors>
         <licenseUrl>https://opensource.org/licenses/MIT</licenseUrl>
         <projectUrl>https://github.com/hugener/Sundew.Quantities</projectUrl>
@@ -15,7 +15,7 @@
 - Volume
 - Mass
 - Time</description>
-        <releaseNotes>2.0.0 Changed quantities to structs
+        <releaseNotes>2.0.1 Changed quantities to structs
 1.0.2: Minor fixes
 1.0.1: First version</releaseNotes>
         <copyright>Hukano</copyright>

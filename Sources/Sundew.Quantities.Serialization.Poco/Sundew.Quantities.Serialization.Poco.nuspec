@@ -2,18 +2,19 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/10/nuspec.xsd">
     <metadata>
         <id>Sundew.Quantities.Serialization.Poco</id>
-        <version>1.0.2-alpha</version>
+        <version>1.0.3</version>
         <authors>Kim Hugener-Ohlsen</authors>
         <licenseUrl>https://opensource.org/licenses/MIT</licenseUrl>
         <projectUrl>https://github.com/hugener/Sundew.Quantities</projectUrl>
         <requireLicenseAcceptance>false</requireLicenseAcceptance>
         <description>Sundew.Quantities.Serialization.Poco provides POCO classes for serializing and deserializing quantities.</description>
-        <releaseNotes>1.0.2: Referenced Sundew.Quantities 1.0.2
+        <releaseNotes>2.0.1: Referenced Sundew.Quantities 2.0.1
+1.0.2: Referenced Sundew.Quantities 1.0.2
 1.0.1: First version</releaseNotes>
         <copyright>Hukano</copyright>
         <dependencies>
-            <dependency id="Sundew.Base" version="1.0.26" />
-            <dependency id="Sundew.Quantities" version="1.0.2-alpha" />
+            <dependency id="Sundew.Base" version="2.5.0" />
+            <dependency id="Sundew.Quantities" version="2.0.1" />
         </dependencies>
     </metadata>
     <files>
