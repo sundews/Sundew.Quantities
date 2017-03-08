@@ -7,12 +7,13 @@
 
 namespace Sundew.Quantities.Representations.Expressions.Visitors
 {
+    using Sundew.Base;
     using Sundew.Base.Visiting;
 
     /// <summary>
     /// Base expression visitor for converting <see cref="Expression"/>s to its base <see cref="Expression"/>.
     /// </summary>
-    public class BaseExpressionVisitor : IExpressionVisitor<object, Reference<Expression>, Expression>
+    public class BaseExpressionVisitor : IExpressionVisitor<Void, Reference<Expression>, Expression>
     {
         /// <summary>
         /// Visits the specified expression.
@@ -23,7 +24,7 @@ namespace Sundew.Quantities.Representations.Expressions.Visitors
         /// <returns>
         /// The base <see cref="Expression" />.
         /// </returns>
-        public Expression Visit(Expression expression, object ignored = null, Reference<Expression> currentResult = null)
+        public Expression Visit(Expression expression, Void ignored = default(Void), Reference<Expression> currentResult = null)
         {
             currentResult = currentResult ?? new Reference<Expression>(expression);
             return this.PrivateVisit(expression, currentResult);
@@ -35,7 +36,7 @@ namespace Sundew.Quantities.Representations.Expressions.Visitors
         /// <param name="multiplicationExpression">The multiplication expression.</param>
         /// <param name="ignored">The ignored.</param>
         /// <param name="currentResult">The current result.</param>
-        public void Multiply(MultiplicationExpression multiplicationExpression, object ignored, Reference<Expression> currentResult)
+        public void Multiply(MultiplicationExpression multiplicationExpression, Void ignored, Reference<Expression> currentResult)
         {
             currentResult.Value =
                 new MultiplicationExpression(
@@ -49,7 +50,7 @@ namespace Sundew.Quantities.Representations.Expressions.Visitors
         /// <param name="divisionExpression">The division expression.</param>
         /// <param name="ignored">The ignored.</param>
         /// <param name="currentResult">The current result.</param>
-        public void Divide(DivisionExpression divisionExpression, object ignored, Reference<Expression> currentResult)
+        public void Divide(DivisionExpression divisionExpression, Void ignored, Reference<Expression> currentResult)
         {
             currentResult.Value = new DivisionExpression(
                 this.PrivateVisit(divisionExpression.Lhs, currentResult),
@@ -62,7 +63,7 @@ namespace Sundew.Quantities.Representations.Expressions.Visitors
         /// <param name="magnitudeExpression">The magnitude expression.</param>
         /// <param name="ignored">The ignored.</param>
         /// <param name="currentResult">The current result.</param>
-        public void Magnitude(MagnitudeExpression magnitudeExpression, object ignored, Reference<Expression> currentResult)
+        public void Magnitude(MagnitudeExpression magnitudeExpression, Void ignored, Reference<Expression> currentResult)
         {
             currentResult.Value = new MagnitudeExpression(
                 this.PrivateVisit(magnitudeExpression.Lhs, currentResult),
@@ -75,7 +76,7 @@ namespace Sundew.Quantities.Representations.Expressions.Visitors
         /// <param name="parenthesisExpression">The parentheses expression.</param>
         /// <param name="ignored">The ignored.</param>
         /// <param name="currentResult">The current result.</param>
-        public void Parenthesis(ParenthesisExpression parenthesisExpression, object ignored, Reference<Expression> currentResult)
+        public void Parenthesis(ParenthesisExpression parenthesisExpression, Void ignored, Reference<Expression> currentResult)
         {
             currentResult.Value =
                 new ParenthesisExpression(this.PrivateVisit(parenthesisExpression.Expression, currentResult));
@@ -87,7 +88,7 @@ namespace Sundew.Quantities.Representations.Expressions.Visitors
         /// <param name="unitExpression">The unit expression.</param>
         /// <param name="ignored">The ignored.</param>
         /// <param name="currentResult">The current result.</param>
-        public void Unit(UnitExpression unitExpression, object ignored, Reference<Expression> currentResult)
+        public void Unit(UnitExpression unitExpression, Void ignored, Reference<Expression> currentResult)
         {
             currentResult.Value = unitExpression.Unit.BaseUnit.GetExpression();
         }
@@ -98,7 +99,7 @@ namespace Sundew.Quantities.Representations.Expressions.Visitors
         /// <param name="variableExpression">The variable expression.</param>
         /// <param name="ignored">The ignored.</param>
         /// <param name="currentResult">The current result.</param>
-        public void Variable(VariableExpression variableExpression, object ignored, Reference<Expression> currentResult)
+        public void Variable(VariableExpression variableExpression, Void ignored, Reference<Expression> currentResult)
         {
             currentResult.Value = variableExpression;
         }
@@ -109,9 +110,20 @@ namespace Sundew.Quantities.Representations.Expressions.Visitors
         /// <param name="constantExpression">The constant expression.</param>
         /// <param name="ignored">The ignored.</param>
         /// <param name="currentResult">The current result.</param>
-        public void Constant(ConstantExpression constantExpression, object ignored, Reference<Expression> currentResult)
+        public void Constant(ConstantExpression constantExpression, Void ignored, Reference<Expression> currentResult)
         {
             currentResult.Value = constantExpression;
+        }
+
+        /// <summary>
+        /// Visits the unknown.
+        /// </summary>
+        /// <param name="expression">The expression.</param>
+        /// <param name="ignored">The ignored.</param>
+        /// <param name="currentResult">The current result.</param>
+        public void VisitUnknown(Expression expression, Void ignored, Reference<Expression> currentResult)
+        {
+            throw VisitException.Create(expression, ignored, currentResult);
         }
 
         /// <summary>
@@ -122,7 +134,7 @@ namespace Sundew.Quantities.Representations.Expressions.Visitors
         /// <returns>The base expression.</returns>
         private Expression PrivateVisit(Expression expression, Reference<Expression> currentResult)
         {
-            expression.Visit(this, null, currentResult);
+            expression.Visit(this, Void.Ignored, currentResult);
             return currentResult.Value;
         }
     }

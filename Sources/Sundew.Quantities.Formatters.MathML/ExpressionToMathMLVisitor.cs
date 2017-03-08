@@ -4,6 +4,9 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
+
+using Sundew.Base.Visiting;
+
 namespace Sundew.Quantities.Formatters.MathML
 {
     using System.Xml.Linq;
@@ -157,6 +160,17 @@ namespace Sundew.Quantities.Formatters.MathML
             XElement xElement)
         {
             xElement.Add(new XElement(MathML.Mn, constantExpression.Constant));
+        }
+
+        /// <summary>
+        /// Visits the unknown.
+        /// </summary>
+        /// <param name="expression">The expression.</param>
+        /// <param name="multiplicationSign">The multiplication sign.</param>
+        /// <param name="xElement">The x element.</param>
+        public void VisitUnknown(Expression expression, MultiplicationSign multiplicationSign, XElement xElement)
+        {
+            throw VisitException.Create(expression, multiplicationSign, xElement);
         }
     }
 

@@ -9,6 +9,7 @@ namespace Sundew.Quantities.Representations.Expressions.Visitors
 {
     using System.Globalization;
     using System.Text;
+    using Sundew.Base.Visiting;
     using Sundew.Quantities.Representations.Internals;
 
     /// <summary>
@@ -176,12 +177,20 @@ namespace Sundew.Quantities.Representations.Expressions.Visitors
         /// <param name="constantExpression">The constant expression.</param>
         /// <param name="notationParameters">The notation parameters.</param>
         /// <param name="notationVariables">The notation variables.</param>
-        public void Constant(
-            ConstantExpression constantExpression,
-            NotationParameters notationParameters,
-            NotationVariables notationVariables)
+        public void Constant(ConstantExpression constantExpression, NotationParameters notationParameters, NotationVariables notationVariables)
         {
             notationParameters.StringBuilder.Append(constantExpression.Constant.ToString(notationParameters.FormatProvider));
+        }
+
+        /// <summary>
+        /// Visits the unknown.
+        /// </summary>
+        /// <param name="expression">The expression.</param>
+        /// <param name="notationParameters">The notation parameters.</param>
+        /// <param name="notationVariables">The notation variables.</param>
+        public void VisitUnknown(Expression expression, NotationParameters notationParameters, NotationVariables notationVariables)
+        {
+            throw VisitException.Create(expression, notationParameters, notationVariables);
         }
 
         private void HandleLeftPrecedence(bool requestPrecendence, StringBuilder stringBuilder)

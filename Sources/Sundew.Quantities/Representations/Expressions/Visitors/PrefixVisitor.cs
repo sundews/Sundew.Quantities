@@ -111,6 +111,17 @@ namespace Sundew.Quantities.Representations.Expressions.Visitors
             currentResult.Value = 1;
         }
 
+        /// <summary>
+        /// Visits the unknown.
+        /// </summary>
+        /// <param name="expression">The expression.</param>
+        /// <param name="value">The value.</param>
+        /// <param name="currentResult">The current result.</param>
+        public void VisitUnknown(Expression expression, double value = 0, Reference<double> currentResult = null)
+        {
+            throw VisitException.Create(expression, value, currentResult);
+        }
+
         private double PrivateVisit(Expression expression, double value, Reference<double> currentResult)
         {
             expression.Visit(this, value, currentResult);

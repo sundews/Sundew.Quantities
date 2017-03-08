@@ -451,8 +451,8 @@
     <Analyzer Include="..\packages\StyleCop.Analyzers.1.0.0\analyzers\dotnet\cs\StyleCop.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="Sundew.Base, Version=2.5.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Sundew.Base.2.5.0\lib\portable-net45+netcore45+wpa81+wp8\Sundew.Base.dll</HintPath>
+    <Reference Include="Sundew.Base, Version=2.6.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Sundew.Base.2.6.0\lib\portable-net45+netcore45+wpa81+wp8\Sundew.Base.dll</HintPath>
       <Private>True</Private>
     </Reference>
   </ItemGroup>

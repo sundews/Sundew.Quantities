@@ -39,16 +39,16 @@ namespace Sundew.Quantities.Representations.Expressions
         /// <summary>
         /// Visits the specified expression visitor.
         /// </summary>
-        /// <typeparam name="TParameter1">The type of the parameter1.</typeparam>
-        /// <typeparam name="TParameter2">The type of the parameter2.</typeparam>
+        /// <typeparam name="TImmutableParameter">The type of the parameter1.</typeparam>
+        /// <typeparam name="TMutableParameter">The type of the parameter2.</typeparam>
         /// <typeparam name="TResult">The type of the result.</typeparam>
         /// <param name="expressionVisitor">The expression visitor.</param>
         /// <param name="parameter1">The parameter1.</param>
         /// <param name="parameter2">The parameter2.</param>
-        public abstract void Visit<TParameter1, TParameter2, TResult>(
-            IExpressionVisitor<TParameter1, TParameter2, TResult> expressionVisitor,
-            TParameter1 parameter1,
-            TParameter2 parameter2);
+        public abstract void Visit<TImmutableParameter, TMutableParameter, TResult>(
+            IExpressionVisitor<TImmutableParameter, TMutableParameter, TResult> expressionVisitor,
+            TImmutableParameter parameter1,
+            TMutableParameter parameter2);
 
         /// <summary>
         /// Returns a <see cref="string" /> that represents this instance.

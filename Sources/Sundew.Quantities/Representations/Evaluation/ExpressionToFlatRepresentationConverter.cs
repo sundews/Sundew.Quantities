@@ -7,6 +7,7 @@
 
 namespace Sundew.Quantities.Representations.Evaluation
 {
+    using Sundew.Base.Visiting;
     using Sundew.Quantities.Representations.Expressions;
     using Sundew.Quantities.Representations.Flat;
 
@@ -143,6 +144,17 @@ namespace Sundew.Quantities.Representations.Evaluation
         public void Constant(ConstantExpression constantExpression, ConversionParameters conversionParameters, ConversionVariables conversionVariables)
         {
             conversionParameters.FlatRepresentationBuilder.Add(constantExpression, conversionVariables.Exponent);
+        }
+
+        /// <summary>
+        /// Visits the unknown.
+        /// </summary>
+        /// <param name="expression">The expression.</param>
+        /// <param name="conversionParameters">The conversion parameters.</param>
+        /// <param name="conversionVariables">The conversion variables.</param>
+        public void VisitUnknown(Expression expression, ConversionParameters conversionParameters, ConversionVariables conversionVariables)
+        {
+            throw VisitException.Create(expression, conversionParameters, conversionVariables);
         }
     }
 }

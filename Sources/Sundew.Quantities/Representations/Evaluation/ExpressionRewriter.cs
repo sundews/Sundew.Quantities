@@ -184,6 +184,17 @@ namespace Sundew.Quantities.Representations.Evaluation
             currentResult.Value = rewritingParameters.FlatRepresentationConsumer.GetResultingExpression(constantExpression);
         }
 
+        /// <summary>
+        /// Visits the unknown.
+        /// </summary>
+        /// <param name="expresstion">The expresstion.</param>
+        /// <param name="rewritingParameters">The rewriting parameters.</param>
+        /// <param name="currentResult">The current result.</param>
+        public void VisitUnknown(Expression expresstion, RewritingParameters rewritingParameters = null, Reference<Expression> currentResult = null)
+        {
+            throw VisitException.Create(expresstion, rewritingParameters, currentResult);
+        }
+
         private Expression SelectCurrentExpression<TExpression>(
             TExpression originalExpression,
             Expression newLhs,
