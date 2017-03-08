@@ -108,7 +108,7 @@ namespace Sundew.Quantities.Representations.Units
         {
             return DefaultVisitors.NotationVisitor.Visit(
                 this.GetExpression(),
-                formatProvider ?? CultureInfo.CurrentCulture);
+                new NotationParameters(formatProvider ?? CultureInfo.CurrentCulture));
         }
 
         /// <summary>

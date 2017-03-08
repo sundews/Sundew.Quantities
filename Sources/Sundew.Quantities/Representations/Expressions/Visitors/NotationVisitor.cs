@@ -7,7 +7,6 @@
 
 namespace Sundew.Quantities.Representations.Expressions.Visitors
 {
-    using System;
     using System.Globalization;
     using System.Text;
     using Sundew.Quantities.Representations.Internals;
@@ -15,7 +14,7 @@ namespace Sundew.Quantities.Representations.Expressions.Visitors
     /// <summary>
     /// Notation visitor for converting <see cref="Expression"/>s into its string notation.
     /// </summary>
-    public class NotationVisitor : IExpressionVisitor<IFormatProvider, bool, bool, StringBuilder, string>
+    public class NotationVisitor : IExpressionVisitor<NotationParameters, NotationVariables, string>
     {
         private readonly NotationOptions notationOptions;
 
@@ -32,45 +31,39 @@ namespace Sundew.Quantities.Representations.Expressions.Visitors
         /// Visits the specified expression.
         /// </summary>
         /// <param name="expression">The expression.</param>
-        /// <param name="formatProvider">The format provider.</param>
-        /// <param name="requestPrecendence">If set to <c>true</c> precedence is requested.</param>
-        /// <param name="expressionIsChild">If set to <c>true</c> the expression is a child expression.</param>
-        /// <param name="stringBuilder">The string builder.</param>
+        /// <param name="notationParameters">The notation parameters.</param>
+        /// <param name="notationVariables">The notation variables.</param>
         /// <returns>
         /// The resulting string notation.
         /// </returns>
         public string Visit(
             Expression expression,
-            IFormatProvider formatProvider = null,
-            bool requestPrecendence = false,
-            bool expressionIsChild = false,
-            StringBuilder stringBuilder = null)
+            NotationParameters notationParameters = null,
+            NotationVariables notationVariables = null)
         {
-            stringBuilder = stringBuilder ?? new StringBuilder();
-            formatProvider = formatProvider ?? CultureInfo.CurrentCulture;
-            expression.Visit(this, formatProvider, requestPrecendence, false, stringBuilder);
-            return stringBuilder.ToString();
+            notationParameters = notationParameters ?? new NotationParameters(CultureInfo.CurrentCulture, new StringBuilder());
+            notationVariables = notationVariables ?? new NotationVariables(false, false);
+            expression.Visit(this, notationParameters, notationVariables);
+            return notationParameters.StringBuilder.ToString();
         }
 
         /// <summary>
         /// Visits a <see cref="MultiplicationExpression" />.
         /// </summary>
         /// <param name="multiplicationExpression">The multiplication expression.</param>
-        /// <param name="formatProvider">The format provider.</param>
-        /// <param name="requestPrecendence">If set to <c>true</c> precedence is requested.</param>
-        /// <param name="expressionIsChild">If set to <c>true</c> the expression is a child expression.</param>
-        /// <param name="stringBuilder">The string builder.</param>
+        /// <param name="notationParameters">The notation parameters.</param>
+        /// <param name="notationVariables">The notation variables.</param>
         public void Multiply(
             MultiplicationExpression multiplicationExpression,
-            IFormatProvider formatProvider,
-            bool requestPrecendence,
-            bool expressionIsChild,
-            StringBuilder stringBuilder)
+            NotationParameters notationParameters,
+            NotationVariables notationVariables)
         {
+            var requestPrecendence = notationVariables.RequestPrecedence;
+            var stringBuilder = notationParameters.StringBuilder;
             this.HandleLeftPrecedence(requestPrecendence, stringBuilder);
-            multiplicationExpression.Lhs.Visit(this, formatProvider, false, true, stringBuilder);
+            multiplicationExpression.Lhs.Visit(this, notationParameters, new NotationVariables(false, true));
             stringBuilder.Append(Constants.Multiply);
-            multiplicationExpression.Rhs.Visit(this, formatProvider, true, true, stringBuilder);
+            multiplicationExpression.Rhs.Visit(this, notationParameters, new NotationVariables(true, true));
             this.HandleRightPrecedence(requestPrecendence, stringBuilder);
         }
 
@@ -78,21 +71,19 @@ namespace Sundew.Quantities.Representations.Expressions.Visitors
         /// Visits a <see cref="DivisionExpression" />.
         /// </summary>
         /// <param name="divisionExpression">The division expression.</param>
-        /// <param name="formatProvider">The format provider.</param>
-        /// <param name="requestPrecendence">If set to <c>true</c> precedence is requested.</param>
-        /// <param name="expressionIsChild">If set to <c>true</c> the expression is a child expression.</param>
-        /// <param name="stringBuilder">The string builder.</param>
+        /// <param name="notationParameters">The notation parameters.</param>
+        /// <param name="notationVariables">The notation variables.</param>
         public void Divide(
             DivisionExpression divisionExpression,
-            IFormatProvider formatProvider,
-            bool requestPrecendence,
-            bool expressionIsChild,
-            StringBuilder stringBuilder)
+            NotationParameters notationParameters,
+            NotationVariables notationVariables)
         {
+            var requestPrecendence = notationVariables.RequestPrecedence;
+            var stringBuilder = notationParameters.StringBuilder;
             this.HandleLeftPrecedence(requestPrecendence, stringBuilder);
-            divisionExpression.Lhs.Visit(this, formatProvider, false, true, stringBuilder);
+            divisionExpression.Lhs.Visit(this, notationParameters, new NotationVariables(false, true));
             stringBuilder.Append(Constants.Divide);
-            divisionExpression.Rhs.Visit(this, formatProvider, true, true, stringBuilder);
+            divisionExpression.Rhs.Visit(this, notationParameters, new NotationVariables(true, true));
             this.HandleRightPrecedence(requestPrecendence, stringBuilder);
         }
 
@@ -100,20 +91,18 @@ namespace Sundew.Quantities.Representations.Expressions.Visitors
         /// Visits a <see cref="MagnitudeExpression" />.
         /// </summary>
         /// <param name="magnitudeExpression">The magnitude expression.</param>
-        /// <param name="formatProvider">The format provider.</param>
-        /// <param name="requestPrecendence">If set to <c>true</c> precedence is requested.</param>
-        /// <param name="expressionIsChild">If set to <c>true</c> the expression is a child expression.</param>
-        /// <param name="stringBuilder">The string builder.</param>
+        /// <param name="notationParameters">The notation parameters.</param>
+        /// <param name="notationVariables">The notation variables.</param>
         public void Magnitude(
             MagnitudeExpression magnitudeExpression,
-            IFormatProvider formatProvider,
-            bool requestPrecendence,
-            bool expressionIsChild,
-            StringBuilder stringBuilder)
+            NotationParameters notationParameters,
+            NotationVariables notationVariables)
         {
+            var requestPrecendence = notationVariables.RequestPrecedence;
+            var stringBuilder = notationParameters.StringBuilder;
             this.HandleLeftPrecedence(requestPrecendence, stringBuilder);
-            magnitudeExpression.Lhs.Visit(this, formatProvider, true, true, stringBuilder);
-            var constant = magnitudeExpression.Rhs.Constant.ToString(formatProvider);
+            magnitudeExpression.Lhs.Visit(this, notationParameters, new NotationVariables(true, true));
+            var constant = magnitudeExpression.Rhs.Constant.ToString(notationParameters.FormatProvider);
             switch (this.notationOptions.MagnitudeFormat)
             {
                 case MagnitudeFormat.UseAboveLetter:
@@ -137,20 +126,18 @@ namespace Sundew.Quantities.Representations.Expressions.Visitors
         /// Visits a <see cref="ParenthesisExpression" />.
         /// </summary>
         /// <param name="parenthesisExpression">The parentheses expression.</param>
-        /// <param name="formatProvider">The format provider.</param>
-        /// <param name="requestPrecendence">If set to <c>true</c> precedence is requested.</param>
-        /// <param name="expressionIsChild">If set to <c>true</c> the expression is a child expression.</param>
-        /// <param name="stringBuilder">The string builder.</param>
+        /// <param name="notationParameters">The notation parameters.</param>
+        /// <param name="notationVariables">The notation variables.</param>
         public void Parenthesis(
             ParenthesisExpression parenthesisExpression,
-            IFormatProvider formatProvider,
-            bool requestPrecendence,
-            bool expressionIsChild,
-            StringBuilder stringBuilder)
+            NotationParameters notationParameters,
+            NotationVariables notationVariables)
         {
+            var requestPrecendence = notationVariables.RequestPrecedence;
+            var stringBuilder = notationParameters.StringBuilder;
             this.HandleLeftPrecedence(requestPrecendence, stringBuilder);
             stringBuilder.Append(Constants.LeftParenthesis);
-            parenthesisExpression.Expression.Visit(this, formatProvider, false, true, stringBuilder);
+            parenthesisExpression.Expression.Visit(this, notationParameters, new NotationVariables(false, true));
             stringBuilder.Append(Constants.RightParenthesis);
             this.HandleRightPrecedence(requestPrecendence, stringBuilder);
         }
@@ -159,54 +146,42 @@ namespace Sundew.Quantities.Representations.Expressions.Visitors
         /// Visits a <see cref="UnitExpression" />.
         /// </summary>
         /// <param name="unitExpression">The unit expression.</param>
-        /// <param name="formatProvider">The format provider.</param>
-        /// <param name="requestPrecendence">If set to <c>true</c> precedence is requested.</param>
-        /// <param name="expressionIsChild">If set to <c>true</c> the expression is a child expression.</param>
-        /// <param name="stringBuilder">The string builder.</param>
+        /// <param name="notationParameters">The notation parameters.</param>
+        /// <param name="notationVariables">The notation variables.</param>
         public void Unit(
             UnitExpression unitExpression,
-            IFormatProvider formatProvider,
-            bool requestPrecendence,
-            bool expressionIsChild,
-            StringBuilder stringBuilder)
+            NotationParameters notationParameters,
+            NotationVariables notationVariables)
         {
-            stringBuilder.Append(unitExpression.Unit.Notation);
+            notationParameters.StringBuilder.Append(unitExpression.Unit.Notation);
         }
 
         /// <summary>
         /// Visits a <see cref="VariableExpression" />.
         /// </summary>
         /// <param name="variableExpression">The variable expression.</param>
-        /// <param name="formatProvider">The format provider.</param>
-        /// <param name="requestPrecendence">If set to <c>true</c> precedence is requested.</param>
-        /// <param name="expressionIsChild">If set to <c>true</c> the expression is a child expression.</param>
-        /// <param name="stringBuilder">The string builder.</param>
+        /// <param name="notationParameters">The notation parameters.</param>
+        /// <param name="notationVariables">The notation variables.</param>
         public void Variable(
             VariableExpression variableExpression,
-            IFormatProvider formatProvider,
-            bool requestPrecendence,
-            bool expressionIsChild,
-            StringBuilder stringBuilder)
+            NotationParameters notationParameters,
+            NotationVariables notationVariables)
         {
-            stringBuilder.Append(variableExpression.VariableName);
+            notationParameters.StringBuilder.Append(variableExpression.VariableName);
         }
 
         /// <summary>
         /// Visits a <see cref="ConstantExpression" />.
         /// </summary>
         /// <param name="constantExpression">The constant expression.</param>
-        /// <param name="formatProvider">The format provider.</param>
-        /// <param name="requestPrecendence">If set to <c>true</c> precedence is requested.</param>
-        /// <param name="expressionIsChild">If set to <c>true</c> the expression is a child expression.</param>
-        /// <param name="stringBuilder">The string builder.</param>
+        /// <param name="notationParameters">The notation parameters.</param>
+        /// <param name="notationVariables">The notation variables.</param>
         public void Constant(
             ConstantExpression constantExpression,
-            IFormatProvider formatProvider,
-            bool requestPrecendence,
-            bool expressionIsChild,
-            StringBuilder stringBuilder)
+            NotationParameters notationParameters,
+            NotationVariables notationVariables)
         {
-            stringBuilder.Append(constantExpression.Constant.ToString(formatProvider));
+            notationParameters.StringBuilder.Append(constantExpression.Constant.ToString(notationParameters.FormatProvider));
         }
 
         private void HandleLeftPrecedence(bool requestPrecendence, StringBuilder stringBuilder)

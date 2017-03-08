@@ -8,6 +8,7 @@
 namespace Sundew.Quantities.Representations.Evaluation
 {
     using System;
+    using System.Collections.Generic;
     using Sundew.Base.Visiting;
     using Sundew.Quantities.Representations.Expressions;
     using Sundew.Quantities.Representations.Flat;
@@ -15,9 +16,7 @@ namespace Sundew.Quantities.Representations.Evaluation
     /// <summary>
     /// Implements <see cref="IExpressionRewriter"/> for rewriting <see cref="Expression"/>s.
     /// </summary>
-    public partial class ExpressionRewriter : IExpressionRewriter,
-                                              IExpressionVisitor
-                                                  <bool, FlatRepresentationConsumer, Reference<Expression>, Expression>
+    public partial class ExpressionRewriter : IExpressionRewriter, IExpressionVisitor<RewritingParameters, Reference<Expression>, Expression>
     {
         /// <summary>
         /// Rewrites the specified expression.
@@ -33,25 +32,27 @@ namespace Sundew.Quantities.Representations.Evaluation
             bool reduceByBaseUnit,
             FlatRepresentationConsumer flatRepresentationConsumer)
         {
-            return this.Visit(expression, reduceByBaseUnit, flatRepresentationConsumer);
+            return this.Visit(expression, new RewritingParameters(reduceByBaseUnit, flatRepresentationConsumer));
         }
 
         /// <summary>
         /// Visits the specified expression.
         /// </summary>
         /// <param name="expression">The expression.</param>
-        /// <param name="reduceByBaseUnit">If set to <c>true</c> the expression is reduced by the base unit.</param>
-        /// <param name="flatRepresentationConsumer">The flat representation consumer.</param>
+        /// <param name="rewritingParameters">The rewriting parameters.</param>
         /// <param name="currentResult">The current result.</param>
-        /// <returns>The rewritten <see cref="Expression"/>.</returns>
+        /// <returns>
+        /// The rewritten <see cref="Expression" />.
+        /// </returns>
         public Expression Visit(
             Expression expression,
-            bool reduceByBaseUnit = false,
-            FlatRepresentationConsumer flatRepresentationConsumer = null,
+            RewritingParameters rewritingParameters = null,
             Reference<Expression> currentResult = null)
         {
+            rewritingParameters = rewritingParameters ??
+                                  new RewritingParameters(false, new FlatRepresentationConsumer(new Dictionary<string, IFlatIdentifierRepresentation>()));
             currentResult = currentResult ?? new Reference<Expression>(expression);
-            expression.Visit(this, reduceByBaseUnit, flatRepresentationConsumer, currentResult);
+            expression.Visit(this, rewritingParameters, currentResult);
             var result = currentResult.Value;
             if (result == null)
             {
@@ -62,21 +63,19 @@ namespace Sundew.Quantities.Representations.Evaluation
         }
 
         /// <summary>
-        /// Visits a <see cref="MultiplicationExpression"/>.
+        /// Visits a <see cref="MultiplicationExpression" />.
         /// </summary>
         /// <param name="multiplicationExpression">The multiplication expression.</param>
-        /// <param name="reduceByBaseUnit">If set to <c>true</c> the expression is reduced by the base unit.</param>
-        /// <param name="flatRepresentationConsumer">The flat representation consumer.</param>
+        /// <param name="rewritingParameters">The rewriting parameters.</param>
         /// <param name="currentResult">The current result.</param>
         public void Multiply(
             MultiplicationExpression multiplicationExpression,
-            bool reduceByBaseUnit,
-            FlatRepresentationConsumer flatRepresentationConsumer,
+            RewritingParameters rewritingParameters,
             Reference<Expression> currentResult)
         {
-            multiplicationExpression.Lhs.Visit(this, reduceByBaseUnit, flatRepresentationConsumer, currentResult);
+            multiplicationExpression.Lhs.Visit(this, rewritingParameters, currentResult);
             var lhs = currentResult.Value;
-            multiplicationExpression.Rhs.Visit(this, reduceByBaseUnit, flatRepresentationConsumer, currentResult);
+            multiplicationExpression.Rhs.Visit(this, rewritingParameters, currentResult);
             var rhs = currentResult.Value;
             currentResult.Value = this.SelectCurrentExpression(
                 multiplicationExpression,
@@ -86,21 +85,19 @@ namespace Sundew.Quantities.Representations.Evaluation
         }
 
         /// <summary>
-        /// Visits a <see cref="DivisionExpression"/>.
+        /// Visits a <see cref="DivisionExpression" />.
         /// </summary>
         /// <param name="divisionExpression">The division expression.</param>
-        /// <param name="reduceByBaseUnit">If set to <c>true</c> the expression is reduced by the base unit.</param>
-        /// <param name="flatRepresentationConsumer">The flat representation consumer.</param>
+        /// <param name="rewritingParameters">The rewriting parameters.</param>
         /// <param name="currentResult">The current result.</param>
         public void Divide(
             DivisionExpression divisionExpression,
-            bool reduceByBaseUnit,
-            FlatRepresentationConsumer flatRepresentationConsumer,
+            RewritingParameters rewritingParameters,
             Reference<Expression> currentResult)
         {
-            divisionExpression.Lhs.Visit(this, reduceByBaseUnit, flatRepresentationConsumer, currentResult);
+            divisionExpression.Lhs.Visit(this, rewritingParameters, currentResult);
             var lhs = currentResult.Value;
-            divisionExpression.Rhs.Visit(this, reduceByBaseUnit, flatRepresentationConsumer, currentResult);
+            divisionExpression.Rhs.Visit(this, rewritingParameters, currentResult);
             var rhs = currentResult.Value;
             currentResult.Value = this.SelectCurrentExpression(
                 divisionExpression,
@@ -110,35 +107,31 @@ namespace Sundew.Quantities.Representations.Evaluation
         }
 
         /// <summary>
-        /// Visits a <see cref="MagnitudeExpression"/>.
+        /// Visits a <see cref="MagnitudeExpression" />.
         /// </summary>
         /// <param name="magnitudeExpression">The magnitude expression.</param>
-        /// <param name="reduceByBaseUnit">If set to <c>true</c> the expression is reduced by the base unit.</param>
-        /// <param name="flatRepresentationConsumer">The flat representation consumer.</param>
+        /// <param name="rewritingParameters">The rewriting parameters.</param>
         /// <param name="currentResult">The current result.</param>
         public void Magnitude(
             MagnitudeExpression magnitudeExpression,
-            bool reduceByBaseUnit,
-            FlatRepresentationConsumer flatRepresentationConsumer,
+            RewritingParameters rewritingParameters,
             Reference<Expression> currentResult)
         {
-            magnitudeExpression.Lhs.Visit(this, reduceByBaseUnit, flatRepresentationConsumer, currentResult);
+            magnitudeExpression.Lhs.Visit(this, rewritingParameters, currentResult);
         }
 
         /// <summary>
-        /// Visits a <see cref="ParenthesisExpression"/>.
+        /// Visits a <see cref="ParenthesisExpression" />.
         /// </summary>
         /// <param name="parenthesisExpression">The parentheses expression.</param>
-        /// <param name="reduceByBaseUnit">If set to <c>true</c> the expression is reduced by the base unit.</param>
-        /// <param name="flatRepresentationConsumer">The flat representation consumer.</param>
+        /// <param name="rewritingParameters">The rewriting parameters.</param>
         /// <param name="currentResult">The current result.</param>
         public void Parenthesis(
             ParenthesisExpression parenthesisExpression,
-            bool reduceByBaseUnit,
-            FlatRepresentationConsumer flatRepresentationConsumer,
+            RewritingParameters rewritingParameters,
             Reference<Expression> currentResult)
         {
-            parenthesisExpression.Expression.Visit(this, reduceByBaseUnit, flatRepresentationConsumer, currentResult);
+            parenthesisExpression.Expression.Visit(this, rewritingParameters, currentResult);
             if (ReferenceEquals(parenthesisExpression.Expression, currentResult.Value))
             {
                 currentResult.Value = parenthesisExpression;
@@ -153,48 +146,42 @@ namespace Sundew.Quantities.Representations.Evaluation
         /// Units the specified unit expression.
         /// </summary>
         /// <param name="unitExpression">The unit expression.</param>
-        /// <param name="reduceByBaseUnit">If set to <c>true</c> the expression is reduced by the base unit.</param>
-        /// <param name="flatRepresentationConsumer">The flat representation consumer.</param>
+        /// <param name="rewritingParameters">The rewriting parameters.</param>
         /// <param name="currentResult">The current result.</param>
         public void Unit(
             UnitExpression unitExpression,
-            bool reduceByBaseUnit,
-            FlatRepresentationConsumer flatRepresentationConsumer,
+            RewritingParameters rewritingParameters,
             Reference<Expression> currentResult)
         {
-            currentResult.Value = flatRepresentationConsumer.GetResultingExpression(unitExpression, reduceByBaseUnit);
+            currentResult.Value = rewritingParameters.FlatRepresentationConsumer.GetResultingExpression(unitExpression, rewritingParameters.ReduceByBaseUnit);
         }
 
         /// <summary>
-        /// Visits a <see cref="VariableExpression"/>.
+        /// Visits a <see cref="VariableExpression" />.
         /// </summary>
         /// <param name="variableExpression">The variable expression.</param>
-        /// <param name="reduceByBaseUnit">If set to <c>true</c> the expression is reduced by the base unit.</param>
-        /// <param name="flatRepresentationConsumer">The flat representation consumer.</param>
+        /// <param name="rewritingParameters">The rewriting parameters.</param>
         /// <param name="currentResult">The current result.</param>
         public void Variable(
             VariableExpression variableExpression,
-            bool reduceByBaseUnit,
-            FlatRepresentationConsumer flatRepresentationConsumer,
+            RewritingParameters rewritingParameters,
             Reference<Expression> currentResult)
         {
-            currentResult.Value = flatRepresentationConsumer.GetResultingExpression(variableExpression);
+            currentResult.Value = rewritingParameters.FlatRepresentationConsumer.GetResultingExpression(variableExpression);
         }
 
         /// <summary>
-        /// Visits a <see cref="ConstantExpression"/>.
+        /// Visits a <see cref="ConstantExpression" />.
         /// </summary>
         /// <param name="constantExpression">The constant expression.</param>
-        /// <param name="reduceByBaseUnit">If set to <c>true</c> the expression is reduced by the base unit.</param>
-        /// <param name="flatRepresentationConsumer">The flat representation consumer.</param>
+        /// <param name="rewritingParameters">The rewriting parameters.</param>
         /// <param name="currentResult">The current result.</param>
         public void Constant(
             ConstantExpression constantExpression,
-            bool reduceByBaseUnit,
-            FlatRepresentationConsumer flatRepresentationConsumer,
+            RewritingParameters rewritingParameters,
             Reference<Expression> currentResult)
         {
-            currentResult.Value = flatRepresentationConsumer.GetResultingExpression(constantExpression);
+            currentResult.Value = rewritingParameters.FlatRepresentationConsumer.GetResultingExpression(constantExpression);
         }
 
         private Expression SelectCurrentExpression<TExpression>(

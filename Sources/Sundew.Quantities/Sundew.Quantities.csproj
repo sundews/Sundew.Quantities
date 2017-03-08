@@ -215,9 +215,14 @@
     <Compile Include="Potential.generated.cs" />
     <Compile Include="Power.generated.cs" />
     <Compile Include="Pressure.generated.cs" />
+    <Compile Include="Representations\Evaluation\ConversionParameters.cs" />
+    <Compile Include="Representations\Evaluation\ConversionVariables.cs" />
     <Compile Include="Representations\Evaluation\IDerivedUnitRegistry.cs" />
     <Compile Include="Registration\IUnitRegistrar.cs" />
     <Compile Include="Registration\UnitRegistry.cs" />
+    <Compile Include="Representations\Evaluation\RewritingParameters.cs" />
+    <Compile Include="Representations\Expressions\Visitors\NotationParameters.cs" />
+    <Compile Include="Representations\Expressions\Visitors\NotationVariables.cs" />
     <Compile Include="Representations\Flat\ConstantFlatIdentifierRepresentation.cs" />
     <Compile Include="Representations\Evaluation\ExpressionToFlatRepresentationConverter.cs" />
     <Compile Include="Representations\Flat\FlatPresentationHelper.cs" />
@@ -281,11 +286,7 @@
     <Compile Include="Representations\Expressions\Visitors\BaseExpressionVisitor.cs" />
     <Compile Include="Representations\Expressions\Visitors\DefaultVisitors.cs" />
     <Compile Include="Representations\Expressions\Visitors\ValueFromBaseVisitor.cs" />
-    <Compile Include="Representations\Expressions\IExpressionVisitor{TParameter,TResult}.cs" />
-    <Compile Include="Representations\Expressions\IExpressionVisitor{TParameter1,TParameter2,TParameter3,TParameter4,TResult}.cs" />
-    <Compile Include="Representations\Expressions\IExpressionVisitor{TParameter1,TParameter2,TParameter3,TResult}.cs" />
-    <Compile Include="Representations\Expressions\IExpressionVisitor{TParameter1,TParameter2,TResult}.cs" />
-    <Compile Include="Representations\Expressions\IExpressionVisitor{TResult}.cs" />
+    <Compile Include="Representations\Expressions\IExpressionVisitor.cs" />
     <Compile Include="Representations\Expressions\Visitors\MagnitudeFormat.cs" />
     <Compile Include="Representations\Expressions\Visitors\NotationOptions.cs" />
     <Compile Include="Representations\Expressions\Visitors\NotationVisitor.cs" />

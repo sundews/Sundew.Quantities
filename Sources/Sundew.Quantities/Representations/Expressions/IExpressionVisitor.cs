@@ -1,5 +1,5 @@
 // --------------------------------------------------------------------------------------------------------------------
-// <copyright file="IExpressionVisitor{TParameter1,TParameter2,TResult}.cs" company="Hukano">
+// <copyright file="IExpressionVisitor.cs" company="Hukano">
 // Copyright (c) Hukano. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // </copyright>

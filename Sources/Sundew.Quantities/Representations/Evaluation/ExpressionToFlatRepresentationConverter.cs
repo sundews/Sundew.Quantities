@@ -14,9 +14,7 @@ namespace Sundew.Quantities.Representations.Evaluation
     /// Converts <see cref="Expression"/> into <see cref="FlatRepresentation"/>.
     /// </summary>
     public class ExpressionToFlatRepresentationConverter : IExpressionToFlatRepresentationConverter,
-                                                           IExpressionVisitor
-                                                               <bool, double, bool, FlatRepresentationBuilder,
-                                                               FlatRepresentation>
+                                                           IExpressionVisitor<ConversionParameters, ConversionVariables, FlatRepresentation>
     {
         /// <summary>
         /// Converts the specified expression.
@@ -30,187 +28,121 @@ namespace Sundew.Quantities.Representations.Evaluation
             bool reduceUsingBaseUnits,
             FlatRepresentationBuilder flatRepresentationBuilder)
         {
-            return this.Visit(expression, reduceUsingBaseUnits, 0.0, false, flatRepresentationBuilder);
+            return this.Visit(expression, new ConversionParameters(reduceUsingBaseUnits, flatRepresentationBuilder), new ConversionVariables());
         }
 
         /// <summary>
         /// Visits the specified expression.
         /// </summary>
         /// <param name="expression">The expression.</param>
-        /// <param name="reduceUsingBaseUnits">If set to <c>true</c> reduction will be done using base units.</param>
-        /// <param name="exponent">The exponent.</param>
-        /// <param name="expressionIsPartOfDenominator">If set to <c>true</c> the expression is part of the denominator.</param>
-        /// <param name="flatRepresentationBuilder">The flat representation builder.</param>
-        /// <returns>A <see cref="FlatRepresentation"/>.</returns>
+        /// <param name="conversionParameters">The conversion parameters.</param>
+        /// <param name="conversionVariables">The conversion variables.</param>
+        /// <returns>
+        /// A <see cref="FlatRepresentation" />.
+        /// </returns>
         public FlatRepresentation Visit(
             Expression expression,
-            bool reduceUsingBaseUnits = false,
-            double exponent = 0.0,
-            bool expressionIsPartOfDenominator = false,
-            FlatRepresentationBuilder flatRepresentationBuilder = null)
+            ConversionParameters conversionParameters = null,
+            ConversionVariables conversionVariables = null)
         {
-            flatRepresentationBuilder = flatRepresentationBuilder ?? new FlatRepresentationBuilder();
-            exponent = exponent.Equals(0.0) ? 1 : exponent;
-            expression.Visit(
-                this,
-                reduceUsingBaseUnits,
-                exponent,
-                expressionIsPartOfDenominator,
-                flatRepresentationBuilder);
-            return flatRepresentationBuilder.Build();
+            conversionParameters = conversionParameters ?? new ConversionParameters(false, new FlatRepresentationBuilder());
+            conversionVariables = conversionVariables ?? new ConversionVariables();
+            expression.Visit(this, conversionParameters, conversionVariables);
+            return conversionParameters.FlatRepresentationBuilder.Build();
         }
 
         /// <summary>
-        /// Visits a <see cref="MultiplicationExpression"/>.
+        /// Visits a <see cref="MultiplicationExpression" />.
         /// </summary>
         /// <param name="multiplicationExpression">The multiplication expression.</param>
-        /// <param name="reduceUsingBaseUnits">If set to <c>true</c> reduction will be done using base units.</param>
-        /// <param name="exponent">The exponent.</param>
-        /// <param name="expressionIsPartOfDenominator">If set to <c>true</c> the expression is part of the denominator.</param>
-        /// <param name="flatRepresentationBuilder">The flat representation builder.</param>
+        /// <param name="conversionParameters">The conversion parameters.</param>
+        /// <param name="conversionVariables">The conversion variables.</param>
         public void Multiply(
             MultiplicationExpression multiplicationExpression,
-            bool reduceUsingBaseUnits,
-            double exponent,
-            bool expressionIsPartOfDenominator,
-            FlatRepresentationBuilder flatRepresentationBuilder)
+            ConversionParameters conversionParameters,
+            ConversionVariables conversionVariables)
         {
-            multiplicationExpression.Lhs.Visit(
-                this,
-                reduceUsingBaseUnits,
-                exponent,
-                expressionIsPartOfDenominator,
-                flatRepresentationBuilder);
-            multiplicationExpression.Rhs.Visit(
-                this,
-                reduceUsingBaseUnits,
-                exponent,
-                expressionIsPartOfDenominator,
-                flatRepresentationBuilder);
+            multiplicationExpression.Lhs.Visit(this, conversionParameters, conversionVariables);
+            multiplicationExpression.Rhs.Visit(this, conversionParameters, conversionVariables);
         }
 
         /// <summary>
-        /// Visits a <see cref="DivisionExpression"/>.
+        /// Visits a <see cref="DivisionExpression" />.
         /// </summary>
         /// <param name="divisionExpression">The division expression.</param>
-        /// <param name="reduceUsingBaseUnits">If set to <c>true</c> reduction will be done using base units.</param>
-        /// <param name="exponent">The exponent.</param>
-        /// <param name="expressionIsPartOfDenominator">If set to <c>true</c> the expression is part of the denominator.</param>
-        /// <param name="flatRepresentationBuilder">The flat representation builder.</param>
+        /// <param name="conversionParameters">The conversion parameters.</param>
+        /// <param name="conversionVariables">The conversion variables.</param>
         public void Divide(
             DivisionExpression divisionExpression,
-            bool reduceUsingBaseUnits,
-            double exponent,
-            bool expressionIsPartOfDenominator,
-            FlatRepresentationBuilder flatRepresentationBuilder)
+            ConversionParameters conversionParameters,
+            ConversionVariables conversionVariables)
         {
-            divisionExpression.Lhs.Visit(
-                this,
-                reduceUsingBaseUnits,
-                exponent,
-                expressionIsPartOfDenominator,
-                flatRepresentationBuilder);
-            divisionExpression.Rhs.Visit(this, reduceUsingBaseUnits, exponent * -1, true, flatRepresentationBuilder);
+            divisionExpression.Lhs.Visit(this, conversionParameters, conversionVariables);
+            divisionExpression.Rhs.Visit(this, conversionParameters, new ConversionVariables(conversionVariables.Exponent * -1, true));
         }
 
         /// <summary>
-        /// Visits a <see cref="MagnitudeExpression"/>.
+        /// Visits a <see cref="MagnitudeExpression" />.
         /// </summary>
         /// <param name="magnitudeExpression">The magnitude expression.</param>
-        /// <param name="reduceUsingBaseUnits">If set to <c>true</c> reduction will be done using base units.</param>
-        /// <param name="exponent">The exponent.</param>
-        /// <param name="expressionIsPartOfDenominator">If set to <c>true</c> the expression is part of the denominator.</param>
-        /// <param name="flatRepresentationBuilder">The flat representation builder.</param>
+        /// <param name="conversionParameters">The conversion parameters.</param>
+        /// <param name="conversionVariables">The conversion variables.</param>
         public void Magnitude(
             MagnitudeExpression magnitudeExpression,
-            bool reduceUsingBaseUnits,
-            double exponent,
-            bool expressionIsPartOfDenominator,
-            FlatRepresentationBuilder flatRepresentationBuilder)
+            ConversionParameters conversionParameters,
+            ConversionVariables conversionVariables)
         {
             magnitudeExpression.Lhs.Visit(
                 this,
-                reduceUsingBaseUnits,
-                exponent * magnitudeExpression.Rhs.Constant,
-                expressionIsPartOfDenominator,
-                flatRepresentationBuilder);
+                conversionParameters,
+                new ConversionVariables(conversionVariables.Exponent * magnitudeExpression.Rhs.Constant, conversionVariables.ExpressionIsPartOfDenominator));
         }
 
         /// <summary>
-        /// Visits a <see cref="ParenthesisExpression"/>.
+        /// Visits a <see cref="ParenthesisExpression" />.
         /// </summary>
         /// <param name="parenthesisExpression">The parenthesis expression.</param>
-        /// <param name="reduceUsingBaseUnits">If set to <c>true</c> reduction will be done using base units.</param>
-        /// <param name="exponent">The exponent.</param>
-        /// <param name="expressionIsPartOfDenominator">If set to <c>true</c> the expression is part of the denominator.</param>
-        /// <param name="flatRepresentationBuilder">The flat representation builder.</param>
+        /// <param name="conversionParameters">The conversion parameters.</param>
+        /// <param name="conversionVariables">The conversion variables.</param>
         public void Parenthesis(
             ParenthesisExpression parenthesisExpression,
-            bool reduceUsingBaseUnits,
-            double exponent,
-            bool expressionIsPartOfDenominator,
-            FlatRepresentationBuilder flatRepresentationBuilder)
+            ConversionParameters conversionParameters,
+            ConversionVariables conversionVariables)
         {
-            parenthesisExpression.Expression.Visit(
-                this,
-                reduceUsingBaseUnits,
-                exponent,
-                expressionIsPartOfDenominator,
-                flatRepresentationBuilder);
+            parenthesisExpression.Expression.Visit(this, conversionParameters, conversionVariables);
         }
 
         /// <summary>
-        /// Visits a <see cref="UnitExpression"/>.
+        /// Visits a <see cref="UnitExpression" />.
         /// </summary>
         /// <param name="unitExpression">The unit expression.</param>
-        /// <param name="reduceUsingBaseUnits">If set to <c>true</c> reduction will be done using base units.</param>
-        /// <param name="exponent">The exponent.</param>
-        /// <param name="expressionIsPartOfDenominator">If set to <c>true</c> the expression is part of the denominator.</param>
-        /// <param name="flatRepresentationBuilder">The flat representation builder.</param>
-        public void Unit(
-            UnitExpression unitExpression,
-            bool reduceUsingBaseUnits,
-            double exponent,
-            bool expressionIsPartOfDenominator,
-            FlatRepresentationBuilder flatRepresentationBuilder)
+        /// <param name="conversionParameters">The conversion parameters.</param>
+        /// <param name="conversionVariables">The conversion variables.</param>
+        public void Unit(UnitExpression unitExpression, ConversionParameters conversionParameters, ConversionVariables conversionVariables)
         {
-            flatRepresentationBuilder.Add(unitExpression, reduceUsingBaseUnits, exponent);
+            conversionParameters.FlatRepresentationBuilder.Add(unitExpression, conversionParameters.ReduceUsingBaseUnits, conversionVariables.Exponent);
         }
 
         /// <summary>
-        /// Visits a <see cref="VariableExpression"/>.
+        /// Visits a <see cref="VariableExpression" />.
         /// </summary>
         /// <param name="variableExpression">The variable expression.</param>
-        /// <param name="reduceUsingBaseUnits">If set to <c>true</c> reduction will be done using base units.</param>
-        /// <param name="exponent">The exponent.</param>
-        /// <param name="expressionIsPartOfDenominator">If set to <c>true</c> the expression is part of the denominator.</param>
-        /// <param name="flatRepresentationBuilder">The flat representation builder.</param>
-        public void Variable(
-            VariableExpression variableExpression,
-            bool reduceUsingBaseUnits,
-            double exponent,
-            bool expressionIsPartOfDenominator,
-            FlatRepresentationBuilder flatRepresentationBuilder)
+        /// <param name="conversionParameters">The conversion parameters.</param>
+        /// <param name="conversionVariables">The conversion variables.</param>
+        public void Variable(VariableExpression variableExpression, ConversionParameters conversionParameters, ConversionVariables conversionVariables)
         {
-            flatRepresentationBuilder.Add(variableExpression, exponent);
+            conversionParameters.FlatRepresentationBuilder.Add(variableExpression, conversionVariables.Exponent);
         }
 
         /// <summary>
-        /// Visits a <see cref="ConstantExpression"/>.
+        /// Visits a <see cref="ConstantExpression" />.
         /// </summary>
         /// <param name="constantExpression">The constant expression.</param>
-        /// <param name="reduceUsingBaseUnits">If set to <c>true</c> reduction will be done using base units.</param>
-        /// <param name="exponent">The exponent.</param>
-        /// <param name="expressionIsPartOfDenominator">If set to <c>true</c> the expression is part of the denominator.</param>
-        /// <param name="flatRepresentationBuilder">The flat representation builder.</param>
-        public void Constant(
-            ConstantExpression constantExpression,
-            bool reduceUsingBaseUnits,
-            double exponent,
-            bool expressionIsPartOfDenominator,
-            FlatRepresentationBuilder flatRepresentationBuilder)
+        /// <param name="conversionParameters">The conversion parameters.</param>
+        /// <param name="conversionVariables">The conversion variables.</param>
+        public void Constant(ConstantExpression constantExpression, ConversionParameters conversionParameters, ConversionVariables conversionVariables)
         {
-            flatRepresentationBuilder.Add(constantExpression, exponent);
+            conversionParameters.FlatRepresentationBuilder.Add(constantExpression, conversionVariables.Exponent);
         }
     }
 }

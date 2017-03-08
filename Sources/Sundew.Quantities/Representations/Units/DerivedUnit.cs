@@ -200,7 +200,7 @@ namespace Sundew.Quantities.Representations.Units
         /// <returns>The base notation.</returns>
         public string GetBaseNotation(IFormatProvider formatProvider = null)
         {
-            return DefaultVisitors.NotationVisitor.Visit(this.expression, formatProvider ?? CultureInfo.CurrentCulture);
+            return DefaultVisitors.NotationVisitor.Visit(this.expression, new NotationParameters(formatProvider ?? CultureInfo.CurrentCulture));
         }
 
         /// <summary>
