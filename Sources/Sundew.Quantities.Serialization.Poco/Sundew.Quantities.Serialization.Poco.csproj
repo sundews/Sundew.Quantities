@@ -1,110 +1,17 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
   <PropertyGroup>
-    <MinimumVisualStudioVersion>10.0</MinimumVisualStudioVersion>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{0DE5D96D-3BE3-4C08-B9F4-E2769E7F144B}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Sundew.Quantities.Serialization.Poco</RootNamespace>
-    <AssemblyName>Sundew.Quantities.Serialization.Poco</AssemblyName>
-    <DefaultLanguage>en-US</DefaultLanguage>
-    <FileAlignment>512</FileAlignment>
-    <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
-    <TargetFrameworkProfile>Profile259</TargetFrameworkProfile>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFramework>netstandard1.0</TargetFramework>
+    <Company>Hukano</Company>
+    <Version>3.0.0-pre1</Version>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <DocumentationFile>bin\Debug\Sundew.Quantities.Serialization.Poco.xml</DocumentationFile>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <DocumentationFile>bin\Release\Sundew.Quantities.Serialization.Poco.xml</DocumentationFile>
-  </PropertyGroup>
+
   <ItemGroup>
-    <!-- A reference to the entire .NET Framework is automatically included -->
-    <ProjectReference Include="..\Sundew.Quantities\Sundew.Quantities.csproj">
-      <Project>{e4e2e3b0-ae2d-495c-ba8e-c14896ee2b05}</Project>
-      <Name>Sundew.Quantities</Name>
-    </ProjectReference>
+    <PackageReference Include="Sundew.Base" Version="3.0.0-pre2" />
   </ItemGroup>
+
   <ItemGroup>
-    <Compile Include="Capacitance.cs" />
-    <Compile Include="Charge.cs" />
-    <Compile Include="Conductance.cs" />
-    <Compile Include="ElectricCurrent.cs" />
-    <Compile Include="ElectromagnetismExtensions.cs" />
-    <Compile Include="Inductance.cs" />
-    <Compile Include="MagneticFlux.cs" />
-    <Compile Include="MagneticFluxDensity.cs" />
-    <Compile Include="Potential.cs" />
-    <Compile Include="Resistance.cs" />
-    <Compile Include="MechanicsExtensions.cs" />
-    <Compile Include="Energy.cs" />
-    <Compile Include="Force.cs" />
-    <Compile Include="Mass.cs" />
-    <Compile Include="Momentum.cs" />
-    <Compile Include="Power.cs" />
-    <Compile Include="Pressure.cs" />
-    <Compile Include="Frequency.cs" />
-    <Compile Include="PeriodicsExtensions.cs" />
-    <Compile Include="Time.cs" />
-    <Compile Include="Illuminance.cs" />
-    <Compile Include="LuminousFlux.cs" />
-    <Compile Include="LuminousIntensity.cs" />
-    <Compile Include="PhotometryExtensions.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Quantity.cs" />
-    <Compile Include="QuantityExtensions.cs" />
-    <Compile Include="SerializableQuantity.cs" />
-    <Compile Include="Acceleration.cs" />
-    <Compile Include="SpacetimeExtensions.cs" />
-    <Compile Include="Velocity.cs" />
-    <Compile Include="Angle.cs" />
-    <Compile Include="Area.cs" />
-    <Compile Include="Distance.cs" />
-    <Compile Include="SpatialExtensions.cs" />
-    <Compile Include="SolidAngle.cs" />
-    <Compile Include="Volume.cs" />
-    <Compile Include="ThermodynamicsExtensions.cs" />
-    <Compile Include="Temperature.cs" />
+    <ProjectReference Include="..\Sundew.Quantities\Sundew.Quantities.csproj" />
   </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
-    <None Include="Settings.StyleCop" />
-    <AdditionalFiles Include="stylecop.json" />
-  </ItemGroup>
-  <ItemGroup>
-    <Analyzer Include="..\packages\StyleCop.Analyzers.1.0.0\analyzers\dotnet\cs\Newtonsoft.Json.dll" />
-    <Analyzer Include="..\packages\StyleCop.Analyzers.1.0.0\analyzers\dotnet\cs\StyleCop.Analyzers.CodeFixes.dll" />
-    <Analyzer Include="..\packages\StyleCop.Analyzers.1.0.0\analyzers\dotnet\cs\StyleCop.Analyzers.dll" />
-  </ItemGroup>
-  <ItemGroup>
-    <Reference Include="Sundew.Base, Version=2.6.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Sundew.Base.2.6.0\lib\portable-net45+netcore45+wpa81+wp8\Sundew.Base.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-  </ItemGroup>
-  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
-  </Target>
-  <Target Name="AfterBuild">
-  </Target>
-  -->
+
 </Project>

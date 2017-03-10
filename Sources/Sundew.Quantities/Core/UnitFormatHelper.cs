@@ -7,7 +7,6 @@
 
 namespace Sundew.Quantities.Core
 {
-    using System.Diagnostics.Contracts;
     using Sundew.Quantities.Representations.Expressions;
     using Sundew.Quantities.Representations.Internals;
 
@@ -24,7 +23,6 @@ namespace Sundew.Quantities.Core
         /// <returns>A <see cref="string" /> that represents this instance.</returns>
         public static string ToString(Prefix prefix, string notation)
         {
-            Contract.Requires(prefix != null);
             return string.Format(Constants.PrefixAndUnitFormat, prefix.Notation, notation);
         }
 
@@ -36,7 +34,6 @@ namespace Sundew.Quantities.Core
         /// <returns>The notation.</returns>
         public static string GetNotation(IUnit unit, UnitFormat unitFormat)
         {
-            Contract.Requires(unit != null);
             var notation = unit.Notation;
             if (unitFormat.HasFlag(UnitFormat.SurroundInBrackets))
             {

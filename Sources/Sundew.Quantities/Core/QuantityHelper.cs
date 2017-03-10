@@ -7,7 +7,6 @@
 
 namespace Sundew.Quantities.Core
 {
-    using System.Diagnostics.Contracts;
     using Sundew.Quantities.Core.Exceptions;
     using Sundew.Quantities.Representations.Expressions;
     using Sundew.Quantities.Representations.Internals;
@@ -97,8 +96,6 @@ namespace Sundew.Quantities.Core
         public static int CompareTo<TQuantity>(IQuantity lhs, object rhs)
             where TQuantity : IQuantity
         {
-            Contract.Requires(lhs != null);
-            Contract.Requires(rhs != null);
             return CompareTo(lhs, (TQuantity)rhs);
         }
 
@@ -110,9 +107,6 @@ namespace Sundew.Quantities.Core
         /// <returns>The result of <see cref="int"/> Compare based the rhs converted to the same unit as lhs.</returns>
         public static int CompareTo(IQuantity lhs, IQuantity rhs)
         {
-            Contract.Requires(lhs != null);
-            Contract.Requires(rhs != null);
-
             var lhsUnit = lhs.Unit;
             var rhsUnit = rhs.Unit;
 

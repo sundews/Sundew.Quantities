@@ -8,7 +8,6 @@
 namespace Sundew.Quantities.Core
 {
     using System;
-    using System.Diagnostics.Contracts;
     using System.Globalization;
     using Sundew.Quantities.Representations.Expressions;
 
@@ -26,7 +25,6 @@ namespace Sundew.Quantities.Core
         public Quantity(IQuantity quantity)
             : this(quantity.Value, quantity.Unit)
         {
-            Contract.Requires(quantity != null);
         }
 
         /// <summary>

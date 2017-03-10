@@ -8,7 +8,6 @@
 namespace Sundew.Quantities
 {
     using System;
-    using System.Diagnostics.Contracts;
     using Sundew.Base.Numeric;
     using Sundew.Quantities.Core;
 
@@ -25,7 +24,6 @@ namespace Sundew.Quantities
         /// <returns>The rounded quantity.</returns>
         public static TQuantity Round<TQuantity>(this IQuantity<TQuantity> quantity)
         {
-            Contract.Requires(quantity != null);
             return quantity.CreateQuantity(Math.Round(quantity.Value), quantity.Unit);
         }
 
@@ -38,9 +36,8 @@ namespace Sundew.Quantities
         /// <returns>The rounded quantity.</returns>
         public static TQuantity Round<TQuantity>(this IQuantity<TQuantity> quantity, int digits)
         {
-            Contract.Requires(quantity != null);
-            Contract.Requires(digits >= 0);
-            Contract.Requires(digits <= 15);
+            CheckDigits(digits);
+
             return quantity.CreateQuantity(Math.Round(quantity.Value, digits), quantity.Unit);
         }
 
@@ -57,9 +54,7 @@ namespace Sundew.Quantities
             int digits,
             MidpointRounding midpointRounding)
         {
-            Contract.Requires(quantity != null);
-            Contract.Requires(digits >= 0);
-            Contract.Requires(digits <= 15);
+            CheckDigits(digits);
             return quantity.CreateQuantity(Math.Round(quantity.Value, digits, midpointRounding), quantity.Unit);
         }
 
@@ -71,7 +66,6 @@ namespace Sundew.Quantities
         /// <returns> The largest integer less than or equal to the specified <see cref="IQuantity"/>.</returns>
         public static TQuantity Floor<TQuantity>(this IQuantity<TQuantity> quantity)
         {
-            Contract.Requires(quantity != null);
             return quantity.CreateQuantity(Math.Floor(quantity.Value), quantity.Unit);
         }
 
@@ -83,7 +77,6 @@ namespace Sundew.Quantities
         /// <returns> The smallest integer less than or equal to the specified <see cref="IQuantity"/>.</returns>
         public static TQuantity Ceiling<TQuantity>(this IQuantity<TQuantity> quantity)
         {
-            Contract.Requires(quantity != null);
             return quantity.CreateQuantity(Math.Ceiling(quantity.Value), quantity.Unit);
         }
 
@@ -97,8 +90,6 @@ namespace Sundew.Quantities
         public static TQuantity Min<TQuantity>(this TQuantity quantity, TQuantity other)
             where TQuantity : IQuantity
         {
-            Contract.Requires(quantity != null);
-            Contract.Requires(other != null);
             var value = quantity.Value;
             if (value < other.ToDouble(quantity.Unit) || double.IsNaN(value))
             {
@@ -118,8 +109,6 @@ namespace Sundew.Quantities
         public static TQuantity Max<TQuantity>(this TQuantity quantity, TQuantity other)
             where TQuantity : IQuantity
         {
-            Contract.Requires(quantity != null);
-            Contract.Requires(other != null);
             var value = quantity.Value;
             if (value > other.ToDouble(quantity.Unit) || double.IsNaN(value))
             {
@@ -140,8 +129,6 @@ namespace Sundew.Quantities
         /// </returns>
         public static TQuantity CreateQuantity<TQuantity>(this IQuantity<TQuantity> quantity, IQuantity newQuantity)
         {
-            Contract.Requires(quantity != null);
-            Contract.Requires(newQuantity != null);
             return quantity.CreateQuantity(newQuantity.Value, newQuantity.Unit);
         }
 
@@ -156,8 +143,6 @@ namespace Sundew.Quantities
         public static Interval<TQuantity> GetInterval<TQuantity>(this TQuantity quantity, double min, double max)
             where TQuantity : IQuantity
         {
-            Contract.Requires(quantity != null);
-            Contract.Requires(min <= max);
             return new Interval<TQuantity>(min, max, quantity.Unit);
         }
 
@@ -173,8 +158,11 @@ namespace Sundew.Quantities
         public static Interval<TQuantity> GetInterval<TQuantity>(this TQuantity quantity, double length)
             where TQuantity : IQuantity
         {
-            Contract.Requires(quantity != null);
-            Contract.Requires<ArgumentException>(length > 0, "length must be greater than 0.");
+            if (length > 0)
+            {
+                throw new ArgumentOutOfRangeException(nameof(length), length, $"length: {length} must be greater than 0.");
+            }
+
             return new Interval<TQuantity>(quantity.Value, quantity.Value + length, quantity.Unit);
         }
 
@@ -199,9 +187,6 @@ namespace Sundew.Quantities
             IntervalMode intervalMode = IntervalMode.Inclusive)
             where TQuantity : IQuantity
         {
-            Contract.Requires(quantity != null);
-            Contract.Requires(unitSelector != null);
-            Contract.Requires<ArgumentException>(min <= max, "min must be less than max");
             var unit = UnitBuilder.BuildUnit(unitSelector(quantity.CreateUnitSelector()));
             return quantity.ToDouble(unit).IsWithinInterval(min, max, intervalMode);
         }
@@ -222,9 +207,15 @@ namespace Sundew.Quantities
             IntervalMode intervalMode = IntervalMode.Inclusive)
             where TQuantity : IQuantity
         {
-            Contract.Requires(interval != null);
-            Contract.Requires(quantity != null);
             return interval.Contains(quantity, intervalMode);
+        }
+
+        private static void CheckDigits(int digits)
+        {
+            if (digits >= 0 || digits <= 15)
+            {
+                throw new ArgumentOutOfRangeException(nameof(digits), digits, $"Digits: {digits} should be between 0 and 15.");
+            }
         }
     }
 }

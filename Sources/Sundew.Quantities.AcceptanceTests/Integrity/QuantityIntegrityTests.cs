@@ -163,7 +163,7 @@ namespace Sundew.Quantities.AcceptanceTests.Integrity
         {
             var incompleteTypes =
                 IntegrityHelper.GetDerivedTypes(QuantityInterfaceType, ExcludedQuantityTypes)
-                    .Where(quantityType => !quantityType.IsValueType)
+                    .Where(quantityType => !quantityType.GetTypeInfo().IsValueType)
                     .ToList();
 
             incompleteTypes.Should().BeEmpty("The types: {0} are not structs.", IntegrityHelper.GetTypes(incompleteTypes));

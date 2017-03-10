@@ -7,7 +7,6 @@
 
 namespace Sundew.Quantities.Parsing.LexicalAnalysis
 {
-    using System.Diagnostics.Contracts;
     using System.Text.RegularExpressions;
 
     /// <summary>
@@ -45,7 +44,6 @@ namespace Sundew.Quantities.Parsing.LexicalAnalysis
         /// <returns>The match result.</returns>
         public Group Match(string input)
         {
-            Contract.Requires(input != null);
             return this.regex.Match(input).Groups[IdGroupName];
         }
 

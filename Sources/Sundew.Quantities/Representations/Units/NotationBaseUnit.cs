@@ -8,7 +8,6 @@
 namespace Sundew.Quantities.Representations.Units
 {
     using System;
-    using System.Diagnostics.Contracts;
     using Sundew.Quantities.Representations.Expressions;
 
     /// <summary>
@@ -70,7 +69,6 @@ namespace Sundew.Quantities.Representations.Units
         /// <returns>An <see cref="Expression"/>.</returns>
         public static implicit operator Expression(NotationBaseUnit unit)
         {
-            Contract.Requires(unit != null);
             return unit.GetExpression();
         }
 

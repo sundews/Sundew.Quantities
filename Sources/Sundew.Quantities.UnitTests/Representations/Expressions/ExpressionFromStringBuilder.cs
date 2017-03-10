@@ -48,7 +48,7 @@ namespace Sundew.Quantities.UnitTests.Representations.Expressions
                         return new ConstantExpression(constant);
                     }
 
-                    return new UnitExpression(new Unit(operation.ToString(CultureInfo.CurrentCulture)));
+                    return new UnitExpression(new Unit(operation));
             }
         }
     }

@@ -9,7 +9,6 @@ namespace Sundew.Quantities.Parsing.LexicalAnalysis
 {
     using System.Collections;
     using System.Collections.Generic;
-    using System.Diagnostics.Contracts;
     using System.Text.RegularExpressions;
 
     /// <summary>
@@ -25,8 +24,6 @@ namespace Sundew.Quantities.Parsing.LexicalAnalysis
         /// <param name="lexemes">The lexemes.</param>
         public Lexemes(LinkedList<Lexeme> lexemes)
         {
-            Contract.Requires(lexemes != null);
-
             this.currentLexeme = lexemes.First;
         }
 
@@ -66,8 +63,6 @@ namespace Sundew.Quantities.Parsing.LexicalAnalysis
         /// </returns>
         public bool AcceptTokenFrom(Regex tokenRegex, out string token)
         {
-            Contract.Requires(tokenRegex != null);
-
             return this.AcceptTokenFrom(tokenRegex, true, out token);
         }
 
@@ -82,8 +77,6 @@ namespace Sundew.Quantities.Parsing.LexicalAnalysis
         /// </returns>
         public bool AcceptTokenFrom(Regex tokenRegex, bool ignoreWhiteSpace, out string token)
         {
-            Contract.Requires(tokenRegex != null);
-
             var ignoredWhiteSpace = this.TryIgnoreWhiteSpace(ignoreWhiteSpace, this.Current);
             var match = tokenRegex.Match(this.Current.Token);
             if (match.Success)
@@ -111,8 +104,6 @@ namespace Sundew.Quantities.Parsing.LexicalAnalysis
         /// <returns><c>true</c> if the specified lexeme registry contains the token, otherwise <c>false</c>.</returns>
         public bool AcceptTokenFrom<TResult>(ILexemeRegistry<TResult> possibleTokens, out TResult result)
         {
-            Contract.Requires(possibleTokens != null);
-
             return this.AcceptTokenFrom(possibleTokens, true, out result);
         }
 
@@ -131,8 +122,6 @@ namespace Sundew.Quantities.Parsing.LexicalAnalysis
             bool ignoreWhiteSpace,
             out TResult result)
         {
-            Contract.Requires(possibleTokens != null);
-
             var ignoredWhiteSpace = this.TryIgnoreWhiteSpace(ignoreWhiteSpace, this.Current);
             if (possibleTokens.TryGet(this.Current.Token, out result))
             {

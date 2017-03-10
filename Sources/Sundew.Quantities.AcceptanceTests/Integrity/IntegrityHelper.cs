@@ -4,11 +4,13 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
+
 namespace Sundew.Quantities.AcceptanceTests.Integrity
 {
     using System;
     using System.Collections.Generic;
     using System.Linq;
+    using System.Reflection;
     using System.Text;
 
     internal class IntegrityHelper
@@ -16,7 +18,7 @@ namespace Sundew.Quantities.AcceptanceTests.Integrity
         public static IEnumerable<Type> GetDerivedTypes(Type baseType, IEnumerable<Type> excludedTypes)
         {
             return
-                baseType.Assembly.GetTypes()
+                baseType.GetTypeInfo().Assembly.GetTypes()
                     .Where(type => baseType.IsAssignableFrom(type) && type != baseType && !excludedTypes.Contains(type));
         }
 

@@ -8,7 +8,6 @@
 namespace Sundew.Quantities.Parsing.LexicalAnalysis
 {
     using System;
-    using System.Diagnostics.Contracts;
 
     /// <summary>
     /// Exception for indicating an invalid input.
@@ -22,7 +21,6 @@ namespace Sundew.Quantities.Parsing.LexicalAnalysis
         public LexicalException(LexicalError lexicalError)
             : base(lexicalError.GetMessage())
         {
-            Contract.Requires(lexicalError != null);
             this.LexicalError = lexicalError;
         }
 

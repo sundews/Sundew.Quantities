@@ -7,8 +7,6 @@
 
 namespace Sundew.Quantities.Representations.Expressions
 {
-    using System.Diagnostics.Contracts;
-
     /// <summary>
     /// Helper class for <see cref="IUnit" />.
     /// </summary>
@@ -24,8 +22,6 @@ namespace Sundew.Quantities.Representations.Expressions
         /// </returns>
         public static bool AreBaseUnitsEqual(IUnit lhs, IUnit rhs)
         {
-            Contract.Requires(lhs != null);
-            Contract.Requires(rhs != null);
             return lhs.BaseUnit.Equals(rhs.BaseUnit);
         }
 
@@ -77,7 +73,6 @@ namespace Sundew.Quantities.Representations.Expressions
         /// <returns>A hash code for this instance, suitable for use in hashing algorithms and data structures like a hash table.</returns>
         public static int GetHashCode(IUnit unit)
         {
-            Contract.Requires(unit != null);
             return unit.PrefixFactor.GetHashCode() ^ unit.Notation.GetHashCode();
         }
 

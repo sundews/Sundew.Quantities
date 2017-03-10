@@ -7,8 +7,6 @@
 
 namespace Sundew.Quantities
 {
-    using System;
-    using System.Diagnostics.Contracts;
     using Sundew.Base.Numeric;
     using Sundew.Quantities.Core;
     using Sundew.Quantities.Representations.Expressions;
@@ -28,8 +26,11 @@ namespace Sundew.Quantities
         /// <param name="unit">The unit.</param>
         public Interval(double min, double max, IUnit unit)
         {
-            Contract.Requires(unit != null);
-            Contract.Requires<ArgumentException>(min <= max, "min must be less than max");
+            if (min > max)
+            {
+                throw new RangeException<double>(min, max);
+            }
+
             this.Min = min;
             this.Max = max;
             this.Unit = unit;
@@ -104,7 +105,6 @@ namespace Sundew.Quantities
         /// </returns>
         public bool Contains(TQuantity quantity, IntervalMode intervalMode = IntervalMode.Inclusive)
         {
-            Contract.Requires(quantity != null);
             return quantity.ToDouble(this.Unit).IsWithinInterval(this.Min, this.Max, intervalMode);
         }
 
@@ -117,7 +117,6 @@ namespace Sundew.Quantities
         /// </returns>
         public bool ContainsInclusive(TQuantity quantity)
         {
-            Contract.Requires(quantity != null);
             return this.Contains(quantity);
         }
 
@@ -130,7 +129,6 @@ namespace Sundew.Quantities
         /// </returns>
         public bool ContainsExclusive(TQuantity quantity)
         {
-            Contract.Requires(quantity != null);
             return this.Contains(quantity, IntervalMode.Exclusive);
         }
 
