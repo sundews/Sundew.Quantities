@@ -48,7 +48,6 @@ namespace Sundew.Quantities.Samples
             // 5 [km/h²]
             // 6 [mi/h/s]
             // 7 [mm/s²]
-
             #endregion
         }
 
@@ -78,7 +77,6 @@ namespace Sundew.Quantities.Samples
             // 5 [km]
             // 6 [μm]
             // 7 [mm]
-
             #endregion
         }
     }

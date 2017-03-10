@@ -25,6 +25,7 @@ namespace Sundew.Quantities.Samples
 
             // Create potential
             var potential = 12.Volts();
+
             // Create electric current
             var electricCurrent1 = 2.Amperes();
 
@@ -99,7 +100,6 @@ namespace Sundew.Quantities.Samples
             // 10 [m/s] / 2 [s] = 5 [m/s²]
             // 5 [m/s²] * 30 [s] = 150 [m/s]
             // 150 [m/s] * 60 [s] = 9000 [m]
-
             #endregion
         }
     }

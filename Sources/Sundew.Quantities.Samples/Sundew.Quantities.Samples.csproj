@@ -6,6 +6,18 @@
     <Company>Hukano</Company>
   </PropertyGroup>
 
+  <PropertyGroup>
+    <NoWarn>1701;1702;1705;1591</NoWarn>
+    <TreatWarningsAsErrors>False</TreatWarningsAsErrors>
+    <TreatSpecificWarningsAsErrors />
+    <DocumentationFile>bin\$(Configuration)\netcoreapp1.1\Sundew.Quantities.Samples.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <AdditionalFiles Include="stylecop.json" />
+    <AdditionalFiles Include="Sundew.Quantities.Samples.ruleset" />
+  </ItemGroup>
+
   <ItemGroup>
     <PackageReference Include="FluentAssertions" Version="4.19.2" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.0.0" />

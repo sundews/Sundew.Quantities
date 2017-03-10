@@ -19,28 +19,19 @@
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
   </PropertyGroup>
 
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+  <PropertyGroup>
     <TreatWarningsAsErrors>True</TreatWarningsAsErrors>
     <TreatSpecificWarningsAsErrors />
-    <DocumentationFile>bin\Release\netstandard1.0\.xml</DocumentationFile>
+    <DocumentationFile>bin\$(Configuration)\netstandard1.0\.xml</DocumentationFile>
   </PropertyGroup>
-
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <TreatWarningsAsErrors>True</TreatWarningsAsErrors>
-    <TreatSpecificWarningsAsErrors />
-    <DocumentationFile>bin\Debug\netstandard1.0\.xml</DocumentationFile>
-  </PropertyGroup>
-
-  <ItemGroup>
-    <None Remove="stylecop.json" />
-  </ItemGroup>
 
   <ItemGroup>
     <AdditionalFiles Include="stylecop.json" />
+	<AdditionalFiles Include="Sundew.Quantities.ruleset" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Sundew.Base" Version="3.0.0-pre2" />
+    <PackageReference Include="Sundew.Base" Version="3.0.0-pre3" />
   </ItemGroup>
 
 </Project>

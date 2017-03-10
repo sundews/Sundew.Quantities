@@ -15,7 +15,10 @@
       "variables": {
         "licenseName": "MIT",
         "licenseFile": "LICENSE"
-      }
+      },
+      "documentExposedElements": false,
+      "documentInternalElements": false,
+      "documentInterfaces": false
     }
   }
 }

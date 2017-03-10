@@ -85,7 +85,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Sundew.Base, Version=3.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Sundew.Base.3.0.0-pre2\lib\netstandard1.0\Sundew.Base.dll</HintPath>
+      <HintPath>..\packages\Sundew.Base.3.0.0-pre3\lib\netstandard1.0\Sundew.Base.dll</HintPath>
     </Reference>
     <Reference Include="Sundew.Generator, Version=1.0.1.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Sundew.Generator.1.0.1\lib\net461\Sundew.Generator.dll</HintPath>

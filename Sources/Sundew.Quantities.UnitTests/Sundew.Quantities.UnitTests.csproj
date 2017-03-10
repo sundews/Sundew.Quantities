@@ -6,28 +6,18 @@
     <Company>Hukano</Company>
   </PropertyGroup>
 
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+  <PropertyGroup>
     <TreatWarningsAsErrors>True</TreatWarningsAsErrors>
     <TreatSpecificWarningsAsErrors />
-    <DocumentationFile>bin\Release\netcoreapp1.1\Sundew.Quantities.UnitTests.xml</DocumentationFile>
+    <DocumentationFile>bin\$(Configuration)\netcoreapp1.1\Sundew.Quantities.UnitTests.xml</DocumentationFile>
     <NoWarn>1701;1702;1705;1591;1633</NoWarn>
   </PropertyGroup>
-
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <TreatWarningsAsErrors>True</TreatWarningsAsErrors>
-    <TreatSpecificWarningsAsErrors />
-    <DocumentationFile>bin\Debug\netcoreapp1.1\Sundew.Quantities.UnitTests.xml</DocumentationFile>
-    <NoWarn>1701;1702;1705;1591;1633</NoWarn>
-  </PropertyGroup>
-
-  <ItemGroup>
-    <None Remove="stylecop.json" />
-  </ItemGroup>
 
   <ItemGroup>
     <AdditionalFiles Include="stylecop.json" />
+    <AdditionalFiles Include="Sundew.Quantities.UnitTests.ruleset" />
   </ItemGroup>
-
+  
   <ItemGroup>
     <PackageReference Include="FakeItEasy" Version="3.0.0" />
     <PackageReference Include="FluentAssertions" Version="4.19.2" />
