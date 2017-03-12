@@ -3,14 +3,10 @@
   "TargetSetups": [
     {
       "Path": "..\\..\\..\\Sundew.Quantities\\Sundew.Quantities.csproj",
-      "HandlerType": "Sundew.Generator.MSBuild.MSBuildTextTargetHandler, Sundew.Generator.MSBuild",
-      "AddFilesToProject": true
+      "HandlerType": "Sundew.Generator.MSBuild.NetCoreTextTargetHandler, Sundew.Generator.MSBuild",
+      "AddFilesToProject": false
     }
   ],
-  "ModelSetup": {
-    "ModelsFolder": "Models",
-    "ModelFilesSearchPattern": "*.json"
-  },
   "ModelsFolder": "Models",
   "ModelFilesSearchPattern": "*.json",
   "OutputFileExtension": ".cs",

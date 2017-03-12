@@ -23,15 +23,16 @@
     <TreatWarningsAsErrors>True</TreatWarningsAsErrors>
     <TreatSpecificWarningsAsErrors />
     <DocumentationFile>bin\$(Configuration)\netstandard1.0\.xml</DocumentationFile>
+    <RootNamespace>Sundew.Quantities</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
     <AdditionalFiles Include="stylecop.json" />
-	<AdditionalFiles Include="Sundew.Quantities.ruleset" />
+	  <AdditionalFiles Include="Sundew.Quantities.ruleset" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Sundew.Base" Version="3.0.0-pre3" />
+    <PackageReference Include="Sundew.Base" Version="3.0.0" />
   </ItemGroup>
 
 </Project>
