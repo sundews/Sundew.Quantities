@@ -43,8 +43,7 @@ namespace Sundew.Quantities.Core
         /// <exception cref="QuantityParseException">Exception thrown when parsing fails.</exception>
         public Result<Quantity, Error<QuantityError>> Parse(Lexemes lexemes, ParseSettings parseSettings)
         {
-            string number;
-            if (lexemes.AcceptTokenType(TokenType.Number, out number))
+            if (lexemes.AcceptTokenType(TokenType.Number, out var number))
             {
                 var value = double.Parse(number, parseSettings.CultureInfo);
                 var result = this.expressionParser.Parse(
@@ -56,8 +55,7 @@ namespace Sundew.Quantities.Core
                     return GetError(parseSettings, QuantityError.EndOfDataNotFound, lexemes);
                 }
 
-                return Result.For(
-                    result,
+                return result.Convert(
                     expression => new Quantity(value, this.unitFactory.Create(expression)),
                     error => Error.From(QuantityError.UnitNotFound, lexemes.Current, error));
             }

@@ -57,13 +57,12 @@ namespace Sundew.Quantities.UnitTests.Parsing
         }
 
         [Theory]
-        [InlineData("1", new[] { "Ia", "O^", "O^", "." }, 2)]
-        [InlineData("2", new[] { "Ia", "O^", "Ib", "." }, 2)]
-        [InlineData("3", new[] { "Ia", "N3", "E" }, 1)]
-        [InlineData("4", new[] { "O(", "Ia", "O*", "Ib", "." }, 4)]
-        [InlineData("5", new[] { "O)", "Ia", "O/", "Ib", "O)", "." }, 0)]
+        [InlineData(new[] { "Ia", "O^", "O^", "." }, 2)]
+        [InlineData(new[] { "Ia", "O^", "Ib", "." }, 2)]
+        [InlineData(new[] { "Ia", "N3", "E" }, 1)]
+        [InlineData(new[] { "O(", "Ia", "O*", "Ib", "." }, 4)]
+        [InlineData(new[] { "O)", "Ia", "O/", "Ib", "O)", "." }, 0)]
         public void Parse_When_LexemesAreInvalid_Then_ParseExceptionShouldBeThrown(
-            string testNumber,
             string[] tokens,
             int expectedPosition)
         {
@@ -74,7 +73,7 @@ namespace Sundew.Quantities.UnitTests.Parsing
 
             Action act = () => this.testee.Parse(lexemes, ParseSettings.DefaultInvariantCulture);
 
-            act.ShouldThrow<ExpressionParseException>().And.Error.Lexeme.Position.Should().Be(expectedPosition);
+            act.Should().Throw<ExpressionParseException>().And.Error.Lexeme.Position.Should().Be(expectedPosition);
         }
 
         private static Lexemes GetLexemes(IEnumerable<string> tokens)

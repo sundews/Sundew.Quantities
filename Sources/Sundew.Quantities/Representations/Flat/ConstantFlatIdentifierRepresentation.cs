@@ -78,7 +78,7 @@ namespace Sundew.Quantities.Representations.Flat
         /// </returns>
         public override int GetHashCode()
         {
-            return EqualityHelper.GetHashCode(this.Constant);
+            return EqualityHelper.GetHashCode(this.Constant.GetHashCode());
         }
 
         /// <summary>

@@ -87,9 +87,9 @@ namespace Sundew.Quantities.Representations.Flat
         public override int GetHashCode()
         {
             return EqualityHelper.GetHashCode(
-                this.VariableExpression.VariableName,
+                this.VariableExpression.VariableName?.GetHashCode() ?? 0,
                 FlatPresentationHelper.HatHashCode,
-                this.Exponent);
+                this.Exponent.GetHashCode());
         }
 
         /// <summary>

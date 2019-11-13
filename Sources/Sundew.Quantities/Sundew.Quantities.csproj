@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard1.0</TargetFramework>
+    <TargetFramework>netstandard1.3</TargetFramework>
     <Company>Hukano</Company>
     <Version>3.0.0-pre1</Version>
     <PackageReleaseNotes>3.0.0 Changed to .NET Standard
@@ -32,7 +32,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Sundew.Base" Version="3.0.0" />
+    <PackageReference Include="Sundew.Base" Version="4.0.0-pre-u20191107-201852" />
   </ItemGroup>
 
 </Project>

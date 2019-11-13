@@ -46,7 +46,7 @@ namespace Sundew.Quantities.AcceptanceTests.Spatial
 
             Action act = () => lhs.CompareTo(rhs);
 
-            act.ShouldThrow<UnitMismatchException>().Which.OperationType.Should().Be(OperationType.Compare);
+            act.Should().Throw<UnitMismatchException>().Which.OperationType.Should().Be(OperationType.Compare);
         }
     }
 }

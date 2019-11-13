@@ -22,7 +22,7 @@ namespace Sundew.Quantities.Generator.UnitSelectors
             {
                 new Run(
                     NameHelper.GetFolderPath(codeSetup, codeGeneratorSetup),
-                    NameHelper.GetFileName($"I{model.Name}UnitSelector", codeSetup, codeGeneratorSetup))
+                    NameHelper.GetFileName($"I{model.Name}UnitSelector", codeSetup, codeGeneratorSetup)),
             };
         }
 

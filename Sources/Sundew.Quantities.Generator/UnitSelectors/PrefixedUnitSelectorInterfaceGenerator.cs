@@ -21,7 +21,7 @@ namespace Sundew.Quantities.Generator.UnitSelectors
             {
                 new Run(
                     NameHelper.GetFolderPath(codeSetup, codeGeneratorSetup),
-                    NameHelper.GetFileName($"IPrefixed{model.Name}UnitSelector", codeSetup, codeGeneratorSetup))
+                    NameHelper.GetFileName($"IPrefixed{model.Name}UnitSelector", codeSetup, codeGeneratorSetup)),
             };
         }
 

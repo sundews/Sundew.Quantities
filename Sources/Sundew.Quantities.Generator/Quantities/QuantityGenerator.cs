@@ -21,7 +21,7 @@ namespace Sundew.Quantities.Generator.Quantities
             {
                 new Run(
                     NameHelper.GetFolderPath(codeSetup, codeGeneratorSetup),
-                    NameHelper.GetFileName(model.Name, codeSetup, codeGeneratorSetup))
+                    NameHelper.GetFileName(model.Name, codeSetup, codeGeneratorSetup)),
             };
         }
 

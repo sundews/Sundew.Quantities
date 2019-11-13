@@ -14,15 +14,15 @@ namespace Sundew.Quantities.AcceptanceTests.Periodics
     public class FrequencyTests
     {
         [Theory]
-        [InlineData(3, 3000000000)]
+        [InlineData(3, 3000000)]
         [InlineData(0, 0)]
         public void Frequency_ToUnit_Then_ResultShouldBeExpected(double value, double expected)
         {
-            var testee = new Frequency(4, x => x.Mega.Hertz);
+            var testee = new Frequency(value, x => x.Mega.Hertz);
 
             var result = testee.ToUnit(x => x.Hertz);
 
-            result.Should().Be(4000000, "Hz", UnitFormat.Default);
+            result.Should().Be(expected, "Hz", UnitFormat.Default);
         }
     }
 }

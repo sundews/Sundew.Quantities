@@ -24,7 +24,7 @@ namespace Sundew.Quantities.Representations.Expressions.Visitors
         /// <returns>
         /// The base <see cref="Expression" />.
         /// </returns>
-        public Expression Visit(Expression expression, Ignore ignored = default(Ignore), Reference<Expression> currentResult = null)
+        public Expression Visit(Expression expression, Ignore ignored = default, Reference<Expression> currentResult = null)
         {
             currentResult = currentResult ?? new Reference<Expression>(expression);
             return this.PrivateVisit(expression, currentResult);
@@ -134,7 +134,7 @@ namespace Sundew.Quantities.Representations.Expressions.Visitors
         /// <returns>The base expression.</returns>
         private Expression PrivateVisit(Expression expression, Reference<Expression> currentResult)
         {
-            expression.Visit(this, Ignore.Me, currentResult);
+            expression.Visit(this, Ignore._, currentResult);
             return currentResult.Value;
         }
     }

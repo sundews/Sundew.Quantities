@@ -50,7 +50,7 @@ namespace Sundew.Quantities.UnitTests.Parsing.LexicalAnalysis
         {
             Action act = () => this.testee.Analyze(input, true);
 
-            act.ShouldThrow<LexicalException>();
+            act.Should().Throw<LexicalException>();
         }
     }
 }

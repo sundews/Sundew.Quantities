@@ -73,8 +73,7 @@ namespace Sundew.Quantities.Core
         /// </returns>
         public IUnit GetUnit(Expression expression)
         {
-            var unitExpression = expression as UnitExpression;
-            if (unitExpression != null)
+            if (expression is UnitExpression unitExpression)
             {
                 return unitExpression.Unit;
             }
@@ -93,7 +92,7 @@ namespace Sundew.Quantities.Core
         public Result<IUnit, Error<ExpressionError>> GetUnit(string unit, ParseSettings parseSettings)
         {
             var result = this.ParseExpression(unit, parseSettings);
-            return Result.For(result, this.GetUnit);
+            return result.ConvertValue(this.GetUnit);
         }
 
         /// <summary>
