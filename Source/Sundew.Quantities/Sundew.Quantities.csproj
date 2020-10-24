@@ -1,0 +1,42 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard1.3</TargetFramework>
+    <Company>Hukano</Company>
+    <Version>3.0.0</Version>
+    <PackageReleaseNotes>3.0.0 Changed to .NET Standard
+2.0.1 Changed quantities to structs
+1.0.2: Minor fixes
+1.0.1: First version</PackageReleaseNotes>
+    <Description>Sundew.Quantities is a portable library, which provides classes for representing physical quantities such as:
+- Distance
+- Velocity 
+- Acceleration
+- Area
+- Volume
+- Mass
+- Time</Description>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <TreatWarningsAsErrors>True</TreatWarningsAsErrors>
+    <TreatSpecificWarningsAsErrors />
+    <DocumentationFile>$(OutputPath)\$(AssemblyName).xml</DocumentationFile>
+    <RootNamespace>Sundew.Quantities</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <AdditionalFiles Include="stylecop.json" />
+	  <AdditionalFiles Include="Sundew.Quantities.ruleset" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include=".generated\**\*.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Sundew.Base" Version="5.0.0" />
+  </ItemGroup>
+
+</Project>
