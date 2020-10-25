@@ -1,0 +1,56 @@
+﻿{
+  "Type": "Sundew.Generator.Code.CodeSetup, Sundew.Generator.Code",
+  "ModelSetup": {
+    "Type": "Sundew.Generator.Input.FolderModelSetup, Sundew.Generator",
+    "Provider": "Sundew.Generator.Input.JsonModelProvider`1, Sundew.Generator",
+    "Folder": "..\\..\\..\\Models",
+    "FilesSearchPattern": "*.json"
+  },
+  "WriterSetups": [
+    {
+      "Type": "Sundew.Generator.Input.FolderModelSetup, Sundew.Generator",
+      "Path": "..\\..\\..\\..\\Sundew.Quantities\\Sundew.Quantities.csproj",
+      "Writer": "Sundew.Generator.Code.ProjectTextFileWriter, Sundew.Generator.Code",
+      "FileExtension": ".cs",
+      "FileNameSuffix": ".generated",
+      "Folder": ".generated"
+    }
+  ],
+  "TargetNamespace": "UnitSelectors",
+  "UseGlobalUsings": true,
+  "Usings": [ "System.CodeDom.Compiler" ],
+  "GeneratorSetups": [
+    {
+      "Generator": "Sundew.Quantities.Generator.UnitSelectors.UnitSelectorGenerator, Sundew.Quantities.Generator",
+      "Usings": [
+        "System.Collections.Generic",
+        "Sundew.Quantities.Representations.Units",
+        "Sundew.Quantities.Representations.Expressions",
+        "Sundew.Quantities.UnitSelection"
+      ]
+    },
+    {
+      "Generator": "Sundew.Quantities.Generator.UnitSelectors.UnitSelectorInterfaceGenerator, Sundew.Quantities.Generator",
+      "Usings": [
+        "Sundew.Quantities.Representations.Units",
+        "Sundew.Quantities.Representations.Expressions",
+        "Sundew.Quantities.UnitSelection"
+      ]
+    },
+    {
+      "Generator": "Sundew.Quantities.Generator.UnitSelectors.PrefixedUnitSelectorInterfaceGenerator, Sundew.Quantities.Generator",
+      "Usings": [ "Sundew.Quantities.UnitSelection" ]
+    },
+    {
+      "Generator": "Sundew.Quantities.Generator.Quantities.QuantityGenerator, Sundew.Quantities.Generator",
+      "TargetNamespace": "",
+      "Usings": [
+        "System",
+        "System.Globalization",
+        "Sundew.Quantities.Core",
+        "Sundew.Quantities.Representations.Expressions",
+        "Sundew.Quantities.UnitSelectors"
+      ]
+    }
+  ]
+}

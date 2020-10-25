@@ -1,0 +1,12 @@
+﻿{
+  "Name": "Inductance",
+  "Units": [
+    {
+      "Identifier": "Henry",
+      "Unit": "Henry",
+      "Name": "henry"
+    }
+  ],
+  "BaseUnit": "Henry",
+  "DefaultUnits": [ "Henry" ]
+}

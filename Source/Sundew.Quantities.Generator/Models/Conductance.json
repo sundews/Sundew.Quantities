@@ -1,0 +1,12 @@
+﻿{
+  "Name": "Conductance",
+  "Units": [
+    {
+      "Identifier": "Siemens",
+      "Unit": "Siemens",
+      "NAme": "siemens"
+    }
+  ],
+  "BaseUnit": "Siemens",
+  "DefaultUnits": [ "Siemens" ]
+}

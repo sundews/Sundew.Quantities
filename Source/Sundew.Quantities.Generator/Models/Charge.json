@@ -1,0 +1,16 @@
+﻿{
+  "Name": "Charge",
+  "Units": [
+    { "Identifier": "Coulombs" },
+    { "Identifier": "Amperes" },
+    { "Identifier": "Seconds" },
+    { "Identifier": "Years" },
+    { "Identifier": "Months" },
+    { "Identifier": "Weeks" },
+    { "Identifier": "Days" },
+    { "Identifier": "Minutes" },
+    { "Identifier": "Hours" }
+  ],
+  "BaseUnit": "Coulomb",
+  "DefaultUnits": [ "Coulomb" ]
+}

@@ -1,0 +1,32 @@
+﻿{
+  "Name": "Velocity",
+  "Units": [
+    { "Identifier": "Meters" },
+    { "Identifier": "Miles" },
+    {
+      "Identifier": "Feet",
+      "Unit": "Foot",
+      "Name": "feet"
+    },
+    {
+      "Identifier": "Inches",
+      "Unit": "Inch",
+      "Name": "inches"
+    },
+    {
+      "Identifier": "NauticalMiles",
+      "Unit": "NauticalMile",
+      "Name": "nautical miles"
+    },
+    { "Identifier": "Yards" },
+    { "Identifier": "Seconds" },
+    { "Identifier": "Years" },
+    { "Identifier": "Months" },
+    { "Identifier": "Weeks" },
+    { "Identifier": "Days" },
+    { "Identifier": "Minutes" },
+    { "Identifier": "Hours" }
+  ],
+  "BaseUnit": "Velocity",
+  "DefaultUnits": [ "Velocity" ]
+}

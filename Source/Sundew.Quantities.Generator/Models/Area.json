@@ -1,0 +1,26 @@
+﻿{
+  "Name": "Area",
+  "Units": [
+    { "Identifier": "Meters" },
+    { "Identifier": "Miles" },
+    {
+      "Identifier": "Feet",
+      "Unit": "Foot",
+      "Name": "feet"
+    },
+    {
+      "Identifier": "Inches",
+      "Unit": "Inch",
+      "Name": "inches"
+    },
+    {
+      "Identifier": "NauticalMiles",
+      "Unit": "NauticalMile",
+      "Name": "nautical miles"
+    },
+    { "Identifier": "Yards" }
+  ],
+  "BaseUnit": "Meter",
+  "DefaultUnits": [ "Meter", "Mile", "NauticalMile", "Foot", "Inch", "Yard" ]
+}
+

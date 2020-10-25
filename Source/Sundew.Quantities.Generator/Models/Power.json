@@ -1,0 +1,6 @@
+﻿{
+  "Name": "Power",
+  "Units": [ { "Identifier": "Watts" } ],
+  "BaseUnit": "Watt",
+  "DefaultUnits": [ "Watt" ]
+}

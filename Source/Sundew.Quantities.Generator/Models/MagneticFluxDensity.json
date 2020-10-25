@@ -1,0 +1,6 @@
+﻿{
+  "Name": "MagneticFluxDensity",
+  "Units": [ { "Identifier": "Teslas" } ],
+  "BaseUnit": "Tesla",
+  "DefaultUnits": [ "Tesla" ]
+}

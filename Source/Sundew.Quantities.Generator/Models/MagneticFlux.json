@@ -1,0 +1,6 @@
+﻿{
+  "Name": "MagneticFlux",
+  "Units": [ { "Identifier": "Webers" } ],
+  "BaseUnit": "Weber",
+  "DefaultUnits": [ "Weber" ]
+}

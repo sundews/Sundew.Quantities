@@ -164,7 +164,6 @@ AppPackages/
 
 # Others
 ClientBin/
-[Ss]tyle[Cc]op.*
 ~$*
 *~
 *.dbmdl
@@ -210,3 +209,7 @@ FakesAssemblies/
 GeneratedArtifacts/
 _Pvt_Extensions/
 ModelManifest.xml
+
+.generated/
+/Sources/.idea/.idea.Sundew.Quantities
+/Source/.idea/.idea.Sundew.Quantities

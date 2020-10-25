@@ -1,0 +1,6 @@
+﻿{
+  "Name": "SolidAngle",
+  "Units": [ { "Identifier": "Steradians" } ],
+  "BaseUnit": "Steradian",
+  "DefaultUnits": [ "Steradian" ]
+}

@@ -1,0 +1,6 @@
+﻿{
+  "Name": "ElectricCurrent",
+  "Units": [ { "Identifier": "Amperes" } ],
+  "BaseUnit": "Ampere",
+  "DefaultUnits": [ "Ampere" ]
+}
