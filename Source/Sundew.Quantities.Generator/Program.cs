@@ -17,14 +17,14 @@
             {
                 ModelSetup = new FolderModelSetup
                 {
-                    Folder = "..\\..\\..\\Models",
+                    Folder = "../../../Models",
                     FilesSearchPattern = "*.json",
                 },
                 WriterSetups = new[]
                     {
                         new FileWriterSetup
                         {
-                            Target = "..\\..\\..\\..\\Sundew.Quantities\\Sundew.Quantities.csproj",
+                            Target = "../../../../Sundew.Quantities\\Sundew.Quantities.csproj",
                             Writer = new ProjectTextFileWriter(),
                             FileExtension = ".cs",
                             FileNameSuffix = ".generated",
