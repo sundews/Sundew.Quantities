@@ -6,129 +6,26 @@
     <Owners>Kim Hugener-Ohlsen</Owners>
     <LangVersion>8</LangVersion>
     <Version>3.0.0</Version>
-    <SupportedOptimizationsVersion>[3.0.0-pre-u20200522-223115,4.0)</SupportedOptimizationsVersion>
     <OutputPath>bin\$(Configuration)</OutputPath>
-    <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
-    <IncludeBuildOutput>true</IncludeBuildOutput>
-    <DevelopmentDependency>true</DevelopmentDependency>
+    <GenerateRuntimeConfigurationFiles>true</GenerateRuntimeConfigurationFiles>
     <DocumentationFile>bin\$(Configuration)\Sundew.Quantities.Generator.xml</DocumentationFile>
     <CodeAnalysisRuleSet>Sundew.Quantities.Generator.ruleset</CodeAnalysisRuleSet>
-    <OutputType>Exe</OutputType>
     <IsPackable>false</IsPackable>
+    <RuntimeIdentifiers>win10-x64;osx.10.12-x64;debian.8-x64</RuntimeIdentifiers>
     <Nullable>enable</Nullable>
+    <OutputType>Exe</OutputType>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <DefineConstants>TRACE;DEBUG</DefineConstants>
     <PlatformTarget>AnyCPU</PlatformTarget>
   </PropertyGroup>
-
-  <!--<ItemGroup>
-    <Compile Remove="IQuantityModel.cs" />
-    <Compile Remove="Quantities\ConstructorsHelper.cs" />
-    <Compile Remove="Quantities\ConversionOperationsHelper.cs" />
-    <Compile Remove="Quantities\EqualityOperationsHelper.cs" />
-    <Compile Remove="Quantities\FormattingOperationsHelper.cs" />
-    <Compile Remove="Quantities\QuantityGenerator.cs" />
-    <Compile Remove="Quantities\StandardOperationsHelper.cs" />
-    <Compile Remove="QuantityModel - Copy.cs" />
-    <Compile Remove="QuantityModel.cs" />
-    <Compile Remove="Setup.cs" />
-    <Compile Remove="UnitModel.cs" />
-    <Compile Remove="UnitSelectors\ExponentsHelper.cs" />
-    <Compile Remove="UnitSelectors\PrefixedUnitSelectorInterfaceGenerator.cs" />
-    <Compile Remove="UnitSelectors\PrefixesHelper.cs" />
-    <Compile Remove="UnitSelectors\UnitSelectorGenerator.cs" />
-    <Compile Remove="UnitSelectors\UnitSelectorInterfaceGenerator.cs" />
-    <Compile Remove="UnitSelectors\UnitsHelper.cs" />
-  </ItemGroup>-->
-
+  
   <ItemGroup>
-    <None Include="Models\Acceleration.json">
+    <None Include="Models\*.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <AdditionalFiles Include="stylecop.json" />
     <None Include="Sundew.Quantities.Generator.ruleset" />
-    <None Include="Models\Angle.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Models\Area.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Models\Capacitance.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Models\Charge.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Models\Conductance.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Models\Distance.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Models\ElectricCurrent.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Models\Energy.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Models\Force.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Models\Frequency.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Models\Illuminance.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Models\Inductance.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Models\LuminousFlux.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Models\LuminousIntensity.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Models\MagneticFlux.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Models\MagneticFluxDensity.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Models\Mass.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Models\Momentum.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Models\Potential.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Models\Power.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Models\Pressure.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Models\Resistance.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Models\SolidAngle.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Models\Temperature.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Models\Time.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Models\Velocity.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Models\Volume.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
     <GeneratorSetup Include="Quantities.gs.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </GeneratorSetup>
@@ -139,27 +36,7 @@
   </ItemGroup>
  
   <ItemGroup>
-    <PackageReference Include="Sundew.Generator.Code" Version="3.0.0" />
+    <PackageReference Include="Sundew.Generator.Code" Version="3.0.2" />
   </ItemGroup>
-
-  <!--<ItemGroup>
-    <GenerateAndCompile Include="IQuantityModel.cs" />
-    <GenerateAndCompile Include="Quantities\ConstructorsHelper.cs" />
-    <GenerateAndCompile Include="Quantities\ConversionOperationsHelper.cs" />
-    <GenerateAndCompile Include="Quantities\EqualityOperationsHelper.cs" />
-    <GenerateAndCompile Include="Quantities\FormattingOperationsHelper.cs" />
-    <GenerateAndCompile Include="Quantities\QuantityGenerator.cs" />
-    <GenerateAndCompile Include="Quantities\StandardOperationsHelper.cs" />
-    <CodeGenerationSetup Include="Setup.cs" />
-    <CompileGenerationSetup Include="Setup.cs" />
-    <GenerateAndCompile Include="QuantityModel.cs" />
-    <GenerateAndCompile Include="UnitModel.cs" />
-    <GenerateAndCompile Include="UnitSelectors\ExponentsHelper.cs" />
-    <GenerateAndCompile Include="UnitSelectors\PrefixedUnitSelectorInterfaceGenerator.cs" />
-    <GenerateAndCompile Include="UnitSelectors\PrefixesHelper.cs" />
-    <GenerateAndCompile Include="UnitSelectors\UnitSelectorGenerator.cs" />
-    <GenerateAndCompile Include="UnitSelectors\UnitSelectorInterfaceGenerator.cs" />
-    <GenerateAndCompile Include="UnitSelectors\UnitsHelper.cs" />
-  </ItemGroup>-->
 
 </Project>
