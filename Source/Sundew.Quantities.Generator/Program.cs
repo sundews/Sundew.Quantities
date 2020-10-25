@@ -24,7 +24,7 @@
                     {
                         new FileWriterSetup
                         {
-                            Target = "../../../../Sundew.Quantities\\Sundew.Quantities.csproj",
+                            Target = "../../../../Sundew.Quantities/Sundew.Quantities.csproj",
                             Writer = new ProjectTextFileWriter(),
                             FileExtension = ".cs",
                             FileNameSuffix = ".generated",
