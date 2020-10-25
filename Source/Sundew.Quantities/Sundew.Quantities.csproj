@@ -22,7 +22,7 @@
   <PropertyGroup>
     <TreatWarningsAsErrors>True</TreatWarningsAsErrors>
     <TreatSpecificWarningsAsErrors />
-    <DocumentationFile>$(OutputPath)\$(AssemblyName).xml</DocumentationFile>
+    <DocumentationFile>$(OutputPath)/$(AssemblyName).xml</DocumentationFile>
     <RootNamespace>Sundew.Quantities</RootNamespace>
   </PropertyGroup>
 
