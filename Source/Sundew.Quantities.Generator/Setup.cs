@@ -7,6 +7,7 @@
 
 namespace Sundew.Quantities.Generator
 {
+    using Sundew.Base.Text;
     using Sundew.Generator;
     using Sundew.Generator.Code;
     using Sundew.Generator.Discovery;
@@ -26,14 +27,14 @@ namespace Sundew.Quantities.Generator
                 new CodeSetup {
                     ModelSetup = new FolderModelSetup
                     {
-                        Folder = "..\\..\\..\\Models",
+                        Folder = "../../../Models",
                         FilesSearchPattern = "*.json",
                     },
                     WriterSetups = new[]
                     {
                         new FileWriterSetup
                         {
-                            Target = "..\\..\\..\\..\\Sundew.Quantities\\Sundew.Quantities.csproj",
+                            Target = "../../../../Sundew.Quantities/Sundew.Quantities.csproj",
                             Writer = new ProjectTextFileWriter(),
                             FileExtension = ".cs",
                             FileNameSuffix = ".generated",
@@ -74,7 +75,7 @@ namespace Sundew.Quantities.Generator
                         new CodeGeneratorSetup
                         {
                             Generator = new QuantityGenerator(),
-                            TargetNamespace = "",
+                            TargetNamespace = Strings.Empty,
                             Usings = new []
                             {
                                 "System",
