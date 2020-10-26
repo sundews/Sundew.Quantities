@@ -38,7 +38,7 @@ namespace Sundew.Quantities.Generator
                             Writer = new ProjectTextFileWriter(),
                             FileExtension = ".cs",
                             FileNameSuffix = ".generated",
-                            Folder = ".generated",
+                            Folder = "generated",
                         },
                     },
                     TargetNamespace = "UnitSelectors",
