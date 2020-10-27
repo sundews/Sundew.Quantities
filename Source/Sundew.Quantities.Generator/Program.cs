@@ -1,4 +1,6 @@
-﻿namespace Sundew.Quantities.Generator
+﻿using Sundew.Base.Text;
+
+namespace Sundew.Quantities.Generator
 {
     using Sundew.Generator;
     using System.Threading.Tasks;
@@ -27,8 +29,8 @@
                             Target = "../../../../Sundew.Quantities/Sundew.Quantities.csproj",
                             Writer = new ProjectTextFileWriter(),
                             FileExtension = ".cs",
-                            FileNameSuffix = ".generated",
-                            Folder = ".generated",
+                            FileNameSuffix = ".g",
+                            Folder = ".g",
                         },
                     },
                 TargetNamespace = "UnitSelectors",
@@ -65,7 +67,7 @@
                         new CodeGeneratorSetup
                         {
                             Generator = new QuantityGenerator(),
-                            TargetNamespace = "",
+                            TargetNamespace = Strings.Empty,
                             Usings = new []
                             {
                                 "System",
