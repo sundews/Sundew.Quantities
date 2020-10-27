@@ -33,7 +33,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Include=".generated/**/*.cs" />
+    <Compile Include=".g/**/*.cs" />
   </ItemGroup>
 
   <ItemGroup>
