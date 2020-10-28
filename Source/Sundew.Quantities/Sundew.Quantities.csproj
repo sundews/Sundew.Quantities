@@ -40,4 +40,8 @@
     <PackageReference Include="Sundew.Base" Version="5.0.0" />
   </ItemGroup>
 
+  <Target Name="CheckForFiles" BeforeTargets="Build">
+    <Exec Command="ls /home/vsts/work/1/s/Source/Sundew.Quantities/.g" ConsoleToMSBuild="true"/>
+  </Target>
+
 </Project>
