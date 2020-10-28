@@ -47,4 +47,10 @@
   <ItemGroup>
     <ProjectReference Include="..\Sundew.Quantities.Generator\Sundew.Quantities.Generator.csproj" ReferenceOutputAssembly="false" SkipGetTargetFrameworkProperties="true" />
   </ItemGroup>
+
+  <Target Name="SundewCheckForFiles" BeforeTargets="PreBuildEvent">
+    <Message Importance="High" Text="lalal" />
+    <Exec Command="pwd" ConsoleToMSBuild="true" />
+    <Exec Command="ls" ConsoleToMSBuild="true" />
+  </Target>
 </Project>
