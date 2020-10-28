@@ -40,9 +40,8 @@
     <PackageReference Include="Sundew.Base" Version="5.0.0" />
   </ItemGroup>
 
-  <Target Name="SundewCheckForFiles" BeforeTargets="Compile">
-    <Message Importance="High" Text="lalal"/>
-    <Exec Command="ls" ConsoleToMSBuild="true"/>
+  <Target Name="SundewCheckForFiles" BeforeTargets="PreBuildEvent">
+    <Message Importance="High" Text="lalal" />
+    <Exec Command="ls" ConsoleToMSBuild="true" />
   </Target>
-
-</Project>
+  </Project>
