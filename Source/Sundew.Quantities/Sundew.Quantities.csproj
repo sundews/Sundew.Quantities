@@ -41,7 +41,7 @@
   </ItemGroup>
 
   <Target Name="CheckForFiles" BeforeTargets="Build">
-    <Exec Command="ls /home/vsts/work/1/s/Source/Sundew.Quantities/.g" ConsoleToMSBuild="true"/>
+    <Exec Command="ls" ConsoleToMSBuild="true"/>
   </Target>
 
 </Project>
