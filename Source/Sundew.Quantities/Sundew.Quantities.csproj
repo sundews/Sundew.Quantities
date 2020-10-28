@@ -41,6 +41,7 @@
   </ItemGroup>
 
   <Target Name="CheckForFiles" BeforeTargets="Compile">
+    <Message Importance="High" Text="lalal"/>
     <Exec Command="ls" ConsoleToMSBuild="true"/>
   </Target>
 
