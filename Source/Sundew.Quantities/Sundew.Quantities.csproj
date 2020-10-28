@@ -40,7 +40,7 @@
     <PackageReference Include="Sundew.Base" Version="5.0.0" />
   </ItemGroup>
 
-  <Target Name="CheckForFiles" BeforeTargets="Build">
+  <Target Name="CheckForFiles" BeforeTargets="Compile">
     <Exec Command="ls" ConsoleToMSBuild="true"/>
   </Target>
 
