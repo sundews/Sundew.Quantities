@@ -36,6 +36,10 @@
 
   <ItemGroup>
     <PackageReference Include="Sundew.Base" Version="5.0.0" />
+    <PackageReference Include="Sundew.Build.Publish" Version="2.2.3">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
   </ItemGroup>
 
   <Target Name="AddGeneratedFiles" BeforeTargets="ResolveAssemblyReferences">
