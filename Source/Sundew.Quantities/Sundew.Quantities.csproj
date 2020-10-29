@@ -37,20 +37,12 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Include=".generated/**/*.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="Sundew.Base" Version="5.0.0" />
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\Sundew.Quantities.Generator\Sundew.Quantities.Generator.csproj" ReferenceOutputAssembly="false" SkipGetTargetFrameworkProperties="true" />
-  </ItemGroup>
-
-  <Target Name="SundewCheckForFiles" BeforeTargets="PreBuildEvent">
-    <Message Importance="High" Text="lalal" />
-    <Exec Command="pwd" ConsoleToMSBuild="true" />
-    <Exec Command="ls" ConsoleToMSBuild="true" />
+  <Target Name="AddGeneratedFiles" BeforeTargets="ResolveAssemblyReferences">
+    <ItemGroup>
+      <Compile Include=".generated/**/*.cs" />
+    </ItemGroup>
   </Target>
 </Project>
