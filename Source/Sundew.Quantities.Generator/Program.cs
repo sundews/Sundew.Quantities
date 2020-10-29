@@ -1,4 +1,6 @@
-﻿namespace Sundew.Quantities.Generator
+﻿using Sundew.Base.Text;
+
+namespace Sundew.Quantities.Generator
 {
     using Sundew.Generator;
     using System.Threading.Tasks;
@@ -8,8 +10,7 @@
     using Sundew.Quantities.Generator.Quantities;
     using Sundew.Quantities.Generator.UnitSelectors;
 
-
-    static class Program
+    public static class Program
     {
         public static Task Main()
         {
@@ -17,17 +18,17 @@
             {
                 ModelSetup = new FolderModelSetup
                 {
-                    Folder = "..\\..\\..\\Models",
+                    Folder = "../../../Models",
                     FilesSearchPattern = "*.json",
                 },
                 WriterSetups = new[]
                     {
                         new FileWriterSetup
                         {
-                            Target = "..\\..\\..\\..\\Sundew.Quantities\\Sundew.Quantities.csproj",
+                            Target = "../../../../Sundew.Quantities/Sundew.Quantities.csproj",
                             Writer = new ProjectTextFileWriter(),
                             FileExtension = ".cs",
-                            FileNameSuffix = ".generated",
+                            FileNameSuffix = ".g",
                             Folder = ".generated",
                         },
                     },
@@ -65,7 +66,7 @@
                         new CodeGeneratorSetup
                         {
                             Generator = new QuantityGenerator(),
-                            TargetNamespace = "",
+                            TargetNamespace = Strings.Empty,
                             Usings = new []
                             {
                                 "System",

@@ -3,14 +3,13 @@
   <PropertyGroup>
     <TargetFramework>netstandard1.3</TargetFramework>
     <Company>Hukano</Company>
-    <Version>3.0.0-pre1</Version>
     <Description />
+    <DocumentationFile>$(OutputPath)/$(AssemblyName).xml</DocumentationFile>
   </PropertyGroup>
 
   <PropertyGroup>
     <TreatWarningsAsErrors>True</TreatWarningsAsErrors>
     <TreatSpecificWarningsAsErrors />
-    <DocumentationFile>bin\$(Configuration)\netstandard1.0\Sundew.Quantities.Formatters.MathML.xml</DocumentationFile>
   </PropertyGroup>
 
 
