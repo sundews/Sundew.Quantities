@@ -4,13 +4,9 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>    
     <Authors>Kim Hugener-Ohlsen</Authors>    
     <Company>Hukano</Company>
-  </PropertyGroup>
-
-  <PropertyGroup>
     <NoWarn>1701;1702;1705;1591</NoWarn>
     <TreatWarningsAsErrors>False</TreatWarningsAsErrors>
     <TreatSpecificWarningsAsErrors />
-    <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\Sundew.Quantities.Samples.xml</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
@@ -31,10 +27,4 @@
   <ItemGroup>
     <ProjectReference Include="..\Sundew.Quantities\Sundew.Quantities.csproj" />
   </ItemGroup>
-
-  <ItemGroup>
-    <Service Include="{82a7f48d-3b50-4b1e-b82e-3ada8210c358}" />
-  </ItemGroup>
-
-
 </Project>

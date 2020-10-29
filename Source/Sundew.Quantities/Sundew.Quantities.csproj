@@ -3,7 +3,6 @@
   <PropertyGroup>
     <TargetFramework>netstandard1.3</TargetFramework>
     <Company>Hukano</Company>
-    <Version>3.0.0</Version>
     <PackageReleaseNotes>
       3.0.0 Changed to .NET Standard
       2.0.1 Changed quantities to structs
@@ -26,8 +25,6 @@
   <PropertyGroup>
     <TreatWarningsAsErrors>True</TreatWarningsAsErrors>
     <TreatSpecificWarningsAsErrors />
-    <OutputPath>bin/$(Configuration)</OutputPath>
-    <DocumentationFile>$(OutputPath)/$(AssemblyName).xml</DocumentationFile>
     <RootNamespace>Sundew.Quantities</RootNamespace>
   </PropertyGroup>
 

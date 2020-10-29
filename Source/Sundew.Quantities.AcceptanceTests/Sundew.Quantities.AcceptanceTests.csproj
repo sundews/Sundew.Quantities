@@ -9,7 +9,6 @@
   <PropertyGroup>
     <TreatWarningsAsErrors>True</TreatWarningsAsErrors>
     <TreatSpecificWarningsAsErrors />
-    <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\Sundew.Quantities.AcceptanceTests.xml</DocumentationFile>
     <NoWarn>1701;1702;1705;1591</NoWarn>
   </PropertyGroup>
 
@@ -32,10 +31,5 @@
     <ProjectReference Include="..\Sundew.Quantities.UnitTests\Sundew.Quantities.UnitTests.csproj" />
     <ProjectReference Include="..\Sundew.Quantities\Sundew.Quantities.csproj" />
   </ItemGroup>
-
-  <ItemGroup>
-    <Service Include="{82a7f48d-3b50-4b1e-b82e-3ada8210c358}" />
-  </ItemGroup>
-
 
 </Project>
