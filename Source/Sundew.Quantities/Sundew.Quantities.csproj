@@ -3,6 +3,7 @@
   <PropertyGroup>
     <TargetFramework>netstandard1.3</TargetFramework>
     <Company>Hukano</Company>
+    <DocumentationFile>$(OutputPath)/$(AssemblyName).xml</DocumentationFile>
     <PackageReleaseNotes>
       3.0.0 Changed to .NET Standard
       2.0.1 Changed quantities to structs

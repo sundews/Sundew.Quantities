@@ -10,8 +10,7 @@ namespace Sundew.Quantities.Generator
     using Sundew.Quantities.Generator.Quantities;
     using Sundew.Quantities.Generator.UnitSelectors;
 
-
-    static class Program
+    public static class Program
     {
         public static Task Main()
         {
