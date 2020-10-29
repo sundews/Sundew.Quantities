@@ -4,7 +4,6 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>    
     <Authors>Kim Hugener-Ohlsen</Authors>    
     <Company>Hukano</Company>
-    <GenerateRuntimeConfigurationFiles>true</GenerateRuntimeConfigurationFiles>
     <TreatWarningsAsErrors>True</TreatWarningsAsErrors>
     <TreatSpecificWarningsAsErrors />
     <NoWarn>1701;1702;1705;1591</NoWarn>

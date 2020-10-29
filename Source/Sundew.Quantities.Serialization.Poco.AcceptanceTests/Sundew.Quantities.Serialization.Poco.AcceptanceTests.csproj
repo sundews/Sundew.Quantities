@@ -7,7 +7,6 @@
     <TreatWarningsAsErrors>True</TreatWarningsAsErrors>
     <TreatSpecificWarningsAsErrors />
     <NoWarn>1701;1702;1705;1591</NoWarn>
-    <GenerateRuntimeConfigurationFiles>true</GenerateRuntimeConfigurationFiles>
   </PropertyGroup>
 
   <ItemGroup>
@@ -30,6 +29,5 @@
     <ProjectReference Include="..\Sundew.Quantities.Serialization.Poco\Sundew.Quantities.Serialization.Poco.csproj" />
     <ProjectReference Include="..\Sundew.Quantities\Sundew.Quantities.csproj" />
   </ItemGroup>
-
 
 </Project>
