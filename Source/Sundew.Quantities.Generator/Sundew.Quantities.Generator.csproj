@@ -32,7 +32,7 @@
   </ItemGroup>
  
   <ItemGroup>
-    <PackageReference Include="Sundew.Generator.Code" Version="3.0.3" />
+    <PackageReference Include="Sundew.Generator.Code" Version="3.0.5" />
   </ItemGroup>
 
 </Project>
