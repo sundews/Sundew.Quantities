@@ -26,7 +26,7 @@ steps:
 - script: dotnet build $(solutionPath) --verbosity normal --configuration $(buildConfiguration) -p:'SbpSourceName=$(Build.SourceBranch)' -p:'SbpProductionSource=refs/heads/master|$(source)' -p:'SbpIntegrationSource=refs/heads/release/.+|$(source)' -p:'SbpAllowLocalSource=false' -p:'SbpEnablePublish=false' -p:'SbpPublishLogFormats=##vso[task.setvariable variable=pushSource]{2}'
   displayName: 'dotnet build $(buildConfiguration)'
 
-- script: dotnet test $(solutionPath) --verbosity normal --configuration $(buildConfiguration) --no-build
+- script: dotnet test $(solutionPath) --verbosity d --configuration $(buildConfiguration) --no-build
   displayName: 'dotnet test $(buildConfiguration)'
 
 - task: CopyFiles@2
