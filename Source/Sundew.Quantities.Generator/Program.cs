@@ -23,9 +23,8 @@ namespace Sundew.Quantities.Generator
                 },
                 WriterSetups = new[]
                     {
-                        new FileWriterSetup
+                        new FileWriterSetup("../../../../Sundew.Quantities/Sundew.Quantities.csproj")
                         {
-                            Target = "../../../../Sundew.Quantities/Sundew.Quantities.csproj",
                             Writer = new ProjectTextFileWriter(),
                             FileExtension = ".cs",
                             FileNameSuffix = ".g",

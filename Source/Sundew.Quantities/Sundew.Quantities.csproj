@@ -35,8 +35,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Sundew.Base" Version="5.0.0" />
-    <PackageReference Include="Sundew.Build.Publish" Version="2.2.6">
+    <PackageReference Include="Sundew.Base" Version="6.0.0" />
+    <PackageReference Include="Sundew.Build.Publish" Version="2.2.8">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
