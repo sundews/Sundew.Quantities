@@ -1,10 +1,9 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <TargetFramework>net5.0</TargetFramework>
     <Authors>Kim Hugener-Ohlsen</Authors>
     <Company>Hukano</Company>
     <Owners>Kim Hugener-Ohlsen</Owners>
-    <LangVersion>8</LangVersion>
     <CodeAnalysisRuleSet>Sundew.Quantities.Generator.ruleset</CodeAnalysisRuleSet>
     <IsPackable>false</IsPackable>
     <RuntimeIdentifiers>win10-x64;osx.10.12-x64;debian.8-x64</RuntimeIdentifiers>
