@@ -15,7 +15,9 @@ variables:
   solutionPath: ./Source/Sundew.Quantities.sln
   buildConfiguration: 'Release'
   source: 'https://api.nuget.org/v3/index.json'
+  dev-source: 'https://www.myget.org/F/sundew-dev/api/v3/index.json'
   pushSource: 'null'
+  apiKey: 'null'
 
 steps:
 - task: UseDotNet@2
@@ -23,7 +25,16 @@ steps:
     packageType: 'sdk'
     version: 5.x
 
-- script: dotnet build $(solutionPath) --verbosity normal --configuration $(buildConfiguration) -p:'SppSourceName=$(Build.SourceBranch)' -p:'SppProductionSource=refs/heads/master|$(source)' -p:'SppIntegrationSource=refs/heads/release/.+|$(source)' -p:'SppAllowLocalSource=false' -p:'SppEnablePublish=false' -p:'SppPublishLogFormats=##vso[task.setvariable variable=pushSource]{2}'
+- script: >-
+    dotnet build $(solutionPath) --verbosity normal --configuration $(buildConfiguration) 
+      -p:'SppSourceName=$(Build.SourceBranch)'
+      -p:'SppProductionSource=refs/heads/(?:master|main).* => $(source)'
+      -p:'SppIntegrationSource=refs/heads/release/.+ => $(source)'
+      -p:'SppDevelopmentSource=refs/heads/(?:develop.*|feature/.+) => $(SppDevelopmentApiKey)@$(dev-source)'
+      -p:'SppAllowLocalSource=false' 
+      -p:'SppEnablePublish=false'
+      -P:'SppApiKey=$(SppApiKey)'
+      -p:'SppPublishLogFormats=##vso[task.setvariable variable=pushSource]{3}|##vso[task.setvariable variable=apiKey]{4}|##vso[task.setvariable variable=tags]$(tags) {1}|{0}'
   displayName: 'dotnet build $(buildConfiguration)'
 
 - script: dotnet test $(solutionPath) --verbosity normal --configuration $(buildConfiguration) --no-build
@@ -34,6 +45,6 @@ steps:
     Contents: '**/*.nupkg'
     TargetFolder: $(Build.ArtifactStagingDirectory)
 
-- script: dotnet nuget push '$(Build.ArtifactStagingDirectory)/**/*.nupkg' -s '$(pushSource)' -k '$(SppApiKey)'
+- script: dotnet nuget push '$(Build.ArtifactStagingDirectory)/**/*.nupkg' -s '$(pushSource)' -k '$(apiKey)'
   condition: ne(variables.pushSource, 'null')
   displayName: 'dotnet nuget push'
