@@ -66,5 +66,5 @@ steps:
 - script: |
    dotnet tool update Sundew.Packaging.Tool -g --version 2.0.0-pre-u20210304-201208
    cb -c "spt|await -s $(feedSource) {0}.{1}" -s ',' -bf ./Source/logs/packages.pgkver
-  condition: eq(variables.stage, '')
+  condition: and(succeeded(), eq(variables.stage, ''))
   displayName: 'wait for publish'
