@@ -14,10 +14,14 @@ pool:
 variables:
   solutionPath: ./Source/Sundew.Quantities.sln
   buildConfiguration: 'Release'
+  repository: 'https://sundew-dev:$(SundewDevToken)@github.com/hugener/Sundew.Quantities.git'
   source: 'https://api.nuget.org/v3/index.json'
-  dev-source: 'https://www.myget.org/F/sundew-dev/api/v3/index.json'
+  dev-source: 'https://www.myget.org/F/sundew-dev/api/v2/package'
+  dev-source-latest-version: 'https://www.myget.org/F/sundew-dev/api/v3/index.json'
   pushSource: 'null'
+  feedSource: 'null'
   apiKey: 'null'
+  stage: 'null'
 
 steps:
 - task: UseDotNet@2
@@ -25,16 +29,17 @@ steps:
     packageType: 'sdk'
     version: 5.x
 
-- script: >-
-    dotnet build $(solutionPath) --verbosity normal --configuration $(buildConfiguration) 
-      -p:'SppSourceName=$(Build.SourceBranch)'
-      -p:'SppProductionSource=refs/heads/(?:master|main).* => $(source)'
-      -p:'SppIntegrationSource=refs/heads/release/.+ => $(source)'
-      -p:'SppDevelopmentSource=refs/heads/(?:develop.*|feature/.+) => $(SppDevelopmentApiKey)@$(dev-source)'
-      -p:'SppAllowLocalSource=false' 
-      -p:'SppEnablePublish=false'
-      -P:'SppApiKey=$(SppApiKey)'
-      -p:'SppPublishLogFormats=##vso[task.setvariable variable=pushSource]{3}|##vso[task.setvariable variable=apiKey]{4}|##vso[task.setvariable variable=tags]$(tags) {1}|{0}'
+- script: >
+   dotnet build $(solutionPath) --verbosity normal --configuration $(buildConfiguration)
+   -p:"SppSourceName=$(Build.SourceBranch)"
+   -p:"SppProductionSource=refs/heads/(?:master|main).* => $(source)"
+   -p:"SppIntegrationSource=refs/heads/release/.+ => $(source)"
+   -p:"SppDevelopmentSource=refs/heads/(?:develop.*|feature/.+|bugfix/.+) => $(SppDevelopmentApiKey)@$(dev-source) {$(dev-source-latest-version)}"
+   -p:"SppAllowLocalSource=false"
+   -p:"SppEnablePublish=false"
+   '-p:"SppPublishLogFormats=##vso[task.setvariable variable=pushSource;]{4}|##vso[task.setvariable variable=feedSource;]{6}|##vso[task.setvariable variable=apiKey;]{5}|##vso[task.setvariable variable=stage;]{3}"'
+   '-p:"SppAppendPublishFileLogFormats={0},{1}  > logs/packages.pgkver"'
+   -p:"SppApiKey=$(SppApiKey)"
   displayName: 'dotnet build $(buildConfiguration)'
 
 - script: dotnet test $(solutionPath) --verbosity normal --configuration $(buildConfiguration) --no-build
@@ -44,7 +49,22 @@ steps:
   inputs:
     Contents: '**/*.nupkg'
     TargetFolder: $(Build.ArtifactStagingDirectory)
+  displayName: 'copy packages to artifact directory'
 
 - script: dotnet nuget push '$(Build.ArtifactStagingDirectory)/**/*.nupkg' -s '$(pushSource)' -k '$(apiKey)'
   condition: ne(variables.pushSource, 'null')
   displayName: 'dotnet nuget push'
+
+- script: |
+   dotnet tool update CommandLineBatcher -g --version 1.0.0-pre-u20210304-201218
+   git config user.email "sundew-dev@outlook.com"
+   git config user.name "sundew-build"
+   cb -c "git|tag -a {1}-{0} -m "{1}-{0}"" "git|push $(repository) {1}-{0}" -s ',' -bf ./Source/logs/packages.pgkver
+  condition: eq(variables.stage, '')
+  displayName: 'tag stable version'
+
+- script: |
+   dotnet tool update Sundew.Packaging.Tool -g --version 2.0.0-pre-u20210304-201208
+   cb -c "spt|await -s $(feedSource) {0}.{1}" -s ',' -bf ./Source/logs/packages.pgkver
+  condition: eq(variables.stage, '')
+  displayName: 'wait for publish'
