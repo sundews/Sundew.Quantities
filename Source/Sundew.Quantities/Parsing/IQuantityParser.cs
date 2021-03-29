@@ -7,7 +7,7 @@
 
 namespace Sundew.Quantities.Parsing
 {
-    using Sundew.Base.Computation;
+    using Sundew.Base.Primitives.Computation;
     using Sundew.Quantities.Core;
     using Sundew.Quantities.Parsing.Errors;
     using Sundew.Quantities.Parsing.LexicalAnalysis;

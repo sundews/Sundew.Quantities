@@ -9,6 +9,7 @@ namespace Sundew.Quantities.Representations.Expressions.Visitors
 {
     using System.Globalization;
     using System.Text;
+    using Sundew.Base.Primitives.Visiting;
     using Sundew.Base.Visiting;
     using Sundew.Quantities.Representations.Internals;
 

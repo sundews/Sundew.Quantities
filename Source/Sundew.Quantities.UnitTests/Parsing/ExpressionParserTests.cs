@@ -8,9 +8,9 @@ namespace Sundew.Quantities.UnitTests.Parsing
 {
     using System;
     using System.Collections.Generic;
-    using FakeItEasy;
     using FluentAssertions;
-    using Sundew.Base.Computation;
+    using Moq;
+    using Sundew.Base.Primitives.Computation;
     using Sundew.Quantities.Parsing;
     using Sundew.Quantities.Parsing.Errors;
     using Sundew.Quantities.Parsing.Exceptions;
@@ -28,7 +28,7 @@ namespace Sundew.Quantities.UnitTests.Parsing
 
         public ExpressionParserTests()
         {
-            this.unitExpressionParser = A.Fake<IUnitExpressionParser>();
+            this.unitExpressionParser = New.Mock<IUnitExpressionParser>();
             this.testee = new ExpressionParser(this.unitExpressionParser);
         }
 
@@ -46,9 +46,9 @@ namespace Sundew.Quantities.UnitTests.Parsing
         {
             var precedenceNotationVisitor = new NotationVisitor(
                 NotationOptions.From(OperationOrderFormat.CurlyBrackets));
-            A.CallTo(() => this.unitExpressionParser.Parse(A<string>.Ignored, A<bool>.Ignored))
-                .ReturnsLazily<Result<Expression, Error<UnitError>>, string, bool>(
-                    (identifier, ignored) => Result.Success<Expression>(new UnitExpression(new Unit(identifier))));
+            this.unitExpressionParser.Setup(x => x.Parse(It.IsAny<string>(), It.IsAny<bool>()))
+                .Returns<string, bool>(
+                    (identifier, _) => Result.Success<Expression>(new UnitExpression(new Unit(identifier))));
             var lexemes = GetLexemes(tokens);
 
             var result = this.testee.Parse(lexemes, ParseSettings.DefaultInvariantCulture);
@@ -66,9 +66,9 @@ namespace Sundew.Quantities.UnitTests.Parsing
             string[] tokens,
             int expectedPosition)
         {
-            A.CallTo(() => this.unitExpressionParser.Parse(A<string>.Ignored, A<bool>.Ignored))
-                .ReturnsLazily<Result<Expression, Error<UnitError>>, string, bool>(
-                    (identifier, ignored) => Result.Success<Expression>(new UnitExpression(new Unit(identifier))));
+            this.unitExpressionParser.Setup(x => x.Parse(It.IsAny<string>(), It.IsAny<bool>()))
+                .Returns<string, bool>(
+                    (identifier, _) => Result.Success<Expression>(new UnitExpression(new Unit(identifier))));
             var lexemes = GetLexemes(tokens);
 
             Action act = () => this.testee.Parse(lexemes, ParseSettings.DefaultInvariantCulture);

@@ -10,7 +10,7 @@ namespace Sundew.Quantities.Core
     using System;
     using System.Collections.Generic;
     using System.Globalization;
-    using Sundew.Base.Computation;
+    using Sundew.Base.Primitives.Computation;
     using Sundew.Quantities.Core.Operations;
     using Sundew.Quantities.Parsing;
     using Sundew.Quantities.Parsing.Errors;

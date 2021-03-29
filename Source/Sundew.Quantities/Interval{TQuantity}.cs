@@ -7,7 +7,7 @@
 
 namespace Sundew.Quantities
 {
-    using Sundew.Base.Numeric;
+    using Sundew.Base.Primitives.Numeric;
     using Sundew.Quantities.Core;
     using Sundew.Quantities.Representations.Expressions;
 

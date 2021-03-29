@@ -7,7 +7,8 @@
 
 namespace Sundew.Quantities.Representations.Expressions.Visitors
 {
-    using Sundew.Base;
+    using Sundew.Base.Primitives;
+    using Sundew.Base.Primitives.Visiting;
     using Sundew.Base.Visiting;
 
     /// <summary>

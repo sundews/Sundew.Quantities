@@ -18,10 +18,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Sundew.Base" Version="6.0.0" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\Sundew.Quantities\Sundew.Quantities.csproj" />
   </ItemGroup>
 
