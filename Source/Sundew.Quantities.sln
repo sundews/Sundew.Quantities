@@ -26,7 +26,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sundew.Quantities", "Sundew
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{D85D4F5D-93D0-45D1-B47A-C4ACAA515968}"
 	ProjectSection(SolutionItems) = preProject
-		..\azure-pipelines.yml = ..\azure-pipelines.yml
 		Directory.Build.props = Directory.Build.props
 		..\.github\workflows\dotnet.yml = ..\.github\workflows\dotnet.yml
 	EndProjectSection
