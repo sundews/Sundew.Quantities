@@ -9,6 +9,7 @@ namespace Sundew.Quantities.Representations.Evaluation
 {
     using System;
     using System.Collections.Generic;
+    using Sundew.Base.Primitives.Visiting;
     using Sundew.Base.Visiting;
     using Sundew.Quantities.Representations.Expressions;
     using Sundew.Quantities.Representations.Flat;

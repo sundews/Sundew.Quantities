@@ -7,7 +7,7 @@
 namespace Sundew.Quantities.AcceptanceTests
 {
     using FluentAssertions;
-
+    using Sundew.Base.Primitives.Numeric;
     using Xunit;
 
     public class IntervalTests
@@ -22,7 +22,7 @@ namespace Sundew.Quantities.AcceptanceTests
         {
             var testee = Distance.Interval(3000, 5000, x => x.Milli.Meters);
 
-            var result = testee.Contains(value.Meters());
+            var result = testee.ContainsInclusive(value.Meters());
 
             result.Should().Be(expectedResult);
         }

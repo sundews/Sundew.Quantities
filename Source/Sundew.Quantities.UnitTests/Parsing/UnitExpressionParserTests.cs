@@ -8,9 +8,9 @@ namespace Sundew.Quantities.UnitTests.Parsing
 {
     using System.Collections.Generic;
     using System.Linq;
-    using FakeItEasy;
     using FluentAssertions;
-    using Sundew.Base.Computation;
+    using Moq;
+    using Sundew.Base.Primitives.Computation;
     using Sundew.Quantities.Parsing;
     using Sundew.Quantities.Parsing.LexicalAnalysis;
     using Sundew.Quantities.Representations.Expressions;
@@ -26,7 +26,7 @@ namespace Sundew.Quantities.UnitTests.Parsing
         public UnitExpressionParserTests()
         {
             var unitRegistry = new UnitRegistry();
-            this.lexicalAnalyzer = A.Fake<ILexicalAnalyzer>();
+            this.lexicalAnalyzer = New.Mock<ILexicalAnalyzer>();
             this.testee = new UnitExpressionParser(unitRegistry, this.lexicalAnalyzer);
         }
 
@@ -40,7 +40,7 @@ namespace Sundew.Quantities.UnitTests.Parsing
         [InlineData(new[] { "IG", "I°C", "E" }, "G°C")]
         public void Parse_Then_ResultShouldHaveExpectedValues(string[] tokens, string expectedNotation)
         {
-            A.CallTo(() => this.lexicalAnalyzer.Analyze(expectedNotation, A<bool>.Ignored))
+            this.lexicalAnalyzer.Setup(x => x.Analyze(expectedNotation, It.IsAny<bool>()))
                 .Returns(Result.Success(GetLexemes(tokens)));
 
             var result = this.testee.Parse(expectedNotation, false);

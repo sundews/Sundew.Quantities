@@ -8,7 +8,7 @@
 namespace Sundew.Quantities.Formatters.MathML
 {
     using System.Xml.Linq;
-    using Sundew.Base.Visiting;
+    using Sundew.Base.Primitives.Visiting;
     using Sundew.Quantities.Representations.Expressions;
 
 #pragma warning disable SA1124 // Do not use regions

@@ -8,7 +8,7 @@
 namespace Sundew.Quantities
 {
     using System;
-    using Sundew.Base.Numeric;
+    using Sundew.Base.Primitives.Numeric;
     using Sundew.Quantities.Core;
 
     /// <summary>

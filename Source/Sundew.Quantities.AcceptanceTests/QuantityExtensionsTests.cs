@@ -8,7 +8,7 @@ namespace Sundew.Quantities.AcceptanceTests
 {
     using FluentAssertions;
 
-    using Sundew.Base.Numeric;
+    using Sundew.Base.Primitives.Numeric;
 
     using Xunit;
 

@@ -7,7 +7,7 @@
 
 namespace Sundew.Quantities.Parsing.LexicalAnalysis
 {
-    using Sundew.Base.Computation;
+    using Sundew.Base.Primitives.Computation;
 
     /// <summary>
     /// Interface for implementing a lexical analyzer.
