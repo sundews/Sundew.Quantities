@@ -2,8 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard1.3</TargetFramework>
-    <Company>Hukano</Company>
-    <DocumentationFile>$(OutputPath)/$(AssemblyName).xml</DocumentationFile>
+    <DocumentationFile>$(OutputPath)\$(TargetFramework)\$(AssemblyName).xml</DocumentationFile>
     <PackageReleaseNotes>
       3.0.0 Changed to .NET Standard
       2.0.1 Changed quantities to structs
@@ -20,7 +19,6 @@
       - Mass
       - Time
     </Description>
-    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
   </PropertyGroup>
 
   <PropertyGroup>
@@ -35,9 +33,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Sundew.Base.Primitives" Version="7.0.3" />
-    <PackageReference Include="Sundew.Base.Text" Version="7.0.3" />
-    <PackageReference Include="Sundew.Packaging.Publish" Version="6.1.0">
+    <PackageReference Include="Sundew.Base.Primitives" Version="8.0.14" />
+    <PackageReference Include="Sundew.Base.Text" Version="8.0.14" />
+    <PackageReference Include="Sundew.Packaging.Publish" Version="7.0.1">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>

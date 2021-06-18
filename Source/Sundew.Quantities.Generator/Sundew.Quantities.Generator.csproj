@@ -1,9 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
-    <Authors>Kim Hugener-Ohlsen</Authors>
-    <Company>Hukano</Company>
-    <Owners>Kim Hugener-Ohlsen</Owners>
     <CodeAnalysisRuleSet>Sundew.Quantities.Generator.ruleset</CodeAnalysisRuleSet>
     <IsPackable>false</IsPackable>
     <RuntimeIdentifiers>win10-x64;osx.10.12-x64;debian.8-x64</RuntimeIdentifiers>
@@ -31,7 +28,7 @@
   </ItemGroup>
  
   <ItemGroup>
-    <PackageReference Include="Sundew.Generator.Code" Version="3.1.8" />
+    <PackageReference Include="Sundew.Generator.Code" Version="3.1.10" />
   </ItemGroup>
 
 </Project>

@@ -2,16 +2,9 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard1.3</TargetFramework>
-    <Company>Hukano</Company>
     <Description />
-    <DocumentationFile>$(OutputPath)/$(AssemblyName).xml</DocumentationFile>
+    <DocumentationFile>$(OutputPath)\$(TargetFramework)\$(AssemblyName).xml</DocumentationFile>
   </PropertyGroup>
-
-  <PropertyGroup>
-    <TreatWarningsAsErrors>True</TreatWarningsAsErrors>
-    <TreatSpecificWarningsAsErrors />
-  </PropertyGroup>
-
 
   <ItemGroup>
     <AdditionalFiles Include="stylecop.json" />
@@ -19,6 +12,10 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Sundew.Quantities\Sundew.Quantities.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Properties\" />
   </ItemGroup>
 
 </Project>
