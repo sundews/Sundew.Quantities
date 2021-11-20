@@ -52,8 +52,7 @@ namespace Sundew.Quantities.Representations.Internals
             for (int index = 0; index < exponent.Length; index++)
             {
                 var character = exponent[index];
-                char charaterAbove;
-                if (exponents.TryGetValue(character, out charaterAbove))
+                if (exponents.TryGetValue(character, out var charaterAbove))
                 {
                     exponentNotation.Append(charaterAbove);
                 }

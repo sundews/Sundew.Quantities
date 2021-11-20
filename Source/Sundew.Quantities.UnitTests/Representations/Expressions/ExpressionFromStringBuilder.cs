@@ -42,8 +42,7 @@ namespace Sundew.Quantities.UnitTests.Representations.Expressions
                         CreateExpression(expressions, ref index),
                         CreateExpression(expressions, ref index));
                 default:
-                    double constant;
-                    if (double.TryParse(operation, out constant))
+                    if (double.TryParse(operation, out var constant))
                     {
                         return new ConstantExpression(constant);
                     }

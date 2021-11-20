@@ -81,12 +81,12 @@ namespace Sundew.Quantities.Formatters.MathML
         /// <summary>
         /// The math variant normal
         /// </summary>
-        public static readonly XAttribute MathVariantNormal = new XAttribute("mathvariant", "normal");
+        public static readonly XAttribute MathVariantNormal = new("mathvariant", "normal");
 
         /// <summary>
         /// The class unit
         /// </summary>
-        public static readonly XAttribute ClassUnit = new XAttribute("class", "MathML-Unit");
+        public static readonly XAttribute ClassUnit = new("class", "MathML-Unit");
 
         /// <summary>
         /// The mfenced xname.
@@ -96,12 +96,12 @@ namespace Sundew.Quantities.Formatters.MathML
         /// <summary>
         /// The open left bracket.
         /// </summary>
-        public static readonly XAttribute OpenLeftBracket = new XAttribute("open", "[");
+        public static readonly XAttribute OpenLeftBracket = new("open", "[");
 
         /// <summary>
         /// The close right brack.
         /// </summary>
-        public static readonly XAttribute CloseRightBrack = new XAttribute("close", "]");
+        public static readonly XAttribute CloseRightBrack = new("close", "]");
 
         /// <summary>
         /// Gets the multiplication sign as a string.
@@ -110,17 +110,13 @@ namespace Sundew.Quantities.Formatters.MathML
         /// <returns>The multiplication sign as a string.</returns>
         public static string GetMultiplicationSign(MultiplicationSign multiplicationSign)
         {
-            switch (multiplicationSign)
+            return multiplicationSign switch
             {
-                case MultiplicationSign.Dot:
-                    return MultiplicationDot;
-                case MultiplicationSign.Star:
-                    return MultiplicationStar;
-                case MultiplicationSign.Cross:
-                    return MultiplicationCross;
-                default:
-                    return MultiplicationInvisible;
-            }
+                MultiplicationSign.Dot => MultiplicationDot,
+                MultiplicationSign.Star => MultiplicationStar,
+                MultiplicationSign.Cross => MultiplicationCross,
+                _ => MultiplicationInvisible
+            };
         }
     }
 }

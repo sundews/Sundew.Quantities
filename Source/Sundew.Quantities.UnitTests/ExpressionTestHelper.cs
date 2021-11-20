@@ -12,11 +12,11 @@ namespace Sundew.Quantities.UnitTests
 
     internal static class ExpressionTestHelper
     {
-        public static readonly UnitExpression Xray = new UnitExpression(new Unit("X"));
+        public static readonly UnitExpression Xray = new(new Unit("X"));
 
-        public static readonly UnitExpression Yankee = new UnitExpression(new Unit("Y"));
+        public static readonly UnitExpression Yankee = new(new Unit("Y"));
 
-        public static readonly UnitExpression Zulu = new UnitExpression(new Unit("Z"));
+        public static readonly UnitExpression Zulu = new(new Unit("Z"));
 
         public static UnitSystem CreateUnitSystem()
         {

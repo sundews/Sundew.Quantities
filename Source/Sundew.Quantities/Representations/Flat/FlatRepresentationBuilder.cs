@@ -56,8 +56,7 @@ namespace Sundew.Quantities.Representations.Flat
                 unitNotation = unit.BaseUnit.Notation;
             }
 
-            UnitFlatIdentifierRepresentation flatExpressionRepresentation;
-            if (this.unitFlatIdentifierRepresentations.TryGetValue(unitNotation, out flatExpressionRepresentation))
+            if (this.unitFlatIdentifierRepresentations.TryGetValue(unitNotation, out var flatExpressionRepresentation))
             {
                 this.OnUnitReduced(flatExpressionRepresentation.UnitExpression, unitExpression);
                 unitExpression = flatExpressionRepresentation.UnitExpression;
@@ -104,8 +103,7 @@ namespace Sundew.Quantities.Representations.Flat
             }
 
             var variableName = variableExpression.VariableName;
-            VariableFlatIdentifierRepresentation flatExpressionRepresentation;
-            if (this.variableFlatIdentifierRepresentations.TryGetValue(variableName, out flatExpressionRepresentation))
+            if (this.variableFlatIdentifierRepresentations.TryGetValue(variableName, out var flatExpressionRepresentation))
             {
                 exponent += flatExpressionRepresentation.Exponent;
             }

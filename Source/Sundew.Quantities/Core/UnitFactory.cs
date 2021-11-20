@@ -46,8 +46,7 @@ namespace Sundew.Quantities.Core
         /// <returns>A new <see cref="IUnit"/>.</returns>
         public IUnit Create(Expression expression)
         {
-            var unitExpression = expression as UnitExpression;
-            return unitExpression != null ? unitExpression.Unit : this.CreateDerivedUnit(expression);
+            return expression is UnitExpression unitExpression ? unitExpression.Unit : this.CreateDerivedUnit(expression);
         }
 
         /// <summary>
@@ -93,15 +92,13 @@ namespace Sundew.Quantities.Core
         /// <returns>A new <see cref="DerivedUnit" /> for the <see cref="IReductionResult" />.</returns>
         public DerivedUnit CreateDerivedUnit(IReductionResult baseReductionResult, IReductionResult reductionResult)
         {
-            DerivedUnit derivedUnit;
-            if (this.derivedUnitRegistry.TryGetUnit(baseReductionResult.FlatRepresentation, out derivedUnit))
+            if (this.derivedUnitRegistry.TryGetUnit(baseReductionResult.FlatRepresentation, out var derivedUnit))
             {
                 return derivedUnit;
             }
 
             var expression = reductionResult.GetReducedExpression(this.expressionRewriter);
-            var unitExpression = expression as UnitExpression;
-            if (unitExpression != null)
+            if (expression is UnitExpression unitExpression)
             {
                 derivedUnit = unitExpression.Unit as DerivedUnit;
                 if (derivedUnit != null)
@@ -121,8 +118,7 @@ namespace Sundew.Quantities.Core
         /// <returns>A new <see cref="IUnit"/>.</returns>
         public IUnit CreatePrefixedUnit(IUnit unit, double prefixFactor)
         {
-            Prefix prefix;
-            if (this.derivedUnitRegistry.TryGetPrefix(prefixFactor, out prefix))
+            if (this.derivedUnitRegistry.TryGetPrefix(prefixFactor, out var prefix))
             {
                 return unit.GetPrefixedUnit(prefix);
             }

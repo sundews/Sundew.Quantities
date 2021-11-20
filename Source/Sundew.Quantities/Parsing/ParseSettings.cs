@@ -33,7 +33,7 @@ namespace Sundew.Quantities.Parsing
         /// <value>
         /// The default.
         /// </value>
-        public static ParseSettings DefaultInvariantCulture { get; } = new ParseSettings(
+        public static ParseSettings DefaultInvariantCulture { get; } = new(
             CultureInfo.InvariantCulture,
             true,
             true);
@@ -44,7 +44,7 @@ namespace Sundew.Quantities.Parsing
         /// <value>
         /// The default current culture.
         /// </value>
-        public static ParseSettings DefaultCurrentCulture { get; } = new ParseSettings(
+        public static ParseSettings DefaultCurrentCulture { get; } = new(
             CultureInfo.CurrentCulture,
             true,
             true);

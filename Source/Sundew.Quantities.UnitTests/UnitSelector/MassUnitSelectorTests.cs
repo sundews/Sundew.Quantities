@@ -14,7 +14,7 @@ namespace Sundew.Quantities.UnitTests.UnitSelector
 
     public class MassUnitSelectorTests
     {
-        private readonly MassUnitSelector testee = new MassUnitSelector();
+        private readonly MassUnitSelector testee = new();
 
         [Fact]
         public void KiloGramBuildUnit_Then_ResultShouldBePrefixedBaseUnit()

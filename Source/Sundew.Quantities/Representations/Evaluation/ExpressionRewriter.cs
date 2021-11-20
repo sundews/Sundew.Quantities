@@ -50,9 +50,8 @@ namespace Sundew.Quantities.Representations.Evaluation
             RewritingParameters rewritingParameters = null,
             Reference<Expression> currentResult = null)
         {
-            rewritingParameters = rewritingParameters ??
-                                  new RewritingParameters(false, new FlatRepresentationConsumer(new Dictionary<string, IFlatIdentifierRepresentation>()));
-            currentResult = currentResult ?? new Reference<Expression>(expression);
+            rewritingParameters ??= new RewritingParameters(false, new FlatRepresentationConsumer(new Dictionary<string, IFlatIdentifierRepresentation>()));
+            currentResult ??= new Reference<Expression>(expression);
             expression.Visit(this, rewritingParameters, currentResult);
             var result = currentResult.Value;
             if (result == null)
@@ -219,17 +218,13 @@ namespace Sundew.Quantities.Representations.Evaluation
                 operandChange |= OperandChange.RhsIsNull;
             }
 
-            switch (operandChange)
+            return operandChange switch
             {
-                case OperandChange.LhsIsNull:
-                    return newRhs;
-                case OperandChange.RhsIsNull:
-                    return newLhs;
-                case OperandChange.BothAreNull:
-                    return null;
-                default:
-                    return bothHaveChangedFactory(newLhs, newRhs);
-            }
+                OperandChange.LhsIsNull => newRhs,
+                OperandChange.RhsIsNull => newLhs,
+                OperandChange.BothAreNull => null,
+                _ => bothHaveChangedFactory(newLhs, newRhs)
+            };
         }
     }
 }

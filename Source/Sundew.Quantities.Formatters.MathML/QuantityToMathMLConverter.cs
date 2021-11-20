@@ -17,7 +17,7 @@ namespace Sundew.Quantities.Formatters.MathML
         /// <summary>
         /// The default converter.
         /// </summary>
-        public static readonly QuantityToMathMLConverter DefaultConverter = new QuantityToMathMLConverter();
+        public static readonly QuantityToMathMLConverter DefaultConverter = new();
 
         /// <summary>
         /// Gets the math ml.

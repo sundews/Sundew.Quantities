@@ -26,7 +26,7 @@ namespace Sundew.Quantities.Core
     /// </summary>
     public partial class UnitSystem : IUnitSystem
     {
-        private readonly object unitSystemLock = new object();
+        private readonly object unitSystemLock = new();
 
         private IExpressionParser expressionParser;
 
@@ -128,9 +128,8 @@ namespace Sundew.Quantities.Core
                     {
                         if (!this.isInitialized)
                         {
-                            unitSystemDependencyFactory = unitSystemDependencyFactory
-                                                          ?? new UnitSystemDependencyFactory(
-                                                                 new ExpressionToFlatRepresentationConverter());
+                            unitSystemDependencyFactory ??= new UnitSystemDependencyFactory(
+                                new ExpressionToFlatRepresentationConverter());
                             this.unitRegistry = unitSystemDependencyFactory.CreateUnitRegistry();
                             registerUnitAction?.Invoke(this.unitRegistry);
                             this.expressionParser = unitSystemDependencyFactory.CreateParser(this.unitRegistry);

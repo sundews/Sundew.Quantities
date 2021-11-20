@@ -20,7 +20,7 @@ namespace Sundew.Quantities.Parsing
     /// </summary>
     public class UnitExpressionParser : IUnitExpressionParser
     {
-        private static readonly Regex VariableRegex = new Regex(@"^\d+$");
+        private static readonly Regex VariableRegex = new(@"^\d+$");
 
         private readonly ILexicalAnalyzer lexicalAnalyzer;
 
@@ -57,8 +57,7 @@ namespace Sundew.Quantities.Parsing
 
                 var lexemes = lexemesResult.Value;
                 var result = Prefix(lexemes, this.unitRegistry);
-                string token;
-                if (lexemes.AcceptTokenType(TokenType.End, out token))
+                if (lexemes.AcceptTokenType(TokenType.End, out var token))
                 {
                     return Result.Success(result);
                 }
@@ -79,8 +78,7 @@ namespace Sundew.Quantities.Parsing
         private static Expression Prefix(Lexemes lexemes, IUnitRegistry unitRegistry)
         {
             IUnit unit;
-            Prefix prefix;
-            if (lexemes.AcceptTokenFrom(unitRegistry, out prefix))
+            if (lexemes.AcceptTokenFrom(unitRegistry, out Prefix prefix))
             {
                 if (lexemes.AcceptTokenFrom(unitRegistry, out unit))
                 {
@@ -95,8 +93,7 @@ namespace Sundew.Quantities.Parsing
                 return Unit(null, unit);
             }
 
-            string variable;
-            if (lexemes.AcceptTokenFrom(VariableRegex, out variable))
+            if (lexemes.AcceptTokenFrom(VariableRegex, out var variable))
             {
                 return new VariableExpression(variable);
             }

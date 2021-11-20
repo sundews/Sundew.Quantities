@@ -20,19 +20,19 @@ namespace Sundew.Quantities.Parsing
         /// </summary>
         public static readonly TokenMatcher[] CompositeUnit =
             {
-                new TokenMatcher(
+                new(
                     TokenType.Identifier,
                     new Regex(@"^(?<ID>[A-Za-z\p{IsGreekandCoptic}\°]\w*)")),
-                new TokenMatcher(
+                new(
                     TokenType.Number,
                     new Regex(@"^(?<ID>[-+]?(0|[1-9][0-9]*)((\.|\,)[0-9]*[1-9])?([eE][-+]?(0[0-9]*|[1-9][0-9]*))?)")),
-                new TokenMatcher(
+                new(
                     TokenType.Operator,
                     new Regex(@"^(?<ID>\*|/|\^|\(|\)|\{|\}|\·|\×)")),
-                new TokenMatcher(
+                new(
                     TokenType.Exponent,
                     new Regex(@"^(?<ID>(⁻?)(⁰|¹|²|³|⁴|⁵|⁶|⁷|⁸|⁹)+)")),
-                new TokenMatcher(
+                new(
                     TokenType.WhiteSpace,
                     new Regex(@"^(?<ID>\s+)"))
             };

@@ -90,19 +90,14 @@ namespace Sundew.Quantities.UnitTests.Parsing
 
         private static TokenType GetTokenType(string lexeme)
         {
-            switch (lexeme[0])
+            return lexeme[0] switch
             {
-                case 'O':
-                    return TokenType.Operator;
-                case 'I':
-                    return TokenType.Identifier;
-                case 'N':
-                    return TokenType.Number;
-                case 'E':
-                    return TokenType.Exponent;
-                default:
-                    return TokenType.End;
-            }
+                'O' => TokenType.Operator,
+                'I' => TokenType.Identifier,
+                'N' => TokenType.Number,
+                'E' => TokenType.Exponent,
+                _ => TokenType.End
+            };
         }
     }
 }

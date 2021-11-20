@@ -60,8 +60,7 @@ namespace Sundew.Quantities.Representations.Flat
 
         private Expression GetResultingExpression(string identifier)
         {
-            IFlatIdentifierRepresentation flatIdentifierRepresentation;
-            if (this.flatIdentifierRepresentations.TryGetValue(identifier, out flatIdentifierRepresentation)
+            if (this.flatIdentifierRepresentations.TryGetValue(identifier, out var flatIdentifierRepresentation)
                 && !this.usedExpressions.Contains(identifier))
             {
                 this.usedExpressions.Add(identifier);

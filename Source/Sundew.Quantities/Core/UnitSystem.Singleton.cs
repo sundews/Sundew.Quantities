@@ -167,12 +167,8 @@ namespace Sundew.Quantities.Core
 
         private static class Nested
         {
-            internal static readonly UnitSystem UnitSystemInstance = new UnitSystem();
+            internal static readonly UnitSystem UnitSystemInstance = new();
 
-            [SuppressMessage(
-                "StyleCop.CSharp.MaintainabilityRules",
-                "SA1409:RemoveUnnecessaryCode",
-                Justification = "Explicit static constructor to tell C# compiler not to mark type as beforefieldinit")]
             static Nested()
             {
             }

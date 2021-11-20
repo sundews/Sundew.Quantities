@@ -76,8 +76,7 @@ namespace Sundew.Quantities.Representations.Flat
             var otherFlatIdentifierRepresentation = other.flatIdentifierRepresentations;
             foreach (var otherPair in otherFlatIdentifierRepresentation)
             {
-                IFlatIdentifierRepresentation flatIdentifierRepresentation;
-                if (!this.flatIdentifierRepresentations.TryGetValue(otherPair.Key, out flatIdentifierRepresentation))
+                if (!this.flatIdentifierRepresentations.TryGetValue(otherPair.Key, out var flatIdentifierRepresentation))
                 {
                     return false;
                 }

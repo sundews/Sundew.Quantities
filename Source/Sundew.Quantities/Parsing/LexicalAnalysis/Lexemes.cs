@@ -171,8 +171,7 @@ namespace Sundew.Quantities.Parsing.LexicalAnalysis
         /// </returns>
         public bool AcceptTokenType(TokenType tokenType)
         {
-            string token;
-            return this.AcceptTokenType(tokenType, true, out token);
+            return this.AcceptTokenType(tokenType, true, out _);
         }
 
         /// <summary>

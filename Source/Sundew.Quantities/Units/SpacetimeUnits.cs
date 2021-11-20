@@ -15,9 +15,9 @@ namespace Sundew.Quantities.Units
     /// </summary>
     public class SpacetimeUnits
     {
-        private readonly DistanceUnits distanceUnits = new DistanceUnits();
+        private readonly DistanceUnits distanceUnits = new();
 
-        private readonly TimeUnits timeUnits = new TimeUnits();
+        private readonly TimeUnits timeUnits = new();
 
         /// <summary>
         /// Gets the base unit.

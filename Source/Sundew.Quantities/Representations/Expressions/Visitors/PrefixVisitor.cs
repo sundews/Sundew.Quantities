@@ -25,7 +25,7 @@ namespace Sundew.Quantities.Representations.Expressions.Visitors
         /// <returns>The resulting prefix.</returns>
         public double Visit(Expression expression, double value = 0, Reference<double> currentResult = null)
         {
-            currentResult = currentResult ?? new Reference<double>(0);
+            currentResult ??= new Reference<double>(0);
             return this.PrivateVisit(expression, value, currentResult);
         }
 

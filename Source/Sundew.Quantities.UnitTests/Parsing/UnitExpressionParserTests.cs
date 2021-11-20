@@ -53,13 +53,11 @@ namespace Sundew.Quantities.UnitTests.Parsing
             var linkedList = new LinkedList<Lexeme>();
             foreach (var token in tokens)
             {
-                var tokenType = TokenType.Identifier;
-                switch (token[0])
+                var tokenType = token[0] switch
                 {
-                    case 'E':
-                        tokenType = TokenType.End;
-                        break;
-                }
+                    'E' => TokenType.End,
+                    _ => TokenType.Identifier
+                };
 
                 linkedList.AddLast(new Lexeme(token.Substring(1), tokenType, 0));
             }

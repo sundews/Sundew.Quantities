@@ -13,7 +13,7 @@ namespace Sundew.Quantities.UnitTests.Representations.Units
 
     public class DerivedUnitTests
     {
-        private static readonly Unit MeterUnit = new Unit("m");
+        private static readonly Unit MeterUnit = new("m");
 
         private static readonly Expression CentiMeterUnitExpression = new UnitExpression(MeterUnit.GetPrefixedUnit(Prefixes.Centi));
 

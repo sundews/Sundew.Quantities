@@ -27,7 +27,7 @@ namespace Sundew.Quantities.Representations.Expressions.Visitors
         /// </returns>
         public Expression Visit(Expression expression, ˍ _ = default, Reference<Expression> currentResult = null)
         {
-            currentResult = currentResult ?? new Reference<Expression>(expression);
+            currentResult ??= new Reference<Expression>(expression);
             return this.PrivateVisit(expression, currentResult);
         }
 

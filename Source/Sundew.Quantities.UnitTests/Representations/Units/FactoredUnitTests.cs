@@ -16,7 +16,7 @@ namespace Sundew.Quantities.UnitTests.Representations.Units
 
         private const double ExpectedFactor = 4;
 
-        private readonly FactoredUnit testee = new FactoredUnit(ExpectedFactor, ExpectedNotation, UnitDefinitions.Meter);
+        private readonly FactoredUnit testee = new(ExpectedFactor, ExpectedNotation, UnitDefinitions.Meter);
 
         [Theory]
         [InlineData("kanyDistance")]

@@ -47,8 +47,8 @@ namespace Sundew.Quantities.Representations.Evaluation
             ConversionParameters conversionParameters = null,
             ConversionVariables conversionVariables = null)
         {
-            conversionParameters = conversionParameters ?? new ConversionParameters(false, new FlatRepresentationBuilder());
-            conversionVariables = conversionVariables ?? new ConversionVariables();
+            conversionParameters ??= new ConversionParameters(false, new FlatRepresentationBuilder());
+            conversionVariables ??= new ConversionVariables();
             expression.Visit(this, conversionParameters, conversionVariables);
             return conversionParameters.FlatRepresentationBuilder.Build();
         }

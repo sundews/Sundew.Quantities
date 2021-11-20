@@ -14,7 +14,7 @@ namespace Sundew.Quantities.UnitTests.Representations.Units
 
     public class PrefixedBaseUnitTests
     {
-        private readonly PrefixedBaseUnit testee = new PrefixedBaseUnit(Prefixes.Kilo, "g");
+        private readonly PrefixedBaseUnit testee = new(Prefixes.Kilo, "g");
 
         [Theory]
         [InlineData("mg")]

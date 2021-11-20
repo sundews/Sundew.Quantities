@@ -34,7 +34,7 @@ namespace Sundew.Quantities.UnitTests.Representations.Flat
 
             this.unitFlatIdentifierRepresentations.Should()
                 .ContainKey(variable)
-                .WhichValue.Exponent.Should()
+                .WhoseValue.Exponent.Should()
                 .Be(exponent);
         }
 
@@ -52,7 +52,7 @@ namespace Sundew.Quantities.UnitTests.Representations.Flat
 
             this.unitFlatIdentifierRepresentations.Should()
                 .ContainKey(expectedUnit)
-                .WhichValue.Exponent.Should()
+                .WhoseValue.Exponent.Should()
                 .Be(expectedExponent);
         }
 
@@ -93,7 +93,7 @@ namespace Sundew.Quantities.UnitTests.Representations.Flat
 
             this.testee.Add(new UnitExpression(new Unit("m")), false, -1);
 
-            this.unitFlatIdentifierRepresentations.Should().ContainKey("m").WhichValue.Exponent.Should().Be(1);
+            this.unitFlatIdentifierRepresentations.Should().ContainKey("m").WhoseValue.Exponent.Should().Be(1);
         }
 
         [Fact]

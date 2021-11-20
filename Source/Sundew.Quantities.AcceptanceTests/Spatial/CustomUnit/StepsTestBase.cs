@@ -12,7 +12,7 @@ namespace Sundew.Quantities.AcceptanceTests.Spatial.CustomUnit
 
     public abstract class StepsTestBase : IDisposable
     {
-        private readonly FactoredUnit stepsUnit = new FactoredUnit(
+        private readonly FactoredUnit stepsUnit = new(
             (1 / 53.4323198) / 1000,
             "steps",
             UnitDefinitions.Meter);

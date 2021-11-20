@@ -44,8 +44,7 @@ namespace Sundew.Quantities.Parsing
             try
             {
                 var expression = this.Expression(lexemes, parseSettings);
-                string token;
-                if (parseSettings.AssertEnd && !lexemes.AcceptTokenType(TokenType.End, out token))
+                if (parseSettings.AssertEnd && !lexemes.AcceptTokenType(TokenType.End, out var token))
                 {
                     throw CreateParseException(ExpressionError.EndOfDataNotFound, lexemes.Current);
                 }
@@ -117,8 +116,7 @@ namespace Sundew.Quantities.Parsing
                     parseSettings);
             }
 
-            string exponent;
-            if (lexemes.AcceptTokenType(TokenType.Exponent, out exponent))
+            if (lexemes.AcceptTokenType(TokenType.Exponent, out var exponent))
             {
                 var constantExpression =
                     new ConstantExpression(
@@ -156,8 +154,7 @@ namespace Sundew.Quantities.Parsing
                 throw CreateParseException(ExpressionError.RightWeakParenthesisNotFound, lexemes.Current);
             }
 
-            string identifier;
-            if (lexemes.AcceptTokenType(TokenType.Identifier, true, out identifier))
+            if (lexemes.AcceptTokenType(TokenType.Identifier, true, out var identifier))
             {
                 var result = this.unitExpressionParser.Parse(identifier, false);
                 if (result)
@@ -173,8 +170,7 @@ namespace Sundew.Quantities.Parsing
 
         private ConstantExpression ConstantExpression(Lexemes lexemes, ParseSettings parseSettings)
         {
-            string number;
-            if (lexemes.AcceptTokenType(TokenType.Number, out number))
+            if (lexemes.AcceptTokenType(TokenType.Number, out var number))
             {
                 return new ConstantExpression(double.Parse(number, parseSettings.CultureInfo));
             }

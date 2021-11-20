@@ -15,26 +15,26 @@ namespace Sundew.Quantities.Representations.Expressions.Visitors
         /// <summary>
         /// To base visitor.
         /// </summary>
-        public static readonly ValueToBaseVisitor ValueToBaseVisitor = new ValueToBaseVisitor();
+        public static readonly ValueToBaseVisitor ValueToBaseVisitor = new();
 
         /// <summary>
         /// From base visitor.
         /// </summary>
-        public static readonly ValueFromBaseVisitor ValueFromBaseVisitor = new ValueFromBaseVisitor();
+        public static readonly ValueFromBaseVisitor ValueFromBaseVisitor = new();
 
         /// <summary>
         /// The prefix visitor.
         /// </summary>
-        public static readonly PrefixVisitor PrefixVisitor = new PrefixVisitor();
+        public static readonly PrefixVisitor PrefixVisitor = new();
 
         /// <summary>
         /// The notation visitor.
         /// </summary>
-        public static readonly NotationVisitor NotationVisitor = new NotationVisitor(NotationOptions.Default);
+        public static readonly NotationVisitor NotationVisitor = new(NotationOptions.Default);
 
         /// <summary>
         /// The base expression visitor.
         /// </summary>
-        public static readonly BaseExpressionVisitor BaseExpressionVisitor = new BaseExpressionVisitor();
+        public static readonly BaseExpressionVisitor BaseExpressionVisitor = new();
     }
 }

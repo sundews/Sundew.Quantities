@@ -11,9 +11,7 @@ namespace Sundew.Quantities.Formatters.MathML
     using Sundew.Base.Primitives.Visiting;
     using Sundew.Quantities.Representations.Expressions;
 
-#pragma warning disable SA1124 // Do not use regions
     #region UsageMathML
-#pragma warning restore SA1124 // Do not use regions
 
     /// <summary>
     /// Implements an <see cref="IExpressionVisitor{TParameter1,TParameter2,TResult}"/> for converting <see cref="Expression"/>s to MathML.
@@ -23,7 +21,7 @@ namespace Sundew.Quantities.Formatters.MathML
         /// <summary>
         /// The default math ml visitor
         /// </summary>
-        public static readonly ExpressionToMathMLVisitor DefaultMathMLVisitor = new ExpressionToMathMLVisitor();
+        public static readonly ExpressionToMathMLVisitor DefaultMathMLVisitor = new();
 
         private const string LeftParenthesis = "(";
 

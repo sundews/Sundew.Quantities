@@ -43,8 +43,8 @@ namespace Sundew.Quantities.Representations.Expressions.Visitors
             NotationParameters notationParameters = null,
             NotationVariables notationVariables = null)
         {
-            notationParameters = notationParameters ?? new NotationParameters(CultureInfo.CurrentCulture, new StringBuilder());
-            notationVariables = notationVariables ?? new NotationVariables(false, false);
+            notationParameters ??= new NotationParameters(CultureInfo.CurrentCulture, new StringBuilder());
+            notationVariables ??= new NotationVariables(false, false);
             expression.Visit(this, notationParameters, notationVariables);
             return notationParameters.StringBuilder.ToString();
         }
