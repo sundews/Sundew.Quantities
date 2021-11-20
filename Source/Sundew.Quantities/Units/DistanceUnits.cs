@@ -5,70 +5,69 @@
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace Sundew.Quantities.Units
+namespace Sundew.Quantities.Units;
+
+using Sundew.Quantities.Representations.Expressions;
+using Sundew.Quantities.Representations.Units;
+
+/// <summary>
+/// Distance units.
+/// </summary>
+public class DistanceUnits
 {
-    using Sundew.Quantities.Representations.Expressions;
-    using Sundew.Quantities.Representations.Units;
+    /// <summary>
+    /// Gets the base unit.
+    /// </summary>
+    /// <value>
+    /// The base unit.
+    /// </value>
+    public IUnit BaseUnit => this.Meters;
 
     /// <summary>
-    /// Distance units.
+    /// Gets the meter.
     /// </summary>
-    public class DistanceUnits
-    {
-        /// <summary>
-        /// Gets the base unit.
-        /// </summary>
-        /// <value>
-        /// The base unit.
-        /// </value>
-        public IUnit BaseUnit => this.Meters;
+    /// <value>
+    /// The meter.
+    /// </value>
+    public IUnit Meters => UnitDefinitions.Meter;
 
-        /// <summary>
-        /// Gets the meter.
-        /// </summary>
-        /// <value>
-        /// The meter.
-        /// </value>
-        public IUnit Meters => UnitDefinitions.Meter;
+    /// <summary>
+    /// Gets the mile.
+    /// </summary>
+    /// <value>
+    /// The mile.
+    /// </value>
+    public IUnit Miles => UnitDefinitions.Mile;
 
-        /// <summary>
-        /// Gets the mile.
-        /// </summary>
-        /// <value>
-        /// The mile.
-        /// </value>
-        public IUnit Miles => UnitDefinitions.Mile;
+    /// <summary>
+    /// Gets the foot.
+    /// </summary>
+    /// <value>
+    /// The foot.
+    /// </value>
+    public IUnit Feet => UnitDefinitions.Foot;
 
-        /// <summary>
-        /// Gets the foot.
-        /// </summary>
-        /// <value>
-        /// The foot.
-        /// </value>
-        public IUnit Feet => UnitDefinitions.Foot;
+    /// <summary>
+    /// Gets the inch.
+    /// </summary>
+    /// <value>
+    /// The inch.
+    /// </value>
+    public IUnit Inches => UnitDefinitions.Inch;
 
-        /// <summary>
-        /// Gets the inch.
-        /// </summary>
-        /// <value>
-        /// The inch.
-        /// </value>
-        public IUnit Inches => UnitDefinitions.Inch;
+    /// <summary>
+    /// Gets the nautical mile.
+    /// </summary>
+    /// <value>
+    /// The nautical mile.
+    /// </value>
+    public IUnit NauticalMiles => UnitDefinitions.NauticalMile;
 
-        /// <summary>
-        /// Gets the nautical mile.
-        /// </summary>
-        /// <value>
-        /// The nautical mile.
-        /// </value>
-        public IUnit NauticalMiles => UnitDefinitions.NauticalMile;
-
-        /// <summary>
-        /// Gets the yard.
-        /// </summary>
-        /// <value>
-        /// The yard.
-        /// </value>
-        public IUnit Yards => UnitDefinitions.Yard;
-    }
+    /// <summary>
+    /// Gets the yard.
+    /// </summary>
+    /// <value>
+    /// The yard.
+    /// </value>
+    public IUnit Yards => UnitDefinitions.Yard;
 }

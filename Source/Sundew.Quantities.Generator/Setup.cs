@@ -5,25 +5,25 @@
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace Sundew.Quantities.Generator
-{
-    using Sundew.Base.Text;
-    using Sundew.Generator;
-    using Sundew.Generator.Code;
-    using Sundew.Generator.Discovery;
-    using Sundew.Generator.Input;
-    using Sundew.Generator.Output;
-    using Sundew.Quantities.Generator.Quantities;
-    using Sundew.Quantities.Generator.UnitSelectors;
-    using System.Collections.Generic;
-    using System.Threading.Tasks;
+namespace Sundew.Quantities.Generator;
 
-    public class Setup : ISetupsFactory
+using Sundew.Base.Text;
+using Sundew.Generator;
+using Sundew.Generator.Code;
+using Sundew.Generator.Discovery;
+using Sundew.Generator.Input;
+using Sundew.Generator.Output;
+using Sundew.Quantities.Generator.Quantities;
+using Sundew.Quantities.Generator.UnitSelectors;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+
+public class Setup : ISetupsFactory
+{
+    public Task<IEnumerable<ISetup>> GetSetupsAsync()
     {
-        public Task<IEnumerable<ISetup>> GetSetupsAsync()
-        {
-            return Task.FromResult(
-                (IEnumerable<ISetup>)new ISetup[] {
+        return Task.FromResult(
+            (IEnumerable<ISetup>)new ISetup[] {
                 new CodeSetup {
                     ModelSetup = new FolderModelSetup
                     {
@@ -85,7 +85,6 @@ namespace Sundew.Quantities.Generator
                             },
                         },
                     }
-            } });
-        }
+                } });
     }
 }

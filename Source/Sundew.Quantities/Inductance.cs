@@ -5,26 +5,25 @@
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace Sundew.Quantities
-{
-    using Sundew.Quantities.Core;
+namespace Sundew.Quantities;
 
+using Sundew.Quantities.Core;
+
+/// <summary>
+/// Represents a inductance quantity.
+/// </summary>
+public partial struct Inductance
+{
     /// <summary>
-    /// Represents a inductance quantity.
+    /// Multiplies the specified LHS and RHS.
     /// </summary>
-    public partial struct Inductance
+    /// <param name="lhs">The LHS.</param>
+    /// <param name="rhs">The RHS.</param>
+    /// <returns>
+    /// The result of the operator.
+    /// </returns>
+    public static Squared<Inductance> operator *(Inductance lhs, Inductance rhs)
     {
-        /// <summary>
-        /// Multiplies the specified LHS and RHS.
-        /// </summary>
-        /// <param name="lhs">The LHS.</param>
-        /// <param name="rhs">The RHS.</param>
-        /// <returns>
-        /// The result of the operator.
-        /// </returns>
-        public static Squared<Inductance> operator *(Inductance lhs, Inductance rhs)
-        {
-            return new Squared<Inductance>(new Inductance(QuantityOperations.Multiply(lhs, rhs).Value, lhs.Unit));
-        }
+        return new Squared<Inductance>(new Inductance(QuantityOperations.Multiply(lhs, rhs).Value, lhs.Unit));
     }
 }

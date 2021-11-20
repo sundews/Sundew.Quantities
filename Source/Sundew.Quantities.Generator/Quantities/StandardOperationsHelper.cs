@@ -5,15 +5,15 @@
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace Sundew.Quantities.Generator.Quantities
-{
-    using Sundew.Generator.Core;
+namespace Sundew.Quantities.Generator.Quantities;
 
-    public static class StandardOperationsHelper
+using Sundew.Generator.Core;
+
+public static class StandardOperationsHelper
+{
+    public static IndentedString GetStandardOperations(IQuantityModel quantityModel)
     {
-        public static IndentedString GetStandardOperations(IQuantityModel quantityModel)
-        {
-            return new IndentedString(8, $@"
+        return new IndentedString(8, $@"
 /// <summary>
 /// Implements the unary + operator.
 /// </summary>
@@ -267,6 +267,5 @@ public Cubed<{quantityModel.Name}> Cubed()
     return new Cubed<{quantityModel.Name}>(this);
 }}
 ");
-        }
     }
 }

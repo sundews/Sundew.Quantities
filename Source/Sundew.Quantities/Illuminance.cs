@@ -5,37 +5,36 @@
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace Sundew.Quantities
+namespace Sundew.Quantities;
+
+using Sundew.Quantities.Core;
+
+/// <summary>
+/// Represents a illuminance quantity.
+/// </summary>
+public partial struct Illuminance
 {
-    using Sundew.Quantities.Core;
+    /// <summary>
+    /// Multiplies the specified LHS and RHS.
+    /// </summary>
+    /// <param name="lhs">The LHS quantity.</param>
+    /// <param name="rhs">The RHS quantity.</param>
+    /// <returns>The product of the specified LHS and RHS.</returns>
+    public static Product<Illuminance, Time> operator *(Illuminance lhs, Time rhs)
+    {
+        return new Product<Illuminance, Time>(lhs, rhs);
+    }
 
     /// <summary>
-    /// Represents a illuminance quantity.
+    /// Multiplies the specified LHS and RHS.
     /// </summary>
-    public partial struct Illuminance
+    /// <param name="lhs">The LHS.</param>
+    /// <param name="rhs">The RHS.</param>
+    /// <returns>
+    /// The result of the operator.
+    /// </returns>
+    public static Squared<Illuminance> operator *(Illuminance lhs, Illuminance rhs)
     {
-        /// <summary>
-        /// Multiplies the specified LHS and RHS.
-        /// </summary>
-        /// <param name="lhs">The LHS quantity.</param>
-        /// <param name="rhs">The RHS quantity.</param>
-        /// <returns>The product of the specified LHS and RHS.</returns>
-        public static Product<Illuminance, Time> operator *(Illuminance lhs, Time rhs)
-        {
-            return new Product<Illuminance, Time>(lhs, rhs);
-        }
-
-        /// <summary>
-        /// Multiplies the specified LHS and RHS.
-        /// </summary>
-        /// <param name="lhs">The LHS.</param>
-        /// <param name="rhs">The RHS.</param>
-        /// <returns>
-        /// The result of the operator.
-        /// </returns>
-        public static Squared<Illuminance> operator *(Illuminance lhs, Illuminance rhs)
-        {
-            return new Squared<Illuminance>(new Illuminance(QuantityOperations.Multiply(lhs, rhs).Value, lhs.Unit));
-        }
+        return new Squared<Illuminance>(new Illuminance(QuantityOperations.Multiply(lhs, rhs).Value, lhs.Unit));
     }
 }

@@ -5,26 +5,25 @@
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace Sundew.Quantities
-{
-    using System;
-    using Sundew.Quantities.Core;
-    using Sundew.Quantities.UnitSelectors;
+namespace Sundew.Quantities;
 
+using System;
+using Sundew.Quantities.Core;
+using Sundew.Quantities.UnitSelectors;
+
+/// <summary>
+/// Extension methods for converting <see cref="TimeSpan"/> into <see cref="Time"/>.
+/// </summary>
+public static class TimeSpanExtensions
+{
     /// <summary>
-    /// Extension methods for converting <see cref="TimeSpan"/> into <see cref="Time"/>.
+    /// Converts the specified <see cref="TimeSpan"/> to <see cref="Time"/> with the specified unit.
     /// </summary>
-    public static class TimeSpanExtensions
+    /// <param name="timeSpan">The time span.</param>
+    /// <param name="unitSelector">The unit selector.</param>
+    /// <returns>The <see cref="Time"/> quantity.</returns>
+    public static Time ToTime(this TimeSpan timeSpan, SelectUnit<TimeUnitSelector> unitSelector)
     {
-        /// <summary>
-        /// Converts the specified <see cref="TimeSpan"/> to <see cref="Time"/> with the specified unit.
-        /// </summary>
-        /// <param name="timeSpan">The time span.</param>
-        /// <param name="unitSelector">The unit selector.</param>
-        /// <returns>The <see cref="Time"/> quantity.</returns>
-        public static Time ToTime(this TimeSpan timeSpan, SelectUnit<TimeUnitSelector> unitSelector)
-        {
-            return ((Time)timeSpan).ToUnit(unitSelector);
-        }
+        return ((Time)timeSpan).ToUnit(unitSelector);
     }
 }

@@ -5,15 +5,15 @@
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace Sundew.Quantities.Generator.UnitSelectors
-{
-    using Sundew.Generator.Core;
+namespace Sundew.Quantities.Generator.UnitSelectors;
 
-    public static class ExponentsHelper
+using Sundew.Generator.Core;
+
+public static class ExponentsHelper
+{
+    public static IndentedString GetExponents(IQuantityModel modelModel)
     {
-        public static IndentedString GetExponents(IQuantityModel modelModel)
-        {
-            return new IndentedString(8, $@"
+        return new IndentedString(8, $@"
 /// <summary>
 /// Gets the square.
 /// </summary>
@@ -46,11 +46,10 @@ public {PrefixesHelper.GetPrefixesAndUnitsInterface(modelModel)} Quartic => this
 /// </value>
 public {PrefixesHelper.GetPrefixesAndUnitsInterface(modelModel)} Quintic => this.GetPrefixesAndUnits(5);
 ");
-        }
+    }
 
-        internal static string GetPrefixesAndUnitsInterface(QuantityModel quantityModel)
-        {
-            return $"IPrefixSelector<I{quantityModel.Name}UnitSelector>";
-        }
+    internal static string GetPrefixesAndUnitsInterface(QuantityModel quantityModel)
+    {
+        return $"IPrefixSelector<I{quantityModel.Name}UnitSelector>";
     }
 }

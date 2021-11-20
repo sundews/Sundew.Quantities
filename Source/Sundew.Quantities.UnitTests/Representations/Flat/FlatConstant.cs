@@ -4,25 +4,24 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
-namespace Sundew.Quantities.UnitTests.Representations.Flat
+namespace Sundew.Quantities.UnitTests.Representations.Flat;
+
+using System;
+using Sundew.Quantities.Representations.Flat;
+
+public class FlatConstant : IFlatIdentifier
 {
-    using System;
-    using Sundew.Quantities.Representations.Flat;
+    private readonly double constant;
 
-    public class FlatConstant : IFlatIdentifier
+    public FlatConstant(double constant, double exponent)
     {
-        private readonly double constant;
+        this.constant = Math.Pow(constant, exponent);
+    }
 
-        public FlatConstant(double constant, double exponent)
-        {
-            this.constant = Math.Pow(constant, exponent);
-        }
+    public string Id => FlatRepresentationBuilder.Constant;
 
-        public string Id => FlatRepresentationBuilder.Constant;
-
-        public IFlatIdentifierRepresentation GetFlatIdentifierRepresentation()
-        {
-            return new ConstantFlatIdentifierRepresentation(this.constant);
-        }
+    public IFlatIdentifierRepresentation GetFlatIdentifierRepresentation()
+    {
+        return new ConstantFlatIdentifierRepresentation(this.constant);
     }
 }

@@ -5,28 +5,28 @@
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace Sundew.Quantities.Generator.UnitSelectors
+namespace Sundew.Quantities.Generator.UnitSelectors;
+
+using System.Collections.Generic;
+using System.Text;
+using Sundew.Generator;
+using Sundew.Generator.Code;
+using Sundew.Generator.Code.CSharp;
+using Sundew.Generator.Core;
+
+public class UnitSelectorInterfaceGenerator : IGenerator<ICodeSetup, ICodeGeneratorSetup, IProject, IQuantityModel, ICodeRun, ITextOutput>
 {
-    using System.Collections.Generic;
-    using System.Text;
-    using Sundew.Generator;
-    using Sundew.Generator.Code;
-    using Sundew.Generator.Code.CSharp;
-    using Sundew.Generator.Core;
-
-    public class UnitSelectorInterfaceGenerator : IGenerator<ICodeSetup, ICodeGeneratorSetup, IProject, IQuantityModel, ICodeRun, ITextOutput>
+    public IReadOnlyList<ICodeRun> Prepare(ICodeSetup codeSetup, ICodeGeneratorSetup codeGeneratorSetup, IProject target, IQuantityModel model, string modelOrigin)
     {
-        public IReadOnlyList<ICodeRun> Prepare(ICodeSetup codeSetup, ICodeGeneratorSetup codeGeneratorSetup, IProject target, IQuantityModel model, string modelOrigin)
+        return new[]
         {
-            return new[]
-            {
-                new CodeRun(model.Name, $"I{model.Name}UnitSelector{target.FileSuffix}", codeGeneratorSetup.TargetNamespace ?? codeSetup.TargetNamespace)
-            };
-        }
+            new CodeRun(model.Name, $"I{model.Name}UnitSelector{target.FileSuffix}", codeGeneratorSetup.TargetNamespace ?? codeSetup.TargetNamespace)
+        };
+    }
 
-        public ITextOutput Generate(ICodeSetup codeSetup, ICodeGeneratorSetup codeGeneratorSetup, IProject target, IQuantityModel model, ICodeRun run, long index)
-        {
-            return new TextOutput($@"
+    public ITextOutput Generate(ICodeSetup codeSetup, ICodeGeneratorSetup codeGeneratorSetup, IProject target, IQuantityModel model, ICodeRun run, long index)
+    {
+        return new TextOutput($@"
 // --------------------------------------------------------------------------------------------------------------------
 // <copyright file=""{run.FileName}"" company=""Hukano"">
 // Copyright (c) Hukano. All rights reserved.
@@ -49,14 +49,14 @@ namespace {NamespaceHelper.CombineNamespaces(target.RootNamespace, run.Namespace
     }}
 }}
 ");
-        }
+    }
 
-        private IndentedString GetUnits(IQuantityModel model)
+    private IndentedString GetUnits(IQuantityModel model)
+    {
+        var stringBuilder = new StringBuilder();
+        foreach (var unitModel in model.Units)
         {
-            var stringBuilder = new StringBuilder();
-            foreach (var unitModel in model.Units)
-            {
-                stringBuilder.AppendLine($@"
+            stringBuilder.AppendLine($@"
 /// <summary>
 /// Gets the {UnitsHelper.GetDocumentationName(unitModel)}.
 /// </summary>
@@ -64,9 +64,8 @@ namespace {NamespaceHelper.CombineNamespaces(target.RootNamespace, run.Namespace
 /// The yard <see cref=""Expression""/>.
 /// </value>
 Expression {unitModel.Identifier} {{ get; }}");
-            }
-
-            return new IndentedString(8, stringBuilder.ToString());
         }
+
+        return new IndentedString(8, stringBuilder.ToString());
     }
 }

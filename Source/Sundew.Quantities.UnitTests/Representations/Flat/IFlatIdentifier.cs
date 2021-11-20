@@ -4,14 +4,13 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
-namespace Sundew.Quantities.UnitTests.Representations.Flat
+namespace Sundew.Quantities.UnitTests.Representations.Flat;
+
+using Sundew.Quantities.Representations.Flat;
+
+internal interface IFlatIdentifier
 {
-    using Sundew.Quantities.Representations.Flat;
+    string Id { get; }
 
-    internal interface IFlatIdentifier
-    {
-        string Id { get; }
-
-        IFlatIdentifierRepresentation GetFlatIdentifierRepresentation();
-    }
+    IFlatIdentifierRepresentation GetFlatIdentifierRepresentation();
 }

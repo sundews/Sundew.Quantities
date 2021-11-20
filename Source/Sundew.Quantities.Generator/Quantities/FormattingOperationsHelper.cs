@@ -5,15 +5,15 @@
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace Sundew.Quantities.Generator.Quantities
-{
-    using Sundew.Generator.Core;
+namespace Sundew.Quantities.Generator.Quantities;
 
-    public static class FormattingOperationsHelper
+using Sundew.Generator.Core;
+
+public static class FormattingOperationsHelper
+{
+    public static IndentedString GetToStringOperations(IQuantityModel quantityModel)
     {
-        public static IndentedString GetToStringOperations(IQuantityModel quantityModel)
-        {
-            return new IndentedString(8, @"
+        return new IndentedString(8, @"
 /// <summary>
 /// Returns a <see cref=""string"" /> that represents this instance.
 /// </summary>
@@ -116,6 +116,5 @@ public string ToString(UnitFormat unitFormat, string format, IFormatProvider for
         UnitFormatHelper.GetNotation(this.Unit, unitFormat));
 }}
 ");
-        }
     }
 }

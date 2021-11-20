@@ -5,59 +5,58 @@
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace Sundew.Quantities.Representations.Expressions
+namespace Sundew.Quantities.Representations.Expressions;
+
+using System;
+
+/// <summary>
+/// Represents parentheses in an expression.
+/// </summary>
+public sealed class ParenthesisExpression : Expression, IEquatable<ParenthesisExpression>
 {
-    using System;
+    /// <summary>
+    /// Initializes a new instance of the <see cref="ParenthesisExpression"/> class.
+    /// </summary>
+    /// <param name="expression">The expression.</param>
+    public ParenthesisExpression(Expression expression)
+    {
+        this.Expression = expression;
+    }
 
     /// <summary>
-    /// Represents parentheses in an expression.
+    /// Gets the expression.
     /// </summary>
-    public sealed class ParenthesisExpression : Expression, IEquatable<ParenthesisExpression>
+    /// <value>
+    /// The expression.
+    /// </value>
+    public Expression Expression { get; }
+
+    /// <summary>
+    /// Indicates whether the current object is equal to another object of the same type.
+    /// </summary>
+    /// <param name="other">An object to compare with this object.</param>
+    /// <returns>
+    ///     <c>true</c> if the current object is equal to the <paramref name="other" /> parameter; otherwise, false.
+    /// </returns>
+    public bool Equals(ParenthesisExpression other)
     {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="ParenthesisExpression"/> class.
-        /// </summary>
-        /// <param name="expression">The expression.</param>
-        public ParenthesisExpression(Expression expression)
-        {
-            this.Expression = expression;
-        }
+        return this.Expression.Equals(other.Expression);
+    }
 
-        /// <summary>
-        /// Gets the expression.
-        /// </summary>
-        /// <value>
-        /// The expression.
-        /// </value>
-        public Expression Expression { get; }
-
-        /// <summary>
-        /// Indicates whether the current object is equal to another object of the same type.
-        /// </summary>
-        /// <param name="other">An object to compare with this object.</param>
-        /// <returns>
-        ///     <c>true</c> if the current object is equal to the <paramref name="other" /> parameter; otherwise, false.
-        /// </returns>
-        public bool Equals(ParenthesisExpression other)
-        {
-            return this.Expression.Equals(other.Expression);
-        }
-
-        /// <summary>
-        /// Visits the specified expression visitor.
-        /// </summary>
-        /// <typeparam name="TParameter1">The type of the parameter1.</typeparam>
-        /// <typeparam name="TParameter2">The type of the parameter2.</typeparam>
-        /// <typeparam name="TResult">The type of the result.</typeparam>
-        /// <param name="expressionVisitor">The expression visitor.</param>
-        /// <param name="parameter1">The parameter1.</param>
-        /// <param name="parameter2">The parameter2.</param>
-        public override void Visit<TParameter1, TParameter2, TResult>(
-            IExpressionVisitor<TParameter1, TParameter2, TResult> expressionVisitor,
-            TParameter1 parameter1,
-            TParameter2 parameter2)
-        {
-            expressionVisitor.Parenthesis(this, parameter1, parameter2);
-        }
+    /// <summary>
+    /// Visits the specified expression visitor.
+    /// </summary>
+    /// <typeparam name="TParameter1">The type of the parameter1.</typeparam>
+    /// <typeparam name="TParameter2">The type of the parameter2.</typeparam>
+    /// <typeparam name="TResult">The type of the result.</typeparam>
+    /// <param name="expressionVisitor">The expression visitor.</param>
+    /// <param name="parameter1">The parameter1.</param>
+    /// <param name="parameter2">The parameter2.</param>
+    public override void Visit<TParameter1, TParameter2, TResult>(
+        IExpressionVisitor<TParameter1, TParameter2, TResult> expressionVisitor,
+        TParameter1 parameter1,
+        TParameter2 parameter2)
+    {
+        expressionVisitor.Parenthesis(this, parameter1, parameter2);
     }
 }

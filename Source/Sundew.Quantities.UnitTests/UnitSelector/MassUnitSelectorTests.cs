@@ -4,32 +4,31 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
-namespace Sundew.Quantities.UnitTests.UnitSelector
+namespace Sundew.Quantities.UnitTests.UnitSelector;
+
+using FluentAssertions;
+using Sundew.Quantities.Core;
+using Sundew.Quantities.Representations.Units;
+using Sundew.Quantities.UnitSelectors;
+using Xunit;
+
+public class MassUnitSelectorTests
 {
-    using FluentAssertions;
-    using Sundew.Quantities.Core;
-    using Sundew.Quantities.Representations.Units;
-    using Sundew.Quantities.UnitSelectors;
-    using Xunit;
+    private readonly MassUnitSelector testee = new();
 
-    public class MassUnitSelectorTests
+    [Fact]
+    public void KiloGramBuildUnit_Then_ResultShouldBePrefixedBaseUnit()
     {
-        private readonly MassUnitSelector testee = new();
+        var result = UnitBuilder.BuildUnit(this.testee.KiloGrams);
 
-        [Fact]
-        public void KiloGramBuildUnit_Then_ResultShouldBePrefixedBaseUnit()
-        {
-            var result = UnitBuilder.BuildUnit(this.testee.KiloGrams);
+        result.Should().BeOfType<PrefixedBaseUnit>();
+    }
 
-            result.Should().BeOfType<PrefixedBaseUnit>();
-        }
+    [Fact]
+    public void KiloGramUnitNotation_When_UsingPrefixSelector_Then_ResultShouldBePrefixedBaseUnit()
+    {
+        var result = UnitBuilder.BuildUnit(this.testee.Kilo.Grams).BaseUnit;
 
-        [Fact]
-        public void KiloGramUnitNotation_When_UsingPrefixSelector_Then_ResultShouldBePrefixedBaseUnit()
-        {
-            var result = UnitBuilder.BuildUnit(this.testee.Kilo.Grams).BaseUnit;
-
-            result.Should().Be(UnitDefinitions.KiloGram);
-        }
+        result.Should().Be(UnitDefinitions.KiloGram);
     }
 }

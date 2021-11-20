@@ -5,15 +5,15 @@
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace Sundew.Quantities.Generator.UnitSelectors
-{
-    using Sundew.Generator.Core;
+namespace Sundew.Quantities.Generator.UnitSelectors;
 
-    public static class PrefixesHelper
+using Sundew.Generator.Core;
+
+public static class PrefixesHelper
+{
+    public static IndentedString GetPrefixes(IQuantityModel quantityModel)
     {
-        public static IndentedString GetPrefixes(IQuantityModel quantityModel)
-        {
-            return new IndentedString(8, $@"
+        return new IndentedString(8, $@"
 /// <summary>
 /// Gets the yotta.
 /// </summary>
@@ -174,16 +174,15 @@ public {GetUnitsInterface(quantityModel)} Zepto => this.GetUnits(Prefixes.Zepto)
 /// </value>
 public {GetUnitsInterface(quantityModel)} Yocto => this.GetUnits(Prefixes.Yocto);
 ");
-        }
+    }
 
-        internal static string GetUnitsInterface(IQuantityModel quantityModel)
-        {
-            return $"I{quantityModel.Name}UnitSelector";
-        }
+    internal static string GetUnitsInterface(IQuantityModel quantityModel)
+    {
+        return $"I{quantityModel.Name}UnitSelector";
+    }
 
-        internal static string GetPrefixesAndUnitsInterface(IQuantityModel quantityModel)
-        {
-            return $"IPrefixed{quantityModel.Name}UnitSelector";
-        }
+    internal static string GetPrefixesAndUnitsInterface(IQuantityModel quantityModel)
+    {
+        return $"IPrefixed{quantityModel.Name}UnitSelector";
     }
 }

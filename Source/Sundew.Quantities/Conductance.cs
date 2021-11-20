@@ -5,26 +5,25 @@
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace Sundew.Quantities
-{
-    using Sundew.Quantities.Core;
+namespace Sundew.Quantities;
 
+using Sundew.Quantities.Core;
+
+/// <summary>
+/// Represents a conductance quantity.
+/// </summary>
+public partial struct Conductance
+{
     /// <summary>
-    /// Represents a conductance quantity.
+    /// Multiplies the specified LHS and RHS.
     /// </summary>
-    public partial struct Conductance
+    /// <param name="lhs">The LHS.</param>
+    /// <param name="rhs">The RHS.</param>
+    /// <returns>
+    /// The result of the operator.
+    /// </returns>
+    public static Squared<Conductance> operator *(Conductance lhs, Conductance rhs)
     {
-        /// <summary>
-        /// Multiplies the specified LHS and RHS.
-        /// </summary>
-        /// <param name="lhs">The LHS.</param>
-        /// <param name="rhs">The RHS.</param>
-        /// <returns>
-        /// The result of the operator.
-        /// </returns>
-        public static Squared<Conductance> operator *(Conductance lhs, Conductance rhs)
-        {
-            return new Squared<Conductance>(new Conductance(QuantityOperations.Multiply(lhs, rhs).Value, lhs.Unit));
-        }
+        return new Squared<Conductance>(new Conductance(QuantityOperations.Multiply(lhs, rhs).Value, lhs.Unit));
     }
 }

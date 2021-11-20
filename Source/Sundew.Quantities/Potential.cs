@@ -5,59 +5,58 @@
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace Sundew.Quantities
+namespace Sundew.Quantities;
+
+using Sundew.Quantities.Core;
+
+/// <summary>
+/// Represents a potential quantity.
+/// </summary>
+public partial struct Potential
 {
-    using Sundew.Quantities.Core;
+    /// <summary>
+    /// Multiplies the specified LHS and RHS.
+    /// </summary>
+    /// <param name="lhs">The LHS quantity.</param>
+    /// <param name="rhs">The RHS quantity.</param>
+    /// <returns>The product of the specified LHS and RHS.</returns>
+    public static Power operator *(Potential lhs, ElectricCurrent rhs)
+    {
+        return new Power(QuantityOperations.Multiply(lhs, rhs));
+    }
 
     /// <summary>
-    /// Represents a potential quantity.
+    /// Divides the specified LHS and RHS.
     /// </summary>
-    public partial struct Potential
+    /// <param name="lhs">The LHS quantity.</param>
+    /// <param name="rhs">The RHS quantity.</param>
+    /// <returns>The quotient of the specified LHS and RHS.</returns>
+    public static ElectricCurrent operator /(Potential lhs, Resistance rhs)
     {
-        /// <summary>
-        /// Multiplies the specified LHS and RHS.
-        /// </summary>
-        /// <param name="lhs">The LHS quantity.</param>
-        /// <param name="rhs">The RHS quantity.</param>
-        /// <returns>The product of the specified LHS and RHS.</returns>
-        public static Power operator *(Potential lhs, ElectricCurrent rhs)
-        {
-            return new Power(QuantityOperations.Multiply(lhs, rhs));
-        }
+        return new ElectricCurrent(QuantityOperations.Divide(lhs, rhs));
+    }
 
-        /// <summary>
-        /// Divides the specified LHS and RHS.
-        /// </summary>
-        /// <param name="lhs">The LHS quantity.</param>
-        /// <param name="rhs">The RHS quantity.</param>
-        /// <returns>The quotient of the specified LHS and RHS.</returns>
-        public static ElectricCurrent operator /(Potential lhs, Resistance rhs)
-        {
-            return new ElectricCurrent(QuantityOperations.Divide(lhs, rhs));
-        }
+    /// <summary>
+    /// Divides the specified LHS and RHS.
+    /// </summary>
+    /// <param name="lhs">The LHS quantity.</param>
+    /// <param name="rhs">The RHS quantity.</param>
+    /// <returns>The quotient of the specified LHS and RHS.</returns>
+    public static Resistance operator /(Potential lhs, ElectricCurrent rhs)
+    {
+        return new Resistance(QuantityOperations.Divide(lhs, rhs));
+    }
 
-        /// <summary>
-        /// Divides the specified LHS and RHS.
-        /// </summary>
-        /// <param name="lhs">The LHS quantity.</param>
-        /// <param name="rhs">The RHS quantity.</param>
-        /// <returns>The quotient of the specified LHS and RHS.</returns>
-        public static Resistance operator /(Potential lhs, ElectricCurrent rhs)
-        {
-            return new Resistance(QuantityOperations.Divide(lhs, rhs));
-        }
-
-        /// <summary>
-        /// Multiplies the specified LHS and RHS.
-        /// </summary>
-        /// <param name="lhs">The LHS.</param>
-        /// <param name="rhs">The RHS.</param>
-        /// <returns>
-        /// The result of the operator.
-        /// </returns>
-        public static Squared<Potential> operator *(Potential lhs, Potential rhs)
-        {
-            return new Squared<Potential>(new Potential(QuantityOperations.Multiply(lhs, rhs).Value, lhs.Unit));
-        }
+    /// <summary>
+    /// Multiplies the specified LHS and RHS.
+    /// </summary>
+    /// <param name="lhs">The LHS.</param>
+    /// <param name="rhs">The RHS.</param>
+    /// <returns>
+    /// The result of the operator.
+    /// </returns>
+    public static Squared<Potential> operator *(Potential lhs, Potential rhs)
+    {
+        return new Squared<Potential>(new Potential(QuantityOperations.Multiply(lhs, rhs).Value, lhs.Unit));
     }
 }

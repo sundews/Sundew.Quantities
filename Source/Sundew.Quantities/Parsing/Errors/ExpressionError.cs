@@ -4,41 +4,40 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
-namespace Sundew.Quantities.Parsing.Errors
+namespace Sundew.Quantities.Parsing.Errors;
+
+/// <summary>
+/// Enum for expression errors.
+/// </summary>
+public enum ExpressionError
 {
     /// <summary>
-    /// Enum for expression errors.
+    /// The lexical analysis failed.
     /// </summary>
-    public enum ExpressionError
-    {
-        /// <summary>
-        /// The lexical analysis failed.
-        /// </summary>
-        LexicalAnalysisFailed,
+    LexicalAnalysisFailed,
 
-        /// <summary>
-        /// The identifier not found.
-        /// </summary>
-        IdentifierNotFound,
+    /// <summary>
+    /// The identifier not found.
+    /// </summary>
+    IdentifierNotFound,
 
-        /// <summary>
-        /// The number not found.
-        /// </summary>
-        NumberNotFound,
+    /// <summary>
+    /// The number not found.
+    /// </summary>
+    NumberNotFound,
 
-        /// <summary>
-        /// The right parenthesis not found.
-        /// </summary>
-        RightParenthesisNotFound,
+    /// <summary>
+    /// The right parenthesis not found.
+    /// </summary>
+    RightParenthesisNotFound,
 
-        /// <summary>
-        /// The right weak parenthesis not found.
-        /// </summary>
-        RightWeakParenthesisNotFound,
+    /// <summary>
+    /// The right weak parenthesis not found.
+    /// </summary>
+    RightWeakParenthesisNotFound,
 
-        /// <summary>
-        /// The end of data not found.
-        /// </summary>
-        EndOfDataNotFound
-    }
+    /// <summary>
+    /// The end of data not found.
+    /// </summary>
+    EndOfDataNotFound
 }

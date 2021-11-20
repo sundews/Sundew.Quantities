@@ -5,21 +5,20 @@
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace Sundew.Quantities.Core.Operations
-{
-    using Sundew.Quantities.Representations.Expressions;
+namespace Sundew.Quantities.Core.Operations;
 
+using Sundew.Quantities.Representations.Expressions;
+
+/// <summary>
+/// Interface for implementing operations between <see cref="IQuantity"/> and <see cref="IUnit"/>.
+/// </summary>
+public interface IQuantityAndUnitOperation
+{
     /// <summary>
-    /// Interface for implementing operations between <see cref="IQuantity"/> and <see cref="IUnit"/>.
+    /// Executes the operation.
     /// </summary>
-    public interface IQuantityAndUnitOperation
-    {
-        /// <summary>
-        /// Executes the operation.
-        /// </summary>
-        /// <param name="lhs">The LHS quantity.</param>
-        /// <param name="rhs">The RHS unit.</param>
-        /// <returns>The resulting value.</returns>
-        double Execute(IQuantity lhs, IUnit rhs);
-    }
+    /// <param name="lhs">The LHS quantity.</param>
+    /// <param name="rhs">The RHS unit.</param>
+    /// <returns>The resulting value.</returns>
+    double Execute(IQuantity lhs, IUnit rhs);
 }

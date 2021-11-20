@@ -5,15 +5,15 @@
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace Sundew.Quantities.Generator.Quantities
-{
-    using Sundew.Generator.Core;
+namespace Sundew.Quantities.Generator.Quantities;
 
-    public static class ConstructorsHelper
+using Sundew.Generator.Core;
+
+public static class ConstructorsHelper
+{
+    public static IndentedString GetConstructors(IQuantityModel quantityModel)
     {
-        public static IndentedString GetConstructors(IQuantityModel quantityModel)
-        {
-            return new IndentedString(8, $@"
+        return new IndentedString(8, $@"
 /// <summary>
 /// Initializes a new instance of the <see cref=""{quantityModel.Name}""/> struct.
 /// </summary>
@@ -53,6 +53,5 @@ public {quantityModel.Name}(double value, IUnit unit)
     this.Unit = unit;
 }}
 ");
-        }
     }
 }

@@ -5,32 +5,31 @@
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace Sundew.Quantities.Parsing.Exceptions
+namespace Sundew.Quantities.Parsing.Exceptions;
+
+using Sundew.Quantities.Parsing.Errors;
+
+/// <summary>
+/// Exception for parsing an unit expression.
+/// </summary>
+/// <seealso cref="ParseException" />
+public class UnitExpressionParseException : ParseException
 {
-    using Sundew.Quantities.Parsing.Errors;
+    /// <summary>
+    /// Initializes a new instance of the <see cref="UnitExpressionParseException"/> class.
+    /// </summary>
+    /// <param name="error">The error.</param>
+    public UnitExpressionParseException(Error<UnitError> error)
+        : base(error)
+    {
+        this.Error = error;
+    }
 
     /// <summary>
-    /// Exception for parsing an unit expression.
+    /// Gets the error.
     /// </summary>
-    /// <seealso cref="ParseException" />
-    public class UnitExpressionParseException : ParseException
-    {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="UnitExpressionParseException"/> class.
-        /// </summary>
-        /// <param name="error">The error.</param>
-        public UnitExpressionParseException(Error<UnitError> error)
-            : base(error)
-        {
-            this.Error = error;
-        }
-
-        /// <summary>
-        /// Gets the error.
-        /// </summary>
-        /// <value>
-        /// The error.
-        /// </value>
-        public Error<UnitError> Error { get; }
-    }
+    /// <value>
+    /// The error.
+    /// </value>
+    public Error<UnitError> Error { get; }
 }

@@ -5,29 +5,28 @@
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace Sundew.Quantities.Representations.Flat
+namespace Sundew.Quantities.Representations.Flat;
+
+using System;
+using Sundew.Quantities.Representations.Expressions;
+
+internal static class FlatPresentationHelper
 {
-    using System;
-    using Sundew.Quantities.Representations.Expressions;
+    public static readonly int HatHashCode = "^".GetHashCode();
 
-    internal static class FlatPresentationHelper
+    public static Expression CreateResultingExpression(Expression expression, double exponent)
     {
-        public static readonly int HatHashCode = "^".GetHashCode();
-
-        public static Expression CreateResultingExpression(Expression expression, double exponent)
+        if (exponent.Equals(0.0))
         {
-            if (exponent.Equals(0.0))
-            {
-                return null;
-            }
-
-            exponent = Math.Abs(exponent);
-            if (exponent.Equals(1.0))
-            {
-                return expression;
-            }
-
-            return new MagnitudeExpression(expression, new ConstantExpression(exponent));
+            return null;
         }
+
+        exponent = Math.Abs(exponent);
+        if (exponent.Equals(1.0))
+        {
+            return expression;
+        }
+
+        return new MagnitudeExpression(expression, new ConstantExpression(exponent));
     }
 }

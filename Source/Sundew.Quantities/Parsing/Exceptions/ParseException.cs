@@ -5,23 +5,22 @@
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace Sundew.Quantities.Parsing.Exceptions
-{
-    using System;
+namespace Sundew.Quantities.Parsing.Exceptions;
 
+using System;
+
+/// <summary>
+/// Abstract base class for various parse exceptions.
+/// </summary>
+/// <seealso cref="System.Exception" />
+public abstract class ParseException : Exception
+{
     /// <summary>
-    /// Abstract base class for various parse exceptions.
+    /// Initializes a new instance of the <see cref="ParseException" /> class.
     /// </summary>
-    /// <seealso cref="System.Exception" />
-    public abstract class ParseException : Exception
+    /// <param name="error">The parse error.</param>
+    protected ParseException(IError error)
+        : base(error.GetMessage())
     {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="ParseException" /> class.
-        /// </summary>
-        /// <param name="error">The parse error.</param>
-        protected ParseException(IError error)
-            : base(error.GetMessage())
-        {
-        }
     }
 }

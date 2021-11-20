@@ -5,72 +5,71 @@
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace Sundew.Quantities.Representations.Expressions
+namespace Sundew.Quantities.Representations.Expressions;
+
+using System;
+
+/// <summary>
+/// Represents a constant expression.
+/// </summary>
+public sealed class ConstantExpression : Expression, IEquatable<ConstantExpression>
 {
-    using System;
+    static ConstantExpression()
+    {
+        One = new ConstantExpression(1);
+    }
 
     /// <summary>
-    /// Represents a constant expression.
+    /// Initializes a new instance of the <see cref="ConstantExpression"/> class.
     /// </summary>
-    public sealed class ConstantExpression : Expression, IEquatable<ConstantExpression>
+    /// <param name="constant">The constant.</param>
+    public ConstantExpression(double constant)
     {
-        static ConstantExpression()
-        {
-            One = new ConstantExpression(1);
-        }
+        this.Constant = constant;
+    }
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="ConstantExpression"/> class.
-        /// </summary>
-        /// <param name="constant">The constant.</param>
-        public ConstantExpression(double constant)
-        {
-            this.Constant = constant;
-        }
+    /// <summary>
+    /// Gets the one.
+    /// </summary>
+    /// <value>
+    /// A <see cref="ConstantExpression"/> with the value one.
+    /// </value>
+    public static ConstantExpression One { get; }
 
-        /// <summary>
-        /// Gets the one.
-        /// </summary>
-        /// <value>
-        /// A <see cref="ConstantExpression"/> with the value one.
-        /// </value>
-        public static ConstantExpression One { get; }
+    /// <summary>
+    /// Gets the constant.
+    /// </summary>
+    /// <value>
+    /// The constant.
+    /// </value>
+    public double Constant { get; }
 
-        /// <summary>
-        /// Gets the constant.
-        /// </summary>
-        /// <value>
-        /// The constant.
-        /// </value>
-        public double Constant { get; }
+    /// <summary>
+    /// Indicates whether the current object is equal to another object of the same type.
+    /// </summary>
+    /// <param name="other">An object to compare with this object.</param>
+    /// <returns>
+    ///     <c>true</c> if the current object is equal to the <paramref name="other" /> parameter; otherwise, false.
+    /// </returns>
+    public bool Equals(ConstantExpression other)
+    {
+        return Equals(this.Constant, other.Constant);
+    }
 
-        /// <summary>
-        /// Indicates whether the current object is equal to another object of the same type.
-        /// </summary>
-        /// <param name="other">An object to compare with this object.</param>
-        /// <returns>
-        ///     <c>true</c> if the current object is equal to the <paramref name="other" /> parameter; otherwise, false.
-        /// </returns>
-        public bool Equals(ConstantExpression other)
-        {
-            return Equals(this.Constant, other.Constant);
-        }
-
-        /// <summary>
-        /// Visits the specified expression visitor.
-        /// </summary>
-        /// <typeparam name="TParameter1">The type of the parameter1.</typeparam>
-        /// <typeparam name="TParameter2">The type of the parameter2.</typeparam>
-        /// <typeparam name="TResult">The type of the result.</typeparam>
-        /// <param name="expressionVisitor">The expression visitor.</param>
-        /// <param name="parameter1">The parameter1.</param>
-        /// <param name="parameter2">The parameter2.</param>
-        public override void Visit<TParameter1, TParameter2, TResult>(
-            IExpressionVisitor<TParameter1, TParameter2, TResult> expressionVisitor,
-            TParameter1 parameter1,
-            TParameter2 parameter2)
-        {
-            expressionVisitor.Constant(this, parameter1, parameter2);
-        }
+    /// <summary>
+    /// Visits the specified expression visitor.
+    /// </summary>
+    /// <typeparam name="TParameter1">The type of the parameter1.</typeparam>
+    /// <typeparam name="TParameter2">The type of the parameter2.</typeparam>
+    /// <typeparam name="TResult">The type of the result.</typeparam>
+    /// <param name="expressionVisitor">The expression visitor.</param>
+    /// <param name="parameter1">The parameter1.</param>
+    /// <param name="parameter2">The parameter2.</param>
+    public override void Visit<TParameter1, TParameter2, TResult>(
+        IExpressionVisitor<TParameter1, TParameter2, TResult> expressionVisitor,
+        TParameter1 parameter1,
+        TParameter2 parameter2)
+    {
+        expressionVisitor.Constant(this, parameter1, parameter2);
     }
 }

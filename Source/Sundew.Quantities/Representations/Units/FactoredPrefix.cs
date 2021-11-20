@@ -5,99 +5,98 @@
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace Sundew.Quantities.Representations.Units
+namespace Sundew.Quantities.Representations.Units;
+
+using Sundew.Quantities.Representations.Expressions;
+
+/// <summary>
+/// Represents a prefix for a unit.
+/// </summary>
+public class FactoredPrefix : Prefix
 {
-    using Sundew.Quantities.Representations.Expressions;
+    private readonly double factor;
+
+    private readonly string notation;
 
     /// <summary>
-    /// Represents a prefix for a unit.
+    /// Initializes a new instance of the <see cref="FactoredPrefix" /> class.
     /// </summary>
-    public class FactoredPrefix : Prefix
+    /// <param name="name">The name.</param>
+    /// <param name="factor">The factor.</param>
+    /// <param name="notation">The notation.</param>
+    internal FactoredPrefix(string name, double factor, string notation)
     {
-        private readonly double factor;
+        this.Name = name;
+        this.factor = factor;
+        this.notation = notation;
+    }
 
-        private readonly string notation;
+    /// <summary>
+    /// Initializes a new instance of the <see cref="FactoredPrefix"/> class.
+    /// </summary>
+    /// <param name="factor">The factor.</param>
+    internal FactoredPrefix(double factor)
+        : this(factor.ToString(), factor, string.Empty)
+    {
+    }
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="FactoredPrefix" /> class.
-        /// </summary>
-        /// <param name="name">The name.</param>
-        /// <param name="factor">The factor.</param>
-        /// <param name="notation">The notation.</param>
-        internal FactoredPrefix(string name, double factor, string notation)
-        {
-            this.Name = name;
-            this.factor = factor;
-            this.notation = notation;
-        }
+    /// <summary>
+    /// Gets the name.
+    /// </summary>
+    /// <value>
+    /// The name.
+    /// </value>
+    public override string Name { get; }
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="FactoredPrefix"/> class.
-        /// </summary>
-        /// <param name="factor">The factor.</param>
-        internal FactoredPrefix(double factor)
-            : this(factor.ToString(), factor, string.Empty)
-        {
-        }
+    /// <summary>
+    /// Gets the factor.
+    /// </summary>
+    /// <value>
+    /// The factor.
+    /// </value>
+    public override double Factor => this.factor;
 
-        /// <summary>
-        /// Gets the name.
-        /// </summary>
-        /// <value>
-        /// The name.
-        /// </value>
-        public override string Name { get; }
+    /// <summary>
+    /// Gets the notation.
+    /// </summary>
+    /// <value>
+    /// The notation.
+    /// </value>
+    public override string Notation => this.notation;
 
-        /// <summary>
-        /// Gets the factor.
-        /// </summary>
-        /// <value>
-        /// The factor.
-        /// </value>
-        public override double Factor => this.factor;
+    /// <summary>
+    /// Gets the prefixed notation.
+    /// </summary>
+    /// <param name="unitNotation">The notation.</param>
+    /// <returns>
+    /// The prefixed notation.
+    /// </returns>
+    public override string GetPrefixedNotation(string unitNotation)
+    {
+        return this.notation + unitNotation;
+    }
 
-        /// <summary>
-        /// Gets the notation.
-        /// </summary>
-        /// <value>
-        /// The notation.
-        /// </value>
-        public override string Notation => this.notation;
+    /// <summary>
+    /// From the base value.
+    /// </summary>
+    /// <param name="value">The value.</param>
+    /// <returns>
+    /// The value for the prefix.
+    /// </returns>
+    public override double FromBase(double value)
+    {
+        return value / this.factor;
+    }
 
-        /// <summary>
-        /// Gets the prefixed notation.
-        /// </summary>
-        /// <param name="unitNotation">The notation.</param>
-        /// <returns>
-        /// The prefixed notation.
-        /// </returns>
-        public override string GetPrefixedNotation(string unitNotation)
-        {
-            return this.notation + unitNotation;
-        }
-
-        /// <summary>
-        /// From the base value.
-        /// </summary>
-        /// <param name="value">The value.</param>
-        /// <returns>
-        /// The value for the prefix.
-        /// </returns>
-        public override double FromBase(double value)
-        {
-            return value / this.factor;
-        }
-
-        /// <summary>
-        /// To the base value.
-        /// </summary>
-        /// <param name="value">The value.</param>
-        /// <returns>
-        /// The base value.
-        /// </returns>
-        public override double ToBase(double value)
-        {
-            return value * this.factor;
-        }
+    /// <summary>
+    /// To the base value.
+    /// </summary>
+    /// <param name="value">The value.</param>
+    /// <returns>
+    /// The base value.
+    /// </returns>
+    public override double ToBase(double value)
+    {
+        return value * this.factor;
     }
 }

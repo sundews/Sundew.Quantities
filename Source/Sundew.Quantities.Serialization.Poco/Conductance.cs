@@ -4,38 +4,37 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
-namespace Sundew.Quantities.Serialization.Poco
+namespace Sundew.Quantities.Serialization.Poco;
+
+using Sundew.Quantities.Core;
+
+/// <summary>
+/// Represents <see cref="Sundew.Quantities.ElectricCurrent"/> as a serializable type.
+/// </summary>
+public class Conductance : SerializableQuantity<Quantities.Conductance>
 {
-    using Sundew.Quantities.Core;
+    /// <summary>
+    /// Initializes a new instance of the <see cref="Conductance"/> class.
+    /// </summary>
+    public Conductance()
+    {
+    }
 
     /// <summary>
-    /// Represents <see cref="Sundew.Quantities.ElectricCurrent"/> as a serializable type.
+    /// Initializes a new instance of the <see cref="Conductance" /> class.
     /// </summary>
-    public class Conductance : SerializableQuantity<Quantities.Conductance>
+    /// <param name="quantity">The quantity.</param>
+    public Conductance(IQuantity quantity)
+        : base(quantity)
     {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="Conductance"/> class.
-        /// </summary>
-        public Conductance()
-        {
-        }
+    }
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="Conductance" /> class.
-        /// </summary>
-        /// <param name="quantity">The quantity.</param>
-        public Conductance(IQuantity quantity)
-            : base(quantity)
-        {
-        }
-
-        /// <summary>
-        /// Converts the serializable electric current to a <see cref="Sundew.Quantities.Conductance"/>.
-        /// </summary>
-        /// <returns>A <see cref="Sundew.Quantities.Conductance"/>.</returns>
-        public override Quantities.Conductance ToQuantity()
-        {
-            return new Quantities.Conductance(this.Value, this.GetUnit());
-        }
+    /// <summary>
+    /// Converts the serializable electric current to a <see cref="Sundew.Quantities.Conductance"/>.
+    /// </summary>
+    /// <returns>A <see cref="Sundew.Quantities.Conductance"/>.</returns>
+    public override Quantities.Conductance ToQuantity()
+    {
+        return new Quantities.Conductance(this.Value, this.GetUnit());
     }
 }

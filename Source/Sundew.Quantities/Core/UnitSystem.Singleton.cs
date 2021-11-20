@@ -5,173 +5,172 @@
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace Sundew.Quantities.Core
+namespace Sundew.Quantities.Core;
+
+using System;
+using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
+using System.Globalization;
+using Sundew.Base.Primitives.Computation;
+using Sundew.Quantities.Core.Operations;
+using Sundew.Quantities.Parsing;
+using Sundew.Quantities.Parsing.Errors;
+using Sundew.Quantities.Registration;
+using Sundew.Quantities.Representations.Expressions;
+
+/// <summary>
+/// Stores the currently load unit system.
+/// This class must be initialized with the wished units.
+/// </summary>
+public partial class UnitSystem
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Diagnostics.CodeAnalysis;
-    using System.Globalization;
-    using Sundew.Base.Primitives.Computation;
-    using Sundew.Quantities.Core.Operations;
-    using Sundew.Quantities.Parsing;
-    using Sundew.Quantities.Parsing.Errors;
-    using Sundew.Quantities.Registration;
-    using Sundew.Quantities.Representations.Expressions;
+    /// <summary>
+    /// Gets the instance.
+    /// </summary>
+    /// <value>
+    /// The instance.
+    /// </value>
+    public static UnitSystem Instance => Nested.UnitSystemInstance;
 
     /// <summary>
-    /// Stores the currently load unit system.
-    /// This class must be initialized with the wished units.
+    /// Gets the prefixes.
     /// </summary>
-    public partial class UnitSystem
+    /// <returns>The prefixes.</returns>
+    public static IEnumerable<Prefix> Prefixes
     {
-        /// <summary>
-        /// Gets the instance.
-        /// </summary>
-        /// <value>
-        /// The instance.
-        /// </value>
-        public static UnitSystem Instance => Nested.UnitSystemInstance;
-
-        /// <summary>
-        /// Gets the prefixes.
-        /// </summary>
-        /// <returns>The prefixes.</returns>
-        public static IEnumerable<Prefix> Prefixes
-        {
-            get
-            {
-                EnsureInitialization();
-                return Instance.GetPrefixes();
-            }
-        }
-
-        /// <summary>
-        /// Gets the units.
-        /// </summary>
-        /// <returns>The units.</returns>
-        public static IEnumerable<IUnit> Units
-        {
-            get
-            {
-                EnsureInitialization();
-                return Instance.GetUnits();
-            }
-        }
-
-        internal static IQuantityOperations QuantityOperations
-        {
-            get
-            {
-                EnsureInitialization();
-                return Instance.quantityOperations;
-            }
-        }
-
-        internal static IUnitFactory UnitFactory
-        {
-            get
-            {
-                EnsureInitialization();
-                return Instance.unitFactory;
-            }
-        }
-
-        /// <summary>
-        /// Gets the specified quantity.
-        /// </summary>
-        /// <param name="quantity">The quantity.</param>
-        /// <param name="cultureInfo">The culture information.</param>
-        /// <returns>
-        /// A <see cref="Quantity" />.
-        /// </returns>
-        public static Quantity GetQuantityFrom(string quantity, CultureInfo cultureInfo)
+        get
         {
             EnsureInitialization();
-            return Instance.GetQuantity(quantity, cultureInfo);
+            return Instance.GetPrefixes();
         }
+    }
 
-        /// <summary>
-        /// Gets the specified unit.
-        /// </summary>
-        /// <param name="unit">The unit.</param>
-        /// <param name="parseSettings">The parse settings.</param>
-        /// <returns>
-        /// An <see cref="IUnit" />.
-        /// </returns>
-        public static Result<IUnit, Error<ExpressionError>> GetUnitFrom(string unit, ParseSettings parseSettings)
+    /// <summary>
+    /// Gets the units.
+    /// </summary>
+    /// <returns>The units.</returns>
+    public static IEnumerable<IUnit> Units
+    {
+        get
         {
             EnsureInitialization();
-            return Instance.GetUnit(unit, parseSettings);
+            return Instance.GetUnits();
         }
+    }
 
-        /// <summary>
-        /// Initializes the with defaults.
-        /// </summary>
-        /// <param name="registerUnitAction">The register unit action.</param>
-        /// <param name="unitSystemDependencyFactory">The unit system dependency factory.</param>
-        /// <returns>
-        /// The <see cref="UnitSystemDependencies" />.
-        /// </returns>
-        public static UnitSystemDependencies InitializeWithDefaults(
-            Action<IUnitRegistrar> registerUnitAction = null,
-            IUnitSystemDependencyFactory unitSystemDependencyFactory = null)
-        {
-            return Instance.InitializeUnitSystemWithDefaults(unitSystemDependencyFactory, registerUnitAction);
-        }
-
-        /// <summary>
-        /// Initializes this instance.
-        /// </summary>
-        /// <param name="registerUnitAction">The register unit action.</param>
-        /// <param name="unitSystemDependencyFactory">The unit system dependency factory.</param>
-        /// <returns>The <see cref="UnitSystemDependencies"/>.</returns>
-        public static UnitSystemDependencies Initialize(
-            Action<IUnitRegistrar> registerUnitAction,
-            IUnitSystemDependencyFactory unitSystemDependencyFactory = null)
-        {
-            return Instance.InitializeUnitSystem(unitSystemDependencyFactory, registerUnitAction);
-        }
-
-        /// <summary>
-        /// Resets this instance.
-        /// </summary>
-        public static void Reset()
-        {
-            Instance.ResetUnitSystem();
-        }
-
-        /// <summary>
-        /// Gets the specified unit.
-        /// </summary>
-        /// <param name="unit">The unit.</param>
-        /// <returns>
-        /// An <see cref="IUnit" />.
-        /// </returns>
-        internal static IUnit GetUnitFrom(string unit)
+    internal static IQuantityOperations QuantityOperations
+    {
+        get
         {
             EnsureInitialization();
-            return Instance.GetUnit(unit, ParseSettings.DefaultInvariantCulture).Value;
+            return Instance.quantityOperations;
         }
+    }
 
-        private static void EnsureInitialization()
+    internal static IUnitFactory UnitFactory
+    {
+        get
         {
-            var unitSystem = Instance;
-            lock (unitSystem.unitSystemLock)
+            EnsureInitialization();
+            return Instance.unitFactory;
+        }
+    }
+
+    /// <summary>
+    /// Gets the specified quantity.
+    /// </summary>
+    /// <param name="quantity">The quantity.</param>
+    /// <param name="cultureInfo">The culture information.</param>
+    /// <returns>
+    /// A <see cref="Quantity" />.
+    /// </returns>
+    public static Quantity GetQuantityFrom(string quantity, CultureInfo cultureInfo)
+    {
+        EnsureInitialization();
+        return Instance.GetQuantity(quantity, cultureInfo);
+    }
+
+    /// <summary>
+    /// Gets the specified unit.
+    /// </summary>
+    /// <param name="unit">The unit.</param>
+    /// <param name="parseSettings">The parse settings.</param>
+    /// <returns>
+    /// An <see cref="IUnit" />.
+    /// </returns>
+    public static Result<IUnit, Error<ExpressionError>> GetUnitFrom(string unit, ParseSettings parseSettings)
+    {
+        EnsureInitialization();
+        return Instance.GetUnit(unit, parseSettings);
+    }
+
+    /// <summary>
+    /// Initializes the with defaults.
+    /// </summary>
+    /// <param name="registerUnitAction">The register unit action.</param>
+    /// <param name="unitSystemDependencyFactory">The unit system dependency factory.</param>
+    /// <returns>
+    /// The <see cref="UnitSystemDependencies" />.
+    /// </returns>
+    public static UnitSystemDependencies InitializeWithDefaults(
+        Action<IUnitRegistrar> registerUnitAction = null,
+        IUnitSystemDependencyFactory unitSystemDependencyFactory = null)
+    {
+        return Instance.InitializeUnitSystemWithDefaults(unitSystemDependencyFactory, registerUnitAction);
+    }
+
+    /// <summary>
+    /// Initializes this instance.
+    /// </summary>
+    /// <param name="registerUnitAction">The register unit action.</param>
+    /// <param name="unitSystemDependencyFactory">The unit system dependency factory.</param>
+    /// <returns>The <see cref="UnitSystemDependencies"/>.</returns>
+    public static UnitSystemDependencies Initialize(
+        Action<IUnitRegistrar> registerUnitAction,
+        IUnitSystemDependencyFactory unitSystemDependencyFactory = null)
+    {
+        return Instance.InitializeUnitSystem(unitSystemDependencyFactory, registerUnitAction);
+    }
+
+    /// <summary>
+    /// Resets this instance.
+    /// </summary>
+    public static void Reset()
+    {
+        Instance.ResetUnitSystem();
+    }
+
+    /// <summary>
+    /// Gets the specified unit.
+    /// </summary>
+    /// <param name="unit">The unit.</param>
+    /// <returns>
+    /// An <see cref="IUnit" />.
+    /// </returns>
+    internal static IUnit GetUnitFrom(string unit)
+    {
+        EnsureInitialization();
+        return Instance.GetUnit(unit, ParseSettings.DefaultInvariantCulture).Value;
+    }
+
+    private static void EnsureInitialization()
+    {
+        var unitSystem = Instance;
+        lock (unitSystem.unitSystemLock)
+        {
+            if (!Instance.isInitialized)
             {
-                if (!Instance.isInitialized)
-                {
-                    Instance.InitializeUnitSystemWithDefaults();
-                }
+                Instance.InitializeUnitSystemWithDefaults();
             }
         }
+    }
 
-        private static class Nested
+    private static class Nested
+    {
+        internal static readonly UnitSystem UnitSystemInstance = new();
+
+        static Nested()
         {
-            internal static readonly UnitSystem UnitSystemInstance = new();
-
-            static Nested()
-            {
-            }
         }
     }
 }

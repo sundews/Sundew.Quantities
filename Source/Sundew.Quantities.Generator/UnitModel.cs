@@ -5,21 +5,20 @@
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace Sundew.Quantities.Generator
+namespace Sundew.Quantities.Generator;
+
+public class UnitModel
 {
-    public class UnitModel
+    public UnitModel(string identifier, string unit, string name)
     {
-        public UnitModel(string identifier, string unit, string name)
-        {
-            this.Identifier = identifier;
-            this.Unit = unit;
-            this.Name = name;
-        }
-
-        public string Identifier { get; }
-
-        public string Unit { get; }
-
-        public string Name { get; }
+        this.Identifier = identifier;
+        this.Unit = unit;
+        this.Name = name;
     }
+
+    public string Identifier { get; }
+
+    public string Unit { get; }
+
+    public string Name { get; }
 }

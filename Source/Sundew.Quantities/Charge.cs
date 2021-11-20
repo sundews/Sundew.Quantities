@@ -5,48 +5,47 @@
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace Sundew.Quantities
+namespace Sundew.Quantities;
+
+using Sundew.Quantities.Core;
+
+/// <summary>
+/// Represents a charge quantity.
+/// </summary>
+public partial struct Charge
 {
-    using Sundew.Quantities.Core;
+    /// <summary>
+    /// Multiplies the specified LHS and RHS.
+    /// </summary>
+    /// <param name="lhs">The LHS quantity.</param>
+    /// <param name="rhs">The RHS quantity.</param>
+    /// <returns>The <see cref="Energy"/>.</returns>
+    public static Energy operator *(Charge lhs, Potential rhs)
+    {
+        return new Energy(QuantityOperations.Multiply(lhs, rhs));
+    }
 
     /// <summary>
-    /// Represents a charge quantity.
+    /// Divides the specified LHS and RHS.
     /// </summary>
-    public partial struct Charge
+    /// <param name="lhs">The LHS quantity.</param>
+    /// <param name="rhs">The RHS quantity.</param>
+    /// <returns>The <see cref="ElectricCurrent"/>.</returns>
+    public static ElectricCurrent operator /(Charge lhs, Time rhs)
     {
-        /// <summary>
-        /// Multiplies the specified LHS and RHS.
-        /// </summary>
-        /// <param name="lhs">The LHS quantity.</param>
-        /// <param name="rhs">The RHS quantity.</param>
-        /// <returns>The <see cref="Energy"/>.</returns>
-        public static Energy operator *(Charge lhs, Potential rhs)
-        {
-            return new Energy(QuantityOperations.Multiply(lhs, rhs));
-        }
+        return new ElectricCurrent(QuantityOperations.Divide(lhs, rhs));
+    }
 
-        /// <summary>
-        /// Divides the specified LHS and RHS.
-        /// </summary>
-        /// <param name="lhs">The LHS quantity.</param>
-        /// <param name="rhs">The RHS quantity.</param>
-        /// <returns>The <see cref="ElectricCurrent"/>.</returns>
-        public static ElectricCurrent operator /(Charge lhs, Time rhs)
-        {
-            return new ElectricCurrent(QuantityOperations.Divide(lhs, rhs));
-        }
-
-        /// <summary>
-        /// Multiplies the specified LHS and RHS.
-        /// </summary>
-        /// <param name="lhs">The LHS.</param>
-        /// <param name="rhs">The RHS.</param>
-        /// <returns>
-        /// The result of the operator.
-        /// </returns>
-        public static Squared<Charge> operator *(Charge lhs, Charge rhs)
-        {
-            return new Squared<Charge>(new Charge(QuantityOperations.Multiply(lhs, rhs).Value, lhs.Unit));
-        }
+    /// <summary>
+    /// Multiplies the specified LHS and RHS.
+    /// </summary>
+    /// <param name="lhs">The LHS.</param>
+    /// <param name="rhs">The RHS.</param>
+    /// <returns>
+    /// The result of the operator.
+    /// </returns>
+    public static Squared<Charge> operator *(Charge lhs, Charge rhs)
+    {
+        return new Squared<Charge>(new Charge(QuantityOperations.Multiply(lhs, rhs).Value, lhs.Unit));
     }
 }

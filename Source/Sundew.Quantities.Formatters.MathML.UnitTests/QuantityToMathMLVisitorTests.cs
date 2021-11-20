@@ -4,18 +4,18 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
-namespace Sundew.Quantities.Formatters.MathML.UnitTests
-{
-    using FluentAssertions;
-    using Sundew.Quantities.Core;
-    using Xunit;
+namespace Sundew.Quantities.Formatters.MathML.UnitTests;
 
-    public class QuantityToMathMLVisitorTests
+using FluentAssertions;
+using Sundew.Quantities.Core;
+using Xunit;
+
+public class QuantityToMathMLVisitorTests
+{
+    [Fact]
+    public void GetMathML_WhenUsingDefaultUnitFormat_Then_ResultToStringShouldBeExpectedResult()
     {
-        [Fact]
-        public void GetMathML_WhenUsingDefaultUnitFormat_Then_ResultToStringShouldBeExpectedResult()
-        {
-            const string ExpectedResult = @"<mml:math xmlns:mml=""http://www.w3.org/1998/Math/MathML"">
+        const string ExpectedResult = @"<mml:math xmlns:mml=""http://www.w3.org/1998/Math/MathML"">
   <mml:mrow>
     <mml:mn>4</mml:mn>
     <mml:mfrac>
@@ -31,17 +31,17 @@ namespace Sundew.Quantities.Formatters.MathML.UnitTests
     </mml:mfrac>
   </mml:mrow>
 </mml:math>";
-            var testee = new QuantityToMathMLConverter();
+        var testee = new QuantityToMathMLConverter();
 
-            var result = testee.GetMathML(4.MetersPerSecondSquared()).ToString();
+        var result = testee.GetMathML(4.MetersPerSecondSquared()).ToString();
 
-            result.Should().Be(ExpectedResult);
-        }
+        result.Should().Be(ExpectedResult);
+    }
 
-        [Fact]
-        public void GetMathML_WhenUsingSquareBracketsUnitFormat_Then_ResultToStringShouldBeExpectedResult()
-        {
-            const string ExpectedResult = @"<mml:math xmlns:mml=""http://www.w3.org/1998/Math/MathML"">
+    [Fact]
+    public void GetMathML_WhenUsingSquareBracketsUnitFormat_Then_ResultToStringShouldBeExpectedResult()
+    {
+        const string ExpectedResult = @"<mml:math xmlns:mml=""http://www.w3.org/1998/Math/MathML"">
   <mml:mrow>
     <mml:mn>4</mml:mn>
     <mml:mfenced open=""["" close=""]"">
@@ -59,11 +59,10 @@ namespace Sundew.Quantities.Formatters.MathML.UnitTests
     </mml:mfenced>
   </mml:mrow>
 </mml:math>";
-            var testee = new QuantityToMathMLConverter();
+        var testee = new QuantityToMathMLConverter();
 
-            var result = testee.GetMathML(4.MetersPerSecondSquared(), UnitFormat.SurroundInBrackets).ToString();
+        var result = testee.GetMathML(4.MetersPerSecondSquared(), UnitFormat.SurroundInBrackets).ToString();
 
-            result.Should().Be(ExpectedResult);
-        }
+        result.Should().Be(ExpectedResult);
     }
 }

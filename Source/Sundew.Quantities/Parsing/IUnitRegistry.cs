@@ -5,43 +5,42 @@
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace Sundew.Quantities.Parsing
+namespace Sundew.Quantities.Parsing;
+
+using System.Collections.Generic;
+using Sundew.Quantities.Parsing.LexicalAnalysis;
+using Sundew.Quantities.Representations.Expressions;
+
+/// <summary>
+/// Interface for implementing a unit registry.
+/// </summary>
+public interface IUnitRegistry : ILexemeRegistry<IUnit>, ILexemeRegistry<Prefix>
 {
-    using System.Collections.Generic;
-    using Sundew.Quantities.Parsing.LexicalAnalysis;
-    using Sundew.Quantities.Representations.Expressions;
+    /// <summary>
+    /// Gets the unit notations.
+    /// </summary>
+    /// <returns>An <see cref="IEnumerable{String}"/>.</returns>
+    IEnumerable<string> GetUnitNotations();
 
     /// <summary>
-    /// Interface for implementing a unit registry.
+    /// Gets the prefix notations.
     /// </summary>
-    public interface IUnitRegistry : ILexemeRegistry<IUnit>, ILexemeRegistry<Prefix>
-    {
-        /// <summary>
-        /// Gets the unit notations.
-        /// </summary>
-        /// <returns>An <see cref="IEnumerable{String}"/>.</returns>
-        IEnumerable<string> GetUnitNotations();
+    /// <returns>An <see cref="IEnumerable{String}"/>.</returns>
+    IEnumerable<string> GetPrefixNotations();
 
-        /// <summary>
-        /// Gets the prefix notations.
-        /// </summary>
-        /// <returns>An <see cref="IEnumerable{String}"/>.</returns>
-        IEnumerable<string> GetPrefixNotations();
+    /// <summary>
+    /// Gets the units.
+    /// </summary>
+    /// <returns>
+    /// An <see cref="IEnumerable{IUnit}" />.
+    /// </returns>
+    IEnumerable<IUnit> GetUnits();
 
-        /// <summary>
-        /// Gets the units.
-        /// </summary>
-        /// <returns>
-        /// An <see cref="IEnumerable{IUnit}" />.
-        /// </returns>
-        IEnumerable<IUnit> GetUnits();
-
-        /// <summary>
-        /// Gets the prefixes.
-        /// </summary>
-        /// <returns>
-        /// An <see cref="IEnumerable{Prefix}" />.
-        /// </returns>
-        IEnumerable<Prefix> GetPrefixes();
-    }
+    /// <summary>
+    /// Gets the prefixes.
+    /// </summary>
+    /// <returns>
+    /// An <see cref="IEnumerable{Prefix}" />.
+    /// </returns>
+    IEnumerable<Prefix> GetPrefixes();
 }

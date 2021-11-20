@@ -5,75 +5,74 @@
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace Sundew.Quantities
+namespace Sundew.Quantities;
+
+using System;
+using Sundew.Quantities.Core;
+using Sundew.Quantities.Representations.Expressions;
+
+/// <summary>
+/// Represents a time quantity.
+/// </summary>
+public partial struct Time
 {
-    using System;
-    using Sundew.Quantities.Core;
-    using Sundew.Quantities.Representations.Expressions;
+    /// <summary>
+    /// Performs an implicit conversion from <see cref="TimeSpan"/> to <see cref="Time"/>.
+    /// </summary>
+    /// <param name="timeSpan">The time span.</param>
+    /// <returns>
+    /// The result of the conversion.
+    /// </returns>
+    public static implicit operator Time(TimeSpan timeSpan)
+    {
+        return new Time(timeSpan.TotalSeconds);
+    }
 
     /// <summary>
-    /// Represents a time quantity.
+    /// Multiplies the specified LHS and RHS.
     /// </summary>
-    public partial struct Time
+    /// <param name="lhs">The LHS quantity.</param>
+    /// <param name="rhs">The RHS quantity.</param>
+    /// <returns>The product of the specified LHS and RHS.</returns>
+    public static Distance operator *(Time lhs, Velocity rhs)
     {
-        /// <summary>
-        /// Performs an implicit conversion from <see cref="TimeSpan"/> to <see cref="Time"/>.
-        /// </summary>
-        /// <param name="timeSpan">The time span.</param>
-        /// <returns>
-        /// The result of the conversion.
-        /// </returns>
-        public static implicit operator Time(TimeSpan timeSpan)
-        {
-            return new Time(timeSpan.TotalSeconds);
-        }
+        return new Distance(QuantityOperations.Multiply(lhs, rhs));
+    }
 
-        /// <summary>
-        /// Multiplies the specified LHS and RHS.
-        /// </summary>
-        /// <param name="lhs">The LHS quantity.</param>
-        /// <param name="rhs">The RHS quantity.</param>
-        /// <returns>The product of the specified LHS and RHS.</returns>
-        public static Distance operator *(Time lhs, Velocity rhs)
-        {
-            return new Distance(QuantityOperations.Multiply(lhs, rhs));
-        }
+    /// <summary>
+    /// Multiplies the specified LHS and RHS.
+    /// </summary>
+    /// <param name="lhs">The LHS quantity.</param>
+    /// <param name="rhs">The RHS quantity.</param>
+    /// <returns>The product of the specified LHS and RHS.</returns>
+    public static Velocity operator *(Time lhs, Acceleration rhs)
+    {
+        return new Velocity(QuantityOperations.Multiply(lhs, rhs));
+    }
 
-        /// <summary>
-        /// Multiplies the specified LHS and RHS.
-        /// </summary>
-        /// <param name="lhs">The LHS quantity.</param>
-        /// <param name="rhs">The RHS quantity.</param>
-        /// <returns>The product of the specified LHS and RHS.</returns>
-        public static Velocity operator *(Time lhs, Acceleration rhs)
-        {
-            return new Velocity(QuantityOperations.Multiply(lhs, rhs));
-        }
+    /// <summary>
+    /// Divides the specified LHS and RHS.
+    /// </summary>
+    /// <param name="lhs">The LHS quantity.</param>
+    /// <param name="rhs">The RHS quantity.</param>
+    /// <returns>The quotient of the specified LHS and RHS.</returns>
+    public static Frequency operator /(double lhs, Time rhs)
+    {
+        return new Frequency(
+            lhs / rhs.value,
+            UnitSystem.Instance.GetUnit(ConstantExpression.One / rhs.Unit.GetExpression()));
+    }
 
-        /// <summary>
-        /// Divides the specified LHS and RHS.
-        /// </summary>
-        /// <param name="lhs">The LHS quantity.</param>
-        /// <param name="rhs">The RHS quantity.</param>
-        /// <returns>The quotient of the specified LHS and RHS.</returns>
-        public static Frequency operator /(double lhs, Time rhs)
-        {
-            return new Frequency(
-                lhs / rhs.value,
-                UnitSystem.Instance.GetUnit(ConstantExpression.One / rhs.Unit.GetExpression()));
-        }
-
-        /// <summary>
-        /// Multiplies the specified LHS and RHS.
-        /// </summary>
-        /// <param name="lhs">The LHS.</param>
-        /// <param name="rhs">The RHS.</param>
-        /// <returns>
-        /// The result of the operator.
-        /// </returns>
-        public static Squared<Time> operator *(Time lhs, Time rhs)
-        {
-            return new Squared<Time>(new Time(QuantityOperations.Multiply(lhs, rhs).Value, lhs.Unit));
-        }
+    /// <summary>
+    /// Multiplies the specified LHS and RHS.
+    /// </summary>
+    /// <param name="lhs">The LHS.</param>
+    /// <param name="rhs">The RHS.</param>
+    /// <returns>
+    /// The result of the operator.
+    /// </returns>
+    public static Squared<Time> operator *(Time lhs, Time rhs)
+    {
+        return new Squared<Time>(new Time(QuantityOperations.Multiply(lhs, rhs).Value, lhs.Unit));
     }
 }

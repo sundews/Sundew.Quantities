@@ -5,20 +5,19 @@
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace Sundew.Quantities.Representations.Flat
-{
-    using System;
-    using Sundew.Quantities.Representations.Expressions;
+namespace Sundew.Quantities.Representations.Flat;
 
+using System;
+using Sundew.Quantities.Representations.Expressions;
+
+/// <summary>
+/// Flat presentation of an identifier.
+/// </summary>
+public interface IFlatIdentifierRepresentation : IEquatable<IFlatIdentifierRepresentation>
+{
     /// <summary>
-    /// Flat presentation of an identifier.
+    /// Converts this instance to the resulting expression.
     /// </summary>
-    public interface IFlatIdentifierRepresentation : IEquatable<IFlatIdentifierRepresentation>
-    {
-        /// <summary>
-        /// Converts this instance to the resulting expression.
-        /// </summary>
-        /// <returns>A <see cref="Expression"/>.</returns>
-        Expression ToResultingExpression();
-    }
+    /// <returns>A <see cref="Expression"/>.</returns>
+    Expression ToResultingExpression();
 }

@@ -5,37 +5,36 @@
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace Sundew.Quantities.Generator
+namespace Sundew.Quantities.Generator;
+
+using System.Collections.Generic;
+
+/// <summary>
+/// Model representing quantities for code generation.
+/// </summary>
+/// <seealso cref="Sundew.Quantities.Generator.IQuantityModel" />
+public class QuantityModel : IQuantityModel
 {
-    using System.Collections.Generic;
-
     /// <summary>
-    /// Model representing quantities for code generation.
+    /// Initializes a new instance of the <see cref="QuantityModel" /> class.
     /// </summary>
-    /// <seealso cref="Sundew.Quantities.Generator.IQuantityModel" />
-    public class QuantityModel : IQuantityModel
+    /// <param name="name">The name.</param>
+    /// <param name="units">The units.</param>
+    /// <param name="baseUnit">The base unit.</param>
+    /// <param name="defaultUnits">The default units.</param>
+    public QuantityModel(string name, IReadOnlyList<UnitModel> units, string baseUnit, IReadOnlyList<string> defaultUnits)
     {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="QuantityModel" /> class.
-        /// </summary>
-        /// <param name="name">The name.</param>
-        /// <param name="units">The units.</param>
-        /// <param name="baseUnit">The base unit.</param>
-        /// <param name="defaultUnits">The default units.</param>
-        public QuantityModel(string name, IReadOnlyList<UnitModel> units, string baseUnit, IReadOnlyList<string> defaultUnits)
-        {
-            this.Name = name;
-            this.Units = units;
-            this.BaseUnit = baseUnit;
-            this.DefaultUnits = defaultUnits;
-        }
-
-        public string Name { get; }
-
-        public IReadOnlyList<UnitModel> Units { get; }
-
-        public string BaseUnit { get; }
-
-        public IReadOnlyList<string> DefaultUnits { get; }
+        this.Name = name;
+        this.Units = units;
+        this.BaseUnit = baseUnit;
+        this.DefaultUnits = defaultUnits;
     }
+
+    public string Name { get; }
+
+    public IReadOnlyList<UnitModel> Units { get; }
+
+    public string BaseUnit { get; }
+
+    public IReadOnlyList<string> DefaultUnits { get; }
 }

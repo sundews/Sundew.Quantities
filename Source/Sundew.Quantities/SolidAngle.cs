@@ -5,26 +5,25 @@
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace Sundew.Quantities
-{
-    using Sundew.Quantities.Core;
+namespace Sundew.Quantities;
 
+using Sundew.Quantities.Core;
+
+/// <summary>
+/// Represents a solid angle quantity.
+/// </summary>
+public partial struct SolidAngle
+{
     /// <summary>
-    /// Represents a solid angle quantity.
+    /// Multiplies the specified LHS and RHS.
     /// </summary>
-    public partial struct SolidAngle
+    /// <param name="lhs">The LHS.</param>
+    /// <param name="rhs">The RHS.</param>
+    /// <returns>
+    /// The result of the operator.
+    /// </returns>
+    public static Squared<SolidAngle> operator *(SolidAngle lhs, SolidAngle rhs)
     {
-        /// <summary>
-        /// Multiplies the specified LHS and RHS.
-        /// </summary>
-        /// <param name="lhs">The LHS.</param>
-        /// <param name="rhs">The RHS.</param>
-        /// <returns>
-        /// The result of the operator.
-        /// </returns>
-        public static Squared<SolidAngle> operator *(SolidAngle lhs, SolidAngle rhs)
-        {
-            return new Squared<SolidAngle>(new SolidAngle(QuantityOperations.Multiply(lhs, rhs).Value, lhs.Unit));
-        }
+        return new Squared<SolidAngle>(new SolidAngle(QuantityOperations.Multiply(lhs, rhs).Value, lhs.Unit));
     }
 }

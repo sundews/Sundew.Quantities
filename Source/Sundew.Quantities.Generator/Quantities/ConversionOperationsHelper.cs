@@ -5,15 +5,15 @@
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace Sundew.Quantities.Generator.Quantities
-{
-    using Sundew.Generator.Core;
+namespace Sundew.Quantities.Generator.Quantities;
 
-    public static class ConversionOperationsHelper
+using Sundew.Generator.Core;
+
+public static class ConversionOperationsHelper
+{
+    public static IndentedString GetConversionOperations(IQuantityModel quantityModel)
     {
-        public static IndentedString GetConversionOperations(IQuantityModel quantityModel)
-        {
-            return new IndentedString(8, $@"
+        return new IndentedString(8, $@"
 /// <summary>
 /// Converts this object to a <see cref=""double"" /> using the specified unit.
 /// </summary>
@@ -74,6 +74,5 @@ public double ToDouble(SelectUnit<{quantityModel.Name}UnitSelector> unitSelector
     return this.ToDouble(UnitBuilder.BuildUnit(unitSelector(new {quantityModel.Name}UnitSelector())));
 }}
 ");
-        }
     }
 }

@@ -5,47 +5,46 @@
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace Sundew.Quantities.AcceptanceTests.Composition
+namespace Sundew.Quantities.AcceptanceTests.Composition;
+
+using FluentAssertions;
+
+using Sundew.Quantities.AcceptanceTests.Testing;
+
+using Xunit;
+
+public class ProductTests
 {
-    using FluentAssertions;
-
-    using Sundew.Quantities.AcceptanceTests.Testing;
-
-    using Xunit;
-
-    public class ProductTests
+    [Fact]
+    public void GetResult_Then_ResultShouldBeExpected()
     {
-        [Fact]
-        public void GetResult_Then_ResultShouldBeExpected()
-        {
-            const double Expected = 20;
-            var luminousExposure = 5.Lux() * 4D.Seconds();
+        const double Expected = 20;
+        var luminousExposure = 5.Lux() * 4D.Seconds();
 
-            var result = luminousExposure.GetResult();
+        var result = luminousExposure.GetResult();
 
-            result.Should().Be(Expected, "lx*s");
-        }
+        result.Should().Be(Expected, "lx*s");
+    }
 
-        [Fact]
-        public void Multiplicand_Then_ResultShouldBeExpected()
-        {
-            const double Expected = 4;
-            var luminousExposure = 5.Lux() * 4D.Seconds();
+    [Fact]
+    public void Multiplicand_Then_ResultShouldBeExpected()
+    {
+        const double Expected = 4;
+        var luminousExposure = 5.Lux() * 4D.Seconds();
 
-            var result = luminousExposure.Multiplicand;
+        var result = luminousExposure.Multiplicand;
 
-            result.Should().Be(Expected, "s");
-        }
+        result.Should().Be(Expected, "s");
+    }
 
-        [Fact]
-        public void Multiplier_Then_ResultShouldBeExpected()
-        {
-            const double Expected = 5;
-            var luminousExposure = 5.Lux() * 4D.Seconds();
+    [Fact]
+    public void Multiplier_Then_ResultShouldBeExpected()
+    {
+        const double Expected = 5;
+        var luminousExposure = 5.Lux() * 4D.Seconds();
 
-            var result = luminousExposure.Multiplier;
+        var result = luminousExposure.Multiplier;
 
-            result.Should().Be(Expected, "lx");
-        }
+        result.Should().Be(Expected, "lx");
     }
 }

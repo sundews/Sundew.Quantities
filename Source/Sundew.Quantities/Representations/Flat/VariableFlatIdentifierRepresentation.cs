@@ -5,115 +5,114 @@
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace Sundew.Quantities.Representations.Flat
+namespace Sundew.Quantities.Representations.Flat;
+
+using System;
+using System.Globalization;
+using Sundew.Base.Equality;
+using Sundew.Quantities.Representations.Expressions;
+using Sundew.Quantities.Representations.Internals;
+
+/// <summary>
+/// Flat identifier representation for <see cref="VariableExpression"/>.
+/// </summary>
+public sealed class VariableFlatIdentifierRepresentation : IFlatIdentifierRepresentation,
+    IEquatable<VariableFlatIdentifierRepresentation>
 {
-    using System;
-    using System.Globalization;
-    using Sundew.Base.Equality;
-    using Sundew.Quantities.Representations.Expressions;
-    using Sundew.Quantities.Representations.Internals;
+    /// <summary>
+    /// Initializes a new instance of the <see cref="VariableFlatIdentifierRepresentation"/> class.
+    /// </summary>
+    /// <param name="variableExpression">The variable expression.</param>
+    /// <param name="exponent">The exponent.</param>
+    public VariableFlatIdentifierRepresentation(VariableExpression variableExpression, double exponent)
+    {
+        this.VariableExpression = variableExpression;
+        this.Exponent = exponent;
+    }
 
     /// <summary>
-    /// Flat identifier representation for <see cref="VariableExpression"/>.
+    /// Gets the variable expression.
     /// </summary>
-    public sealed class VariableFlatIdentifierRepresentation : IFlatIdentifierRepresentation,
-                                                               IEquatable<VariableFlatIdentifierRepresentation>
+    /// <value>
+    /// The variable expression.
+    /// </value>
+    public VariableExpression VariableExpression { get; }
+
+    /// <summary>
+    /// Gets the exponent.
+    /// </summary>
+    /// <value>
+    /// The exponent.
+    /// </value>
+    public double Exponent { get; }
+
+    /// <summary>
+    /// A value indicating whether the specified instance is equal to this instance.
+    /// </summary>
+    /// <param name="other">The other.</param>
+    /// <returns><c>true</c> if the instances are equal.</returns>
+    public bool Equals(VariableFlatIdentifierRepresentation other)
     {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="VariableFlatIdentifierRepresentation"/> class.
-        /// </summary>
-        /// <param name="variableExpression">The variable expression.</param>
-        /// <param name="exponent">The exponent.</param>
-        public VariableFlatIdentifierRepresentation(VariableExpression variableExpression, double exponent)
-        {
-            this.VariableExpression = variableExpression;
-            this.Exponent = exponent;
-        }
+        return EqualityHelper.Equals(
+            this,
+            other,
+            obj => this.VariableExpression.Equals(obj.VariableExpression) && this.Exponent.Equals(obj.Exponent));
+    }
 
-        /// <summary>
-        /// Gets the variable expression.
-        /// </summary>
-        /// <value>
-        /// The variable expression.
-        /// </value>
-        public VariableExpression VariableExpression { get; }
+    /// <summary>
+    /// To the resulting expression.
+    /// </summary>
+    /// <returns>The resulting <see cref="Expression"/>.</returns>
+    public Expression ToResultingExpression()
+    {
+        return FlatPresentationHelper.CreateResultingExpression(this.VariableExpression, this.Exponent);
+    }
 
-        /// <summary>
-        /// Gets the exponent.
-        /// </summary>
-        /// <value>
-        /// The exponent.
-        /// </value>
-        public double Exponent { get; }
+    /// <summary>
+    /// A value indicating whether the specified instance is equal to this instance.
+    /// </summary>
+    /// <param name="other">The other.</param>
+    /// <returns><c>true</c> if the instances are equal.</returns>
+    public bool Equals(IFlatIdentifierRepresentation other)
+    {
+        return EqualityHelper.Equals(this, other);
+    }
 
-        /// <summary>
-        /// A value indicating whether the specified instance is equal to this instance.
-        /// </summary>
-        /// <param name="other">The other.</param>
-        /// <returns><c>true</c> if the instances are equal.</returns>
-        public bool Equals(VariableFlatIdentifierRepresentation other)
-        {
-            return EqualityHelper.Equals(
-                this,
-                other,
-                obj => this.VariableExpression.Equals(obj.VariableExpression) && this.Exponent.Equals(obj.Exponent));
-        }
+    /// <summary>
+    /// Returns a hash code for this instance.
+    /// </summary>
+    /// <returns>
+    /// A hash code for this instance, suitable for use in hashing algorithms and data structures like a hash table.
+    /// </returns>
+    public override int GetHashCode()
+    {
+        return EqualityHelper.GetHashCode(
+            this.VariableExpression.VariableName?.GetHashCode() ?? 0,
+            FlatPresentationHelper.HatHashCode,
+            this.Exponent.GetHashCode());
+    }
 
-        /// <summary>
-        /// To the resulting expression.
-        /// </summary>
-        /// <returns>The resulting <see cref="Expression"/>.</returns>
-        public Expression ToResultingExpression()
-        {
-            return FlatPresentationHelper.CreateResultingExpression(this.VariableExpression, this.Exponent);
-        }
+    /// <summary>
+    /// Determines whether the specified <see cref="object" />, is equal to this instance.
+    /// </summary>
+    /// <param name="obj">The <see cref="object" /> to compare with this instance.</param>
+    /// <returns>
+    ///   <c>true</c> if the specified <see cref="object" /> is equal to this instance; otherwise, <c>false</c>.
+    /// </returns>
+    public override bool Equals(object obj)
+    {
+        return EqualityHelper.Equals(this, obj);
+    }
 
-        /// <summary>
-        /// A value indicating whether the specified instance is equal to this instance.
-        /// </summary>
-        /// <param name="other">The other.</param>
-        /// <returns><c>true</c> if the instances are equal.</returns>
-        public bool Equals(IFlatIdentifierRepresentation other)
-        {
-            return EqualityHelper.Equals(this, other);
-        }
-
-        /// <summary>
-        /// Returns a hash code for this instance.
-        /// </summary>
-        /// <returns>
-        /// A hash code for this instance, suitable for use in hashing algorithms and data structures like a hash table.
-        /// </returns>
-        public override int GetHashCode()
-        {
-            return EqualityHelper.GetHashCode(
-                this.VariableExpression.VariableName?.GetHashCode() ?? 0,
-                FlatPresentationHelper.HatHashCode,
-                this.Exponent.GetHashCode());
-        }
-
-        /// <summary>
-        /// Determines whether the specified <see cref="object" />, is equal to this instance.
-        /// </summary>
-        /// <param name="obj">The <see cref="object" /> to compare with this instance.</param>
-        /// <returns>
-        ///   <c>true</c> if the specified <see cref="object" /> is equal to this instance; otherwise, <c>false</c>.
-        /// </returns>
-        public override bool Equals(object obj)
-        {
-            return EqualityHelper.Equals(this, obj);
-        }
-
-        /// <summary>
-        /// Returns a <see cref="string" /> that represents this instance.
-        /// </summary>
-        /// <returns>
-        /// A <see cref="string" /> that represents this instance.
-        /// </returns>
-        public override string ToString()
-        {
-            return this.VariableExpression
-                   + CharacterConverter.ToExponentNotation(this.Exponent.ToString(CultureInfo.CurrentCulture));
-        }
+    /// <summary>
+    /// Returns a <see cref="string" /> that represents this instance.
+    /// </summary>
+    /// <returns>
+    /// A <see cref="string" /> that represents this instance.
+    /// </returns>
+    public override string ToString()
+    {
+        return this.VariableExpression
+               + CharacterConverter.ToExponentNotation(this.Exponent.ToString(CultureInfo.CurrentCulture));
     }
 }

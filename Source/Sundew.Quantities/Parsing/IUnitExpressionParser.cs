@@ -5,25 +5,24 @@
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace Sundew.Quantities.Parsing
-{
-    using Sundew.Base.Primitives.Computation;
-    using Sundew.Quantities.Parsing.Errors;
-    using Sundew.Quantities.Representations.Expressions;
+namespace Sundew.Quantities.Parsing;
 
+using Sundew.Base.Primitives.Computation;
+using Sundew.Quantities.Parsing.Errors;
+using Sundew.Quantities.Representations.Expressions;
+
+/// <summary>
+/// Interface for implementing an unit expression parser.
+/// </summary>
+public interface IUnitExpressionParser
+{
     /// <summary>
-    /// Interface for implementing an unit expression parser.
+    /// Parses the specified unit.
     /// </summary>
-    public interface IUnitExpressionParser
-    {
-        /// <summary>
-        /// Parses the specified unit.
-        /// </summary>
-        /// <param name="unit">The unit <see cref="string" />.</param>
-        /// <param name="throwOnError">If set to <c>true</c> an exception is thrown in case an error occurs.</param>
-        /// <returns>
-        /// A <see cref="Result{Expression, TError}" /> where TError is <see cref="Error{UnitError}"/>.
-        /// </returns>
-        Result<Expression, Error<UnitError>> Parse(string unit, bool throwOnError);
-    }
+    /// <param name="unit">The unit <see cref="string" />.</param>
+    /// <param name="throwOnError">If set to <c>true</c> an exception is thrown in case an error occurs.</param>
+    /// <returns>
+    /// A <see cref="Result{Expression, TError}" /> where TError is <see cref="Error{UnitError}"/>.
+    /// </returns>
+    Result<Expression, Error<UnitError>> Parse(string unit, bool throwOnError);
 }

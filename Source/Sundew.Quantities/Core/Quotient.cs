@@ -5,51 +5,50 @@
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace Sundew.Quantities.Core
+namespace Sundew.Quantities.Core;
+
+/// <summary>
+/// Represents the product of two serializable <see cref="IDeferredQuantity"/>s.
+/// </summary>
+/// <typeparam name="TNominator">The type of the multiplier quantity.</typeparam>
+/// <typeparam name="TDenominator">The type of the multiplicand quantity.</typeparam>
+public class Quotient<TNominator, TDenominator> : IDeferredQuantity
+    where TNominator : IDeferredQuantity
+    where TDenominator : IDeferredQuantity
 {
     /// <summary>
-    /// Represents the product of two serializable <see cref="IDeferredQuantity"/>s.
+    /// Initializes a new instance of the <see cref="Quotient{TNominator, TDenominator}" /> class.
     /// </summary>
-    /// <typeparam name="TNominator">The type of the multiplier quantity.</typeparam>
-    /// <typeparam name="TDenominator">The type of the multiplicand quantity.</typeparam>
-    public class Quotient<TNominator, TDenominator> : IDeferredQuantity
-        where TNominator : IDeferredQuantity
-        where TDenominator : IDeferredQuantity
+    /// <param name="nominator">The multiplier.</param>
+    /// <param name="denominator">The multiplicand.</param>
+    public Quotient(TNominator nominator, TDenominator denominator)
     {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="Quotient{TNominator, TDenominator}" /> class.
-        /// </summary>
-        /// <param name="nominator">The multiplier.</param>
-        /// <param name="denominator">The multiplicand.</param>
-        public Quotient(TNominator nominator, TDenominator denominator)
-        {
-            this.Nominator = nominator;
-            this.Denominator = denominator;
-        }
+        this.Nominator = nominator;
+        this.Denominator = denominator;
+    }
 
-        /// <summary>
-        /// Gets the nominator.
-        /// </summary>
-        /// <value>
-        /// The nominator.
-        /// </value>
-        public TNominator Nominator { get; }
+    /// <summary>
+    /// Gets the nominator.
+    /// </summary>
+    /// <value>
+    /// The nominator.
+    /// </value>
+    public TNominator Nominator { get; }
 
-        /// <summary>
-        /// Gets the denominator.
-        /// </summary>
-        /// <value>
-        /// The denominator.
-        /// </value>
-        public TDenominator Denominator { get; }
+    /// <summary>
+    /// Gets the denominator.
+    /// </summary>
+    /// <value>
+    /// The denominator.
+    /// </value>
+    public TDenominator Denominator { get; }
 
-        /// <summary>
-        /// Gets the result.
-        /// </summary>
-        /// <returns>A <see cref="Quantity"/>.</returns>
-        public IQuantity GetResult()
-        {
-            return QuantityOperations.Multiply(this.Nominator.GetResult(), this.Denominator.GetResult());
-        }
+    /// <summary>
+    /// Gets the result.
+    /// </summary>
+    /// <returns>A <see cref="Quantity"/>.</returns>
+    public IQuantity GetResult()
+    {
+        return QuantityOperations.Multiply(this.Nominator.GetResult(), this.Denominator.GetResult());
     }
 }

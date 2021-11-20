@@ -4,26 +4,25 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
-namespace Sundew.Quantities.UnitTests.Representations.Flat
+namespace Sundew.Quantities.UnitTests.Representations.Flat;
+
+using Sundew.Quantities.Representations.Expressions;
+using Sundew.Quantities.Representations.Flat;
+
+internal class FlatVariable : IFlatIdentifier
 {
-    using Sundew.Quantities.Representations.Expressions;
-    using Sundew.Quantities.Representations.Flat;
+    private readonly double exponent;
 
-    internal class FlatVariable : IFlatIdentifier
+    public FlatVariable(string variableName, double exponent = 1)
     {
-        private readonly double exponent;
+        this.Id = variableName;
+        this.exponent = exponent;
+    }
 
-        public FlatVariable(string variableName, double exponent = 1)
-        {
-            this.Id = variableName;
-            this.exponent = exponent;
-        }
+    public string Id { get; }
 
-        public string Id { get; }
-
-        public IFlatIdentifierRepresentation GetFlatIdentifierRepresentation()
-        {
-            return new VariableFlatIdentifierRepresentation(new VariableExpression(this.Id), this.exponent);
-        }
+    public IFlatIdentifierRepresentation GetFlatIdentifierRepresentation()
+    {
+        return new VariableFlatIdentifierRepresentation(new VariableExpression(this.Id), this.exponent);
     }
 }

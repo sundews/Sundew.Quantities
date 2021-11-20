@@ -5,33 +5,32 @@
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace Sundew.Quantities.Core
+namespace Sundew.Quantities.Core;
+
+using Sundew.Quantities.Representations.Expressions;
+
+/// <summary>
+/// Enables building derived units by implementing multiplication and division operators.
+/// </summary>
+internal static class UnitBuilder
 {
-    using Sundew.Quantities.Representations.Expressions;
+    /// <summary>
+    /// Builds the unit.
+    /// </summary>
+    /// <param name="unit">The quantity unit.</param>
+    /// <returns>A new <see cref="IUnit"/>.</returns>
+    internal static IUnit BuildUnit(IUnit unit)
+    {
+        return BuildUnit(unit.GetExpression());
+    }
 
     /// <summary>
-    /// Enables building derived units by implementing multiplication and division operators.
+    /// Builds the unit.
     /// </summary>
-    internal static class UnitBuilder
+    /// <param name="expression">The expression.</param>
+    /// <returns>A new <see cref="IUnit"/>.</returns>
+    internal static IUnit BuildUnit(Expression expression)
     {
-        /// <summary>
-        /// Builds the unit.
-        /// </summary>
-        /// <param name="unit">The quantity unit.</param>
-        /// <returns>A new <see cref="IUnit"/>.</returns>
-        internal static IUnit BuildUnit(IUnit unit)
-        {
-            return BuildUnit(unit.GetExpression());
-        }
-
-        /// <summary>
-        /// Builds the unit.
-        /// </summary>
-        /// <param name="expression">The expression.</param>
-        /// <returns>A new <see cref="IUnit"/>.</returns>
-        internal static IUnit BuildUnit(Expression expression)
-        {
-            return UnitSystem.UnitFactory.Create(expression);
-        }
+        return UnitSystem.UnitFactory.Create(expression);
     }
 }

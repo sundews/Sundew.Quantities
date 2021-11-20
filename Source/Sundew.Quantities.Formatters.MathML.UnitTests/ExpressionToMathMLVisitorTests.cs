@@ -4,25 +4,25 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
-namespace Sundew.Quantities.Formatters.MathML.UnitTests
+namespace Sundew.Quantities.Formatters.MathML.UnitTests;
+
+using FluentAssertions;
+
+using Xunit;
+
+public class ExpressionToMathMLVisitorTests
 {
-    using FluentAssertions;
+    private readonly ExpressionToMathMLVisitor testee;
 
-    using Xunit;
-
-    public class ExpressionToMathMLVisitorTests
+    public ExpressionToMathMLVisitorTests()
     {
-        private readonly ExpressionToMathMLVisitor testee;
+        this.testee = new ExpressionToMathMLVisitor();
+    }
 
-        public ExpressionToMathMLVisitorTests()
-        {
-            this.testee = new ExpressionToMathMLVisitor();
-        }
-
-        [Fact]
-        public void Visit_When_QuantityIsAcceleration_Then_ResultTextShouldBeExpectedResult()
-        {
-            const string ExpectedResult = @"<mml:math xmlns:mml=""http://www.w3.org/1998/Math/MathML"">
+    [Fact]
+    public void Visit_When_QuantityIsAcceleration_Then_ResultTextShouldBeExpectedResult()
+    {
+        const string ExpectedResult = @"<mml:math xmlns:mml=""http://www.w3.org/1998/Math/MathML"">
   <mml:mfrac>
     <mml:mrow>
       <mml:mi mathvariant=""normal"" class=""MathML-Unit"">m</mml:mi>
@@ -36,17 +36,17 @@ namespace Sundew.Quantities.Formatters.MathML.UnitTests
   </mml:mfrac>
 </mml:math>";
 
-            var acceleration = 4.MetersPerSecondSquared();
+        var acceleration = 4.MetersPerSecondSquared();
 
-            var result = this.testee.Visit(acceleration.Unit.GetExpression());
+        var result = this.testee.Visit(acceleration.Unit.GetExpression());
 
-            result.ToString().Should().Be(ExpectedResult);
-        }
+        result.ToString().Should().Be(ExpectedResult);
+    }
 
-        [Fact]
-        public void Visit_When_QuantityIsVoltBaseUnit_Then_ResultTextShouldBeExpectedResult()
-        {
-            const string ExpectedResult = @"<mml:math xmlns:mml=""http://www.w3.org/1998/Math/MathML"">
+    [Fact]
+    public void Visit_When_QuantityIsVoltBaseUnit_Then_ResultTextShouldBeExpectedResult()
+    {
+        const string ExpectedResult = @"<mml:math xmlns:mml=""http://www.w3.org/1998/Math/MathML"">
   <mml:mfrac>
     <mml:mrow>
       <mml:mi mathvariant=""normal"" class=""MathML-Unit"">kg</mml:mi>
@@ -67,11 +67,10 @@ namespace Sundew.Quantities.Formatters.MathML.UnitTests
   </mml:mfrac>
 </mml:math>";
 
-            var acceleration = 4.Volts();
+        var acceleration = 4.Volts();
 
-            var result = this.testee.Visit(acceleration.Unit.BaseUnit.GetExpression(), MultiplicationSign.Star);
+        var result = this.testee.Visit(acceleration.Unit.BaseUnit.GetExpression(), MultiplicationSign.Star);
 
-            result.ToString().Should().Be(ExpectedResult);
-        }
+        result.ToString().Should().Be(ExpectedResult);
     }
 }

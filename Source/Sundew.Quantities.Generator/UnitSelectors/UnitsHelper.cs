@@ -5,19 +5,19 @@
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace Sundew.Quantities.Generator.UnitSelectors
-{
-    using System.Text;
-    using Sundew.Generator.Core;
+namespace Sundew.Quantities.Generator.UnitSelectors;
 
-    public static class UnitsHelper
+using System.Text;
+using Sundew.Generator.Core;
+
+public static class UnitsHelper
+{
+    public static IndentedString GetUnits(IQuantityModel modelModel)
     {
-        public static IndentedString GetUnits(IQuantityModel modelModel)
+        var stringBuilder = new StringBuilder();
+        foreach (var modelDefinitionUnit in modelModel.Units)
         {
-            var stringBuilder = new StringBuilder();
-            foreach (var modelDefinitionUnit in modelModel.Units)
-            {
-                stringBuilder.AppendLine($@"
+            stringBuilder.AppendLine($@"
 /// <summary>
 /// Gets the {GetDocumentationName(modelDefinitionUnit)} expression.
 /// </summary>
@@ -26,34 +26,33 @@ namespace Sundew.Quantities.Generator.UnitSelectors
 /// </value>
 public Expression {modelDefinitionUnit.Identifier} => this.SpecifyUnit(UnitDefinitions.{GetUnitName(modelDefinitionUnit)});
 ");
-            }
-
-            return new IndentedString(8, stringBuilder.ToString());
         }
 
-        internal static string GetUnitName(UnitModel unitModel)
+        return new IndentedString(8, stringBuilder.ToString());
+    }
+
+    internal static string GetUnitName(UnitModel unitModel)
+    {
+        if (!string.IsNullOrEmpty(unitModel.Unit))
         {
-            if (!string.IsNullOrEmpty(unitModel.Unit))
-            {
-                return unitModel.Unit;
-            }
-
-            if (unitModel.Identifier[unitModel.Identifier.Length - 1] == 's')
-            {
-                return unitModel.Identifier.Substring(0, unitModel.Identifier.Length - 1);
-            }
-
-            return unitModel.Identifier;
+            return unitModel.Unit;
         }
 
-        internal static string GetDocumentationName(UnitModel unitModel)
+        if (unitModel.Identifier[unitModel.Identifier.Length - 1] == 's')
         {
-            if (!string.IsNullOrEmpty(unitModel.Name))
-            {
-                return unitModel.Name;
-            }
-
-            return unitModel.Identifier.TrimEnd('s').ToLower();
+            return unitModel.Identifier.Substring(0, unitModel.Identifier.Length - 1);
         }
+
+        return unitModel.Identifier;
+    }
+
+    internal static string GetDocumentationName(UnitModel unitModel)
+    {
+        if (!string.IsNullOrEmpty(unitModel.Name))
+        {
+            return unitModel.Name;
+        }
+
+        return unitModel.Identifier.TrimEnd('s').ToLower();
     }
 }

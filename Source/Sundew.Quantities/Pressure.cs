@@ -5,37 +5,36 @@
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace Sundew.Quantities
+namespace Sundew.Quantities;
+
+using Sundew.Quantities.Core;
+
+/// <summary>
+/// Represents a pressure quantity.
+/// </summary>
+public partial struct Pressure
 {
-    using Sundew.Quantities.Core;
+    /// <summary>
+    /// Multiplies the specified LHS and RHS.
+    /// </summary>
+    /// <param name="lhs">The LHS quantity.</param>
+    /// <param name="rhs">The RHS quantity.</param>
+    /// <returns>The product.</returns>
+    public static Energy operator *(Pressure lhs, Volume rhs)
+    {
+        return new Energy(QuantityOperations.Multiply(lhs, rhs));
+    }
 
     /// <summary>
-    /// Represents a pressure quantity.
+    /// Multiplies the specified LHS and RHS.
     /// </summary>
-    public partial struct Pressure
+    /// <param name="lhs">The LHS.</param>
+    /// <param name="rhs">The RHS.</param>
+    /// <returns>
+    /// The result of the operator.
+    /// </returns>
+    public static Squared<Pressure> operator *(Pressure lhs, Pressure rhs)
     {
-        /// <summary>
-        /// Multiplies the specified LHS and RHS.
-        /// </summary>
-        /// <param name="lhs">The LHS quantity.</param>
-        /// <param name="rhs">The RHS quantity.</param>
-        /// <returns>The product.</returns>
-        public static Energy operator *(Pressure lhs, Volume rhs)
-        {
-            return new Energy(QuantityOperations.Multiply(lhs, rhs));
-        }
-
-        /// <summary>
-        /// Multiplies the specified LHS and RHS.
-        /// </summary>
-        /// <param name="lhs">The LHS.</param>
-        /// <param name="rhs">The RHS.</param>
-        /// <returns>
-        /// The result of the operator.
-        /// </returns>
-        public static Squared<Pressure> operator *(Pressure lhs, Pressure rhs)
-        {
-            return new Squared<Pressure>(new Pressure(QuantityOperations.Multiply(lhs, rhs).Value, lhs.Unit));
-        }
+        return new Squared<Pressure>(new Pressure(QuantityOperations.Multiply(lhs, rhs).Value, lhs.Unit));
     }
 }

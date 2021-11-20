@@ -5,21 +5,20 @@
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace Sundew.Quantities.Representations.Evaluation
-{
-    using Sundew.Quantities.Representations.Expressions;
+namespace Sundew.Quantities.Representations.Evaluation;
 
+using Sundew.Quantities.Representations.Expressions;
+
+/// <summary>
+/// Interface for implementing an <see cref="Expression"/> reducer.
+/// </summary>
+public interface IExpressionReducer
+{
     /// <summary>
-    /// Interface for implementing an <see cref="Expression"/> reducer.
+    /// Reduces the specified expression.
     /// </summary>
-    public interface IExpressionReducer
-    {
-        /// <summary>
-        /// Reduces the specified expression.
-        /// </summary>
-        /// <param name="expression">The expression.</param>
-        /// <param name="reduceByBaseUnits">If set to <c>true</c> reduction will be done with base units.</param>
-        /// <returns>A <see cref="UnitReductionResult"/>.</returns>
-        UnitReductionResult Reduce(Expression expression, bool reduceByBaseUnits);
-    }
+    /// <param name="expression">The expression.</param>
+    /// <param name="reduceByBaseUnits">If set to <c>true</c> reduction will be done with base units.</param>
+    /// <returns>A <see cref="UnitReductionResult"/>.</returns>
+    UnitReductionResult Reduce(Expression expression, bool reduceByBaseUnits);
 }

@@ -5,39 +5,38 @@
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace Sundew.Quantities.Core.Operations
+namespace Sundew.Quantities.Core.Operations;
+
+using Sundew.Quantities.Representations.Evaluation;
+using Sundew.Quantities.Representations.Expressions;
+
+/// <summary>
+/// Operation for multiplying two <see cref="IUnit"/>s.
+/// </summary>
+public class UnitMultiplicationOperation : IUnitOperation<UnitReductionResult>
 {
-    using Sundew.Quantities.Representations.Evaluation;
-    using Sundew.Quantities.Representations.Expressions;
+    private readonly IExpressionReducer expressionReducer;
 
     /// <summary>
-    /// Operation for multiplying two <see cref="IUnit"/>s.
+    /// Initializes a new instance of the <see cref="UnitMultiplicationOperation"/> class.
     /// </summary>
-    public class UnitMultiplicationOperation : IUnitOperation<UnitReductionResult>
+    /// <param name="expressionReducer">The expression reducer.</param>
+    public UnitMultiplicationOperation(IExpressionReducer expressionReducer)
     {
-        private readonly IExpressionReducer expressionReducer;
+        this.expressionReducer = expressionReducer;
+    }
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="UnitMultiplicationOperation"/> class.
-        /// </summary>
-        /// <param name="expressionReducer">The expression reducer.</param>
-        public UnitMultiplicationOperation(IExpressionReducer expressionReducer)
-        {
-            this.expressionReducer = expressionReducer;
-        }
-
-        /// <summary>
-        /// Executes the specified LHS.
-        /// </summary>
-        /// <param name="lhs">The LHS unit.</param>
-        /// <param name="rhs">The RHS unit.</param>
-        /// <param name="reduceByBaseUnits">If set to <c>true</c> reduction will be done with base units.</param>
-        /// <returns>A <see cref="UnitReductionResult"/>.</returns>
-        public UnitReductionResult Execute(IUnit lhs, IUnit rhs, bool reduceByBaseUnits)
-        {
-            return this.expressionReducer.Reduce(
-                new MultiplicationExpression(lhs.GetExpression(), rhs.GetExpression()),
-                reduceByBaseUnits);
-        }
+    /// <summary>
+    /// Executes the specified LHS.
+    /// </summary>
+    /// <param name="lhs">The LHS unit.</param>
+    /// <param name="rhs">The RHS unit.</param>
+    /// <param name="reduceByBaseUnits">If set to <c>true</c> reduction will be done with base units.</param>
+    /// <returns>A <see cref="UnitReductionResult"/>.</returns>
+    public UnitReductionResult Execute(IUnit lhs, IUnit rhs, bool reduceByBaseUnits)
+    {
+        return this.expressionReducer.Reduce(
+            new MultiplicationExpression(lhs.GetExpression(), rhs.GetExpression()),
+            reduceByBaseUnits);
     }
 }

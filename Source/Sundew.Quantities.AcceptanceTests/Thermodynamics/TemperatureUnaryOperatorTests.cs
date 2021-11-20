@@ -4,44 +4,43 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
-namespace Sundew.Quantities.AcceptanceTests.Thermodynamics
+namespace Sundew.Quantities.AcceptanceTests.Thermodynamics;
+
+using FluentAssertions;
+
+using Sundew.Quantities.AcceptanceTests.Testing;
+
+using Xunit;
+
+public class TemperatureUnaryOperatorTests
 {
-    using FluentAssertions;
-
-    using Sundew.Quantities.AcceptanceTests.Testing;
-
-    using Xunit;
-
-    public class TemperatureUnaryOperatorTests
+    [Fact]
+    public void Temperature_Decrement_Then_ResultShouldBeMinusOne()
     {
-        [Fact]
-        public void Temperature_Decrement_Then_ResultShouldBeMinusOne()
-        {
-            var testee = -43.Celsius();
+        var testee = -43.Celsius();
 
-            var result = ++testee;
+        var result = ++testee;
 
-            result.Should().Be(-42, "°C");
-        }
+        result.Should().Be(-42, "°C");
+    }
 
-        [Fact]
-        public void Temperature_Increment_Then_ResultShouldBePlusOne()
-        {
-            var testee = 43.Celsius();
+    [Fact]
+    public void Temperature_Increment_Then_ResultShouldBePlusOne()
+    {
+        var testee = 43.Celsius();
 
-            var result = ++testee;
+        var result = ++testee;
 
-            result.Should().Be(44, "°C");
-        }
+        result.Should().Be(44, "°C");
+    }
 
-        [Fact]
-        public void Temperature_UnaryMinus_Then_ResultShouldBeNegated()
-        {
-            var testee = 43.Celsius();
+    [Fact]
+    public void Temperature_UnaryMinus_Then_ResultShouldBeNegated()
+    {
+        var testee = 43.Celsius();
 
-            var result = -testee;
+        var result = -testee;
 
-            result.Should().Be(-43, "°C");
-        }
+        result.Should().Be(-43, "°C");
     }
 }

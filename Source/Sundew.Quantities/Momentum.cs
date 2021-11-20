@@ -5,26 +5,25 @@
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace Sundew.Quantities
-{
-    using Sundew.Quantities.Core;
+namespace Sundew.Quantities;
 
+using Sundew.Quantities.Core;
+
+/// <summary>
+/// Represents a momentum quantity.
+/// </summary>
+public partial struct Momentum
+{
     /// <summary>
-    /// Represents a momentum quantity.
+    /// Multiplies the specified LHS and RHS.
     /// </summary>
-    public partial struct Momentum
+    /// <param name="lhs">The LHS.</param>
+    /// <param name="rhs">The RHS.</param>
+    /// <returns>
+    /// The result of the operator.
+    /// </returns>
+    public static Squared<Momentum> operator *(Momentum lhs, Momentum rhs)
     {
-        /// <summary>
-        /// Multiplies the specified LHS and RHS.
-        /// </summary>
-        /// <param name="lhs">The LHS.</param>
-        /// <param name="rhs">The RHS.</param>
-        /// <returns>
-        /// The result of the operator.
-        /// </returns>
-        public static Squared<Momentum> operator *(Momentum lhs, Momentum rhs)
-        {
-            return new Squared<Momentum>(new Momentum(QuantityOperations.Multiply(lhs, rhs).Value, lhs.Unit));
-        }
+        return new Squared<Momentum>(new Momentum(QuantityOperations.Multiply(lhs, rhs).Value, lhs.Unit));
     }
 }

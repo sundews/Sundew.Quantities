@@ -5,78 +5,77 @@
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace Sundew.Quantities.Units
+namespace Sundew.Quantities.Units;
+
+using Sundew.Quantities.Representations.Expressions;
+using Sundew.Quantities.Representations.Units;
+
+/// <summary>
+/// Time units.
+/// </summary>
+public class TimeUnits
 {
-    using Sundew.Quantities.Representations.Expressions;
-    using Sundew.Quantities.Representations.Units;
+    /// <summary>
+    /// Gets the second.
+    /// </summary>
+    /// <value>
+    /// The second.
+    /// </value>
+    public IUnit Seconds => UnitDefinitions.Second;
 
     /// <summary>
-    /// Time units.
+    /// Gets the minute.
     /// </summary>
-    public class TimeUnits
-    {
-        /// <summary>
-        /// Gets the second.
-        /// </summary>
-        /// <value>
-        /// The second.
-        /// </value>
-        public IUnit Seconds => UnitDefinitions.Second;
+    /// <value>
+    /// The minute.
+    /// </value>
+    public IUnit Minutes => UnitDefinitions.Minute;
 
-        /// <summary>
-        /// Gets the minute.
-        /// </summary>
-        /// <value>
-        /// The minute.
-        /// </value>
-        public IUnit Minutes => UnitDefinitions.Minute;
+    /// <summary>
+    /// Gets the hour.
+    /// </summary>
+    /// <value>
+    /// The hour.
+    /// </value>
+    public IUnit Hours => UnitDefinitions.Hour;
 
-        /// <summary>
-        /// Gets the hour.
-        /// </summary>
-        /// <value>
-        /// The hour.
-        /// </value>
-        public IUnit Hours => UnitDefinitions.Hour;
+    /// <summary>
+    /// Gets the day.
+    /// </summary>
+    /// <value>
+    /// The day.
+    /// </value>
+    public IUnit Days => UnitDefinitions.Day;
 
-        /// <summary>
-        /// Gets the day.
-        /// </summary>
-        /// <value>
-        /// The day.
-        /// </value>
-        public IUnit Days => UnitDefinitions.Day;
+    /// <summary>
+    /// Gets the week.
+    /// </summary>
+    /// <value>
+    /// The week.
+    /// </value>
+    public IUnit Weeks => UnitDefinitions.Week;
 
-        /// <summary>
-        /// Gets the week.
-        /// </summary>
-        /// <value>
-        /// The week.
-        /// </value>
-        public IUnit Weeks => UnitDefinitions.Week;
+    /// <summary>
+    /// Gets the month.
+    /// </summary>
+    /// <value>
+    /// The month.
+    /// </value>
+    public IUnit Months => UnitDefinitions.Month;
 
-        /// <summary>
-        /// Gets the month.
-        /// </summary>
-        /// <value>
-        /// The month.
-        /// </value>
-        public IUnit Months => UnitDefinitions.Month;
+    /// <summary>
+    /// Gets the year.
+    /// </summary>
+    /// <value>
+    /// The year.
+    /// </value>
+    public IUnit Years => UnitDefinitions.Year;
 
-        /// <summary>
-        /// Gets the year.
-        /// </summary>
-        /// <value>
-        /// The year.
-        /// </value>
-        public IUnit Years => UnitDefinitions.Year;
-
-        /// <summary>
-        /// Gets the base unit.
-        /// </summary>
-        /// <value>
-        /// The base unit.
-        /// </value>
-        public IUnit BaseUnit => this.Seconds;
-    }
+    /// <summary>
+    /// Gets the base unit.
+    /// </summary>
+    /// <value>
+    /// The base unit.
+    /// </value>
+    public IUnit BaseUnit => this.Seconds;
 }

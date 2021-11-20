@@ -5,42 +5,41 @@
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace Sundew.Quantities.Core
+namespace Sundew.Quantities.Core;
+
+using Sundew.Quantities.Representations.Expressions;
+using Sundew.Quantities.Representations.Internals;
+
+/// <summary>
+/// Helper methods for formatting units.
+/// </summary>
+public static class UnitFormatHelper
 {
-    using Sundew.Quantities.Representations.Expressions;
-    using Sundew.Quantities.Representations.Internals;
+    /// <summary>
+    /// Returns a <see cref="string" /> that represents this instance.
+    /// </summary>
+    /// <param name="prefix">The prefix.</param>
+    /// <param name="notation">The notation.</param>
+    /// <returns>A <see cref="string" /> that represents this instance.</returns>
+    public static string ToString(Prefix prefix, string notation)
+    {
+        return string.Format(Constants.PrefixAndUnitFormat, prefix.Notation, notation);
+    }
 
     /// <summary>
-    /// Helper methods for formatting units.
+    /// Gets the notation.
     /// </summary>
-    public static class UnitFormatHelper
+    /// <param name="unit">The quantity unit.</param>
+    /// <param name="unitFormat">The unit format.</param>
+    /// <returns>The notation.</returns>
+    public static string GetNotation(IUnit unit, UnitFormat unitFormat)
     {
-        /// <summary>
-        /// Returns a <see cref="string" /> that represents this instance.
-        /// </summary>
-        /// <param name="prefix">The prefix.</param>
-        /// <param name="notation">The notation.</param>
-        /// <returns>A <see cref="string" /> that represents this instance.</returns>
-        public static string ToString(Prefix prefix, string notation)
+        var notation = unit.Notation;
+        if (unitFormat.HasFlag(UnitFormat.SurroundInBrackets))
         {
-            return string.Format(Constants.PrefixAndUnitFormat, prefix.Notation, notation);
+            return $"[{notation}]";
         }
 
-        /// <summary>
-        /// Gets the notation.
-        /// </summary>
-        /// <param name="unit">The quantity unit.</param>
-        /// <param name="unitFormat">The unit format.</param>
-        /// <returns>The notation.</returns>
-        public static string GetNotation(IUnit unit, UnitFormat unitFormat)
-        {
-            var notation = unit.Notation;
-            if (unitFormat.HasFlag(UnitFormat.SurroundInBrackets))
-            {
-                return $"[{notation}]";
-            }
-
-            return notation;
-        }
+        return notation;
     }
 }

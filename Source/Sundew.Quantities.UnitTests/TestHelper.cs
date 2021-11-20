@@ -4,10 +4,9 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
-namespace Sundew.Quantities.UnitTests
+namespace Sundew.Quantities.UnitTests;
+
+public static class TestHelper
 {
-    public static class TestHelper
-    {
-        public const double DefaultAssertPrecision = .000000001;
-    }
+    public const double DefaultAssertPrecision = .000000001;
 }

@@ -4,41 +4,40 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
-namespace Sundew.Quantities.Parsing.LexicalAnalysis
+namespace Sundew.Quantities.Parsing.LexicalAnalysis;
+
+/// <summary>
+/// Indicates the type of a token.
+/// </summary>
+public enum TokenType
 {
     /// <summary>
-    /// Indicates the type of a token.
+    /// The identifier.
     /// </summary>
-    public enum TokenType
-    {
-        /// <summary>
-        /// The identifier.
-        /// </summary>
-        Identifier,
+    Identifier,
 
-        /// <summary>
-        /// The number.
-        /// </summary>
-        Number,
+    /// <summary>
+    /// The number.
+    /// </summary>
+    Number,
 
-        /// <summary>
-        /// The operator.
-        /// </summary>
-        Operator,
+    /// <summary>
+    /// The operator.
+    /// </summary>
+    Operator,
 
-        /// <summary>
-        /// The exponent.
-        /// </summary>
-        Exponent,
+    /// <summary>
+    /// The exponent.
+    /// </summary>
+    Exponent,
 
-        /// <summary>
-        /// The white space
-        /// </summary>
-        WhiteSpace,
+    /// <summary>
+    /// The white space
+    /// </summary>
+    WhiteSpace,
 
-        /// <summary>
-        /// The end (Termination).
-        /// </summary>
-        End
-    }
+    /// <summary>
+    /// The end (Termination).
+    /// </summary>
+    End
 }

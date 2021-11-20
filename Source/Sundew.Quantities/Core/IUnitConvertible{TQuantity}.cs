@@ -5,21 +5,20 @@
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace Sundew.Quantities.Core
-{
-    using Sundew.Quantities.Representations.Expressions;
+namespace Sundew.Quantities.Core;
 
+using Sundew.Quantities.Representations.Expressions;
+
+/// <summary>
+/// Interface for implementing unit conversion methods.
+/// </summary>
+/// <typeparam name="TQuantity">The type of the quantity.</typeparam>
+public interface IUnitConvertible<out TQuantity> : IUnitConvertible
+{
     /// <summary>
-    /// Interface for implementing unit conversion methods.
+    /// Converts this object to a quantity using the specified unit.
     /// </summary>
-    /// <typeparam name="TQuantity">The type of the quantity.</typeparam>
-    public interface IUnitConvertible<out TQuantity> : IUnitConvertible
-    {
-        /// <summary>
-        /// Converts this object to a quantity using the specified unit.
-        /// </summary>
-        /// <param name="unit">The quantity unit.</param>
-        /// <returns>The converted quantity.</returns>
-        TQuantity ToUnit(IUnit unit);
-    }
+    /// <param name="unit">The quantity unit.</param>
+    /// <returns>The converted quantity.</returns>
+    TQuantity ToUnit(IUnit unit);
 }

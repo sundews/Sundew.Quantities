@@ -5,26 +5,25 @@
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace Sundew.Quantities
-{
-    using Sundew.Quantities.Core;
+namespace Sundew.Quantities;
 
+using Sundew.Quantities.Core;
+
+/// <summary>
+/// Represents a frequency quantity.
+/// </summary>
+public partial struct Frequency
+{
     /// <summary>
-    /// Represents a frequency quantity.
+    /// Multiplies the specified LHS and RHS.
     /// </summary>
-    public partial struct Frequency
+    /// <param name="lhs">The LHS.</param>
+    /// <param name="rhs">The RHS.</param>
+    /// <returns>
+    /// The result of the operator.
+    /// </returns>
+    public static Squared<Frequency> operator *(Frequency lhs, Frequency rhs)
     {
-        /// <summary>
-        /// Multiplies the specified LHS and RHS.
-        /// </summary>
-        /// <param name="lhs">The LHS.</param>
-        /// <param name="rhs">The RHS.</param>
-        /// <returns>
-        /// The result of the operator.
-        /// </returns>
-        public static Squared<Frequency> operator *(Frequency lhs, Frequency rhs)
-        {
-            return new Squared<Frequency>(new Frequency(QuantityOperations.Multiply(lhs, rhs).Value, lhs.Unit));
-        }
+        return new Squared<Frequency>(new Frequency(QuantityOperations.Multiply(lhs, rhs).Value, lhs.Unit));
     }
 }

@@ -5,27 +5,27 @@
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace Sundew.Quantities.Generator.UnitSelectors
+namespace Sundew.Quantities.Generator.UnitSelectors;
+
+using System.Collections.Generic;
+using Sundew.Generator;
+using Sundew.Generator.Code;
+using Sundew.Generator.Code.CSharp;
+using Sundew.Generator.Core;
+
+public class PrefixedUnitSelectorInterfaceGenerator : IGenerator<ICodeSetup, ICodeGeneratorSetup, IProject, IQuantityModel, ICodeRun, ITextOutput>
 {
-    using System.Collections.Generic;
-    using Sundew.Generator;
-    using Sundew.Generator.Code;
-    using Sundew.Generator.Code.CSharp;
-    using Sundew.Generator.Core;
-
-    public class PrefixedUnitSelectorInterfaceGenerator : IGenerator<ICodeSetup, ICodeGeneratorSetup, IProject, IQuantityModel, ICodeRun, ITextOutput>
+    public IReadOnlyList<ICodeRun> Prepare(ICodeSetup codeSetup, ICodeGeneratorSetup codeGeneratorSetup, IProject target, IQuantityModel model, string modelOrigin)
     {
-        public IReadOnlyList<ICodeRun> Prepare(ICodeSetup codeSetup, ICodeGeneratorSetup codeGeneratorSetup, IProject target, IQuantityModel model, string modelOrigin)
+        return new[]
         {
-            return new[]
-            {
-                new CodeRun(model.Name, $"IPrefixed{model.Name}UnitSelector{target.FileSuffix}", codeGeneratorSetup.TargetNamespace ?? codeSetup.TargetNamespace)
-            };
-        }
+            new CodeRun(model.Name, $"IPrefixed{model.Name}UnitSelector{target.FileSuffix}", codeGeneratorSetup.TargetNamespace ?? codeSetup.TargetNamespace)
+        };
+    }
 
-        public ITextOutput Generate(ICodeSetup codeSetup, ICodeGeneratorSetup codeGeneratorSetup, IProject target, IQuantityModel model, ICodeRun run, long index)
-        {
-            return new TextOutput($@"
+    public ITextOutput Generate(ICodeSetup codeSetup, ICodeGeneratorSetup codeGeneratorSetup, IProject target, IQuantityModel model, ICodeRun run, long index)
+    {
+        return new TextOutput($@"
 // --------------------------------------------------------------------------------------------------------------------
 // <copyright file=""{run.FileName}"" company=""Hukano"">
 // Copyright (c) Hukano. All rights reserved.
@@ -47,6 +47,5 @@ namespace {NamespaceHelper.CombineNamespaces(target.RootNamespace, run.Namespace
     }}
 }}
 ");
-        }
     }
 }

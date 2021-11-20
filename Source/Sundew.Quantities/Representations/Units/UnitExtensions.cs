@@ -5,24 +5,23 @@
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace Sundew.Quantities.Representations.Units
-{
-    using Sundew.Quantities.Representations.Expressions;
+namespace Sundew.Quantities.Representations.Units;
 
+using Sundew.Quantities.Representations.Expressions;
+
+/// <summary>
+/// Extends <see cref="IUnit"/> with easy to use methods.
+/// </summary>
+public static class UnitExtensions
+{
     /// <summary>
-    /// Extends <see cref="IUnit"/> with easy to use methods.
+    /// Raises the specified LHS into the power of the RHS.
     /// </summary>
-    public static class UnitExtensions
+    /// <param name="lhs">The LHS <see cref="IUnit"/>.</param>
+    /// <param name="exponent">The exponent.</param>
+    /// <returns>A new <see cref="Expression"/>.</returns>
+    public static Expression Exp(this IUnit lhs, double exponent)
     {
-        /// <summary>
-        /// Raises the specified LHS into the power of the RHS.
-        /// </summary>
-        /// <param name="lhs">The LHS <see cref="IUnit"/>.</param>
-        /// <param name="exponent">The exponent.</param>
-        /// <returns>A new <see cref="Expression"/>.</returns>
-        public static Expression Exp(this IUnit lhs, double exponent)
-        {
-            return new MagnitudeExpression(lhs.GetExpression(), new ConstantExpression(exponent));
-        }
+        return new MagnitudeExpression(lhs.GetExpression(), new ConstantExpression(exponent));
     }
 }

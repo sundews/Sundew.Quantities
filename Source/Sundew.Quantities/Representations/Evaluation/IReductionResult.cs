@@ -5,29 +5,28 @@
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace Sundew.Quantities.Representations.Evaluation
+namespace Sundew.Quantities.Representations.Evaluation;
+
+using Sundew.Quantities.Representations.Expressions;
+using Sundew.Quantities.Representations.Flat;
+
+/// <summary>
+/// Interface for implementing results from reducing two <see cref="Expression"/>s.
+/// </summary>
+public interface IReductionResult
 {
-    using Sundew.Quantities.Representations.Expressions;
-    using Sundew.Quantities.Representations.Flat;
+    /// <summary>
+    /// Gets the flat representation.
+    /// </summary>
+    /// <value>
+    /// The flat representation.
+    /// </value>
+    FlatRepresentation FlatRepresentation { get; }
 
     /// <summary>
-    /// Interface for implementing results from reducing two <see cref="Expression"/>s.
+    /// Gets the reduced expression.
     /// </summary>
-    public interface IReductionResult
-    {
-        /// <summary>
-        /// Gets the flat representation.
-        /// </summary>
-        /// <value>
-        /// The flat representation.
-        /// </value>
-        FlatRepresentation FlatRepresentation { get; }
-
-        /// <summary>
-        /// Gets the reduced expression.
-        /// </summary>
-        /// <param name="expressionRewriter">The expression rewriter.</param>
-        /// <returns>A <see cref="Expression"/>.</returns>
-        Expression GetReducedExpression(IExpressionRewriter expressionRewriter);
-    }
+    /// <param name="expressionRewriter">The expression rewriter.</param>
+    /// <returns>A <see cref="Expression"/>.</returns>
+    Expression GetReducedExpression(IExpressionRewriter expressionRewriter);
 }

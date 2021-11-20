@@ -5,15 +5,15 @@
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace Sundew.Quantities.Generator.Quantities
-{
-    using Sundew.Generator.Core;
+namespace Sundew.Quantities.Generator.Quantities;
 
-    public static class EqualityOperationsHelper
+using Sundew.Generator.Core;
+
+public static class EqualityOperationsHelper
+{
+    public static IndentedString GetEqualityOperations(IQuantityModel quantityModel)
     {
-        public static IndentedString GetEqualityOperations(IQuantityModel quantityModel)
-        {
-            return new IndentedString(8, $@"
+        return new IndentedString(8, $@"
 /// <summary>
 /// Returns a hash code for this instance.
 /// </summary>
@@ -97,6 +97,5 @@ public int CompareTo({quantityModel.Name} quantity)
     return QuantityHelper.CompareTo(this, quantity);
 }}
 ");
-        }
     }
 }

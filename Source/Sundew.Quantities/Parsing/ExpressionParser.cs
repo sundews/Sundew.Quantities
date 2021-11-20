@@ -5,177 +5,176 @@
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace Sundew.Quantities.Parsing
+namespace Sundew.Quantities.Parsing;
+
+using System;
+using Sundew.Base.Primitives.Computation;
+using Sundew.Quantities.Parsing.Errors;
+using Sundew.Quantities.Parsing.Exceptions;
+using Sundew.Quantities.Parsing.LexicalAnalysis;
+using Sundew.Quantities.Representations.Expressions;
+using Sundew.Quantities.Representations.Internals;
+
+/// <summary>
+/// Default implementation of <see cref="IExpressionParser"/>.
+/// </summary>
+public class ExpressionParser : IExpressionParser
 {
-    using System;
-    using Sundew.Base.Primitives.Computation;
-    using Sundew.Quantities.Parsing.Errors;
-    using Sundew.Quantities.Parsing.Exceptions;
-    using Sundew.Quantities.Parsing.LexicalAnalysis;
-    using Sundew.Quantities.Representations.Expressions;
-    using Sundew.Quantities.Representations.Internals;
+    private readonly IUnitExpressionParser unitExpressionParser;
 
     /// <summary>
-    /// Default implementation of <see cref="IExpressionParser"/>.
+    /// Initializes a new instance of the <see cref="ExpressionParser"/> class.
     /// </summary>
-    public class ExpressionParser : IExpressionParser
+    /// <param name="unitExpressionParser">The unit parser.</param>
+    public ExpressionParser(IUnitExpressionParser unitExpressionParser)
     {
-        private readonly IUnitExpressionParser unitExpressionParser;
+        this.unitExpressionParser = unitExpressionParser;
+    }
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="ExpressionParser"/> class.
-        /// </summary>
-        /// <param name="unitExpressionParser">The unit parser.</param>
-        public ExpressionParser(IUnitExpressionParser unitExpressionParser)
+    /// <summary>
+    /// Parses the specified lexeme list.
+    /// </summary>
+    /// <param name="lexemes">The lexemes.</param>
+    /// <param name="parseSettings">The parse settings.</param>
+    /// <returns>
+    /// The parsed expression.
+    /// </returns>
+    public Result<Expression, Error<ExpressionError>> Parse(Lexemes lexemes, ParseSettings parseSettings)
+    {
+        try
         {
-            this.unitExpressionParser = unitExpressionParser;
-        }
-
-        /// <summary>
-        /// Parses the specified lexeme list.
-        /// </summary>
-        /// <param name="lexemes">The lexemes.</param>
-        /// <param name="parseSettings">The parse settings.</param>
-        /// <returns>
-        /// The parsed expression.
-        /// </returns>
-        public Result<Expression, Error<ExpressionError>> Parse(Lexemes lexemes, ParseSettings parseSettings)
-        {
-            try
+            var expression = this.Expression(lexemes, parseSettings);
+            if (parseSettings.AssertEnd && !lexemes.AcceptTokenType(TokenType.End, out var token))
             {
-                var expression = this.Expression(lexemes, parseSettings);
-                if (parseSettings.AssertEnd && !lexemes.AcceptTokenType(TokenType.End, out var token))
-                {
-                    throw CreateParseException(ExpressionError.EndOfDataNotFound, lexemes.Current);
-                }
-
-                return Result.Success(expression);
-            }
-            catch (ExpressionParseException expressionParseException)
-            {
-                if (parseSettings.ThrowOnError)
-                {
-                    throw;
-                }
-
-                return Result.Error(expressionParseException.Error);
-            }
-        }
-
-        private static Exception CreateParseException(
-            ExpressionError expressionError,
-            Lexeme lexeme,
-            IError innerError = null)
-        {
-            throw new ExpressionParseException(Error.From(expressionError, lexeme, innerError));
-        }
-
-        private Expression Expression(Lexemes lexemes, ParseSettings parseSettings)
-        {
-            return this.TryMultiplicativeExpression(lexemes, parseSettings);
-        }
-
-        private Expression TryMultiplicativeExpression(Lexemes lexemes, ParseSettings parseSettings)
-        {
-            var expression = this.TryMagnitudeExpression(lexemes, parseSettings);
-            return this.MultiplicativeExpression(lexemes, expression, parseSettings);
-        }
-
-        private Expression MultiplicativeExpression(Lexemes lexemes, Expression lhs, ParseSettings parseSettings)
-        {
-            if (lexemes.AcceptToken(Constants.Multiply) || lexemes.AcceptToken(Constants.MultiplyDot)
-                || lexemes.AcceptToken(Constants.MultiplyCross))
-            {
-                var rhs = this.TryMagnitudeExpression(lexemes, parseSettings);
-                return this.MultiplicativeExpression(lexemes, new MultiplicationExpression(lhs, rhs), parseSettings);
+                throw CreateParseException(ExpressionError.EndOfDataNotFound, lexemes.Current);
             }
 
-            if (lexemes.AcceptToken(Constants.Divide))
-            {
-                var rhs = this.TryMagnitudeExpression(lexemes, parseSettings);
-                return this.MultiplicativeExpression(lexemes, new DivisionExpression(lhs, rhs), parseSettings);
-            }
-
-            return lhs;
+            return Result.Success(expression);
         }
-
-        private Expression TryMagnitudeExpression(Lexemes lexemes, ParseSettings parseSettings)
+        catch (ExpressionParseException expressionParseException)
         {
-            var lhs = this.PrimaryExpression(lexemes, parseSettings);
-            return this.MagnitudeExpression(lexemes, lhs, parseSettings);
-        }
+            if (parseSettings.ThrowOnError)
+            {
+                throw;
+            }
 
-        private Expression MagnitudeExpression(Lexemes lexemes, Expression lhs, ParseSettings parseSettings)
+            return Result.Error(expressionParseException.Error);
+        }
+    }
+
+    private static Exception CreateParseException(
+        ExpressionError expressionError,
+        Lexeme lexeme,
+        IError innerError = null)
+    {
+        throw new ExpressionParseException(Error.From(expressionError, lexeme, innerError));
+    }
+
+    private Expression Expression(Lexemes lexemes, ParseSettings parseSettings)
+    {
+        return this.TryMultiplicativeExpression(lexemes, parseSettings);
+    }
+
+    private Expression TryMultiplicativeExpression(Lexemes lexemes, ParseSettings parseSettings)
+    {
+        var expression = this.TryMagnitudeExpression(lexemes, parseSettings);
+        return this.MultiplicativeExpression(lexemes, expression, parseSettings);
+    }
+
+    private Expression MultiplicativeExpression(Lexemes lexemes, Expression lhs, ParseSettings parseSettings)
+    {
+        if (lexemes.AcceptToken(Constants.Multiply) || lexemes.AcceptToken(Constants.MultiplyDot)
+                                                    || lexemes.AcceptToken(Constants.MultiplyCross))
         {
-            if (lexemes.AcceptToken(Constants.Power))
-            {
-                var constantExpression = this.ConstantExpression(lexemes, parseSettings);
-                return this.MagnitudeExpression(
-                    lexemes,
-                    new MagnitudeExpression(lhs, constantExpression),
-                    parseSettings);
-            }
-
-            if (lexemes.AcceptTokenType(TokenType.Exponent, out var exponent))
-            {
-                var constantExpression =
-                    new ConstantExpression(
-                        double.Parse(CharacterConverter.FromExponentNotation(exponent), parseSettings.CultureInfo));
-                return this.MagnitudeExpression(
-                    lexemes,
-                    new MagnitudeExpression(lhs, constantExpression),
-                    parseSettings);
-            }
-
-            return lhs;
+            var rhs = this.TryMagnitudeExpression(lexemes, parseSettings);
+            return this.MultiplicativeExpression(lexemes, new MultiplicationExpression(lhs, rhs), parseSettings);
         }
 
-        private Expression PrimaryExpression(Lexemes lexemes, ParseSettings parseSettings)
+        if (lexemes.AcceptToken(Constants.Divide))
         {
-            if (lexemes.AcceptToken(Constants.LeftParenthesis))
-            {
-                var expression = this.Expression(lexemes, parseSettings);
-                if (lexemes.AcceptToken(Constants.RightParenthesis))
-                {
-                    return new ParenthesisExpression(expression);
-                }
-
-                throw CreateParseException(ExpressionError.RightParenthesisNotFound, lexemes.Current);
-            }
-
-            if (lexemes.AcceptToken(Constants.LeftWeakParenthesis))
-            {
-                var expression = this.Expression(lexemes, parseSettings);
-                if (lexemes.AcceptToken(Constants.RightWeakParenthesis))
-                {
-                    return expression;
-                }
-
-                throw CreateParseException(ExpressionError.RightWeakParenthesisNotFound, lexemes.Current);
-            }
-
-            if (lexemes.AcceptTokenType(TokenType.Identifier, true, out var identifier))
-            {
-                var result = this.unitExpressionParser.Parse(identifier, false);
-                if (result)
-                {
-                    return result.Value;
-                }
-
-                throw CreateParseException(ExpressionError.IdentifierNotFound, lexemes.MoveToPrevious(), result.Error);
-            }
-
-            return this.ConstantExpression(lexemes, parseSettings);
+            var rhs = this.TryMagnitudeExpression(lexemes, parseSettings);
+            return this.MultiplicativeExpression(lexemes, new DivisionExpression(lhs, rhs), parseSettings);
         }
 
-        private ConstantExpression ConstantExpression(Lexemes lexemes, ParseSettings parseSettings)
+        return lhs;
+    }
+
+    private Expression TryMagnitudeExpression(Lexemes lexemes, ParseSettings parseSettings)
+    {
+        var lhs = this.PrimaryExpression(lexemes, parseSettings);
+        return this.MagnitudeExpression(lexemes, lhs, parseSettings);
+    }
+
+    private Expression MagnitudeExpression(Lexemes lexemes, Expression lhs, ParseSettings parseSettings)
+    {
+        if (lexemes.AcceptToken(Constants.Power))
         {
-            if (lexemes.AcceptTokenType(TokenType.Number, out var number))
+            var constantExpression = this.ConstantExpression(lexemes, parseSettings);
+            return this.MagnitudeExpression(
+                lexemes,
+                new MagnitudeExpression(lhs, constantExpression),
+                parseSettings);
+        }
+
+        if (lexemes.AcceptTokenType(TokenType.Exponent, out var exponent))
+        {
+            var constantExpression =
+                new ConstantExpression(
+                    double.Parse(CharacterConverter.FromExponentNotation(exponent), parseSettings.CultureInfo));
+            return this.MagnitudeExpression(
+                lexemes,
+                new MagnitudeExpression(lhs, constantExpression),
+                parseSettings);
+        }
+
+        return lhs;
+    }
+
+    private Expression PrimaryExpression(Lexemes lexemes, ParseSettings parseSettings)
+    {
+        if (lexemes.AcceptToken(Constants.LeftParenthesis))
+        {
+            var expression = this.Expression(lexemes, parseSettings);
+            if (lexemes.AcceptToken(Constants.RightParenthesis))
             {
-                return new ConstantExpression(double.Parse(number, parseSettings.CultureInfo));
+                return new ParenthesisExpression(expression);
             }
 
-            throw CreateParseException(ExpressionError.NumberNotFound, lexemes.Current);
+            throw CreateParseException(ExpressionError.RightParenthesisNotFound, lexemes.Current);
         }
+
+        if (lexemes.AcceptToken(Constants.LeftWeakParenthesis))
+        {
+            var expression = this.Expression(lexemes, parseSettings);
+            if (lexemes.AcceptToken(Constants.RightWeakParenthesis))
+            {
+                return expression;
+            }
+
+            throw CreateParseException(ExpressionError.RightWeakParenthesisNotFound, lexemes.Current);
+        }
+
+        if (lexemes.AcceptTokenType(TokenType.Identifier, true, out var identifier))
+        {
+            var result = this.unitExpressionParser.Parse(identifier, false);
+            if (result)
+            {
+                return result.Value;
+            }
+
+            throw CreateParseException(ExpressionError.IdentifierNotFound, lexemes.MoveToPrevious(), result.Error);
+        }
+
+        return this.ConstantExpression(lexemes, parseSettings);
+    }
+
+    private ConstantExpression ConstantExpression(Lexemes lexemes, ParseSettings parseSettings)
+    {
+        if (lexemes.AcceptTokenType(TokenType.Number, out var number))
+        {
+            return new ConstantExpression(double.Parse(number, parseSettings.CultureInfo));
+        }
+
+        throw CreateParseException(ExpressionError.NumberNotFound, lexemes.Current);
     }
 }

@@ -5,54 +5,53 @@
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace Sundew.Quantities.Representations.Evaluation
+namespace Sundew.Quantities.Representations.Evaluation;
+
+using Sundew.Quantities.Representations.Expressions;
+using Sundew.Quantities.Representations.Flat;
+
+/// <summary>
+/// The result of reducing two <see cref="Expression"/>s.
+/// </summary>
+public class ReductionResult : IReductionResult
 {
-    using Sundew.Quantities.Representations.Expressions;
-    using Sundew.Quantities.Representations.Flat;
+    private readonly Expression expression;
+
+    private readonly bool reduceByBaseUnit;
 
     /// <summary>
-    /// The result of reducing two <see cref="Expression"/>s.
+    /// Initializes a new instance of the <see cref="ReductionResult"/> class.
     /// </summary>
-    public class ReductionResult : IReductionResult
+    /// <param name="flatRepresentation">The flat representation.</param>
+    /// <param name="expression">The expression.</param>
+    /// <param name="reduceByBaseUnit">If set to <c>true</c> reducing was performed using the base unit.</param>
+    public ReductionResult(FlatRepresentation flatRepresentation, Expression expression, bool reduceByBaseUnit)
     {
-        private readonly Expression expression;
+        this.expression = expression;
+        this.reduceByBaseUnit = reduceByBaseUnit;
+        this.FlatRepresentation = flatRepresentation;
+    }
 
-        private readonly bool reduceByBaseUnit;
+    /// <summary>
+    /// Gets the flat representation.
+    /// </summary>
+    /// <value>
+    /// A <see cref="FlatRepresentation" />.
+    /// </value>
+    public FlatRepresentation FlatRepresentation { get; }
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="ReductionResult"/> class.
-        /// </summary>
-        /// <param name="flatRepresentation">The flat representation.</param>
-        /// <param name="expression">The expression.</param>
-        /// <param name="reduceByBaseUnit">If set to <c>true</c> reducing was performed using the base unit.</param>
-        public ReductionResult(FlatRepresentation flatRepresentation, Expression expression, bool reduceByBaseUnit)
-        {
-            this.expression = expression;
-            this.reduceByBaseUnit = reduceByBaseUnit;
-            this.FlatRepresentation = flatRepresentation;
-        }
-
-        /// <summary>
-        /// Gets the flat representation.
-        /// </summary>
-        /// <value>
-        /// A <see cref="FlatRepresentation" />.
-        /// </value>
-        public FlatRepresentation FlatRepresentation { get; }
-
-        /// <summary>
-        /// Gets the reduced expression.
-        /// </summary>
-        /// <param name="expressionRewriter">The expression rewriter.</param>
-        /// <returns>
-        /// A <see cref="Expression" />.
-        /// </returns>
-        public Expression GetReducedExpression(IExpressionRewriter expressionRewriter)
-        {
-            return expressionRewriter.Rewrite(
-                this.expression,
-                this.reduceByBaseUnit,
-                this.FlatRepresentation.GetConsumer());
-        }
+    /// <summary>
+    /// Gets the reduced expression.
+    /// </summary>
+    /// <param name="expressionRewriter">The expression rewriter.</param>
+    /// <returns>
+    /// A <see cref="Expression" />.
+    /// </returns>
+    public Expression GetReducedExpression(IExpressionRewriter expressionRewriter)
+    {
+        return expressionRewriter.Rewrite(
+            this.expression,
+            this.reduceByBaseUnit,
+            this.FlatRepresentation.GetConsumer());
     }
 }

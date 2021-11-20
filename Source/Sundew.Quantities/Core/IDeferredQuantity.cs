@@ -4,17 +4,16 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
-namespace Sundew.Quantities.Core
+namespace Sundew.Quantities.Core;
+
+/// <summary>
+/// Interface for implementing compositions of quantities.
+/// </summary>
+public interface IDeferredQuantity
 {
     /// <summary>
-    /// Interface for implementing compositions of quantities.
+    /// Gets the result.
     /// </summary>
-    public interface IDeferredQuantity
-    {
-        /// <summary>
-        /// Gets the result.
-        /// </summary>
-        /// <returns>An <see cref="IQuantity"/>.</returns>
-        IQuantity GetResult();
-    }
+    /// <returns>An <see cref="IQuantity"/>.</returns>
+    IQuantity GetResult();
 }

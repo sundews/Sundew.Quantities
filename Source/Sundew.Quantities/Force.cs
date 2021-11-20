@@ -5,59 +5,58 @@
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace Sundew.Quantities
+namespace Sundew.Quantities;
+
+using Sundew.Quantities.Core;
+
+/// <summary>
+/// Represents a force quantity.
+/// </summary>
+public partial struct Force
 {
-    using Sundew.Quantities.Core;
+    /// <summary>
+    /// Multiplies the specified LHS and RHS.
+    /// </summary>
+    /// <param name="lhs">The LHS quantity.</param>
+    /// <param name="rhs">The RHS quantity.</param>
+    /// <returns>The product of the specified LHS and RHS.</returns>
+    public static Energy operator *(Force lhs, Distance rhs)
+    {
+        return new Energy(QuantityOperations.Multiply(lhs, rhs));
+    }
 
     /// <summary>
-    /// Represents a force quantity.
+    /// Multiplies the specified LHS and RHS.
     /// </summary>
-    public partial struct Force
+    /// <param name="lhs">The LHS quantity.</param>
+    /// <param name="rhs">The RHS quantity.</param>
+    /// <returns>The product of the specified LHS and RHS.</returns>
+    public static Momentum operator *(Force lhs, Time rhs)
     {
-        /// <summary>
-        /// Multiplies the specified LHS and RHS.
-        /// </summary>
-        /// <param name="lhs">The LHS quantity.</param>
-        /// <param name="rhs">The RHS quantity.</param>
-        /// <returns>The product of the specified LHS and RHS.</returns>
-        public static Energy operator *(Force lhs, Distance rhs)
-        {
-            return new Energy(QuantityOperations.Multiply(lhs, rhs));
-        }
+        return new Momentum(QuantityOperations.Multiply(lhs, rhs));
+    }
 
-        /// <summary>
-        /// Multiplies the specified LHS and RHS.
-        /// </summary>
-        /// <param name="lhs">The LHS quantity.</param>
-        /// <param name="rhs">The RHS quantity.</param>
-        /// <returns>The product of the specified LHS and RHS.</returns>
-        public static Momentum operator *(Force lhs, Time rhs)
-        {
-            return new Momentum(QuantityOperations.Multiply(lhs, rhs));
-        }
+    /// <summary>
+    /// Divides the specified LHS and RHS.
+    /// </summary>
+    /// <param name="lhs">The LHS quantity.</param>
+    /// <param name="rhs">The RHS quantity.</param>
+    /// <returns>The quotient of the specified LHS and RHS.</returns>
+    public static Pressure operator /(Force lhs, Area rhs)
+    {
+        return new Pressure(QuantityOperations.Divide(lhs, rhs));
+    }
 
-        /// <summary>
-        /// Divides the specified LHS and RHS.
-        /// </summary>
-        /// <param name="lhs">The LHS quantity.</param>
-        /// <param name="rhs">The RHS quantity.</param>
-        /// <returns>The quotient of the specified LHS and RHS.</returns>
-        public static Pressure operator /(Force lhs, Area rhs)
-        {
-            return new Pressure(QuantityOperations.Divide(lhs, rhs));
-        }
-
-        /// <summary>
-        /// Multiplies the specified LHS and RHS.
-        /// </summary>
-        /// <param name="lhs">The LHS.</param>
-        /// <param name="rhs">The RHS.</param>
-        /// <returns>
-        /// The result of the operator.
-        /// </returns>
-        public static Squared<Force> operator *(Force lhs, Force rhs)
-        {
-            return new Squared<Force>(new Force(QuantityOperations.Multiply(lhs, rhs).Value, lhs.Unit));
-        }
+    /// <summary>
+    /// Multiplies the specified LHS and RHS.
+    /// </summary>
+    /// <param name="lhs">The LHS.</param>
+    /// <param name="rhs">The RHS.</param>
+    /// <returns>
+    /// The result of the operator.
+    /// </returns>
+    public static Squared<Force> operator *(Force lhs, Force rhs)
+    {
+        return new Squared<Force>(new Force(QuantityOperations.Multiply(lhs, rhs).Value, lhs.Unit));
     }
 }

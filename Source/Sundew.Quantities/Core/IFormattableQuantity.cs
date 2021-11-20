@@ -5,62 +5,61 @@
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace Sundew.Quantities.Core
+namespace Sundew.Quantities.Core;
+
+using System;
+
+/// <summary>
+/// Interface for implementing formatting for quantities.
+/// </summary>
+public interface IFormattableQuantity : IFormattable
 {
-    using System;
+    /// <summary>
+    /// Returns a <see cref="string" /> that represents this instance.
+    /// </summary>
+    /// <param name="format">The format.</param>
+    /// <returns>
+    /// A <see cref="string" /> that represents this instance.
+    /// </returns>
+    string ToString(string format);
 
     /// <summary>
-    /// Interface for implementing formatting for quantities.
+    /// Returns a <see cref="string" /> that represents this instance.
     /// </summary>
-    public interface IFormattableQuantity : IFormattable
-    {
-        /// <summary>
-        /// Returns a <see cref="string" /> that represents this instance.
-        /// </summary>
-        /// <param name="format">The format.</param>
-        /// <returns>
-        /// A <see cref="string" /> that represents this instance.
-        /// </returns>
-        string ToString(string format);
+    /// <param name="unitFormat">The unit mode.</param>
+    /// <param name="format">The format.</param>
+    /// <returns>
+    /// A <see cref="string" /> that represents this instance.
+    /// </returns>
+    string ToString(UnitFormat unitFormat, string format);
 
-        /// <summary>
-        /// Returns a <see cref="string" /> that represents this instance.
-        /// </summary>
-        /// <param name="unitFormat">The unit mode.</param>
-        /// <param name="format">The format.</param>
-        /// <returns>
-        /// A <see cref="string" /> that represents this instance.
-        /// </returns>
-        string ToString(UnitFormat unitFormat, string format);
+    /// <summary>
+    /// Returns a <see cref="string" /> that represents this instance.
+    /// </summary>
+    /// <param name="formatProvider">The format provider.</param>
+    /// <returns>
+    /// A <see cref="string" /> that represents this instance.
+    /// </returns>
+    string ToString(IFormatProvider formatProvider);
 
-        /// <summary>
-        /// Returns a <see cref="string" /> that represents this instance.
-        /// </summary>
-        /// <param name="formatProvider">The format provider.</param>
-        /// <returns>
-        /// A <see cref="string" /> that represents this instance.
-        /// </returns>
-        string ToString(IFormatProvider formatProvider);
+    /// <summary>
+    /// Returns a <see cref="string" /> that represents this instance.
+    /// </summary>
+    /// <param name="unitFormat">The unit mode.</param>
+    /// <param name="formatProvider">The format provider.</param>
+    /// <returns>
+    /// A <see cref="string" /> that represents this instance.
+    /// </returns>
+    string ToString(UnitFormat unitFormat, IFormatProvider formatProvider);
 
-        /// <summary>
-        /// Returns a <see cref="string" /> that represents this instance.
-        /// </summary>
-        /// <param name="unitFormat">The unit mode.</param>
-        /// <param name="formatProvider">The format provider.</param>
-        /// <returns>
-        /// A <see cref="string" /> that represents this instance.
-        /// </returns>
-        string ToString(UnitFormat unitFormat, IFormatProvider formatProvider);
-
-        /// <summary>
-        /// Returns a <see cref="string" /> that represents this instance.
-        /// </summary>
-        /// <param name="unitFormat">The unit mode.</param>
-        /// <param name="format">The format.</param>
-        /// <param name="formatProvider">The format provider.</param>
-        /// <returns>
-        /// A <see cref="string" /> that represents this instance.
-        /// </returns>
-        string ToString(UnitFormat unitFormat, string format, IFormatProvider formatProvider);
-    }
+    /// <summary>
+    /// Returns a <see cref="string" /> that represents this instance.
+    /// </summary>
+    /// <param name="unitFormat">The unit mode.</param>
+    /// <param name="format">The format.</param>
+    /// <param name="formatProvider">The format provider.</param>
+    /// <returns>
+    /// A <see cref="string" /> that represents this instance.
+    /// </returns>
+    string ToString(UnitFormat unitFormat, string format, IFormatProvider formatProvider);
 }

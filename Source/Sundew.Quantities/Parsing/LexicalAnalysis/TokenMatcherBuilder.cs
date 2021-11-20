@@ -5,53 +5,52 @@
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace Sundew.Quantities.Parsing.LexicalAnalysis
+namespace Sundew.Quantities.Parsing.LexicalAnalysis;
+
+using System.Collections.Generic;
+using System.Text;
+using System.Text.RegularExpressions;
+
+/// <summary>
+/// Default implementation of <see cref="ITokenMatcherBuilder"/>.
+/// </summary>
+public sealed class TokenMatcherBuilder : ITokenMatcherBuilder
 {
-    using System.Collections.Generic;
-    using System.Text;
-    using System.Text.RegularExpressions;
+    private const string StartStringAndNonCaptureGroup = @"^(?<" + TokenMatcher.IdGroupName + ">";
+
+    private const string OrName = "|";
+
+    private const string EndGroupOptionalName = @")?.+$";
+
+    private const string EndGroupName = ")$";
 
     /// <summary>
-    /// Default implementation of <see cref="ITokenMatcherBuilder"/>.
+    /// Builds a <see cref="TokenMatcher" /> based on the specified valid tokens.
     /// </summary>
-    public sealed class TokenMatcherBuilder : ITokenMatcherBuilder
+    /// <param name="validTokens">The valid tokens.</param>
+    /// <param name="areOptional">If set to <c>true</c> the tokens are optional.</param>
+    /// <returns>
+    /// A new <see cref="TokenMatcher" />.
+    /// </returns>
+    public TokenMatcher Build(IEnumerable<string> validTokens, bool areOptional)
     {
-        private const string StartStringAndNonCaptureGroup = @"^(?<" + TokenMatcher.IdGroupName + ">";
-
-        private const string OrName = "|";
-
-        private const string EndGroupOptionalName = @")?.+$";
-
-        private const string EndGroupName = ")$";
-
-        /// <summary>
-        /// Builds a <see cref="TokenMatcher" /> based on the specified valid tokens.
-        /// </summary>
-        /// <param name="validTokens">The valid tokens.</param>
-        /// <param name="areOptional">If set to <c>true</c> the tokens are optional.</param>
-        /// <returns>
-        /// A new <see cref="TokenMatcher" />.
-        /// </returns>
-        public TokenMatcher Build(IEnumerable<string> validTokens, bool areOptional)
+        var matchStringBuilder = new StringBuilder(StartStringAndNonCaptureGroup);
+        foreach (var notation in validTokens)
         {
-            var matchStringBuilder = new StringBuilder(StartStringAndNonCaptureGroup);
-            foreach (var notation in validTokens)
-            {
-                matchStringBuilder.Append(notation + OrName);
-            }
-
-            matchStringBuilder.Remove(matchStringBuilder.Length - 1, 1);
-
-            if (areOptional)
-            {
-                matchStringBuilder.Append(EndGroupOptionalName);
-            }
-            else
-            {
-                matchStringBuilder.Append(EndGroupName);
-            }
-
-            return new TokenMatcher(TokenType.Identifier, new Regex(matchStringBuilder.ToString()));
+            matchStringBuilder.Append(notation + OrName);
         }
+
+        matchStringBuilder.Remove(matchStringBuilder.Length - 1, 1);
+
+        if (areOptional)
+        {
+            matchStringBuilder.Append(EndGroupOptionalName);
+        }
+        else
+        {
+            matchStringBuilder.Append(EndGroupName);
+        }
+
+        return new TokenMatcher(TokenType.Identifier, new Regex(matchStringBuilder.ToString()));
     }
 }

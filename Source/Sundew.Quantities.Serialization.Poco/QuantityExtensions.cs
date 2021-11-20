@@ -4,21 +4,20 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
-namespace Sundew.Quantities.Serialization.Poco
+namespace Sundew.Quantities.Serialization.Poco;
+
+/// <summary>
+/// Serialization extension methods for <see cref="Quantity"/>.
+/// </summary>
+public static class QuantityExtensions
 {
     /// <summary>
-    /// Serialization extension methods for <see cref="Quantity"/>.
+    /// Creates the serializable.
     /// </summary>
-    public static class QuantityExtensions
+    /// <param name="quantity">The quantity.</param>
+    /// <returns>A new serializable <see cref="Quantity" />.</returns>
+    public static Quantity ToSerializable(this Core.Quantity quantity)
     {
-        /// <summary>
-        /// Creates the serializable.
-        /// </summary>
-        /// <param name="quantity">The quantity.</param>
-        /// <returns>A new serializable <see cref="Quantity" />.</returns>
-        public static Quantity ToSerializable(this Core.Quantity quantity)
-        {
-            return new Quantity(quantity);
-        }
+        return new Quantity(quantity);
     }
 }

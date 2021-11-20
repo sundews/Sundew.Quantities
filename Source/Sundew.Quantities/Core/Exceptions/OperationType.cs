@@ -4,26 +4,25 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
-namespace Sundew.Quantities.Core.Exceptions
+namespace Sundew.Quantities.Core.Exceptions;
+
+/// <summary>
+/// Enumeration for identifying a failing operation.
+/// </summary>
+public enum OperationType
 {
     /// <summary>
-    /// Enumeration for identifying a failing operation.
+    /// The compare operation.
     /// </summary>
-    public enum OperationType
-    {
-        /// <summary>
-        /// The compare operation.
-        /// </summary>
-        Compare,
+    Compare,
 
-        /// <summary>
-        /// The add operation.
-        /// </summary>
-        Add,
+    /// <summary>
+    /// The add operation.
+    /// </summary>
+    Add,
 
-        /// <summary>
-        /// The subtract operation.
-        /// </summary>
-        Subtract
-    }
+    /// <summary>
+    /// The subtract operation.
+    /// </summary>
+    Subtract
 }

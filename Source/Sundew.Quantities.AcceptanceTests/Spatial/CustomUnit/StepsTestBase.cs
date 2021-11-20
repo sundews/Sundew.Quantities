@@ -4,29 +4,28 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
-namespace Sundew.Quantities.AcceptanceTests.Spatial.CustomUnit
+namespace Sundew.Quantities.AcceptanceTests.Spatial.CustomUnit;
+
+using System;
+using Sundew.Quantities.Core;
+using Sundew.Quantities.Representations.Units;
+
+public abstract class StepsTestBase : IDisposable
 {
-    using System;
-    using Sundew.Quantities.Core;
-    using Sundew.Quantities.Representations.Units;
+    private readonly FactoredUnit stepsUnit = new(
+        (1 / 53.4323198) / 1000,
+        "steps",
+        UnitDefinitions.Meter);
 
-    public abstract class StepsTestBase : IDisposable
+    protected StepsTestBase()
     {
-        private readonly FactoredUnit stepsUnit = new(
-            (1 / 53.4323198) / 1000,
-            "steps",
-            UnitDefinitions.Meter);
+        UnitSystem.InitializeWithDefaults(unitRegistry => unitRegistry.Register(this.StepsUnit));
+    }
 
-        protected StepsTestBase()
-        {
-            UnitSystem.InitializeWithDefaults(unitRegistry => unitRegistry.Register(this.StepsUnit));
-        }
+    protected FactoredUnit StepsUnit => this.stepsUnit;
 
-        protected FactoredUnit StepsUnit => this.stepsUnit;
-
-        public void Dispose()
-        {
-            UnitSystem.Reset();
-        }
+    public void Dispose()
+    {
+        UnitSystem.Reset();
     }
 }

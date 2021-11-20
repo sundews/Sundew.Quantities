@@ -5,47 +5,46 @@
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace Sundew.Quantities.Core.Operations
+namespace Sundew.Quantities.Core.Operations;
+
+using System;
+using Sundew.Quantities.Representations.Evaluation;
+using Sundew.Quantities.Representations.Expressions;
+
+/// <summary>
+/// Nth root operation for <see cref="IQuantity"/> instance.
+/// </summary>
+public class NthRootOperation : IQuantityOperation<double>
 {
-    using System;
-    using Sundew.Quantities.Representations.Evaluation;
-    using Sundew.Quantities.Representations.Expressions;
+    private readonly IExpressionReducer expressionReducer;
+
+    private readonly IUnitFactory unitFactory;
 
     /// <summary>
-    /// Nth root operation for <see cref="IQuantity"/> instance.
+    /// Initializes a new instance of the <see cref="NthRootOperation" /> class.
     /// </summary>
-    public class NthRootOperation : IQuantityOperation<double>
+    /// <param name="unitFactory">The unit factory.</param>
+    /// <param name="expressionReducer">The expression reducer.</param>
+    public NthRootOperation(IUnitFactory unitFactory, IExpressionReducer expressionReducer)
     {
-        private readonly IExpressionReducer expressionReducer;
+        this.unitFactory = unitFactory;
+        this.expressionReducer = expressionReducer;
+    }
 
-        private readonly IUnitFactory unitFactory;
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="NthRootOperation" /> class.
-        /// </summary>
-        /// <param name="unitFactory">The unit factory.</param>
-        /// <param name="expressionReducer">The expression reducer.</param>
-        public NthRootOperation(IUnitFactory unitFactory, IExpressionReducer expressionReducer)
-        {
-            this.unitFactory = unitFactory;
-            this.expressionReducer = expressionReducer;
-        }
-
-        /// <summary>
-        /// Executes the specified LHS.
-        /// </summary>
-        /// <param name="lhs">The LHS quantity.</param>
-        /// <param name="rhs">The RHS value.</param>
-        /// <returns>A <see cref="IQuantity"/>.</returns>
-        public IQuantity Execute(IQuantity lhs, double rhs)
-        {
-            var reciprocal = 1 / rhs;
-            var magnitudeExpression = new MagnitudeExpression(
-                lhs.Unit.GetExpression(),
-                new ConstantExpression(reciprocal));
-            return new Quantity(
-                Math.Pow(lhs.Value, rhs),
-                this.unitFactory.Create(this.expressionReducer.Reduce(magnitudeExpression, true)));
-        }
+    /// <summary>
+    /// Executes the specified LHS.
+    /// </summary>
+    /// <param name="lhs">The LHS quantity.</param>
+    /// <param name="rhs">The RHS value.</param>
+    /// <returns>A <see cref="IQuantity"/>.</returns>
+    public IQuantity Execute(IQuantity lhs, double rhs)
+    {
+        var reciprocal = 1 / rhs;
+        var magnitudeExpression = new MagnitudeExpression(
+            lhs.Unit.GetExpression(),
+            new ConstantExpression(reciprocal));
+        return new Quantity(
+            Math.Pow(lhs.Value, rhs),
+            this.unitFactory.Create(this.expressionReducer.Reduce(magnitudeExpression, true)));
     }
 }

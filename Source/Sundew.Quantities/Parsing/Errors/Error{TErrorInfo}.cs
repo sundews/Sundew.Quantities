@@ -5,84 +5,83 @@
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace Sundew.Quantities.Parsing.Errors
+namespace Sundew.Quantities.Parsing.Errors;
+
+using System.Text;
+using Sundew.Quantities.Parsing.LexicalAnalysis;
+
+/// <summary>
+/// Represents a parser error.
+/// </summary>
+/// <typeparam name="TErrorInfo">The type of the error information.</typeparam>
+/// <seealso cref="Sundew.Quantities.Parsing.IError" />
+public class Error<TErrorInfo> : IError
 {
-    using System.Text;
-    using Sundew.Quantities.Parsing.LexicalAnalysis;
+    /// <summary>
+    /// Initializes a new instance of the <see cref="Error{TErrorInfo}" /> class.
+    /// </summary>
+    /// <param name="errorInfo">The error identifier.</param>
+    /// <param name="lexeme">The lexeme.</param>
+    /// <param name="innerError">The inner error.</param>
+    internal Error(TErrorInfo errorInfo, Lexeme lexeme, IError innerError)
+    {
+        this.ErrorInfo = errorInfo;
+        this.Lexeme = lexeme;
+        this.InnerError = innerError;
+    }
 
     /// <summary>
-    /// Represents a parser error.
+    /// Gets the lexeme.
     /// </summary>
-    /// <typeparam name="TErrorInfo">The type of the error information.</typeparam>
-    /// <seealso cref="Sundew.Quantities.Parsing.IError" />
-    public class Error<TErrorInfo> : IError
+    /// <value>
+    /// The lexeme.
+    /// </value>
+    public Lexeme Lexeme { get; }
+
+    /// <summary>
+    /// Gets the unit error.
+    /// </summary>
+    /// <value>
+    /// The unit error.
+    /// </value>
+    public IError InnerError { get; }
+
+    /// <summary>
+    /// Gets a value indicating whether this instance has inner error.
+    /// </summary>
+    /// <value>
+    ///   <c>true</c> if this instance has inner error; otherwise, <c>false</c>.
+    /// </value>
+    public bool HasInnerError => this.InnerError != null;
+
+    /// <summary>
+    /// Gets the type of the error.
+    /// </summary>
+    /// <value>
+    /// The type of the error.
+    /// </value>
+    public TErrorInfo ErrorInfo { get; }
+
+    /// <summary>
+    /// Gets the message.
+    /// </summary>
+    /// <returns>
+    /// The error message.
+    /// </returns>
+    public string GetMessage()
     {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="Error{TErrorInfo}" /> class.
-        /// </summary>
-        /// <param name="errorInfo">The error identifier.</param>
-        /// <param name="lexeme">The lexeme.</param>
-        /// <param name="innerError">The inner error.</param>
-        internal Error(TErrorInfo errorInfo, Lexeme lexeme, IError innerError)
+        var stringBuilder = new StringBuilder();
+        stringBuilder.Append($"Error: {this.ErrorInfo}");
+        if (this.Lexeme != null)
         {
-            this.ErrorInfo = errorInfo;
-            this.Lexeme = lexeme;
-            this.InnerError = innerError;
+            stringBuilder.Append($"- Invalid token {this.Lexeme.Token} at: {this.Lexeme.Position}");
         }
 
-        /// <summary>
-        /// Gets the lexeme.
-        /// </summary>
-        /// <value>
-        /// The lexeme.
-        /// </value>
-        public Lexeme Lexeme { get; }
-
-        /// <summary>
-        /// Gets the unit error.
-        /// </summary>
-        /// <value>
-        /// The unit error.
-        /// </value>
-        public IError InnerError { get; }
-
-        /// <summary>
-        /// Gets a value indicating whether this instance has inner error.
-        /// </summary>
-        /// <value>
-        ///   <c>true</c> if this instance has inner error; otherwise, <c>false</c>.
-        /// </value>
-        public bool HasInnerError => this.InnerError != null;
-
-        /// <summary>
-        /// Gets the type of the error.
-        /// </summary>
-        /// <value>
-        /// The type of the error.
-        /// </value>
-        public TErrorInfo ErrorInfo { get; }
-
-        /// <summary>
-        /// Gets the message.
-        /// </summary>
-        /// <returns>
-        /// The error message.
-        /// </returns>
-        public string GetMessage()
+        if (this.HasInnerError)
         {
-            var stringBuilder = new StringBuilder();
-            stringBuilder.Append($"Error: {this.ErrorInfo}");
-            if (this.Lexeme != null)
-            {
-                stringBuilder.Append($"- Invalid token {this.Lexeme.Token} at: {this.Lexeme.Position}");
-            }
-
-            if (this.HasInnerError)
-            {
-                stringBuilder.Append($" Inner Error: {this.InnerError.GetMessage()}");
-            }
-
-            return stringBuilder.ToString();
+            stringBuilder.Append($" Inner Error: {this.InnerError.GetMessage()}");
         }
+
+        return stringBuilder.ToString();
     }
 }

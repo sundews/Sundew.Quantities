@@ -4,38 +4,37 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
-namespace Sundew.Quantities.Serialization.Poco
+namespace Sundew.Quantities.Serialization.Poco;
+
+using Sundew.Quantities.Core;
+
+/// <summary>
+/// Represents <see cref="Sundew.Quantities.Acceleration" /> as a serializable type.
+/// </summary>
+public sealed class Acceleration : SerializableQuantity<Quantities.Acceleration>
 {
-    using Sundew.Quantities.Core;
+    /// <summary>
+    /// Initializes a new instance of the <see cref="Acceleration"/> class.
+    /// </summary>
+    public Acceleration()
+    {
+    }
 
     /// <summary>
-    /// Represents <see cref="Sundew.Quantities.Acceleration" /> as a serializable type.
+    /// Initializes a new instance of the <see cref="Acceleration"/> class.
     /// </summary>
-    public sealed class Acceleration : SerializableQuantity<Quantities.Acceleration>
+    /// <param name="quantity">The quantity.</param>
+    public Acceleration(IQuantity quantity)
+        : base(quantity)
     {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="Acceleration"/> class.
-        /// </summary>
-        public Acceleration()
-        {
-        }
+    }
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="Acceleration"/> class.
-        /// </summary>
-        /// <param name="quantity">The quantity.</param>
-        public Acceleration(IQuantity quantity)
-            : base(quantity)
-        {
-        }
-
-        /// <summary>
-        /// Converts this instances to a quantity.
-        /// </summary>
-        /// <returns>A <see cref="Sundew.Quantities.Acceleration"/>.</returns>
-        public override Quantities.Acceleration ToQuantity()
-        {
-            return new Quantities.Acceleration(this.Value, this.GetUnit());
-        }
+    /// <summary>
+    /// Converts this instances to a quantity.
+    /// </summary>
+    /// <returns>A <see cref="Sundew.Quantities.Acceleration"/>.</returns>
+    public override Quantities.Acceleration ToQuantity()
+    {
+        return new Quantities.Acceleration(this.Value, this.GetUnit());
     }
 }

@@ -5,87 +5,86 @@
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace Sundew.Quantities.Parsing.LexicalAnalysis
+namespace Sundew.Quantities.Parsing.LexicalAnalysis;
+
+using System.Collections.Generic;
+using Sundew.Base.Primitives.Computation;
+
+/// <summary>
+/// Default implementation of <see cref="ILexicalAnalyzer"/>.
+/// </summary>
+public sealed class LexicalAnalyzer : ILexicalAnalyzer
 {
-    using System.Collections.Generic;
-    using Sundew.Base.Primitives.Computation;
+    private readonly IEnumerable<TokenMatcher> tokenMatchers;
 
     /// <summary>
-    /// Default implementation of <see cref="ILexicalAnalyzer"/>.
+    /// Initializes a new instance of the <see cref="LexicalAnalyzer"/> class.
     /// </summary>
-    public sealed class LexicalAnalyzer : ILexicalAnalyzer
+    /// <param name="tokenMatchers">The token matchers.</param>
+    public LexicalAnalyzer(IEnumerable<TokenMatcher> tokenMatchers)
     {
-        private readonly IEnumerable<TokenMatcher> tokenMatchers;
+        this.tokenMatchers = tokenMatchers;
+    }
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="LexicalAnalyzer"/> class.
-        /// </summary>
-        /// <param name="tokenMatchers">The token matchers.</param>
-        public LexicalAnalyzer(IEnumerable<TokenMatcher> tokenMatchers)
+    /// <summary>
+    /// Analyzes the specified input and generates a list of lexemes.
+    /// </summary>
+    /// <param name="input">The input.</param>
+    /// <param name="throwOnError">If set to <c>true</c> an exception will be thrown on error.</param>
+    /// <returns>
+    /// A <see cref="Lexemes" />.
+    /// </returns>
+    /// <exception cref="LexicalException">Thrown if input is invalid.</exception>
+    public Result<Lexemes, LexicalError> Analyze(string input, bool throwOnError)
+    {
+        var lexemes = new LinkedList<Lexeme>();
+        if (string.IsNullOrEmpty(input))
         {
-            this.tokenMatchers = tokenMatchers;
+            return GetError(input, throwOnError, 0);
         }
 
-        /// <summary>
-        /// Analyzes the specified input and generates a list of lexemes.
-        /// </summary>
-        /// <param name="input">The input.</param>
-        /// <param name="throwOnError">If set to <c>true</c> an exception will be thrown on error.</param>
-        /// <returns>
-        /// A <see cref="Lexemes" />.
-        /// </returns>
-        /// <exception cref="LexicalException">Thrown if input is invalid.</exception>
-        public Result<Lexemes, LexicalError> Analyze(string input, bool throwOnError)
+        var characterPosition = 0;
+        while (characterPosition < input.Length)
         {
-            var lexemes = new LinkedList<Lexeme>();
-            if (string.IsNullOrEmpty(input))
+            var currentInput = input.Substring(characterPosition);
+            var lexeme = this.FindLexeme(currentInput, characterPosition);
+            if (lexeme != null)
             {
-                return GetError(input, throwOnError, 0);
+                characterPosition += lexeme.Token.Length;
+                lexemes.AddLast(lexeme);
             }
-
-            var characterPosition = 0;
-            while (characterPosition < input.Length)
+            else
             {
-                var currentInput = input.Substring(characterPosition);
-                var lexeme = this.FindLexeme(currentInput, characterPosition);
-                if (lexeme != null)
-                {
-                    characterPosition += lexeme.Token.Length;
-                    lexemes.AddLast(lexeme);
-                }
-                else
-                {
-                    return GetError(input[characterPosition].ToString(), throwOnError, characterPosition);
-                }
+                return GetError(input[characterPosition].ToString(), throwOnError, characterPosition);
             }
-
-            lexemes.AddLast(new Lexeme(string.Empty, TokenType.End, characterPosition));
-            return Result.Success(new Lexemes(lexemes));
         }
 
-        private static Result<Lexemes, LexicalError> GetError(string input, bool throwOnError, int characterPosition)
-        {
-            var lexicalError = new LexicalError(input, characterPosition);
-            if (throwOnError)
-            {
-                throw new LexicalException(lexicalError);
-            }
+        lexemes.AddLast(new Lexeme(string.Empty, TokenType.End, characterPosition));
+        return Result.Success(new Lexemes(lexemes));
+    }
 
-            return Result.Error(lexicalError);
+    private static Result<Lexemes, LexicalError> GetError(string input, bool throwOnError, int characterPosition)
+    {
+        var lexicalError = new LexicalError(input, characterPosition);
+        if (throwOnError)
+        {
+            throw new LexicalException(lexicalError);
         }
 
-        private Lexeme FindLexeme(string input, int characterPosition)
-        {
-            foreach (var tokenMatcher in this.tokenMatchers)
-            {
-                var match = tokenMatcher.Match(input);
-                if (match.Success)
-                {
-                    return new Lexeme(match.Value, tokenMatcher.TokenType, characterPosition);
-                }
-            }
+        return Result.Error(lexicalError);
+    }
 
-            return null;
+    private Lexeme FindLexeme(string input, int characterPosition)
+    {
+        foreach (var tokenMatcher in this.tokenMatchers)
+        {
+            var match = tokenMatcher.Match(input);
+            if (match.Success)
+            {
+                return new Lexeme(match.Value, tokenMatcher.TokenType, characterPosition);
+            }
         }
+
+        return null;
     }
 }

@@ -5,26 +5,25 @@
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace Sundew.Quantities
-{
-    using Sundew.Quantities.Core;
+namespace Sundew.Quantities;
 
+using Sundew.Quantities.Core;
+
+/// <summary>
+/// Represents an angle quantity.
+/// </summary>
+public partial struct Angle
+{
     /// <summary>
-    /// Represents an angle quantity.
+    /// Multiplies the specified LHS and RHS.
     /// </summary>
-    public partial struct Angle
+    /// <param name="lhs">The LHS.</param>
+    /// <param name="rhs">The RHS.</param>
+    /// <returns>
+    /// The result of the operator.
+    /// </returns>
+    public static Squared<Angle> operator *(Angle lhs, Angle rhs)
     {
-        /// <summary>
-        /// Multiplies the specified LHS and RHS.
-        /// </summary>
-        /// <param name="lhs">The LHS.</param>
-        /// <param name="rhs">The RHS.</param>
-        /// <returns>
-        /// The result of the operator.
-        /// </returns>
-        public static Squared<Angle> operator *(Angle lhs, Angle rhs)
-        {
-            return new Squared<Angle>(new Angle(QuantityOperations.Multiply(lhs, rhs).Value, lhs.Unit));
-        }
+        return new Squared<Angle>(new Angle(QuantityOperations.Multiply(lhs, rhs).Value, lhs.Unit));
     }
 }

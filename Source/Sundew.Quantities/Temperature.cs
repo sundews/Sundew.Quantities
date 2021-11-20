@@ -5,26 +5,25 @@
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace Sundew.Quantities
-{
-    using Sundew.Quantities.Core;
+namespace Sundew.Quantities;
 
+using Sundew.Quantities.Core;
+
+/// <summary>
+/// Represents a temperature quantity.
+/// </summary>
+public partial struct Temperature
+{
     /// <summary>
-    /// Represents a temperature quantity.
+    /// Multiplies the specified LHS and RHS.
     /// </summary>
-    public partial struct Temperature
+    /// <param name="lhs">The LHS.</param>
+    /// <param name="rhs">The RHS.</param>
+    /// <returns>
+    /// The result of the operator.
+    /// </returns>
+    public static Squared<Temperature> operator *(Temperature lhs, Temperature rhs)
     {
-        /// <summary>
-        /// Multiplies the specified LHS and RHS.
-        /// </summary>
-        /// <param name="lhs">The LHS.</param>
-        /// <param name="rhs">The RHS.</param>
-        /// <returns>
-        /// The result of the operator.
-        /// </returns>
-        public static Squared<Temperature> operator *(Temperature lhs, Temperature rhs)
-        {
-            return new Squared<Temperature>(new Temperature(QuantityOperations.Multiply(lhs, rhs).Value, lhs.Unit));
-        }
+        return new Squared<Temperature>(new Temperature(QuantityOperations.Multiply(lhs, rhs).Value, lhs.Unit));
     }
 }

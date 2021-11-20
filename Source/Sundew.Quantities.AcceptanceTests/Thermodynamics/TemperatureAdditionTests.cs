@@ -4,25 +4,24 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
-namespace Sundew.Quantities.AcceptanceTests.Thermodynamics
+namespace Sundew.Quantities.AcceptanceTests.Thermodynamics;
+
+using FluentAssertions;
+
+using Sundew.Quantities.AcceptanceTests.Testing;
+
+using Xunit;
+
+public class TemperatureAdditionTests
 {
-    using FluentAssertions;
-
-    using Sundew.Quantities.AcceptanceTests.Testing;
-
-    using Xunit;
-
-    public class TemperatureAdditionTests
+    [Fact]
+    public void Temperature_Addition_Then_ResultShouldBeSummed()
     {
-        [Fact]
-        public void Temperature_Addition_Then_ResultShouldBeSummed()
-        {
-            var lhs = 43.Celsius();
-            var rhs = 32.Celsius();
+        var lhs = 43.Celsius();
+        var rhs = 32.Celsius();
 
-            var result = lhs + rhs;
+        var result = lhs + rhs;
 
-            result.Should().Be(75, "°C");
-        }
+        result.Should().Be(75, "°C");
     }
 }

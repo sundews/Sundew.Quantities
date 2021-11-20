@@ -5,35 +5,34 @@
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace Sundew.Quantities.Core
+namespace Sundew.Quantities.Core;
+
+using System;
+using Sundew.Quantities.Representations.Expressions;
+
+/// <summary>
+/// Interface for implementing base unit quantities.
+/// </summary>
+public interface IQuantity : IFormattableQuantity,
+    IComparable,
+    IEquatable<IQuantity>,
+    IComparable<IQuantity>,
+    IUnitConvertible,
+    IDeferredQuantity
 {
-    using System;
-    using Sundew.Quantities.Representations.Expressions;
+    /// <summary>
+    /// Gets the value.
+    /// </summary>
+    /// <value>
+    /// The quantity value.
+    /// </value>
+    double Value { get; }
 
     /// <summary>
-    /// Interface for implementing base unit quantities.
+    /// Gets the unit.
     /// </summary>
-    public interface IQuantity : IFormattableQuantity,
-                                 IComparable,
-                                 IEquatable<IQuantity>,
-                                 IComparable<IQuantity>,
-                                 IUnitConvertible,
-                                 IDeferredQuantity
-    {
-        /// <summary>
-        /// Gets the value.
-        /// </summary>
-        /// <value>
-        /// The quantity value.
-        /// </value>
-        double Value { get; }
-
-        /// <summary>
-        /// Gets the unit.
-        /// </summary>
-        /// <value>
-        /// The quantity unit.
-        /// </value>
-        IUnit Unit { get; }
-    }
+    /// <value>
+    /// The quantity unit.
+    /// </value>
+    IUnit Unit { get; }
 }

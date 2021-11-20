@@ -4,21 +4,20 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
-namespace Sundew.Quantities.Representations.Expressions.Visitors
+namespace Sundew.Quantities.Representations.Expressions.Visitors;
+
+/// <summary>
+/// Specifies the format for magnitudes.
+/// </summary>
+public enum MagnitudeFormat
 {
     /// <summary>
-    /// Specifies the format for magnitudes.
+    /// The use above letter (e.g. ³).
     /// </summary>
-    public enum MagnitudeFormat
-    {
-        /// <summary>
-        /// The use above letter (e.g. ³).
-        /// </summary>
-        UseAboveLetter,
+    UseAboveLetter,
 
-        /// <summary>
-        /// The use magnitude operator (^).
-        /// </summary>
-        UseMagnitudeOperator
-    }
+    /// <summary>
+    /// The use magnitude operator (^).
+    /// </summary>
+    UseMagnitudeOperator
 }

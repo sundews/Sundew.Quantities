@@ -5,33 +5,32 @@
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace Sundew.Quantities.Core.Operations
+namespace Sundew.Quantities.Core.Operations;
+
+using Sundew.Quantities.Representations.Expressions;
+
+/// <summary>
+/// Convert to unit operation for <see cref="IQuantity"/> instance.
+/// </summary>
+public class ConvertToUnitOperation : IQuantityAndUnitOperation
 {
-    using Sundew.Quantities.Representations.Expressions;
-
     /// <summary>
-    /// Convert to unit operation for <see cref="IQuantity"/> instance.
+    /// Executes the operation.
     /// </summary>
-    public class ConvertToUnitOperation : IQuantityAndUnitOperation
+    /// <param name="lhs">The LHS quantity.</param>
+    /// <param name="rhs">The RHS quantity.</param>
+    /// <returns>
+    /// The resulting value.
+    /// </returns>
+    public double Execute(IQuantity lhs, IUnit rhs)
     {
-        /// <summary>
-        /// Executes the operation.
-        /// </summary>
-        /// <param name="lhs">The LHS quantity.</param>
-        /// <param name="rhs">The RHS quantity.</param>
-        /// <returns>
-        /// The resulting value.
-        /// </returns>
-        public double Execute(IQuantity lhs, IUnit rhs)
+        var valueUnit = lhs.Unit;
+        var value = lhs.Value;
+        if (!UnitEqualityHelper.AreUnitsEqual(valueUnit, rhs))
         {
-            var valueUnit = lhs.Unit;
-            var value = lhs.Value;
-            if (!UnitEqualityHelper.AreUnitsEqual(valueUnit, rhs))
-            {
-                value = rhs.FromBase(valueUnit.ToBase(value));
-            }
-
-            return value;
+            value = rhs.FromBase(valueUnit.ToBase(value));
         }
+
+        return value;
     }
 }

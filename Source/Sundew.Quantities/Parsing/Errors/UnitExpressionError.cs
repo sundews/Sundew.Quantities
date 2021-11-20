@@ -4,26 +4,25 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
-namespace Sundew.Quantities.Parsing.Errors
+namespace Sundew.Quantities.Parsing.Errors;
+
+/// <summary>
+/// Errors for <see cref="UnitExpressionParser"/>.
+/// </summary>
+public enum UnitError
 {
     /// <summary>
-    /// Errors for <see cref="UnitExpressionParser"/>.
+    /// The lexical analysis failed.
     /// </summary>
-    public enum UnitError
-    {
-        /// <summary>
-        /// The lexical analysis failed.
-        /// </summary>
-        LexicalAnalysisFailed,
+    LexicalAnalysisFailed,
 
-        /// <summary>
-        /// The prefix unit or unit or variable not found.
-        /// </summary>
-        PrefixUnitOrUnitOrVariableNotFound,
+    /// <summary>
+    /// The prefix unit or unit or variable not found.
+    /// </summary>
+    PrefixUnitOrUnitOrVariableNotFound,
 
-        /// <summary>
-        /// The end of data not found.
-        /// </summary>
-        EndOfDataNotFound
-    }
+    /// <summary>
+    /// The end of data not found.
+    /// </summary>
+    EndOfDataNotFound
 }

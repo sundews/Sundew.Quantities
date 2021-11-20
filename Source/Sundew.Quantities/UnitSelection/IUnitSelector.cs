@@ -5,30 +5,29 @@
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace Sundew.Quantities.UnitSelection
+namespace Sundew.Quantities.UnitSelection;
+
+using System.Collections.Generic;
+using Sundew.Quantities.Representations.Expressions;
+
+/// <summary>
+/// Interface for implementing a unit selector.
+/// </summary>
+public interface IUnitSelector
 {
-    using System.Collections.Generic;
-    using Sundew.Quantities.Representations.Expressions;
+    /// <summary>
+    /// Gets the base unit.
+    /// </summary>
+    /// <value>
+    /// The base unit.
+    /// </value>
+    Expression BaseUnit { get; }
 
     /// <summary>
-    /// Interface for implementing a unit selector.
+    /// Gets the default units.
     /// </summary>
-    public interface IUnitSelector
-    {
-        /// <summary>
-        /// Gets the base unit.
-        /// </summary>
-        /// <value>
-        /// The base unit.
-        /// </value>
-        Expression BaseUnit { get; }
-
-        /// <summary>
-        /// Gets the default units.
-        /// </summary>
-        /// <returns>
-        /// An <see cref="IEnumerable{IUnit}" />.
-        /// </returns>
-        IEnumerable<IUnit> GetDefaultUnits();
-    }
+    /// <returns>
+    /// An <see cref="IEnumerable{IUnit}" />.
+    /// </returns>
+    IEnumerable<IUnit> GetDefaultUnits();
 }
