@@ -28,7 +28,7 @@
   </ItemGroup>
  
   <ItemGroup>
-    <PackageReference Include="Sundew.Generator.Code" Version="3.1.12" />
+    <PackageReference Include="Sundew.Generator.Code" Version="3.1.13+bfb8bc4594" />
   </ItemGroup>
 
 </Project>
